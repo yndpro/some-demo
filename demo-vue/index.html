@@ -101,7 +101,7 @@
         //vue 组件
         Vue.component('star-item',{
             props : ['star'],
-            template : '<li>{{star.name}}</li>'
+            template : '<li>{{star.name}}</li>'     // 子单元通过 prop 接口与父单元进行了良好的解耦。
         })
         var app7 = new Vue({
             el : '#app7',
