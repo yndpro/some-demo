@@ -3,5 +3,20 @@
 }
 
 .title{
-    color:var(--theme-color);
+    color:var(--theme-color,blue);
 }
+
+.button{
+    border:1px solid var(--theme-color,blue);
+    color:var(--theme-color,blue);
+    text-align: center;
+    display: inline-block;
+    line-height: 30px;
+}
+
+.button:hover{
+    color:#fff;
+    background: var(--theme-color,blue);
+}
+
+
