@@ -1,0 +1,7 @@
+:root{
+    --theme-color:#4399A2;
+}
+
+.title{
+    color:var(--theme-color);
+}
