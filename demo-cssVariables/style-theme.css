@@ -1,25 +1,18 @@
-:root{
+.player{
     --theme-color:#4399A2;
     --theme-default-color:blue;
 
     --base-size: 12px;
-    --button-size-big:1.5;
+    --button-size-big:1;
     --tit-size-bigger:2;
 }
 
-body{
-    --theme-color:#A26E43;
-}
-
 .title{
-    color: #4399A2;
-    color:var(--theme-color,var(--theme-default-color));
     font-size: calc(var(--tit-size-bigger) * var(--base-size));
 }
 
 .button{
-    border:1px solid var(--theme-color,blue);
-    color:var(--theme-color,blue);
+    border:1px solid #000;
     text-align: center;
     display: inline-block;
     text-decoration: none;
@@ -32,5 +25,27 @@ body{
     color:#fff;
     background: var(--theme-color,blue);
 } 
+.progress{
+    height: 6px;
+    width: 500px;
+    border-radius: 3px;
+    margin-top: 10px;
+}
 
+
+
+
+
+.player{
+    --theme-color:#4399A2;
+}
+.title{
+    color:var(--theme-color);
+}
+.button{
+    border-color:var(--theme-color);
+}
+.progress{
+    background: var(--theme-color);
+}
 

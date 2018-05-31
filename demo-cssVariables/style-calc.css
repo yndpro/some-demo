@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+
+
+/* .grid{
+    background: #C3C3C3;
+    width: 640px;
+}
+
+.grid .cell{
+    background: #353535;
+    height: 80px;
+}
+
+.grid {  
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: calc(var(--spaceing) / 2);
+}
+
+.grid .cell {
+    display: block;
+    width: calc(100% / var(--columns) - var(--spaceing));
+    margin: calc(var(--spaceing) / 2);
+}   */
+
+
+.sim_grid{
+    background: #C3C3C3;
+    width: 640px;
+}
+
+.sim_grid .cell{
+    background: #353535;
+    height: 80px;
+}
+
+.sim_grid {
+    /* CSS 变量定义
+        网格的列数 网格边距 列与列的间距 */
+    --sim_grid-columns: 3;
+    --sim_grid-spaceing: 10px;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    padding: calc(var(--sim_grid-spaceing) / 2);
+}
+
+.sim_grid .cell {
+    display: block;
+    width: calc(100% / var(--sim_grid-columns) - var(--sim_grid-spaceing));
+    margin: calc(var(--sim_grid-spaceing) / 2);
+}
+
+
