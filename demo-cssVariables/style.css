@@ -1,4 +1,4 @@
-:root{
+/* :root{
     --theme-color:#4399A2;
     --theme-default-color:blue;
 
@@ -31,6 +31,19 @@ body{
 .button:hover{
     color:#fff;
     background: var(--theme-color,blue);
-} 
+}  */
 
+
+.block {
+    --block-font-size: 12px;
+}
+
+.block__highlight {
+    /* DOESN'T WORK */
+    --block-highlight-font-size: calc(var(--block-font-size)*1.5);
+    font-size: var(--block-highlight-font-size);
+
+    /* WORKS */
+    /* font-size: calc(var(--block-font-size)*1.5); */
+}
 
