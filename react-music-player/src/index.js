@@ -29,3 +29,12 @@ document.body.appendChild(component());
 
 console.log("I love u,orange");
 
+
+
+if (module.hot) {
+    module.hot.accept('./test.js', function() {
+      console.log('Accepting the updated test module!');
+      console.log(test());
+    })
+}
+

@@ -1,6 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 
 module.exports = {
     entry : {
@@ -14,7 +16,8 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname,"dist"),
         compress: true,
-        port: 9000
+        port: 9000,
+        hot: true     //open Hot Module Replacement
     },
     output : {
         path : path.resolve(__dirname,"dist"),
@@ -46,5 +49,6 @@ module.exports = {
             filename: 'index.html'
         }),
         new CleanWebpackPlugin(['dist']),
+        new webpack.HotModuleReplacementPlugin()
     ]
 };
