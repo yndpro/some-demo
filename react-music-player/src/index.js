@@ -1,5 +1,4 @@
 
-
 const test = require('./test.js');
 require('./index.scss');
 // const icon = require('./react.png');
@@ -31,10 +30,10 @@ console.log("I love u,orange");
 
 
 
-if (module.hot) {
-    module.hot.accept('./test.js', function() {
-      console.log('Accepting the updated test module!');
-      console.log(test());
-    })
-}
+// if (module.hot) {
+//     module.hot.accept('./test.js', function() {
+//       console.log('Accepting the updated test module!');
+//       console.log(test());
+//     })
+// }
 

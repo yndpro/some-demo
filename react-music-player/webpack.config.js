@@ -6,11 +6,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry : {
-        app: './src/index.js',
-        app2: './src/index2.js'
+        app: './src/index2.js',
     },
     //which maps your compiled code back to your original source code
     devtool: 'inline-source-map',
+
+    mode: "development",
 
     //webpack-dev-server provides you with a simple web server and the ability to use live reloading
     devServer: {
