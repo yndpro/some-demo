@@ -1,6 +1,6 @@
 define([], function() {
-    console.log("module2")
+    console.log("module4")
     return function(){
-        return 2
+        return 4
     }
 });
