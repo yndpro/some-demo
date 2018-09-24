@@ -6,7 +6,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry : {
-        app: './src/index2.js',
+        // index: './src/index.js',
+        app: './src/app.js'
     },
     //which maps your compiled code back to your original source code
     devtool: 'inline-source-map',
@@ -18,11 +19,14 @@ module.exports = {
         contentBase: path.resolve(__dirname,"dist"),
         compress: true,
         port: 9000,
+        //HMR  It allows all kinds of modules to be updated at runtime without the need for a full refresh.
         hot: true     //open Hot Module Replacement
     },
     output : {
         path : path.resolve(__dirname,"dist"),
-        filename : "[name].bundle.js"
+        filename : "[name].bundle.js",
+        //The publicPath will be used within our server script as well in order to make sure files are served correctly on http://localhost:3000. 
+        publicPath: '/'   
     },
     module: {
         rules: [
@@ -39,6 +43,13 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: ['file-loader']
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                  loader: "babel-loader"
+                }
             }
         ]
     },

@@ -1,7 +1,7 @@
 
 const test = require('./test.js');
 require('./index.scss');
-// const icon = require('./react.png');
+const icon = require('./react.png');
 //
 // console.dir(icon);
 
@@ -9,15 +9,19 @@ function component() {
     var root = document.createElement('div');
     var btn = document.createElement('button');
     var text = document.createElement('div');
+    var img = document.createElement('img');
 
     text.innerHTML = test();
     text.style.display = "none";
     btn.innerHTML = 'Click me';
+    img.src = icon;
 
     btn.onclick = function (){
         text.style.display = "block";
     };
 
+    
+    root.appendChild(img);
     root.appendChild(btn);
     root.appendChild(text);
 
@@ -26,7 +30,7 @@ function component() {
 
 document.body.appendChild(component());
 
-console.log("I love u,orange");
+console.log("I love u,orange,orange");
 
 
 
