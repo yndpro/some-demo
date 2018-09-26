@@ -1,0 +1,25 @@
+{
+    // Controls the font size in pixels.
+    "editor.fontSize": 18,
+
+    // Specifies the color theme used in the workbench.
+    "workbench.colorTheme": "Darcula Theme from IntelliJ",
+
+    // Commit all changes when there are no staged changes.
+    "git.enableSmartCommit": true,
+
+    // Controls the visibility of the activity bar in the workbench.
+    "workbench.activityBar.visible": true,
+
+    // Controls the visibility of the status bar at the bottom of the workbench.
+    "workbench.statusBar.visible": true,
+
+    // Controls if the minimap is shown
+    "editor.minimap.enabled": false,
+    
+    // Adjust the zoom level of the window. The original size is 0 and each increment above (e.g. 1) or below (e.g. -1) represents zooming 20% larger or smaller. You can also enter decimals to adjust the zoom level with a finer granularity.
+    "window.zoomLevel": 0,
+
+    // When enabled, emmet abbreviations are expanded when pressing TAB.
+    "emmet.triggerExpansionOnTab": true
+}

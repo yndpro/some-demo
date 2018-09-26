@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Header from '../components/header';
+import Hello from './components/hello';
 
 render(
-    <Header></Header>,
+    <Hello></Hello>,
     document.getElementById('root')
 )

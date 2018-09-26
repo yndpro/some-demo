@@ -43,13 +43,6 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: ['file-loader']
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                  loader: "babel-loader"
-                }
             }
         ]
     },
@@ -57,9 +50,8 @@ module.exports = {
         // This is especially useful for webpack bundles that include a hash in the filename
         // which changes every compilation
         new HtmlWebpackPlugin({
-            template: './index.tpl.html',
-            inject:'body',
-            filename: './index.html'
+            title: 'My App',
+            filename: 'index.html'
         }),
         new CleanWebpackPlugin(['dist']),
         new webpack.HotModuleReplacementPlugin()
