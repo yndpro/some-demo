@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="view"></div>
+    <script src="../lib/react.min.js"></script>
+    <script src="../lib/react-dom.min.js"></script>
+    <script src="../lib/browser.min.js"></script>
+    <script type="text/babel">
+        var names = ['aaa','bbb','ccc'];
+
+        var HellowMessage = React.createClass({
+            render : function () {
+                return <h3>helloMessage by {this.props.name}</h3>
+            }
+        })
+
+        var HasChildList = React.createClass({
+            render : function () {
+                return <li>child node is {this.prop.children}</li>
+            }
+        })
+
+        ReactDOM.render(            //JSX  js的扩展。规则：遇到 HTML 标签（以 < 开头）就用 HTML 规则解析；遇到代码块（以 { 开头），就用 JavaScript 规则解析。
+            <div>                    
+                {
+                    names.map(function(item) {
+                        return <div>hello {item}!</div>       
+                    })                    //如果这个变量是一个数组，则会展开这个数组的所有成员
+                }
+                <HellowMessage name="EvenU"></HellowMessage>
+            </div>,
+            document.getElementById('view')
+        )
+
+    </script>
+</body>
+</html>
