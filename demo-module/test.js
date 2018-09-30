@@ -1,11 +1,11 @@
-const test = '23'
+var count = 1;
 
-function output(){
-    console.log("output");
+function inc(){
+    count += 1;
 }
+console.log('test:' + count);
 
-output();
-
-
-
-module.exports = test;
+module.exports = {
+    count : count,
+    inc : inc
+};
