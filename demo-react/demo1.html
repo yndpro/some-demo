@@ -41,13 +41,32 @@
                             })
                         }
                         </ul>
+
             }
         })
         //console.log(<HasChildList>itemtext<span>item1</span><span>item2</span></HasChildList>);
-        //console.log(<div>{['23','34']}</div>);       //和上面 分别观察两者对象的props.children属性 每一项的数据类型 text react.element(虚拟dom)
+        //console.log(<div>{['23','34']}</div>);       //和上面 分别观察两者对象的props.children属性 每一项的数据类型 text react.element(virtual dom)
 
 
-        ReactDOM.render(            //将虚拟virtual dom tree  渲染成真实dom   
+
+
+
+        //JSX
+        console.log(<HellowMessage name="EvenU"></HellowMessage>);   
+        console.log(<div className="aa" tit="tit1"></div>);   //JSX  js的扩展。对比上面，里头的html都是语法糖  当前返回的是一个react.element(virtual dom) => 本质都是一个js对象）
+
+        //之前的理解是 TODO JSX 只是为 React.createElement(component, props, ...children) 函数提供的语法糖
+        //对比上面JSX语法是等价的，所以不难理解为什么组件里return 要一个react.element包起来才能return
+        //console.log(React.createElement('div', 'tit1'));   
+         
+        
+
+
+        //React 
+        //组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM （virtual DOM）。只有当它插入文档以后，才会变成真实的 DOM 。
+        //根据 React 的设计，所有的 DOM 变动，都先在虚拟 DOM 上发生，然后再将实际发生变动的部分，反映在真实 DOM上，这种算法叫做 DOM diff
+
+        ReactDOM.render(            //接受一个react.element   将虚拟virtual dom tree渲染成真实dom     
             <div>                    
                 {
                     names.map(function(item) {
@@ -64,12 +83,9 @@
             </div>,
             document.getElementById('view')
         )
+
         
-        console.log(<HellowMessage name="EvenU"></HellowMessage>);   
-        console.log(<div className="aa" tit="tit1"></div>);   //JSX  js的扩展。对比上面，里头的html都是语法糖  当前返回的是一个virtual dom（本质都是一个js对象）
         
-        //之前的理解是 TODO JSX 只是为 React.createElement(component, props, ...children) 函数提供的语法糖
-        //console.log(React.createElement('div', 'tit1'));
     </script>
 </body>
 </html>

@@ -8,11 +8,120 @@
 </head>
 <body>
     <div id="view"></div>
-    <script src="../lib/react.min.js"></script>
+    <script src="../lib/react.js"></script>
     <script src="../lib/react-dom.min.js"></script>
     <script src="../lib/browser.min.js"></script>
-    <script type="text/babel">  
+    <script type="text/babel">
+        var titleName = 123;
         
+        var Title = React.createClass({
+            
+            propTypes: {
+                name : React.PropTypes.string.isRequired,
+            },
+
+            getDefaultProps : function() {
+                return {
+                    name : "Default Title"
+                }
+            },
+
+            render : function() {
+                return <div>{this.props.name}</div>
+            }
+        }) 
+
+
+        //组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做virtual DOM  (react.element) 
+        //Document的DOM  是某某语言的一种实现？   对应的就是  React的react.element(virtual DOM）  是js的一种实现！ 
+
+        //所以有时需要从组件获取真实 DOM 的节点，这时就要用到 ref 属性
+        //由于 this.refs.[refName] 属性获取的是真实 DOM ，所以必须等到虚拟 DOM 插入文档以后，才能使用这个属性，否则会报错。
+        var TextInput = React.createClass({
+
+            handleClick : function () {
+                console.log(this.refs.testInput);
+                this.refs.testInput.focus();
+            },
+                
+            render : function () {
+                return (
+                    <div className="test-input">
+                        <input type="text" ref="testInput"/>
+                        <input type="button" value="Focus the text input" onClick={this.handleClick}/>
+                    </div>
+                )
+            }
+        })
+
+
+        //State
+        //看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染 UI 
+        //getInitialState 方法用于定义初始状态，也就是一个对象，这个对象可以通过 this.state 属性读取 (既这个状态机实际上是在组件对象的state属性上)       
+        var Like = React.createClass({
+
+            getInitialState : function () {
+                return {
+                    liked : false
+                }
+            },
+
+            handleClick : function () {
+                this.setState({
+                    liked : !this.state.liked
+                })
+            },
+
+            render : function () {
+                var liked = this.state.liked ? "like" : "";
+                return (
+                    <div className="like">
+                        <div className="like-state">{liked}</div>
+                        <input type="button" value="like" className="like-btn" onClick={this.handleClick}/>
+                    </div>
+                )
+            }
+        })
+
+
+        //form
+        //用户输入（输入框改变） => 触发onChange事件 => setState更改状态,重新渲染 => (输入框改变,预览改变）  TODO：是这样的么？
+        var Form = React.createClass({
+            getInitialState : function() {
+                return {
+                    value : 'please input!'
+                }
+            },
+
+            handleChange : function (event) {
+                //console.log(this.refs.formInput);
+                this.setState({                     // TODO:为什么不能用 refs  获取真实DOM  getAttribute("value")去获取输入框输入？
+                    value : event.target.value              
+                })  
+            },
+
+            render : function() {
+                return (
+                    <div className="form">
+                        <input type="text" ref="formInput" className="form-input" value={this.state.value} onChange={this.handleChange}/>
+                        <p className="form-preview">{this.state.value}</p>
+                    </div>
+                )
+            }
+        })
+
+
+        ReactDOM.render(
+            <div>
+                <Title name={titleName}></Title>
+                <TextInput></TextInput>
+                <Like></Like>
+                <Form></Form>
+            </div>,
+            document.getElementById("view")
+        );
+
+
     </script>                   
 </body>
 </html>
