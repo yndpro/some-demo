@@ -11,33 +11,63 @@
     <script src="../lib/react.min.js"></script>
     <script src="../lib/react-dom.min.js"></script>
     <script src="../lib/browser.min.js"></script>
-    <script type="text/babel">
+    <script type="text/babel">                                              
+    
+        //面向对象编程 一切皆对象    
+        //里面的组件表示react组件
+        //JSX语法  js的扩展。规则：遇到 HTML 标签（以 < 开头）就用 HTML 规则解析；遇到代码块（以 { 开头），就用 JavaScript 规则解析。
+        
         var names = ['aaa','bbb','ccc'];
 
-        var HellowMessage = React.createClass({
+        var HellowMessage = React.createClass({                    //组件类
             render : function () {
-                return <h3>helloMessage by {this.props.name}</h3>
+                return <h3>helloMessage by {this.props.name}</h3>    //this指向当前实例    组件的属性可在对象的props属性上获取
             }
         })
+        console.log(<HellowMessage name="EvenU"></HellowMessage>);   //实例化一个组件   
 
+
+
+        
         var HasChildList = React.createClass({
             render : function () {
-                return <li>child node is {this.prop.children}</li>
+                //console.log(this.props.children)         //this.props 对象的属性与组件的属性一一对应;   但还有一个this.props.children它表示组件的所有子节点
+                //return <li>child node is {this.props.children}</li>    //this.props.children 的值有三种可能 1多个子节点=》数组就展开 2一个子节点=》对象 3没有子节点=》undefined
+                                                                         //上面问题用React.Children解决
+                return <ul>                                              
+                        {
+                            React.Children.map(this.props.children,function(child){
+                              return <li>child node is {child}</li>
+                            })
+                        }
+                        </ul>
             }
         })
+        //console.log(<HasChildList>itemtext<span>item1</span><span>item2</span></HasChildList>);
+        //console.log(<div>{['23','34']}</div>);       //和上面 分别观察两者对象的props.children属性 每一项的数据类型 text react.element(虚拟dom)
 
-        ReactDOM.render(            //JSX  js的扩展。规则：遇到 HTML 标签（以 < 开头）就用 HTML 规则解析；遇到代码块（以 { 开头），就用 JavaScript 规则解析。
+
+        ReactDOM.render(            //将虚拟virtual dom tree  渲染成真实dom   
             <div>                    
                 {
                     names.map(function(item) {
                         return <div>hello {item}!</div>       
-                    })                    //如果这个变量是一个数组，则会展开这个数组的所有成员
+                    })                      //JSX 如果这个变量是一个数组，则会展开这个数组的所有成员 
                 }
-                <HellowMessage name="EvenU"></HellowMessage>
+                <div>{['23','34']}</div>   
+
+                <HellowMessage name="EvenU"></HellowMessage>  
+                <HasChildList>itemtext
+                    <span>item1</span>
+                    <span>item2</span>    
+                </HasChildList>
             </div>,
             document.getElementById('view')
         )
-
+        
+        console.log(<HellowMessage name="EvenU"></HellowMessage>);   
+        console.log(<div className="aa"></div>);   //JSX  js的扩展。对比上面，里头的html都是语法糖  当前返回的是一个virtual dom（本质都是一个js对象）
+        
     </script>
 </body>
 </html>
