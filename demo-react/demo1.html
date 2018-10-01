@@ -16,7 +16,7 @@
         //面向对象编程 一切皆对象    
         //里面的组件表示react组件
         //JSX语法  js的扩展。规则：遇到 HTML 标签（以 < 开头）就用 HTML 规则解析；遇到代码块（以 { 开头），就用 JavaScript 规则解析。
-        
+
         var names = ['aaa','bbb','ccc'];
 
         var HellowMessage = React.createClass({                    //组件类
@@ -66,8 +66,10 @@
         )
         
         console.log(<HellowMessage name="EvenU"></HellowMessage>);   
-        console.log(<div className="aa"></div>);   //JSX  js的扩展。对比上面，里头的html都是语法糖  当前返回的是一个virtual dom（本质都是一个js对象）
+        console.log(<div className="aa" tit="tit1"></div>);   //JSX  js的扩展。对比上面，里头的html都是语法糖  当前返回的是一个virtual dom（本质都是一个js对象）
         
+        //之前的理解是 TODO JSX 只是为 React.createElement(component, props, ...children) 函数提供的语法糖
+        //console.log(React.createElement('div', 'tit1'));
     </script>
 </body>
 </html>
