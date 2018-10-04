@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="view"></div>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.min.js"></script>
+    <script src="../lib/browser.min.js"></script>
+    <script type="text/babel">
+
+        //组件的生命周期
+        //Mounting：已插入真实 DOM
+        //Updating：正在被重新渲染
+        //Unmounting：已移出真实 DOM
+        
+        var Chongwu = React.createClass({
+
+            propTypes : {
+                name : React.PropTypes.string.isRequired
+            },
+
+            getDefaultProps : function () {
+                return {
+                    name : 'Adrian & Orange'
+                }
+            },
+            
+            getInitialState : function () {
+                return {
+                    name : this.props.name,
+                    opacity : 1
+                }                
+            },
+
+            componentDidMount : function () {
+                var opacity;
+
+                setInterval(function(){
+                    opacity = this.state.opacity;
+                    opacity -= 0.05;
+                    if(opacity < 0.1){
+                        opacity = 1;
+                    }
+                    this.setState({
+                        opacity : opacity
+                    })
+                }.bind(this),1000);
+            },
+
+            render : function () {
+                return (            //React 组件样式是一个对象，所以第一重大括号表示这是 JavaScript 语法，第二重大括号表示样式对象。
+                    <div className="chongwu">
+                        <div class="chongwu-member" style={{opacity:this.state.opacity}}>{this.props.name}</div>   
+                        <div className="chongwu-opacity">{this.state.opacity}</div>
+                    </div>
+                )
+            }
+
+        })
+
+        ReactDOM.render(
+            <Chongwu name="Adrian and Orange"></Chongwu>,
+            document.getElementById("view")
+        )
+        
+
+    </script>  
+</body>
+</html>

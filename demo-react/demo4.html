@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="view"></div>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.min.js"></script>
+    <script src="../lib/browser.min.js"></script>
+    <script src="../lib/jquery.min.js"></script>
+    <script type="text/babel">
+        var RepoList = React.createClass({
+            
+            getInitialState : function () {
+                return {
+                    loading : true,
+                    error : null,
+                    data : null
+                }
+            },
+
+            componentDidMount : function () {
+                $.getJSON("https://api.github.com/search/repositories?q=javascript&sort=stars")
+                    .then(function(value){
+                        this.setState({loading : false,data : value});
+                    }.bind(this),function(error){
+                        this.setState({loading : false,error : error});
+                    }.bind(this))
+            },
+
+            render : function () {
+                console.log("render");
+                var content = null;
+
+                if(this.state.loading){
+                    content = <span>loading...</span>
+                }else if(this.state.error !== null){
+                    content = <span>Error:{this.state.data.error.message}</span>
+                }else{
+                    var items = this.state.data.items;
+                    content = <ol className="repo-list">
+                            {
+                                items.map(function(item,index){
+                                    return <li key={index}><a href={item.html_url}>{item.name}</a>({item.stargazers_count} stars)<br/>{item.description}</li>
+                                })
+                            }
+                        </ol>
+                }
+                return (
+                    <div className="repo"> 
+                        <h5>Most Popular GitHub Projects</h5>
+                        {content}
+                    </div>
+                )    
+            }
+        })
+        
+        ReactDOM.render(
+            <RepoList/>,
+            document.getElementById("view")
+        )
+    </script>  
+</body>
+</html>

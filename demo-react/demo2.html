@@ -30,6 +30,7 @@
                 return <div>{this.props.name}</div>
             }
         }) 
+        
 
 
         //组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做virtual DOM  (react.element) 
@@ -111,7 +112,7 @@
         })
 
 
-        ReactDOM.render(
+        ReactDOM.render(                         //渲染二叉树
             <div>
                 <Title name={titleName}></Title>
                 <TextInput></TextInput>

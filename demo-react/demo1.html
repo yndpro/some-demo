@@ -55,7 +55,7 @@
         console.log(<HellowMessage name="EvenU"></HellowMessage>);   
         console.log(<div className="aa" tit="tit1"></div>);   //JSX  js的扩展。对比上面，里头的html都是语法糖  当前返回的是一个react.element(virtual dom) => 本质都是一个js对象）
 
-        //之前的理解是 TODO JSX 只是为 React.createElement(component, props, ...children) 函数提供的语法糖
+        //之前的理解是 TODO JSX 只是为 React.createElement(component, props, ...children) 函数提供的语法糖            用二叉树理解？
         //对比上面JSX语法是等价的，所以不难理解为什么组件里return 要一个react.element包起来才能return
         //console.log(React.createElement('div', 'tit1'));   
          
@@ -71,7 +71,7 @@
                 {
                     names.map(function(item) {
                         return <div>hello {item}!</div>       
-                    })                      //JSX 如果这个变量是一个数组，则会展开这个数组的所有成员 
+                    })                      //JSX 如果这个变量是一个数组，则会展开这个数组的所有成员     
                 }
                 <div>{['23','34']}</div>   
 
