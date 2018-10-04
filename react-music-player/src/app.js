@@ -1,8 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Header from '../components/header';
+
+import './static/css/reset.css';
+import './static/css/common.css';
+
+import Main from'./components/main.js';
+
 
 render(
-    <Header></Header>,
+    <Main/>,
     document.getElementById('root')
 )
