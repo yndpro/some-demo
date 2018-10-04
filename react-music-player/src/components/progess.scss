@@ -1,12 +1,12 @@
-.progess{
+.progess-bar{
     width: 100%;
     height: 3px;
     background: #ddd;
     cursor: pointer;
-  
-    .progress-bar{
+
+    .progress{
       width: 20%;
       height: 3px;
-  
+      background: orange;
     }
   }

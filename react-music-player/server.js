@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -11,6 +12,8 @@ const compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath
 }));
+
+app.use('/static',express.static(path.join(__dirname, 'static')));
 
 // Serve the files on port 3030.
 app.listen(3030, function () {
