@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router";
 import Progress from '../components/progress';
 import './player.scss';
 
@@ -29,14 +30,14 @@ var Player = React.createClass({
                 }
             }
         });
-        
+
         $('#player').bind($.jPlayer.event.timeupdate,(e)=>{
             duration = e.jPlayer.status.duration;
             this.setState({
                 progress : e.jPlayer.status.currentPercentAbsolute
             })
         });
-        
+
     },
 
     callbackChangeProgress : function(progress){
@@ -62,13 +63,16 @@ var Player = React.createClass({
     },
 
     componentWillUnMount : function(){
-        $('#player').unbind($.jPlayer.event.timeupdate);
+        // $('#player').unbind($.jPlayer.event.timeupdate);
+        this.setState = (state,callback) => {
+            return;
+        };
     },
 
     render : function(){
         return (
             <div className="page page--player">
-                <h1 className="caption">我的私人音乐坊 &gt;</h1>
+                <h1 className="caption"><Link to="/list">我的私人音乐坊 &gt;</Link></h1>
                 <div className="mt20" style={{float:'left',width:'450px'}}>
                     <div className="controll-wrapper" style={{width:'100%'}}>
                         <h2 className="music-title">{this.props.currentMusicItem.title}</h2>
