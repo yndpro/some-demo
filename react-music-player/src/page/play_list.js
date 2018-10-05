@@ -5,6 +5,7 @@ var PlayList = React.createClass({
     componentDidMount : function(){
         $('#player').unbind($.jPlayer.event.timeupdate);
     },
+
     render : function(){
         return (
             <div className="page page--playerList">

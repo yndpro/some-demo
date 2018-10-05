@@ -34,7 +34,8 @@ var Player = React.createClass({
         $('#player').bind($.jPlayer.event.timeupdate,(e)=>{
             duration = e.jPlayer.status.duration;
             this.setState({
-                progress : e.jPlayer.status.currentPercentAbsolute
+                progress : e.jPlayer.status.currentPercentAbsolute,
+                volume: e.jPlayer.options.volume * 100
             })
         });
 
@@ -63,10 +64,7 @@ var Player = React.createClass({
     },
 
     componentWillUnMount : function(){
-        // $('#player').unbind($.jPlayer.event.timeupdate);
-        this.setState = (state,callback) => {
-            return;
-        };
+        $('#player').unbind($.jPlayer.event.timeupdate);
     },
 
     render : function(){

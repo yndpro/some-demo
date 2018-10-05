@@ -9,7 +9,7 @@ var App = React.createClass({
     getInitialState : function(){
         return {
             musicList : MUSIC_LIST,
-            currentMusicItem : MUSIC_LIST[5]
+            currentMusicItem : MUSIC_LIST[0]
         }
     },
 
