@@ -9,6 +9,7 @@ let Progess = React.createClass({
         this.props.callbackChangeProgress && this.props.callbackChangeProgress(progress);
     },
     render : function(){
+        
         return (
             <div className="progess-bar" ref="progessBar" onClick={this.changeProgress}>
                 <div className="progress" style={{width:`${this.props.progress}%`}}></div>

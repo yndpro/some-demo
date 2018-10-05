@@ -8,21 +8,46 @@ var Player = React.createClass({
     getInitialState : function(){
         return {
             progress : '0',
-            isPlay : true
+            volume : '50',
+            isPlay : false
         }
     },
 
     componentDidMount : function(){
+        var _this = this;
+
+        $('#player').jPlayer({
+            supplied:'mp3',
+            wmode:'window',
+            volume : _this.state.volume * 0.01,
+            ready : function(){
+                $(this).jPlayer('setMedia',{
+                    mp3: _this.props.currentMusicItem.file
+                });
+                if(_this.state.isPlay){
+                    $(this).jPlayer('play');
+                }
+            }
+        });
+        
         $('#player').bind($.jPlayer.event.timeupdate,(e)=>{
             duration = e.jPlayer.status.duration;
             this.setState({
                 progress : e.jPlayer.status.currentPercentAbsolute
             })
         });
+        
     },
 
     callbackChangeProgress : function(progress){
          $('#player').jPlayer(this.state.isPlay ? "play" : "pause",duration * progress * 0.01);
+    },
+
+    callbackChangeVolume : function(progress){
+        $('#player').jPlayer("volume",progress * 0.01);
+        this.setState({
+            volume : progress
+        })
     },
 
     play : function(){
@@ -53,7 +78,7 @@ var Player = React.createClass({
                             <div className="volume-container">
                                 <i className="icon-volume rt" style={{top:5,left:10}}></i>
                                 <div className="volume-wrapper" style={{marginLeft:20,width:100}}>
-                               
+                                    <Progress progress={this.state.volume} callbackChangeProgress={this.callbackChangeVolume}/>
                                 </div>
                             </div>
                         </div>

@@ -1,34 +1,27 @@
 import React from 'react';
 import Header from './components/header';
 import Player from './page/player';
+import PlayList from './page/play_list';
 import {MUSIC_LIST} from './data';
 
 var Root = React.createClass({
     getInitialState : function(){
         return {
             musicList : MUSIC_LIST,
-            currentMusicItem : MUSIC_LIST[5]
+            currentMusicItem : MUSIC_LIST[4]
         }
     },
 
     componentDidMount : function(){
-        var _this = this;
-        $('#player').jPlayer({
-            supplied:'mp3',
-            wmode:'window',
-            ready : function(){
-                $(this).jPlayer('setMedia',{
-                    mp3: _this.state.currentMusicItem.file
-                }).jPlayer('play');
-            }
-        });
+        
     },
 
     render : function(){
         return (
             <div className="view">
                 <Header/>
-                <Player currentMusicItem={this.state.currentMusicItem} isPlay={this.state.isPlay}/>
+                <PlayList currentMusicItem={this.state.currentMusicItem} musicList={this.state.musicList}/>
+                {/* <Player currentMusicItem={this.state.currentMusicItem}/> */}
             </div>
         )
     }
