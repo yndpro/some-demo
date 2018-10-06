@@ -13,10 +13,15 @@ var PlayListItem = React.createClass({
         Pubsub.publish("DELETE_MUSIC_ITEM",musicItem);
     },
 
+    handleSelectItem : function(musicItem){
+        console.log("playItem:",musicItem);
+        this.props.callbackSelectItem && this.props.callbackSelectItem(musicItem);
+    },
+
     render : function(){
         var item = this.props.item;
         return (   
-            <li className={`components-musiclistitem ${this.props.focus ? "focus" : ""}`} onClick={this.selectItem.bind(this,item)}>
+            <li className={`components-musiclistitem ${this.props.focus ? "focus" : ""}`} onClick={this.handleSelectItem.bind(this,item)}>
                 <p><strong>{item.title}</strong> - {item.artist}</p>
                 <p className="-col-auto delete" onClick={this.selectItem.bind(this,item)}></p>
             </li>

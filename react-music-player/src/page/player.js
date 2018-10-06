@@ -10,27 +10,12 @@ var Player = React.createClass({
         return {
             progress : '0',
             volume : '50',
-            isPlay : false
+            isPlay : true
         }
     },
 
     componentDidMount : function(){
-        var _this = this;
-
-        $('#player').jPlayer({
-            supplied:'mp3',
-            wmode:'window',
-            volume : _this.state.volume * 0.01,
-            ready : function(){
-                $(this).jPlayer('setMedia',{
-                    mp3: _this.props.currentMusicItem.file
-                });
-                if(_this.state.isPlay){
-                    $(this).jPlayer('play');
-                }
-            }
-        });
-
+        
         $('#player').bind($.jPlayer.event.timeupdate,(e)=>{
             duration = e.jPlayer.status.duration;
             this.setState({
@@ -42,7 +27,7 @@ var Player = React.createClass({
     },
 
     callbackChangeProgress : function(progress){
-         $('#player').jPlayer(this.state.isPlay ? "play" : "pause",duration * progress * 0.01);
+        $('#player').jPlayer(this.state.isPlay ? "play" : "pause",duration * progress * 0.01);
     },
 
     callbackChangeVolume : function(progress){
@@ -53,10 +38,12 @@ var Player = React.createClass({
     },
 
     play : function(){
+        let $player = $('#player')
+
         if(this.state.isPlay){
-            $('#player').jPlayer('pause')
+            $player.jPlayer('pause')
         }else{
-            $('#player').jPlayer('play')
+            $player.jPlayer('play')
         }
         this.setState({
             isPlay : !this.state.isPlay

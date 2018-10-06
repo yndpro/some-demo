@@ -6,13 +6,18 @@ var PlayList = React.createClass({
         $('#player').unbind($.jPlayer.event.timeupdate);
     },
 
+    callbackSelectItem : function(musicItem){
+        console.log("playlist:",musicItem);
+        this.props.callbackSelectItem && this.props.callbackSelectItem(musicItem);
+    },
+
     render : function(){
         return (
             <div className="page page--playerList">
                 <ul>
                     {
                         this.props.musicList.map(item => {
-                            return <PlayListItem key={item.id} item={item} focus={item == this.props.currentMusicItem ? true : false}/>
+                            return <PlayListItem key={item.id} item={item} callbackSelectItem={this.callbackSelectItem} focus={item == this.props.currentMusicItem ? true : false}/>
                         })
                     }
                 </ul>
