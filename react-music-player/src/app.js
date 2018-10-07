@@ -3,6 +3,8 @@ import Header from './components/header';
 import Pubsub from 'pubsub-js';
 import {MUSIC_LIST} from './data';
 
+// let isPlay = null;
+
 var App = React.createClass({
     getInitialState : function(){
         return {
@@ -44,12 +46,6 @@ var App = React.createClass({
         $('#player').jPlayer('play');
     },
 
-    // getIsPlay : function(isPlay){
-    //     this.setState({
-    //         isPlay : isPlay
-    //     });
-    // },
-
     componentDidMount : function(){
 
         $('#player').jPlayer({
@@ -72,6 +68,10 @@ var App = React.createClass({
 
         this.changeMusicItem(this.state.currentMusicItem);
 
+        // Pubsub.subscribe("GET_IS_PLAY",(msg,_isPlay)=>{
+        //     isPlay = _isPlay;
+        //     console.log(isPlay);
+        // });
         Pubsub.subscribe("SELECT_MUSIC_ITEM",(msg,musicItem)=>{
             this.changeMusicItem(musicItem);
         });
@@ -101,6 +101,7 @@ var App = React.createClass({
     },
 
     componentWillUnmount : function(){
+        // Pubsub.unsubscribe("GET_IS_PLAY");
         Pubsub.unsubscribe("SELECT_MUSIC_ITEM");
         Pubsub.unsubscribe("DELETE_MUSIC_ITEM");
         Pubsub.unsubscribe("PLAY_NEXT_MUSIC");

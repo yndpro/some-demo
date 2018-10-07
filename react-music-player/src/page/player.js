@@ -64,7 +64,6 @@ var Player = React.createClass({
         $('#player').bind($.jPlayer.event.timeupdate,(e)=>{
             duration = e.jPlayer.status.duration;
             this.setState({
-                isPlay : true,
                 progress : e.jPlayer.status.currentPercentAbsolute,
                 volume: e.jPlayer.options.volume * 100,
                 leftTime : this.formateTime(duration * (1 - this.state.progress * 0.01))
@@ -76,7 +75,8 @@ var Player = React.createClass({
                     isPlay : false
                 })
             }
-        })
+        });
+        // Pubsub.publish("GET_IS_PLAY",this.state.isPlay);
     },
 
     componentWillUnMount : function(){
