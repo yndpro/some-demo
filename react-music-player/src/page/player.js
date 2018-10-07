@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router";
+import Pubsub from 'pubsub-js';
 import Progress from '../components/progress';
 import './player.scss';
 
@@ -10,20 +11,9 @@ var Player = React.createClass({
         return {
             progress : '0',
             volume : '50',
-            isPlay : true
+            isPlay : true,
+            leftTime : "00:00"
         }
-    },
-
-    componentDidMount : function(){
-        
-        $('#player').bind($.jPlayer.event.timeupdate,(e)=>{
-            duration = e.jPlayer.status.duration;
-            this.setState({
-                progress : e.jPlayer.status.currentPercentAbsolute,
-                volume: e.jPlayer.options.volume * 100
-            })
-        });
-
     },
 
     callbackChangeProgress : function(progress){
@@ -35,6 +25,18 @@ var Player = React.createClass({
         this.setState({
             volume : progress
         })
+    },
+
+    playNext : function(){
+        Pubsub.publish("PLAY_NEXT_MUSIC");
+    },
+
+    playPrev : function(){
+        Pubsub.publish("PLAY_PREV_MUSIC");
+    },
+
+    changeRepeatType : function(){
+        Pubsub.publish("CHANGE_REPEAT_TYPE");
     },
 
     play : function(){
@@ -50,8 +52,36 @@ var Player = React.createClass({
         })
     },
 
+    formateTime : function(seconds){
+        let minute = Math.floor(seconds / 60);
+        let second = Math.floor(seconds % 60);
+        if(minute < 10) minute = `0${minute}`;
+        if(second < 10) second = `0${second}`;
+        return `${minute} : ${second}`;
+    },
+
+    componentDidMount : function(){
+        $('#player').bind($.jPlayer.event.timeupdate,(e)=>{
+            duration = e.jPlayer.status.duration;
+            this.setState({
+                isPlay : true,
+                progress : e.jPlayer.status.currentPercentAbsolute,
+                volume: e.jPlayer.options.volume * 100,
+                leftTime : this.formateTime(duration * (1 - this.state.progress * 0.01))
+            })
+        });
+        $('#player').bind($.jPlayer.event.ended,(e)=>{
+            if(this.props.repeatType == "once"){
+                this.setState({
+                    isPlay : false
+                })
+            }
+        })
+    },
+
     componentWillUnMount : function(){
         $('#player').unbind($.jPlayer.event.timeupdate);
+        $('#player').unbind($.jPlayer.event.ended);
     },
 
     render : function(){
@@ -63,7 +93,7 @@ var Player = React.createClass({
                         <h2 className="music-title">{this.props.currentMusicItem.title}</h2>
                         <h2 className="music-artist mt10">{this.props.currentMusicItem.artist}</h2>
                         <div className="row mt20">
-                            <div className="left-time -col-auto"></div>
+                            <div className="left-time -col-auto">{this.state.leftTime}</div>
                             <div className="volume-container">
                                 <i className="icon-volume rt" style={{top:5,left:10}}></i>
                                 <div className="volume-wrapper" style={{marginLeft:20,width:100}}>
@@ -77,12 +107,12 @@ var Player = React.createClass({
                     </div>
                     <div className="mt35 row" style={{width:'100%'}}>
                         <div style={{width:'50%'}}>
-                            <i className="icon prev"></i>
+                            <i className="icon prev" onClick={this.playPrev}></i>
                             <i className={`icon ml20 ${this.state.isPlay ? "pause" : "play"}`} onClick={this.play}></i>
-                            <i className="icon next ml20"></i>
+                            <i className="icon next ml20" onClick={this.playNext}></i>
                         </div>
                         <div className="-col-auto" style={{width:'50%'}}>
-                            <i className="" style={{float:'right',}}></i>
+                            <i className={`icon repeat-${this.props.repeatType}`} style={{float:'right',}} onClick={this.changeRepeatType}></i>
                         </div>  
                     </div>
                 </div>
