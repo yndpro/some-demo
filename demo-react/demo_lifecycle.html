@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="view"></div>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.min.js"></script>
+    <script src="../lib/browser.min.js"></script>
+    <script src="../lib/jquery.min.js"></script>
+    <script type="text/babel">
+
+var SubCounter = React.createClass({
+
+        getDefaultProps : function() {
+            console.log("9.子组件加载默认属性");
+            return {
+                count : "99"
+            }
+        },
+
+        initialState : function() {
+            console.log("10.子组件加载默认状态");
+            return {
+                
+            }
+        },
+
+        componentWillMount : function() {
+            console.log("11.子组件即将挂载");     
+        },
+
+        componentDidMount : function() {
+            console.log("13.子组件完成挂载");
+        },
+
+        //props state unmount (结合图理解，这里又是个循环的头)
+
+        componentWillReceiveProps : function () {
+            console.log("14.子组件即将接到新属性");
+        },
+
+        shouldComponentUpdate : function(newProp,newState) {
+            console.log("15.子组件是否需要更新");
+            if(newState.count < 5){
+                return true;
+            }else{
+                return false;
+            }
+        },
+
+        componentWillUpdate : function() {
+            console.log("16.父组件即将更新");     
+        },
+
+        componentDidUpdate : function() {
+            console.log("17.父组件完成更新");     
+        },
+
+        componentWillUnmount : function() {
+            console.log("18.父组件完成更新");     
+        },
+
+        render : function() {
+            console.log("12.子组件正在渲染，挂载");     
+            return <div className="subcounter-num">{this.props.num}</div>
+        }
+    })
+    
+
+    var Counter = React.createClass({
+
+        getDefaultProps : function() {
+            console.log("1.父组件加载默认属性");
+            return {
+                name : "counter"
+            }
+        },
+
+        initialState : function() {
+            console.log("2.父组件加载默认状态");
+            return {
+                count : 0
+            }
+        },
+
+        componentWillMount : function() {
+            console.log("3.父组件即将挂载");     
+        },
+
+        componentDidMount : function() {
+            console.log("5.父组件完成挂载");
+        },
+
+        //props state unmount (结合图理解，这里又是个循环的头)
+
+        shouldComponentUpdate : function(newProp,newState) {
+            console.log("6.父组件是否需要更新");
+            if(newState.count<15){
+                return true;
+            }else{
+                return false;
+            }
+        },
+
+        componentWillUpdate : function() {
+            console.log("7.父组件即将更新");     
+        },
+
+        componentDidUpdate : function() {
+            console.log("8.父组件完成更新");     
+        },
+
+        addCount : function () {
+            this.setState({
+                count : this.state.count + 1;
+            });
+        },
+
+        render : function() {
+            console.log("4.父组件正在渲染，挂载");     
+            return (
+                <div className="counter">
+                    <a href="javascript:;" onClick={this.addCount}></a>
+                    <span class="counter-num">{this.state.count}</span>
+                    {this.state.count < 10 ? <SubCounter count={this.state.count}></SubCounter> : null}
+                </div>
+            )
+        }
+    })
+    
+    ReactDOM.render(
+        <Counter/>,
+        document.getElementById('#view')
+    )
+    </script>  
+</body>
+</html>
