@@ -3,13 +3,16 @@ import Header from './components/header';
 import Pubsub from 'pubsub-js';
 import {MUSIC_LIST} from './data';
 
-// let isPlay = null;
+var duration = null;
 
 var App = React.createClass({
     getInitialState : function(){
         return {
             musicList : MUSIC_LIST,
             currentMusicItem : MUSIC_LIST[0],
+            progress : '0',
+            volume : '50',
+            isPlay : true,
             repeatType : "cycle"
         }
     },
@@ -17,11 +20,11 @@ var App = React.createClass({
     changeMusicItem : function(musicItem){
         $('#player').jPlayer('setMedia',{
             mp3: musicItem.file
-        });
+        }).jPlayer('play');
         this.setState({
+            isPlay : true,
             currentMusicItem : musicItem
         });
-        this.playMusic();
     },
 
     deleteMusicItem : function(musicItem){
@@ -43,7 +46,42 @@ var App = React.createClass({
     },
 
     playMusic : function(){
-        $('#player').jPlayer('play');
+        let $player = $('#player')
+
+        if(this.state.isPlay){
+            $player.jPlayer('pause')
+        }else{
+            $player.jPlayer('play')
+        }
+        this.setState({
+            isPlay : !this.state.isPlay
+        })
+
+    },
+
+    changeVolume : function(volume){
+        $('#player').jPlayer("volume",volume * 0.01);
+        this.setState({
+            volume : volume
+        })
+    },
+
+    changeProgress : function(progress){
+        $('#player').jPlayer(this.state.isPlay ? "play" : "pause",duration * progress * 0.01);
+    },
+
+    changeRepeatType : function(){
+        const repeatType = [
+            "once",
+            "cycle",
+            "cycle_one",    
+            "random"
+        ];
+        let index = repeatType.indexOf(this.state.repeatType);
+            index = (index + 1) % repeatType.length;
+        this.setState({
+            repeatType : repeatType[index]
+        });
     },
 
     componentDidMount : function(){
@@ -54,29 +92,42 @@ var App = React.createClass({
             volume : 50 * 0.01
         });
 
-        let index;
+        $('#player').bind($.jPlayer.event.timeupdate,(e)=>{
+            duration = e.jPlayer.status.duration;
+            this.setState({
+                progress : e.jPlayer.status.currentPercentAbsolute,
+                volume: e.jPlayer.options.volume * 100
+            })
+        });
+    
         $('#player').bind($.jPlayer.event.ended,(e)=>{
+            let index;
             if(this.state.repeatType == "cycle"){
                 this.playNext();
             }else if(this.state.repeatType == "cycle_one"){
-                this.playMusic();
+                this.changeMusicItem(this.state.currentMusicItem);
             }else if(this.state.repeatType == "random"){
                 index = Math.floor(Math.random() * this.state.musicList.length);
                 this.changeMusicItem(this.state.musicList[index]);
+            }else if(this.state.repeatType == "once"){
+                this.setState({
+                    isPlay : false,
+                    progress : 0
+                })
             }else{}           
         });
-
+        
         this.changeMusicItem(this.state.currentMusicItem);
-
-        // Pubsub.subscribe("GET_IS_PLAY",(msg,_isPlay)=>{
-        //     isPlay = _isPlay;
-        //     console.log(isPlay);
-        // });
+        
+        
         Pubsub.subscribe("SELECT_MUSIC_ITEM",(msg,musicItem)=>{
             this.changeMusicItem(musicItem);
         });
         Pubsub.subscribe("DELETE_MUSIC_ITEM",(msg,musicItem)=>{
             this.deleteMusicItem(musicItem);
+        });
+        Pubsub.subscribe("PLAY_MUSIC",(msg)=>{
+            this.playMusic();
         });
         Pubsub.subscribe("PLAY_NEXT_MUSIC",(msg)=>{
             this.playNext();
@@ -84,19 +135,14 @@ var App = React.createClass({
         Pubsub.subscribe("PLAY_PREV_MUSIC",(msg)=>{
             this.playNext("prev");
         });
-
-        const repeatType = [
-            "once",
-            "cycle",
-            "cycle_one",    
-            "random"
-        ];
+        Pubsub.subscribe("CHANGE_VOLUME",(msg,volume)=>{
+            this.changeVolume(volume);
+        });
+        Pubsub.subscribe("CHANGE_PROGRESS",(msg,progress)=>{
+            this.changeProgress(progress);
+        });
         Pubsub.subscribe("CHANGE_REPEAT_TYPE",(msg)=>{
-            let index = repeatType.indexOf(this.state.repeatType);
-            index = (index + 1) % repeatType.length;
-            this.setState({
-                repeatType : repeatType[index]
-            });
+            this.changeRepeatType();
         });
     },
 
@@ -106,8 +152,10 @@ var App = React.createClass({
         Pubsub.unsubscribe("DELETE_MUSIC_ITEM");
         Pubsub.unsubscribe("PLAY_NEXT_MUSIC");
         Pubsub.unsubscribe("PLAY_PREV_MUSIC");
+        Pubsub.unsubscribe("CHANGE_VOLUME");
         Pubsub.unsubscribe("CHANGE_REPEAT_TYPE");
         $('#player').unbind($.jPlayer.event.ended);
+        $('#player').unbind($.jPlayer.event.timeupdate);
     },
 
     render : function(){
@@ -117,7 +165,11 @@ var App = React.createClass({
                 {React.cloneElement(this.props.children,{
                     currentMusicItem : this.state.currentMusicItem,
                     musicList : this.state.musicList,
-                    repeatType : this.state.repeatType
+                    repeatType : this.state.repeatType,
+                    isPlay : this.state.isPlay,
+                    progress : this.state.progress,
+                    volume : this.state.volume,
+                    duration : duration
                 })}
             </div> 
         )
