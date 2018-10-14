@@ -1,0 +1,52 @@
+@import "mixin";
+
+/* user */
+.user{
+  text-align: center;
+  position: relative;
+  color: #005d69;
+  *zoom:1;
+  a{
+    color: #005d69;
+    font-weight: bold;
+    margin: 0 px(5);
+  }
+  .user-name,
+  .user-greet,
+  .user-logout{
+    display: inline-block;
+    vertical-align: top;
+  }
+  .user-name{
+    @include ellipsis;
+    max-width: px(130);
+  }
+}
+
+
+
+.pager{
+  text-align: center;
+  padding: px(10) 0;
+  span,
+  a{
+    line-height: px(20);
+    height: px(20);
+    display: inline-block;
+    margin: px(2);
+  }
+  a{
+    width: px(20);
+    height: px(20);
+  }
+  span.cur {
+    width: px(20);
+    height: px(20);
+  }
+  a.pager-pre,
+  a.pager-next,
+  span.pager-pre,
+  span.pager-next {
+    width: px(45);
+  }
+}

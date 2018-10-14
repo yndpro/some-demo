@@ -1,0 +1,58 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+            @mixin deco_bullet {
+                background-position:  px(-406)   px(-224) ;
+                width: px(124);
+                height: px(127);
+            }
+            @mixin ico_close {
+                background-position:  px(-560)   px(-93) ;
+                width: px(30);
+                height: px(30);
+            }
+            @mixin pro_1 {
+                background-position: 0 0;
+                width: px(285);
+                height: px(220);
+            }
+            @mixin pro_2 {
+                background-position:  px(-201)   px(-224) ;
+                width: px(201);
+                height: px(167);
+            }
+            @mixin pro_3 {
+                background-position: 0  px(-224) ;
+                width: px(197);
+                height: px(203);
+            }
+            @mixin tit_1 {
+                background-position:  px(-289)  0;
+                width: px(520);
+                height: px(89);
+            }
+            @mixin tit_2 {
+                background-position:  px(-289)   px(-93) ;
+                width: px(267);
+                height: px(90);
+            }
+            @mixin txt_tit {
+                background-position: 0  px(-431) ;
+                width: px(510);
+                height: px(36);
+            }
+        %other_sprite {
+            background: url(../images/sprite_other.png);
+            background-repeat: no-repeat;
+            background-size: px(809) px(467);
+        }
+
+

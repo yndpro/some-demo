@@ -1,0 +1,19 @@
+ {{#extend "scss"}}
+    {{#content "sprites"}}
+        {{#each sprites}}
+            @mixin {{name}} {
+                background-position: {{#if offset_x}} px({{offset_x}}) {{else}}0{{/if}} {{#if offset_y}} px({{offset_y}}) {{else}}0{{/if}};
+                width: px({{width}});
+                height: px({{height}});
+            }
+        {{/each}}
+    {{/content}}
+
+    {{#content "spritesheet"}}
+        %{{options}}_sprite {
+            background: url({{{spritesheet.escaped_image}}});
+            background-repeat: no-repeat;
+            background-size: px({{spritesheet.width}}) px({{spritesheet.height}});
+        }
+    {{/content}}
+{{/extend}}

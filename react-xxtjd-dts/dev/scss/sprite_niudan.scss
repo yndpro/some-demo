@@ -1,0 +1,48 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+            @mixin niudan_award {
+                background-position:  px(-836)   px(-99) ;
+                width: px(100);
+                height: px(90);
+            }
+            @mixin niudan_hole {
+                background-position:  px(-723)   px(-99) ;
+                width: px(109);
+                height: px(94);
+            }
+            @mixin niudan_machine {
+                background-position: 0 0;
+                width: px(640);
+                height: px(739);
+            }
+            @mixin niudan_myaward {
+                background-position:  px(-644)   px(-99) ;
+                width: px(75);
+                height: px(145);
+            }
+            @mixin niudan_prob {
+                background-position:  px(-644)   px(-248) ;
+                width: px(78);
+                height: px(78);
+            }
+            @mixin niudan_start {
+                background-position:  px(-644)  0;
+                width: px(330);
+                height: px(95);
+            }
+        %niudan_sprite {
+            background: url(../images/sprite_niudan.png);
+            background-repeat: no-repeat;
+            background-size: px(974) px(739);
+        }
+
+
