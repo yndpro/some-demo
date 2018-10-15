@@ -4,7 +4,7 @@ import Pubsub from 'pubsub-js';
 import Progress from '../components/progress';
 import './player.scss';
 
-
+var duration = null;
 var Player = React.createClass({
 
     changeProgress : function(progress){
@@ -32,7 +32,7 @@ var Player = React.createClass({
     },
 
     getLeftTime : function(){
-        return this.formateTime(this.props.duration * (1 - this.props.progress * 0.01));
+        return this.formateTime(duration * (1 - this.props.progress * 0.01));
     },
 
     formateTime : function(seconds){
@@ -44,13 +44,16 @@ var Player = React.createClass({
     },
 
     componentDidMount : function(){
-        
-        
+        $('#player').bind($.jPlayer.event.timeupdate,(e)=>{
+            duration = e.jPlayer.status.duration;
+            
+            Pubsub.publish("TIME_UPDATE",e.jPlayer.status.currentPercentAbsolute);
+            
+        });
     },
 
     componentWillUnMount : function(){
-        
-    
+        $('#player').unbind($.jPlayer.event.timeupdate);
     },
 
     render : function(){

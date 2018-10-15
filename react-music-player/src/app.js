@@ -94,6 +94,7 @@ var App = React.createClass({
 
         $('#player').bind($.jPlayer.event.timeupdate,(e)=>{
             duration = e.jPlayer.status.duration;
+            console.log(e.jPlayer.status.currentPercentAbsolute);
             this.setState({
                 progress : e.jPlayer.status.currentPercentAbsolute,
                 volume: e.jPlayer.options.volume * 100
@@ -153,6 +154,7 @@ var App = React.createClass({
         Pubsub.unsubscribe("PLAY_NEXT_MUSIC");
         Pubsub.unsubscribe("PLAY_PREV_MUSIC");
         Pubsub.unsubscribe("CHANGE_VOLUME");
+        Pubsub.unsubscribe("CHANGE_PROGRESS");
         Pubsub.unsubscribe("CHANGE_REPEAT_TYPE");
         $('#player').unbind($.jPlayer.event.ended);
         $('#player').unbind($.jPlayer.event.timeupdate);
