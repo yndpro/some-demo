@@ -14,7 +14,14 @@
     <script src="../lib/jquery.min.js"></script>
     <script type="text/babel">
 
-var SubCounter = React.createClass({
+        var App = React.createClass({
+            render : function(){
+                return <div className="view">111</div>
+            }
+        })
+
+        
+    var SubCounter = React.createClass({
 
         getDefaultProps : function() {
             console.log("9.子组件加载默认属性");
@@ -134,7 +141,7 @@ var SubCounter = React.createClass({
     })
     
     ReactDOM.render(
-        <Counter/>,
+        <App/>,
         document.getElementById('view')
     )
     </script>  

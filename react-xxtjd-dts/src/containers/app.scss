@@ -1,0 +1,237 @@
+@function px($px){
+    @return ($px/100) + rem
+  }
+  
+  @mixin clearfix {
+    *zoom: 1;
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  @mixin bfc {
+  
+    &:before,
+    &:after {
+      content: "";
+      display: table;
+    }
+  }
+  @mixin ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  @mixin bfont($size, $lineHeight,$color) {
+    font: 700 px($size)/px($lineHeight) "microsoft yahei";
+    color:$color;
+  
+  }
+  @mixin lfont($size, $lineHeight,$color) {
+    font: 500 px($size)/px($lineHeight) "microsoft yahei";
+    color:$color;
+  
+  }
+  
+  
+  @import "sprite_btn";
+  
+  %btn{
+    display: inline-block;
+    text-align: center;
+    color: #e3faff;
+  }
+  
+  %btn--mid{
+    @extend %btn;
+    @extend %btn_sprite;
+    @include btn_mid;
+    font-size: px(24);
+    line-height: px(54);
+    font-weight: bold;
+    /*background: linear-gradient(to bottom, #fdfefe, #8ac9dd);
+    -webkit-background-clip: text;*/
+    text-shadow: px(2) px(2) px(2) #093f93;
+  }
+  
+  %btn--long{
+    @extend %btn;
+    @extend %btn_sprite;
+    @include btn_long;
+    font-size: px(60);
+    line-height: px(70);
+    font-weight: bold;
+    text-shadow: px(2) px(2) px(2) #093f93;
+  }
+
+
+
+
+
+
+
+  .view{
+    font-family: "microsoft yahei", sans-serif;
+    font-size:px(24);
+    background: url(../images/bg_4.jpg) repeat;
+    color: #232879;
+    *,:after,:before{
+      box-sizing: border-box;
+    }
+    a{
+      font-size:px(24);
+    }
+  }
+  
+  .wrap{
+    margin:0 auto;
+    max-width: 750px;
+  }
+  
+  .bg{
+    margin-top: px(-2);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .bg1{
+    @extend .bg;
+    height:px(260);
+    background-image: url(../images/bg_1.jpg);
+  }
+  
+  .bg2{
+    @extend .bg;
+    height:px(260);
+    background-image: url(../images/bg_2.jpg);
+  }
+  
+  .bg3{
+    @extend .bg;
+    height:px(357);
+    background-image: url(../images/bg_3.png);
+  }
+  
+  a.btn--download{
+    @extend %btn--long;
+    font-size: px(32);
+    display: block;
+    margin: 0 auto px(20);
+  }
+  
+  .time{
+    line-height: px(50);
+    color: #c3eff7;
+    font-size:px(18);
+    text-align: center;
+  }
+  
+  .container{
+    margin-top: px(-162);
+    position: relative;
+    @include bfc();
+  }
+  
+  
+  .mod{
+    @include bfc;
+    margin-bottom:px(30);
+    .mod-hd{
+      position: relative;
+      margin-bottom:px(26);
+    }
+    .mod-tit{
+      
+      position: relative;
+      margin: 0 auto;
+      text-align: center;
+      color: #fff;
+      text-shadow: px(2) px(2) px(2) #12269d;
+      font-size: px(36);
+      font-weight: 700;
+      line-height: px(89);
+      span{
+        color: #fdfb13;
+      }
+    }
+    .mod-stit{
+      
+      display: block;
+      margin: px(-7) auto 0;
+      position: relative;
+      z-index: 3;
+      line-height: px(42);
+      padding-top: px(37);
+      text-align: center;
+      color: #fff;
+      text-shadow: px(2) px(2) px(2) #12269d;
+      font-size: px(24);
+    }
+    .mod-bullet{
+      @extend %other_sprite;
+      @include deco_bullet;
+      position: absolute;
+      top:px(-12);
+    }
+    .mod-bullet-r{
+      @extend .mod-bullet;
+      right: px(-20);
+    }
+    .mod-bullet-l{
+      @extend .mod-bullet;
+      transform: rotateY(180deg);
+      left: px(-20);
+    }
+  
+    .mod-txt{
+      width: px(614);
+      margin: 0 auto px(16);
+      .txt-hd{
+        height: px(48);
+        background: url(../images/mod_hd.png) no-repeat;
+        background-size: cover;
+      }
+      .txt-fd{
+        height: px(48);
+        background: url(../images/mod_fd.png) no-repeat;
+        background-size: cover;
+      }
+      .txt-bd{
+        background: url(../images/mod_bd.png) repeat-y;
+        background-size: 100% auto;
+        padding: 0 px(46);
+      }
+      .txt-tit{
+        @extend %other_sprite;
+        @include txt_tit;
+        position: relative;
+        margin: 0 auto px(8);
+        text-align: center;
+        color: #fff;
+        text-shadow: px(2) px(2) px(2) #12269d;
+        font-size: px(30);
+        font-weight: 700;
+        line-height: px(36);
+        span{
+          color: #fdfb13;
+        }
+      }
+      .txt-cont{
+        p{
+          line-height: px(46);
+          font-size: px(24);
+          color: #fff;
+          text-shadow: px(1) px(1) px(1) #12269d;
+          span{
+            color: #fdfb13;
+          }
+        }
+      }
+    }
+    .mod-bd{
+  
+    }
+  
+  }
