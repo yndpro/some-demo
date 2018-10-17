@@ -2,8 +2,8 @@
 const test = require('./test.js');
 require('./index.scss');
 const icon = require('./react.png');
-//
-// console.dir(icon);
+
+console.dir(icon);
 
 function component() {
     var root = document.createElement('div');
