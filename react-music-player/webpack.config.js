@@ -12,7 +12,7 @@ module.exports = {
     //which maps your compiled code back to your original source code
     devtool: 'inline-source-map',
 
-    mode: "development",
+    mode: "production",
 
     //webpack-dev-server provides you with a simple web server and the ability to use live reloading
     devServer: {
