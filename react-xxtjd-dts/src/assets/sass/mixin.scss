@@ -1,6 +1,10 @@
-@function px($px){
+
+
+  @function px($px){
     @return ($px/100) + rem
   }
+
+  @import './btn_sprite.scss';
   
   @mixin clearfix {
     *zoom: 1;
@@ -54,7 +58,8 @@
   
   %btn--long{
     @extend %btn;
-    
+    @extend %btn_sprite;
+    @include btn_long;
     font-size: px(60);
     line-height: px(70);
     font-weight: bold;

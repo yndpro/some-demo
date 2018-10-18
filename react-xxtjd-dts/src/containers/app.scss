@@ -2,6 +2,9 @@
 
 @import '../assets/sass/mixin.scss';
 
+  a{
+    font-size:px(24);
+  }
   .view{
     font-family: "microsoft yahei", sans-serif;
     font-size:px(24);
@@ -10,9 +13,7 @@
     *,:after,:before{
       box-sizing: border-box;
     }
-    a{
-      font-size:px(24);
-    }
+    
   }
   
   .wrap{
@@ -44,12 +45,7 @@
     background-image: url(../assets/images/bg_3.png);
   }
   
-  a.btn--download{
-    @extend %btn--long;
-    font-size: px(32);
-    display: block;
-    margin: 0 auto px(20);
-  }
+  
   
   .time{
     line-height: px(50);

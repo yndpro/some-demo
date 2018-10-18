@@ -1,10 +1,11 @@
 import React from 'react';
 import {appInfo} from '../data';
+import './download.scss';
 
 var Download = React.createClass({
     render : function(){
         return (
-            <a href="javascript:;" target="_blank" class="btn--download j-download">游戏下载</a>
+            <a href="javascript:;" target="_blank" className="btn--download">游戏下载</a>
         )
     }
 })

@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const SpritesmithPlugin = require('webpack-spritesmith');
+
 
 
 module.exports = {
@@ -62,6 +64,32 @@ module.exports = {
             filename: './index.html'
         }),
         new CleanWebpackPlugin(['dist']),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new SpritesmithPlugin({
+            src: {
+                cwd: path.resolve(__dirname, 'src/assets/images/btn_sprite'),
+                glob: '*.png'
+            },
+            target: {
+                image: path.resolve(__dirname, 'src/assets/images/btn_sprite.png'),
+                css: [
+                    [path.resolve(__dirname, 'src/assets/sass/btn_sprite.scss'),{
+                        format: 'handlebars_based_template'
+                    }]
+                ]
+            },
+            spritesmithOptions : {
+                
+            },
+            apiOptions: {
+                handlebarsHelpers : {
+                    
+                },
+                cssImageRef : '../assets/images/btn_sprite.png'
+            },
+            customTemplates: {
+                'handlebars_based_template': path.resolve(__dirname, 'src/assets/scss.handlebars')
+            },
+        })
     ]
 };
