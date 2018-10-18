@@ -10,7 +10,7 @@
     {{/content}}
 
     {{#content "spritesheet"}}
-        %btn_sprite {
+        %{{options}}_sprite {
             background-image: url({{{spritesheet.escaped_image}}});
             background-repeat: no-repeat;
             background-size: px({{spritesheet.width}}) px({{spritesheet.height}});

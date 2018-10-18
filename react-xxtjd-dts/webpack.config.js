@@ -3,8 +3,31 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const SpritesmithPlugin = require('webpack-spritesmith');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-
+let instanceSpritesmithPlugin = ['btn','other'].map(function(prefix){
+    return new SpritesmithPlugin({
+        src: {
+            cwd: path.resolve(__dirname, `src/assets/images/${prefix}_sprite`),
+            glob: '*.png'
+        },
+        target: {
+            image: path.resolve(__dirname, `src/assets/images/${prefix}_sprite.png`),
+            css: [
+                [path.resolve(__dirname, `src/assets/sass/${prefix}_sprite.scss`), {
+                    format: 'handlebars_based_template',
+                    formatOpts : prefix
+                }]
+            ]
+        },
+        apiOptions: {
+            cssImageRef : `../assets/images/${prefix}_sprite.png`
+        },
+        customTemplates: {
+            'handlebars_based_template': path.resolve(__dirname, 'src/assets/scss.handlebars')
+        },
+    })
+})
 
 module.exports = {
     entry : {
@@ -43,6 +66,30 @@ module.exports = {
                 }]
             },
             {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                      {
+                          loader: 'css-loader',
+                          options: {
+                              // If you are having trouble with urls not resolving add this setting.
+                              // See https://github.com/webpack-contrib/css-loader#url
+                              url: false,
+                              minimize: true,
+                              sourceMap: true
+                          }
+                      }, 
+                      {
+                          loader: 'sass-loader',
+                          options: {
+                              sourceMap: true
+                          }
+                      }
+                    ]
+                })
+            },
+            {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: ['file-loader']
             },
@@ -65,31 +112,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin(['dist']),
         new webpack.HotModuleReplacementPlugin(),
-        new SpritesmithPlugin({
-            src: {
-                cwd: path.resolve(__dirname, 'src/assets/images/btn_sprite'),
-                glob: '*.png'
-            },
-            target: {
-                image: path.resolve(__dirname, 'src/assets/images/btn_sprite.png'),
-                css: [
-                    [path.resolve(__dirname, 'src/assets/sass/btn_sprite.scss'),{
-                        format: 'handlebars_based_template'
-                    }]
-                ]
-            },
-            spritesmithOptions : {
-                
-            },
-            apiOptions: {
-                handlebarsHelpers : {
-                    
-                },
-                cssImageRef : '../assets/images/btn_sprite.png'
-            },
-            customTemplates: {
-                'handlebars_based_template': path.resolve(__dirname, 'src/assets/scss.handlebars')
-            },
-        })
+        ...instanceSpritesmithPlugin,
+        new ExtractTextPlugin("style.css")
     ]
 };
