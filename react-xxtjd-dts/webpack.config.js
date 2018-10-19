@@ -51,22 +51,12 @@ module.exports = {
         path : path.resolve(__dirname,"dist"),
         filename : "[name].bundle.js",
         //The publicPath will be used within our server script as well in order to make sure files are served correctly on http://localhost:3000. 
-        publicPath: '/dist/'   
+        publicPath: '/dist/'     //TODO: packed url can replace by CDN
     },
     module: {
         rules: [
             {
                 test: /\.(scss|css)$/,
-                use: [{
-                    loader: "style-loader"  // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader"    // translates CSS into CommonJS
-                }, {
-                    loader: "sass-loader"   // compiles Sass to CSS
-                }]
-            },
-            {
-                test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [
@@ -75,9 +65,10 @@ module.exports = {
                           options: {
                               // If you are having trouble with urls not resolving add this setting.
                               // See https://github.com/webpack-contrib/css-loader#url
-                              url: false,
+                            //   url: false,
                               minimize: true,
-                              sourceMap: true
+                              sourceMap: true,
+                              publicPath: '../',     //TODO:replace the url of images in css
                           }
                       }, 
                       {
@@ -91,7 +82,13 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: ['file-loader']
+                use: [{
+                    loader : 'url-loader',
+                    options: {
+                        limit: 500,
+                        name: 'images/[name]_[hash:7].[ext]'
+                    }
+                }]
             },
             {
                 test: /\.js$/,
