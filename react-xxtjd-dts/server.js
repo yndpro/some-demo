@@ -14,6 +14,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 
 app.use('/static',express.static(path.join(__dirname, 'static')));
+app.use('/lib',express.static(path.join(__dirname, '../lib')));
 
 // Serve the files on port 3030.
 app.listen(3030, function () {

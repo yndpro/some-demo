@@ -1,8 +1,18 @@
 import React from 'react';
+import API from '../api';
+import {Ajax} from '../util';
 import Download from '../components/download';
 import './app.scss';
 
 var App = React.createClass({
+
+    componentDidMount : function(){
+        Ajax.post(API.AJAX_INIT_APP)
+            .then(function(res){
+                
+            })
+    },
+
     render : function(){
         return (
             <div className="view">

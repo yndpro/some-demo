@@ -429,7 +429,7 @@ var Vision = {
 };
 
 $('body').ready(function () {
-   /*_zt._ztUrl = "http://";*/
+   
     page.init();
 });
 
