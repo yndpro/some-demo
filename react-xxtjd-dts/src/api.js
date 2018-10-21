@@ -1,6 +1,6 @@
 
-const ztUrl = "http://";
+
 
 export default {
-    AJAX_INIT_APP : ztUrl + '-ajaxInitBx',
+    AJAX_INIT_APP : 'http://www.api.com/-ajaxInitBx',
 };

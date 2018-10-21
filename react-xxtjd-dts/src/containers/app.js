@@ -1,15 +1,30 @@
+import '../mock.js';
 import React from 'react';
 import API from '../api';
 import {Ajax} from '../util';
 import Download from '../components/download';
 import './app.scss';
 
+
 var App = React.createClass({
 
+    getInitialState : function(){
+        return {
+            userInfo : {
+                scookie : "",
+                uid : "",
+                nick : "",
+                avatar : "",
+                level : ""
+            }
+        }
+    },
+
     componentDidMount : function(){
-        Ajax.post(API.AJAX_INIT_APP)
+        
+        Ajax.post(API.AJAX_INIT_APP,{},this.state.userInfo)
             .then(function(res){
-                
+                console.log(res);
             })
     },
 

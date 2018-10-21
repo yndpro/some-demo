@@ -1,5 +1,4 @@
 import React from 'react';
-import {appInfo} from '../data';
 import './download.scss';
 
 var Download = React.createClass({
