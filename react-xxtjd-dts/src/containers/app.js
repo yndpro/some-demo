@@ -5,6 +5,7 @@ import Download from '../components/download';
 import './app.scss';
 import axios from 'axios';
 
+const ztUrl = '/cn/xxtjd/dts';
 
 var App = React.createClass({
 
@@ -16,14 +17,34 @@ var App = React.createClass({
                 nick : "",
                 avatar : "",
                 level : ""
-            }
+            },
+            isShare : null,
+            lastTimes: 0,
+            score: null,
+            zbStatus : {},
+            zbList : {},
+            dhPrize : {}
         }
     },
 
     componentDidMount : function(){
-        Ajax.post('/cn/xxtjd/dts-ajaxInitBx',{},this.state.userInfo)
-            .then(function (response) {
-                console.log(response);
+        Ajax.post(ztUrl + '-ajaxInitBx',{},this.state.userInfo)
+            .then(response => {
+                this.setState({
+                    userInfo : {
+                        scookie : "",
+                        uid : response.data.uid,
+                        nick : response.data.nick,
+                        avatar : "",
+                        level : ""
+                    },
+                    isShare : response.data.pageInfo.isShare,
+                    lastTimes: response.data.pageInfo.lastTimes,
+                    score: response.data.pageInfo.score,
+                    zbList : response.data.zbList,
+                    zbStatus : response.data.zbStatus,
+                    dhPrize : response.data.pageInfo.dhPrize
+                })
             })
             .catch(function (error) {
                 console.log(error);
@@ -42,6 +63,7 @@ var App = React.createClass({
                     </div>
                     <div className="container">
                         <Download />
+                        <Live props={this.state.zbStatus} />
                     </div>
                     <div className="footer">本活动最终解释权归赛事举办方所有</div>
                 </div>

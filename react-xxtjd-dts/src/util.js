@@ -1,6 +1,12 @@
 import axios from 'axios';
 import qs from 'qs';
 
+export const pageInfo = {
+    LIVE : 1,
+    NO_LIVE : -6,
+    PLAY_BACK : -5
+};
+
 export const Ajax = {
 
     get : function(url = ``, data,userInfo){
