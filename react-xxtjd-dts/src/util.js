@@ -1,3 +1,6 @@
+import axios from 'axios';
+import qs from 'qs';
+
 export const Ajax = {
 
     get : function(url = ``, data,userInfo){
@@ -18,20 +21,13 @@ export const Ajax = {
         }else{
             typeof data === "string" ? data = data + "&_AJAX_=1" : data['_AJAX_'] = 1;
         }
-        // Default options are marked with *
-        return fetch(url, {
-            method: "POST", // *GET, POST, PUT, DELETE, etc.
-            mode: "cors", // no-cors, cors, *same-origin
-            cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: "same-origin", // include, same-origin, *omit
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-                // "Content-Type": "application/x-www-form-urlencoded",
-            },
-            redirect: "follow", // manual, *follow, error
-            referrer: "no-referrer", // no-referrer, *client
-            body: JSON.stringify(data), // body data type must match "Content-Type" header
+       
+        return axios({
+            method: 'POST',
+            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            data: qs.stringify(data),
+            url,
         })
-        .then(response => response.json()); // parses response to JSON
+        .then(response => response.data); // parses response to JSON
     }
 }

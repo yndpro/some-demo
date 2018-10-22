@@ -15,7 +15,6 @@
   ],
   "author": "adrian",
   "license": "MIT",
-  "proxy":"http://www.api.com",
   "dependencies": {
     "pubsub-js": "^1.5.4",
     "react": "^15.0.2",
@@ -25,6 +24,7 @@
     "v8-compile-cache": "^2.0.0"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",

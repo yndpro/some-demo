@@ -1,9 +1,9 @@
 import '../mock.js';
 import React from 'react';
-import API from '../api';
 import {Ajax} from '../util';
 import Download from '../components/download';
 import './app.scss';
+import axios from 'axios';
 
 
 var App = React.createClass({
@@ -21,11 +21,14 @@ var App = React.createClass({
     },
 
     componentDidMount : function(){
-        
-        Ajax.post(API.AJAX_INIT_APP,{},this.state.userInfo)
-            .then(function(res){
-                console.log(res);
+        Ajax.post('/cn/xxtjd/dts-ajaxInitBx',{},this.state.userInfo)
+            .then(function (response) {
+                console.log(response);
             })
+            .catch(function (error) {
+                console.log(error);
+            });
+        
     },
 
     render : function(){
