@@ -2,6 +2,8 @@ import '../mock.js';
 import React from 'react';
 import {Ajax} from '../util';
 import Download from '../components/download';
+import Live from '../components/live';
+import LiveList from '../components/live_list';
 import './app.scss';
 import axios from 'axios';
 
@@ -63,7 +65,9 @@ var App = React.createClass({
                     </div>
                     <div className="container">
                         <Download />
-                        <Live props={this.state.zbStatus} />
+                        <Live zbStatus={this.state.zbStatus} />
+                        <LiveList zbList={this.state.zbList} />
+                        <Exchange list={this.state.dhPrize} />
                     </div>
                     <div className="footer">本活动最终解释权归赛事举办方所有</div>
                 </div>

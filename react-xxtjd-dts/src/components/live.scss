@@ -1,0 +1,49 @@
+@import '../assets/sass/mixin.scss';
+
+.mod--sszb{
+    .sszb-wrap{
+      margin:0 auto;
+      width:px(614);
+      height:px(318);
+      padding: px(23) px(22) px(24);
+      overflow: hidden;
+      background: url(../assets/images/mod_sszb.png) no-repeat;
+      background-size: contain;
+      .sszb-cont{
+        width:100%;
+        height:100%;
+        border-radius: px(15);
+        overflow: hidden;
+      }
+      img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius:px(20);
+      }
+    }
+  
+    %sszb-platform{
+      width: 100%;
+      height: 100%;
+      border-radius:px(20);
+      overflow: hidden;
+    }
+    .sszb-youpai{
+      @extend %sszb-platform;
+    }
+    .sszb-video{
+      @extend %sszb-platform;
+    }
+    .video-palyer{
+      background-size:cover;
+    }
+    a.sszb-goyoupai{
+      @extend %btn_sprite;
+      @include btn_youpai;
+      display: block;
+      margin: px(5) auto px(30);
+    }
+  
+  
+  }
