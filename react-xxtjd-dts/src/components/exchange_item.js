@@ -1,7 +1,5 @@
 import React from 'react';
-import ModTitle from './mod_title';
 import {pageInfo} from '../util';
-import './exchange.scss';
 
 var Exchange = React.createClass({
     render : function(){
