@@ -1,13 +1,12 @@
 import '../mock.js';
 import React from 'react';
-import {Ajax} from '../util';
+import {Ajax,ztUrl} from '../util';
 import Download from '../components/download';
 import Live from '../components/live';
 import LiveList from '../components/live_list';
+import Exchange from '../components/exchange';
 import './app.scss';
 import axios from 'axios';
-
-const ztUrl = '/cn/xxtjd/dts';
 
 var App = React.createClass({
 
@@ -48,9 +47,9 @@ var App = React.createClass({
                     dhPrize : response.data.pageInfo.dhPrize
                 })
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+            // .catch(function (error) {
+            //     console.log(error);
+            // });
         
     },
 
@@ -67,7 +66,7 @@ var App = React.createClass({
                         <Download />
                         <Live zbStatus={this.state.zbStatus} />
                         <LiveList zbList={this.state.zbList} />
-                        <Exchange list={this.state.dhPrize} />
+                        <Exchange list={this.state.dhPrize}  userInfo={this.state.userInfo}/>
                     </div>
                     <div className="footer">本活动最终解释权归赛事举办方所有</div>
                 </div>

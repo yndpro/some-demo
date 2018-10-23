@@ -7,6 +7,8 @@ export const pageInfo = {
     PLAY_BACK : -5
 };
 
+export const ztUrl = '/cn/xxtjd/dts';
+
 export const Ajax = {
 
     get : function(url = ``, data,userInfo){

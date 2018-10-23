@@ -75,7 +75,7 @@ module.exports = {
                             //   url: false,
                               minimize: true,
                               sourceMap: true,
-                              publicPath: '../',     //TODO:replace the url of images in css
+                              publicPath: '../',     //TODO:replace the url of images in css     relative url
                           }
                       }, 
                       {
@@ -93,7 +93,7 @@ module.exports = {
                     loader : 'url-loader',
                     options: {
                         limit: 500,
-                        name: 'images/[name]_[hash:7].[ext]'
+                        name: 'images/[name]_[hash:7].[ext]'                //url relative to output publicPath
                     }
                 }]
             },
