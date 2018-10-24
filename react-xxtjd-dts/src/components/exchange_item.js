@@ -1,5 +1,4 @@
 import React from 'react';
-import {pageInfo} from '../util';
 
 var ExchangeItem = React.createClass({
     getInitialState : function(){
@@ -10,7 +9,7 @@ var ExchangeItem = React.createClass({
             pid : this.props.item.pid,
             img : this.props.item.img,
             detail : this.props.item.detail,
-            point : /\d{2}/.exec(this.props.item.p_name)
+            point : /^\d{2}/.exec(this.props.item.p_name)
         }
     },
     exchangeHandle : function(){
@@ -51,7 +50,7 @@ var ExchangeItem = React.createClass({
         });
     },
     getPrize : function(){
-        Ajax.post(ztUrl + "-ajaxGetPrize", {pid:this.state.pid},,this.state.userInfo)
+        Ajax.post(ztUrl + "-ajaxGetPrize", {pid:this.state.pid},this.state.userInfo)
             .then(response => {
                 _this.resolve(response);
             },"json");
@@ -60,7 +59,7 @@ var ExchangeItem = React.createClass({
     resolve : function(result){
         
         let {point,name,code} = this.state;
-        
+
         var _this = this;
         
         if (result.status == CONFIG.UNLOGIN) {

@@ -1,5 +1,4 @@
 import React from 'react';
-import {pageInfo} from '../util';
 
 var LivePlayer = React.createClass({
     render : function(){

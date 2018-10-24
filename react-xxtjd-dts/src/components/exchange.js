@@ -1,7 +1,6 @@
 import React from 'react';
 import ModTitle from './mod_title';
 import ExchangeItem from './exchange_item';
-import {pageInfo} from '../util';
 import './exchange.scss';
 
 var Exchange = React.createClass({

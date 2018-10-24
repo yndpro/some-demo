@@ -1,12 +1,9 @@
-import '../mock.js';
 import React from 'react';
-import {Ajax,ztUrl} from '../util';
 import Download from '../components/download';
 import Live from '../components/live';
 import LiveList from '../components/live_list';
 import Exchange from '../components/exchange';
 import './app.scss';
-import axios from 'axios';
 
 var App = React.createClass({
 

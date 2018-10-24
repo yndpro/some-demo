@@ -1,6 +1,6 @@
 import Mock from 'mockjs';
 
-Mock.mock('http://-ajaxGetPrize', {
+Mock.mock(ztUrl + '-ajaxGetPrize', {
     "status":"1",
     "msg":"领取成功",
     "data":{
@@ -11,7 +11,7 @@ Mock.mock('http://-ajaxGetPrize', {
     }
 });
 
-Mock.mock('http://-ajaxSignIn', {
+Mock.mock(ztUrl + '-ajaxSignIn', {
     "status":1,
     "msg":"签到成功",
     "data":{
@@ -21,7 +21,7 @@ Mock.mock('http://-ajaxSignIn', {
     }
 });
 
-Mock.mock('http://www.api.com/-ajaxInitBx', {
+Mock.mock(ztUrl + '-ajaxInitBx', {
     "status":1,
     "msg":"游戏盒初始化",
     "data":{
@@ -116,7 +116,7 @@ Mock.mock('http://www.api.com/-ajaxInitBx', {
     }
 });
 
-Mock.mock('http://-ajaxGetZbList', {
+Mock.mock(ztUrl + '-ajaxGetZbList', {
     "status":1,
     "msg":"直播信息",
     "data":{
@@ -185,7 +185,7 @@ Mock.mock('http://-ajaxGetZbList', {
     }
 });
 
-Mock.mock('http://-ajaxOpenBx', {
+Mock.mock(ztUrl + '-ajaxOpenBx', {
     "status":1,
     "msg":"领取成功，请及时使用夺宝次数",
     "data":{
@@ -197,19 +197,19 @@ Mock.mock('http://-ajaxOpenBx', {
     }
 });
 
-Mock.mock('http://-ajaxWriteUserInfo', {
+Mock.mock(ztUrl + '-ajaxWriteUserInfo', {
     "status":1,
     "msg":"报名成功",
     "data":{}
 });
 
-Mock.mock('http://ajaxWriteDhUserInfo', {
+Mock.mock(ztUrl + 'ajaxWriteDhUserInfo', {
     "status":1,
     "msg":"报名成功22",
     "data":{}
 });
 
-Mock.mock('http://ajaxVote.cn', {
+Mock.mock(ztUrl + 'ajaxVote.cn', {
     "status":1,
     "msg":"投票成功",
     "data":{
@@ -220,7 +220,7 @@ Mock.mock('http://ajaxVote.cn', {
 
 
 
-Mock.mock('http://-ajaxLottery', {
+Mock.mock(ztUrl + '-ajaxLottery', {
     "status":1,
     "msg":"抽奖成功",
     "data":{
@@ -239,7 +239,7 @@ Mock.mock('http://-ajaxLottery', {
 });
 
 
-Mock.mock('http://ajaxGetCode.cn', {
+Mock.mock(ztUrl + 'ajaxGetCode.cn', {
     "status":1,
     "msg":"抽签成功",
     "data":{
@@ -255,7 +255,7 @@ Mock.mock('http://ajaxGetCode.cn', {
 });
 
 
-Mock.mock('http://ajaxOpenBx.cn', {
+Mock.mock(ztUrl + 'ajaxOpenBx.cn', {
     "status":1,
     "msg":"领取成功，请及时使用夺宝次数",
     "data":{
@@ -267,7 +267,7 @@ Mock.mock('http://ajaxOpenBx.cn', {
 });
 
 
-Mock.mock('http://ajaxExchange.cn', {
+Mock.mock(ztUrl + 'ajaxExchange.cn', {
     "status":1,
     "msg":"兑换成功！",
     "data":{
@@ -277,7 +277,7 @@ Mock.mock('http://ajaxExchange.cn', {
     }
 });
 
-Mock.mock('http://-ajaxShare', {
+Mock.mock(ztUrl + '-ajaxShare', {
     "status":1,
     "msg":"分享成功！",
     "data":{
@@ -285,7 +285,7 @@ Mock.mock('http://-ajaxShare', {
     }
 });
 
-Mock.mock('http://-ajaxGetRoleName', {
+Mock.mock(ztUrl + '-ajaxGetRoleName', {
     "status":1,
     "msg":"获取成功！",
     "data":{
@@ -293,7 +293,7 @@ Mock.mock('http://-ajaxGetRoleName', {
     }
 });
 
-Mock.mock('http://-ajaxGetTaskInfo', {
+Mock.mock(ztUrl + '-ajaxGetTaskInfo', {
     "status":1,
     "msg":"获取成功",
     "data":{
@@ -323,7 +323,7 @@ Mock.mock('http://-ajaxGetTaskInfo', {
 
 
 
-Mock.mock('http://-ajaxGetMyPrize', {
+Mock.mock(ztUrl + '-ajaxGetMyPrize', {
     "status": 1,
     "msg": "奖品信息",
     "data": {

@@ -1,15 +1,15 @@
 import axios from 'axios';
 import qs from 'qs';
 
-export const pageInfo = {
+const pageInfo = {
     LIVE : 1,
     NO_LIVE : -6,
     PLAY_BACK : -5
 };
 
-export const ztUrl = '/cn/xxtjd/dts';
+const ztUrl = 'http://';
 
-export const Ajax = {
+const Ajax = {
 
     get : function(url = ``, data,userInfo){
         
@@ -39,3 +39,8 @@ export const Ajax = {
         .then(response => response.data); // parses response to JSON
     }
 }
+
+
+window.pageInfo = pageInfo;
+window.ztUrl = ztUrl;
+window.Ajax = Ajax;

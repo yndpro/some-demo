@@ -1,5 +1,4 @@
 import React from 'react';
-import {pageInfo} from '../util';
 import LivePlayer from './live_player';
 import ModTitle from './mod_title';
 import './live.scss';
