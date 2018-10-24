@@ -4,12 +4,12 @@ var LivePlayer = React.createClass({
     render : function(){
         let {zbStatus} = this.props,url = null,className = null,cover = null;
 
-        if(zbStatus.status == pageInfo.LIVE){
+        if(zbStatus.status == CONFIG.LIVE){
             className = "sszb-youpai";
             url = zbStatus.yp;
             cover = zbStatus.cover;
         }
-        if(zbStatus.status == pageInfo.PLAY_BACK){
+        if(zbStatus.status == CONFIG.PLAY_BACK){
             className = "sszb-video";
             url = zbStatus.spUrl;
             cover = zbStatus.cover;

@@ -9,13 +9,6 @@ var App = React.createClass({
 
     getInitialState : function(){
         return {
-            userInfo : {
-                scookie : "",
-                uid : "",
-                nick : "",
-                avatar : "",
-                level : ""
-            },
             isShare : null,
             lastTimes: 0,
             score: null,
@@ -28,14 +21,9 @@ var App = React.createClass({
     componentDidMount : function(){
         Ajax.post(ztUrl + '-ajaxInitBx',{},this.state.userInfo)
             .then(response => {
+                userInfo.uid = response.data.uid;
+                userInfo.nick = response.data.nick;
                 this.setState({
-                    userInfo : {
-                        scookie : "",
-                        uid : response.data.uid,
-                        nick : response.data.nick,
-                        avatar : "",
-                        level : ""
-                    },
                     isShare : response.data.pageInfo.isShare,
                     lastTimes: response.data.pageInfo.lastTimes,
                     score: response.data.pageInfo.score,

@@ -20,7 +20,7 @@ var Live = React.createClass({
                 <div className="mod-bd">
                     <div className="sszb-wrap">
                         <div className="sszb-cont">
-                            {zbStatus.status == pageInfo.NO_LIVE ?
+                            {zbStatus.status == CONFIG.NO_LIVE ?
                             <img width="100%" height="100%" alt="" src={zbStatus.defImg}/>
                             :
                             <LivePlayer zbStatus={zbStatus}/>

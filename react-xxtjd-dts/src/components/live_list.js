@@ -1,6 +1,5 @@
 import React from 'react';
 import ModTitle from './mod_title';
-import {pageInfo} from '../util';
 import './live_list.scss';
 
 var LiveList = React.createClass({

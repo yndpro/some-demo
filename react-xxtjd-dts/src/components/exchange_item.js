@@ -64,13 +64,13 @@ var ExchangeItem = React.createClass({
         
         if (result.status == CONFIG.UNLOGIN) {
 
-            if(appInfo.environment == appInfo.WAP){
+            if(appInfo.environment == CONFIG.WAP){
                 Wap.login();
             }
-            if(appInfo.environment == appInfo.BOX){
+            if(appInfo.environment == CONFIG.BOX){
                 ClientBox.login();
             }
-            if(appInfo.environment == appInfo.YOUPAI){
+            if(appInfo.environment == CONFIG.YOUPAI){
                 ClientYoupai.login();
             }
             return false;
