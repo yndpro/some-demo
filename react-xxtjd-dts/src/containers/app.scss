@@ -69,7 +69,8 @@
       margin-bottom:px(26);
     }
     .mod-tit{
-      
+      @extend %other_sprite;
+      @include tit_1;
       position: relative;
       margin: 0 auto;
       text-align: center;
@@ -83,7 +84,8 @@
       }
     }
     .mod-stit{
-      
+      @extend %other_sprite;
+      @include tit_2;
       display: block;
       margin: px(-7) auto 0;
       position: relative;
@@ -96,17 +98,28 @@
       font-size: px(24);
     }
     .mod-bullet{
+      @extend %other_sprite;
+      @include deco_bullet;
       position: absolute;
       top:px(-12);
     }
     .mod-bullet-r{
-
+      @extend .mod-bullet;
       right: px(-20);
     }
     .mod-bullet-l{
-
+      @extend .mod-bullet;
       transform: rotateY(180deg);
       left: px(-20);
     }
 
+  }
+
+  .footer{
+    background: #18256b;
+    font-size:px(12);
+    color: #fff;
+    text-align: center;
+    line-height:px(22);
+    padding: px(10) 0;
   }

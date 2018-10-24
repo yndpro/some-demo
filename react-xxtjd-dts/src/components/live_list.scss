@@ -1,0 +1,50 @@
+@import '../assets/sass/mixin.scss';
+
+.sclb-list{
+    @include clearfix;
+    padding: 0 px(17);
+    li{
+      float: left;
+      @extend %other_sprite;
+      @include pro_2;
+      text-align: center;
+      padding: px(3) 0 px(20);
+    }
+    li:last-of-type{
+  
+    }
+    .item-time{
+      font-size:px(18);
+      line-height:px(28);
+      font-weight: bold;
+      background: linear-gradient(to bottom, #fff4c7,#ffffff 50%, #fff4c7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .item-stage{
+      font-size:px(32);
+      line-height:px(66);
+      font-weight: bold;
+      background: linear-gradient(to bottom, #fdfefe, #8ac9dd);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: px(16);
+    }
+  
+    .item-status{
+      line-height: px(38);
+      font-size:px(24);
+    }
+    .item-status--live{
+      color: #ff6c00;
+    }
+    .item-status--ready{
+      color: #2d48b7;
+    }
+    .item-status--over{
+      color: #2d48b7;
+    }
+    .item-status--over{
+      color: #545454;
+    }
+  }
