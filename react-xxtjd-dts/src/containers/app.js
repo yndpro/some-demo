@@ -21,6 +21,7 @@ var App = React.createClass({
     componentDidMount : function(){
         Ajax.post(ztUrl + '-ajaxInitBx',{},this.state.userInfo)
             .then(response => {
+                ztInfo.status = response.data.zt.status;
                 userInfo.uid = response.data.uid;
                 userInfo.nick = response.data.nick;
                 this.setState({
@@ -35,7 +36,6 @@ var App = React.createClass({
             // .catch(function (error) {
             //     console.log(error);
             // });
-        
     },
 
     render : function(){

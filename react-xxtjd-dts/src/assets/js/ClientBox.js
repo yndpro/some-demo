@@ -44,12 +44,12 @@ var ClientBox = {
     },
     download : function (options) {
         var boxDownload;
-        if(typeof require === 'function'){
-            boxDownload = require("./mBoxDownload.js");
-        } else {
-            boxDownload = window.boxDownload;
-        }
-        boxDownload(options);
+        // if(typeof require === 'function'){
+        //     boxDownload = require("./mBoxDownload.js");
+        // } else {
+        //     boxDownload = window.boxDownload;
+        // }
+        // boxDownload(options);
     },
     checkVersion: function(v1, v2, operator) {
         this.php_js = this.php_js || {};

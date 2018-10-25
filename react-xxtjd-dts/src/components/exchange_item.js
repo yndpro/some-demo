@@ -13,16 +13,20 @@ var ExchangeItem = React.createClass({
         }
     },
     exchangeHandle : function(){
-        let userInfo = this.props.userInfo;
         let {point,name,code} = this.state;
     
-
         if(!userInfo.uid || userInfo.uid == 0){
             this.resolve({status:CONFIG.UNLOGIN});
             return false;
         }
-
-        if(!this.resolve({status:CONFIG.actstatus})) {
+        
+        if(ztInfo.status = CONFIG.NOTSTART){
+            this.resolve({status:CONFIG.NOTSTART});
+            return false;
+        }
+        
+        if(ztInfo.status = CONFIG.GAMEOVER){
+            this.resolve({status:CONFIG.GAMEOVER});
             return false;
         }
 

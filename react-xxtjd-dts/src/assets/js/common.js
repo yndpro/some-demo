@@ -2,7 +2,9 @@ import axios from 'axios';
 import qs from 'qs';
 
 window.ztUrl = 'http://';
-
+window.ztInfo = {
+    status : ""
+},
 window.userInfo = {
     scookie : "",
     uid : "",
@@ -14,9 +16,9 @@ window.appInfo = {
     environment : "",
     environmentMode : "",
     checkIphone : "",
-    mobiLoginUrl : ""
+    mobiLoginUrl : "",
 },
-window.packag = {
+window.packageInfo = {
     "id": "<{$tplCfg.pkg.id}>",
     "packageName": "<{$tplCfg.pkg.pkgname}>",
     "appName": "<{$tplCfg.pkg.appname}>",
@@ -64,7 +66,7 @@ window.CONFIG = {
 
 window.Ajax = {
 
-    get : function(url = ``, data,userInfo){
+    get : function(url = ``, data){
         
         if(userInfo.scookie){
             typeof data === "string" ? data = data + "&scookie=" + userInfo.scookie : data.scookie = userInfo.scookie;
@@ -75,7 +77,7 @@ window.Ajax = {
             .then(response => response.json());
     },
 
-    post : function(url = ``, data,userInfo){
+    post : function(url = ``, data){
         
         if(userInfo.scookie){
             typeof data === "string" ? data = data + "&scookie=" + userInfo.scookie : data.scookie = userInfo.scookie;

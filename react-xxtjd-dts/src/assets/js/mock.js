@@ -25,6 +25,10 @@ Mock.mock(ztUrl + '-ajaxInitBx', {
     "status":1,
     "msg":"游戏盒初始化",
     "data":{
+        "zt":{
+            "status" : "3",
+        },
+
         "uid":301362655,
         "nick":"4399厦门充值测试",
         "pageInfo":{
