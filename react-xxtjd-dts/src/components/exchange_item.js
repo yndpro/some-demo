@@ -1,4 +1,5 @@
 import React from 'react';
+import PopupView from './PopView';
 
 var ExchangeItem = React.createClass({
     getInitialState : function(){
@@ -134,12 +135,16 @@ var ExchangeItem = React.createClass({
             return false;
         }
     },
+
+    detailHandle : function(){
+        PopupView.awardList({list : this.props.item.detail.split("|")});
+    },
     
     render : function(){
         let {point,img,detail,code} = this.state;
         return (
             <li className="lbdh-item">
-                <a href="javascript:;" className="item-cover">
+                <a href="javascript:;" className="item-cover" onClick={this.detailHandle}>
                     <p className="item-int">{point}积分</p>
                     <img className="item-img" src={img} alt=""/>
                     <p className="item-more" data-detail={detail}>查看详情</p>
