@@ -3,7 +3,7 @@ import qs from 'qs';
 
 window.ztUrl = 'http://';
 window.ztInfo = {
-    status : ""
+    status : "3"
 },
 window.userInfo = {
     scookie : "",

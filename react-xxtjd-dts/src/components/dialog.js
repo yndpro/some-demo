@@ -28,7 +28,7 @@ function Dialog(options){
     var defaults = {
         id: "j-_popup",
         content: "",
-        init: function () {},
+        afterInit: function () {},
         afterClose: function () {}
     };
     this.options = extend(defaults,options);
@@ -43,31 +43,49 @@ Dialog.prototype.offset = function(size){
     return _offset;
 };
 Dialog.prototype.autoSize = function(content){
-    ReactDOM.render(
-        <div className="u-dialog" id={this.options.id}>
-            <div className="u-dialog-container">{this.options.content}</div>
-            <div className="u-dialog-mask"></div>
-        </div>,
-        this.holder
-    );
-    document.body.removeChild(this.holder);
-};
-Dialog.prototype.open = function(){
+    let size,
+        dom;
+
     this.holder = document.createElement('div');
     document.body.appendChild(this.holder);
+    dom = ReactDOM.render(content,this.holder);
+    size = {
+        width : dom.clientWidth,
+        height : dom.clientHeight
+    }
+    document.body.removeChild(this.holder);
+    return size;
+};
+Dialog.prototype.open = function(){
+    let size,
+        offset,
+        style = {
+            "zIndex": "1994",
+            "position": "fixed"
+        };
 
-    console.log(this.options.content);
-    // "zIndex": "1994","position": "fixed"
+    this.size = size = this.autoSize(this.options.content);
+
+    this.offset = offset = this.offset(size);
+
+    style = extend(style,offset);
+
+    this.holder = document.createElement('div');
+    document.body.appendChild(this.holder);
+   
     ReactDOM.render(
-        <div className="u-dialog" id={this.options.id} style={{"text-align":"center"}}>
-            <div className="u-dialog-container" style={{"zIndex": "1994","position": "fixed"}}>{this.options.content}</div>
+        <div className="u-dialog" id={this.options.id}>
+            <div className="u-dialog-container" style={style}>{this.options.content}</div>
             <div className="u-dialog-mask" style={{"opacity": "0.3","width":"100%","height":"100%","background-color":"rgb(0, 0, 0)","position":"fixed","left": "0px","top":"0px","zIndex":"1993"}}></div>
         </div>,
         this.holder
     )
+
+    typeof this.options.afterInit === "function" && this.options.afterInit.call(this);
 };
 Dialog.prototype.close = function(){
     document.body.removeChild(this.holder);
+    typeof this.options.afterClose === "function" && this.options.afterClose.call(this);
 };
 
 module.exports = Dialog;
