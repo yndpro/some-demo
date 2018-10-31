@@ -1,5 +1,6 @@
 import React from 'react';
 import PopupView from './PopView';
+import './dialog.scss';
 
 var MyAward = React.createClass({
 
@@ -20,7 +21,7 @@ var MyAward = React.createClass({
 
         Ajax.post(ztUrl + '-ajaxGetMyPrize',{})
             .then(response => {
-                if(response.status = -2){
+                if(response.status == -2){
                     PopupView.confirm({
                         title : "您还未获得任何奖品",
                         text : "请留意下方夺宝规则，获得夺宝次数夺取大奖！",
@@ -32,23 +33,13 @@ var MyAward = React.createClass({
                     PopupView.tip(response.msg)
                     return false
                 }
-                if(response.status = 1){
+                if(response.status == 1){
                     PopupView.myaward({
-                        list : this.state.list,
-                        page : this.state.page,
-                        pagerCount : this.state
+                        list : response.data.prizeList,
+                        perPage : response.data.perPage
                     });
                 }
             });
-    },
-
-    getInitialState : function(){
-        return {
-            list : null,
-            loading : true,
-            page : 1,
-            pagerCount : null
-        }
     },
     
     componentDidMount : function(){

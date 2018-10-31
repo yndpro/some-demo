@@ -3,7 +3,6 @@ import PopupView from './PopView';
 
 var ExchangeItem = React.createClass({
     getInitialState : function(){
-        console.log(this.props.item);
         return {
             code : this.props.item.code,
             name : this.props.item.p_name,

@@ -1,4 +1,5 @@
 import React from 'react';
+import PopupView from '../components/PopView';
 import Download from '../components/download';
 import Live from '../components/live';
 import LiveList from '../components/live_list';

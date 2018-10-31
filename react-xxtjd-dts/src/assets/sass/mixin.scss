@@ -48,7 +48,8 @@
   
   %btn--mid{
     @extend %btn;
-    
+    @extend %btn_sprite;
+    @include btn_mid;
     font-size: px(24);
     line-height: px(54);
     font-weight: bold;

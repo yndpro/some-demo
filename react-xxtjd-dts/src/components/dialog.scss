@@ -5,6 +5,7 @@ $color_4:#32d1d3;
 $color_5:#ffff0c;
 
 @import '../assets/sass/mixin.scss';
+@import '../assets/sass/btn_sprite.scss';
 
 
 .dialog {
@@ -141,6 +142,7 @@ $color_5:#ffff0c;
     line-height: px(48);
     height: px(48);
     position: absolute;
+    top:0;
     font-size: px(24);
     border:px(5) solid #6995db;
     text-align: center;
@@ -158,6 +160,10 @@ $color_5:#ffff0c;
   a.pager-next{
     right:px(-18);
     border-right: none;
+  }
+  span.pager-pre,
+  span.pager-next{
+    color: #747474;
   }
   .pager-count{
     display: block;
@@ -221,18 +227,12 @@ $color_5:#ffff0c;
 }
 
 
-
 .dialog--myaward {
-  padding: px(10) px(30);
-  .myaward-list {
-    width: px(548);
-    margin: 0 auto;
-    padding: px(10) px(0);
-    .item--award {
-      margin-bottom: px(5);
-    }
+  .dialog-cont{
+    padding: px(10) px(30);
   }
 }
+
 
 .dialog-form{
   .form-item {
