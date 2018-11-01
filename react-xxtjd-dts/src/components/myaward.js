@@ -1,4 +1,5 @@
 import React from 'react';
+import Dialog from './dialog';
 import PopupView from './PopView';
 import Pubsub from 'pubsub-js';
 import './dialog.scss';
@@ -48,7 +49,7 @@ var MyAward = React.createClass({
             PopupView.form({item:item})
         });
         Pubsub.subscribe("DIALOG_FORM_SUBMIT",(msg,item) => {
-
+            
             let validate = true;
 
             for(let key in item.uinfo){
@@ -66,16 +67,15 @@ var MyAward = React.createClass({
             }
 
             if(validate){
-                Ajax.post(ztUrl + '-ajaxWriteUserInfo',
-                {
+                Ajax.post(ztUrl + '-ajaxWriteUserInfo',{
                     id:item.id,
                     uname:item.uinfo.uname,
                     uphone:item.uinfo.uphone,
                     uaddress:item.uinfo.uaddress
-                })
-                .then(response => {
+                }).then(response => {
                     if(response.status == 1){
                         PopupView.tip(response.msg);
+                        Dialog.list["j-form_popup"].close();
                         Pubsub.publish("MYAWARD_LIST_UPDATE",item);
                         return false
                     }

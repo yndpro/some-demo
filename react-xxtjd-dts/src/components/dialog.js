@@ -35,6 +35,7 @@ function Dialog(options){
     this.options = extend(defaults,options);
     this.open();
 }
+Dialog.list = {};
 Dialog.prototype.offset = function(size){
     let _offset = {};
     _offset["left"] = "50%";
@@ -88,11 +89,13 @@ Dialog.prototype.open = function(){
     // this.closeBtn.addEventListener("click",() => {
     //     this.close();
     // },false);
+    Dialog.list[this.options.id] = this;
 
     typeof this.options.afterInit === "function" && this.options.afterInit.call(this);
 };
 Dialog.prototype.close = function(){
     document.body.removeChild(this.holder);
+    delete  Dialog.list[this.options.id];
     typeof this.options.afterClose === "function" && this.options.afterClose.call(this);
 };
 
