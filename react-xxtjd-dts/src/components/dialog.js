@@ -28,6 +28,7 @@ function Dialog(options){
     var defaults = {
         id: "j-_popup",
         content: "",
+        closeBtn:"",
         afterInit: function () {},
         afterClose: function () {}
     };
@@ -80,6 +81,13 @@ Dialog.prototype.open = function(){
         </div>,
         this.holder
     )
+
+    this.obj =  document.querySelector("#" + this.options.id);
+
+    // this.closeBtn = document.querySelector("#" + this.options.id + " " + this.options.closeBtn);
+    // this.closeBtn.addEventListener("click",() => {
+    //     this.close();
+    // },false);
 
     typeof this.options.afterInit === "function" && this.options.afterInit.call(this);
 };

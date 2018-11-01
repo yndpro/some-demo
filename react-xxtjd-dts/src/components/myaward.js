@@ -1,11 +1,12 @@
 import React from 'react';
 import PopupView from './PopView';
+import Pubsub from 'pubsub-js';
 import './dialog.scss';
 
 var MyAward = React.createClass({
 
     clickHandle : function(){
-
+        
         if(!userInfo.uid || userInfo.uid == 0){
             if(appInfo.environment == CONFIG.WAP){
                 Wap.login();
@@ -43,7 +44,54 @@ var MyAward = React.createClass({
     },
     
     componentDidMount : function(){
-        
+        Pubsub.subscribe("DIALOG_FORM_OPEN",(msg,item) => {
+            PopupView.form({item:item})
+        });
+        Pubsub.subscribe("DIALOG_FORM_SUBMIT",(msg,item) => {
+
+            let validate = true;
+
+            for(let key in item.uinfo){
+                if(item.uinfo[key] == ""){ 
+                    PopupView.tip("请填写完整信息");
+                    validate = false;
+                    return false;
+                }
+            }
+
+            if(!/^0?(13|14|15|17|18)[0-9]{9}$/.test(item.uinfo.uphone)){
+                PopupView.tip("请填写正确的电话号码");
+                validate = false;
+                return false;
+            }
+
+            if(validate){
+                Ajax.post(ztUrl + '-ajaxWriteUserInfo',
+                {
+                    id:item.id,
+                    uname:item.uinfo.uname,
+                    uphone:item.uinfo.uphone,
+                    uaddress:item.uinfo.uaddress
+                })
+                .then(response => {
+                    if(response.status == 1){
+                        PopupView.tip(response.msg);
+                        Pubsub.publish("MYAWARD_LIST_UPDATE",item);
+                        return false
+                    }
+                    if(response.status < 0){
+                        PopupView.tip(response.msg)
+                        return false
+                    }
+                });
+            }
+            
+        });
+    },
+
+    componentWillUnmount : function(){
+        Pubsub.unsubscribe("DIALOG_FORM_OPEN");
+        Pubsub.unsubscribe("DIALOG_FORM_SUBMIT");
     },
 
     render : function(){

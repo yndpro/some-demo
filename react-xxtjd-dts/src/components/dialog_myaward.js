@@ -1,10 +1,8 @@
 import React from 'react';
-import PopupView from './PopView';
+import Pubsub from 'pubsub-js';
 import './dialog.scss';
 import './myaward.scss';
 import './page.scss';
-
-console.log("myaward.js",PopupView);
 
 var MyAwardPop = React.createClass({
 
@@ -16,10 +14,18 @@ var MyAwardPop = React.createClass({
         })
     },
 
-    writeInfoHandle : function(item){
-        console.log(item);
+    updateList : function(newItem){
+        let index = this.state.list.findIndex((item,index,arr) => item.id == newItem.id);
         
-        PopupView.form({item});
+        this.state.list[index].uinfo = newItem.uinfo;
+
+        this.setState({
+            list : this.state.list
+        })
+    },
+
+    writeInfoHandle : function(item){
+        Pubsub.publish("DIALOG_FORM_OPEN",item);   //goto myaward main
     },
 
     getInitialState : function(){
@@ -32,13 +38,19 @@ var MyAwardPop = React.createClass({
     },
     
     componentDidMount : function(){
-        
+        Pubsub.subscribe("MYAWARD_LIST_UPDATE",(msg,newItem) => {
+            this.updateList(newItem);
+        });
+    },
+
+    componentWillUnmount : function(){
+        Pubsub.unsubscribe("MYAWARD_LIST_UPDATE");
     },
 
     render : function(){
        
         const {list,page,perPage,pageCount} = this.state;
-        
+
         const renderOper = item => {
             if(item.kind == CONFIG.GIFT){
                 return <div className="item-oper item--copy">
