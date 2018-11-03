@@ -1,11 +1,8 @@
 import React from 'react';
 import Pubsub from 'pubsub-js';
-import PopupView from './PopView';
 import './dialog.scss';
 import './myaward.scss';
 import './page.scss';
-
-console.log("dialog_myaward",PopupView);
 
 var MyAwardPop = React.createClass({
 
@@ -28,9 +25,7 @@ var MyAwardPop = React.createClass({
     },
 
     handleWriteOrWatchInfo : function(item){
-        console.log("handleWriteOrWatchInfo",PopupView);
-        PopupView.form({item:item})
-        // Pubsub.publish("DIALOG_FORM_OPEN",item);   
+        Pubsub.publish("DIALOG_FORM_OPEN",item);   
     },
 
     getInitialState : function(){

@@ -4,8 +4,6 @@ import DialogMyAward from './dialog_myaward';
 import DialogForm from './dialog_form';
 import './dialog.scss';
 
-console.log("Popview",DialogMyAward);
-
 /*基础弹窗*/
 const popup = function (name, data, afterInit, afterClose) {
     let pview = this;
