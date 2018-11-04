@@ -1,5 +1,6 @@
 import React from 'react';
 import Pubsub from 'pubsub-js';
+import Dialog from './dialog';
 import './dialog.scss';
 import './myaward.scss';
 import './page.scss';
@@ -38,19 +39,19 @@ var MyAwardPop = React.createClass({
     },
     
     componentDidMount : function(){
-        Pubsub.subscribe("MYAWARD_LIST_UPDATE",(msg,newItem) => {
+        Pubsub.subscribe("DIALOG_FORM_SUBMIT_SUCCESS",(msg,newItem) => {
+            Dialog.list["j-form_popup"].close();
             this.updateList(newItem);
         });
     },
 
     componentWillUnmount : function(){
-        Pubsub.unsubscribe("MYAWARD_LIST_UPDATE");
+        Pubsub.unsubscribe("DIALOG_FORM_SUBMIT_SUCCESS");
     },
 
     render : function(){
-       
-        const {list,page,perPage,pageCount} = this.state;
-
+        let {list,page,perPage,pageCount} = this.state;
+        
         const renderOper = item => {
             if(item.kind == CONFIG.GIFT){
                 return <div className="item-oper item--copy">

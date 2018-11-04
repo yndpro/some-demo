@@ -1,5 +1,5 @@
 import React from 'react';
-import PopupView from './PopView';
+import {PopupView} from './PopView';
 
 var ExchangeItem = React.createClass({
     getInitialState : function(){
@@ -20,12 +20,12 @@ var ExchangeItem = React.createClass({
             return false;
         }
         
-        if(ztInfo.status = CONFIG.NOTSTART){
+        if(ztInfo.status == CONFIG.NOTSTART){
             this.resolve({status:CONFIG.NOTSTART});
             return false;
         }
         
-        if(ztInfo.status = CONFIG.GAMEOVER){
+        if(ztInfo.status == CONFIG.GAMEOVER){
             this.resolve({status:CONFIG.GAMEOVER});
             return false;
         }

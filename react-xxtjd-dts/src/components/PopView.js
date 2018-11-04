@@ -1,7 +1,5 @@
 import React from 'react';
 import Dialog from './dialog';
-import DialogMyAward from './dialog_myaward';
-import DialogForm from './dialog_form';
 import './dialog.scss';
 
 /*基础弹窗*/
@@ -12,7 +10,7 @@ const popup = function (name, data, afterInit, afterClose) {
                         <a href="javascript:;" className="dialog-close">×</a>
                         <div className="dialog-hd"></div>
                         <div className="dialog-body">
-                            {template[name](data)}
+                            {template[name] ? template[name](data) : data}
                         </div>
                         <div className="dialog-fd"></div>
                     </div>
@@ -84,26 +82,8 @@ const template = {
                 </ul>
             </div>
         )
-    }, 
-
-    myaward : function({list,perPage}){
-        return (
-            <div className="dialog-cont">
-                <h3 className="dialog-title">奖品详情列表</h3>
-                <DialogMyAward list={list} perPage={perPage}/>
-            </div>
-        )
-    }, 
-
-    form : function({item}){
-        return (
-            <div className="dialog-cont dialog-form">
-                <div className="dialog-title">收件信息</div>
-                <DialogForm item={item}/>
-            </div>
-        )
-    }, 
+    }
         
 };
 
-module.exports = PopupView;
+export {PopupView,template};

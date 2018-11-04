@@ -1,34 +1,53 @@
 import React from 'react';
 import Pubsub from 'pubsub-js';
+import {PopupView,PopupTemp} from './PopView';
 import './dialog.scss';
 
 var DialogForm = React.createClass({
 
-    submitForm : function(){
-        // let item = {};
-        // let form = document.querySelector(".j-form");
-        
-        // item.id = form["id"].value;
-        // item.uinfo = {
-        //     uname : form["uname"].value,
-        //     uphone : form["uphone"].value,
-        //     uaddress : form["uaddress"].value
-        // }
-        //Pubsub.publish("DIALOG_FORM_SUBMIT",item);   
-    },
-
     handleChange : function(e){
-        // console.log(e.target);
-        // console.log(e.target.value);
-        let uinfo = {};
-        uinfo[e.target.name] = e.target.value;
+        this.state.uinfo[e.target.name] = e.target.value;
         this.setState({
-            uinfo : uinfo
+            uinfo : this.state.uinfo
         })
     },
 
     handleSubmit : function(){
-        Pubsub.publish("DIALOG_FORM_SUBMIT",this.state); 
+        let validate = true,
+            item = this.state;
+
+        for(let key in item.uinfo){
+            if(item.uinfo[key] == ""){ 
+                PopupView.tip("请填写完整信息");
+                validate = false;
+                return false;
+            }
+        }
+
+        if(!/^0?(13|14|15|17|18)[0-9]{9}$/.test(item.uinfo.uphone)){
+            PopupView.tip("请填写正确的电话号码");
+            validate = false;
+            return false;
+        }
+
+        if(validate){
+            Ajax.post(ztUrl + '-ajaxWriteUserInfo',{
+                id:item.id,
+                uname:item.uinfo.uname,
+                uphone:item.uinfo.uphone,
+                uaddress:item.uinfo.uaddress
+            }).then(response => {
+                if(response.status == 1){
+                    PopupView.tip(response.msg);
+                    Pubsub.publish("DIALOG_FORM_SUBMIT_SUCCESS",item);
+                    return false
+                }
+                if(response.status < 0){
+                    PopupView.tip(response.msg)
+                    return false
+                }
+            });
+        }
     },
 
     getInitialState : function(){
@@ -82,7 +101,7 @@ var DialogForm = React.createClass({
                     {this.props.item.uinfo ? 
                     <a  className="dialog-btn j-confirm">确定</a>
                     :
-                    <input type="submit" className="dialog-btn j-submit" value="确定" onClick={this.handleSubmit.bind(this)}/>}
+                    <input type="submit" className="dialog-btn j-submit" value="确定" onClick={this.handleSubmit}/>}
                 </div>
             </div>
         )

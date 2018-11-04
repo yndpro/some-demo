@@ -128,7 +128,7 @@ Mock.mock(ztUrl + '-ajaxGetZbList', {
         "lastTimes":5,
         "nick":"4399厦门充值测试",
         "zbStatus":{
-            "status":-5,
+            "status":3,
             "headTit":"赛事直播",
             "freshBlank":1000,
             "id":"1",

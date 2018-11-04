@@ -1,6 +1,7 @@
 import React from 'react';
-import Dialog from './dialog';
-import PopupView from './PopView';
+import {PopupView,PopupTemp} from './PopView';
+import DialogMyAward from './dialog_myaward';
+import DialogForm from './dialog_form';
 import Pubsub from 'pubsub-js';
 import './dialog.scss';
 
@@ -36,64 +37,29 @@ var MyAward = React.createClass({
                     return false
                 }
                 if(response.status == 1){
-                    PopupView.myaward({
-                        list : response.data.prizeList,
-                        perPage : response.data.perPage
-                    });
+                    PopupView.myaward(
+                        <div className="dialog-cont">
+                            <h3 className="dialog-title">奖品详情列表</h3>
+                            <DialogMyAward list={response.data.prizeList} perPage={response.data.perPage}/>
+                        </div>
+                    );
                 }
             });
-    },
-    
-    handleSubmit : function(item){
-        let validate = true;
-        
-        for(let key in item.uinfo){
-            if(item.uinfo[key] == ""){ 
-                PopupView.tip("请填写完整信息");
-                validate = false;
-                return false;
-            }
-        }
-
-        if(!/^0?(13|14|15|17|18)[0-9]{9}$/.test(item.uinfo.uphone)){
-            PopupView.tip("请填写正确的电话号码");
-            validate = false;
-            return false;
-        }
-
-        if(validate){
-            Ajax.post(ztUrl + '-ajaxWriteUserInfo',{
-                id:item.id,
-                uname:item.uinfo.uname,
-                uphone:item.uinfo.uphone,
-                uaddress:item.uinfo.uaddress
-            }).then(response => {
-                if(response.status == 1){
-                    PopupView.tip(response.msg);
-                    Dialog.list["j-form_popup"].close();
-                    Pubsub.publish("MYAWARD_LIST_UPDATE",item);
-                    return false
-                }
-                if(response.status < 0){
-                    PopupView.tip(response.msg)
-                    return false
-                }
-            });
-        }
     },
     
     componentDidMount : function(){
         Pubsub.subscribe("DIALOG_FORM_OPEN",(msg,item) => {
-            PopupView.form({item:item})
-        });
-        Pubsub.subscribe("DIALOG_FORM_SUBMIT",(msg,item) => {
-            this.handleSubmit(item)
+            PopupView.form(
+                <div className="dialog-cont dialog-form">
+                    <div className="dialog-title">收件信息</div>
+                    <DialogForm item={item}/>
+                </div>
+            )
         });
     },
 
     componentWillUnmount : function(){
         Pubsub.unsubscribe("DIALOG_FORM_OPEN");
-        Pubsub.unsubscribe("DIALOG_FORM_SUBMIT");
     },
 
     render : function(){
