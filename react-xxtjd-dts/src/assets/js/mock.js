@@ -27,13 +27,18 @@ Mock.mock(ztUrl + '-ajaxInitBx', {
     "data":{
         "zt":{
             "status" : "3",
+            "terminal" : "pc",
+            "environment" : "PRO",
+            "checkIphone" : "0",
+            "mobiLoginUrl" : "",
         },
-
+        
+        
         "uid":301362655,
         "nick":"4399厦门充值测试",
         "pageInfo":{
             "isShare":false,
-            "score":30,
+            "point":30,
             "dhPrize":[
                 {
                     "code":"301362655_8",

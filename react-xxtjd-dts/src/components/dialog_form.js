@@ -65,7 +65,8 @@ var DialogForm = React.createClass({
     render : function(){
         let item = this.state;
         return (
-            <div>
+            <div className="dialog-cont dialog-form">
+                <div className="dialog-title">收件信息</div>
                 <div className="clearfix">
                     <form className="j-form">
                         {!this.props.item.uinfo ?

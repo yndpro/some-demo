@@ -5,7 +5,7 @@ import './exchange.scss';
 
 var Exchange = React.createClass({
     render : function(){
-        let {list = []} = this.props;
+        let {list = [],integral} = this.props;
         return (
             <div className="mod mod--sclb">
                 <div className="mod-hd">
@@ -17,7 +17,7 @@ var Exchange = React.createClass({
                         (!list || !list.length) ? 
                         <div>loading...</div>
                         :
-                        list.map(item => <ExchangeItem item={item} userInfo={this.props.userInfo}/>)
+                        list.map(item => <ExchangeItem item={item} integral={integral}/>)
                     }
                     </ul>
                 </div>

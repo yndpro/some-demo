@@ -47,6 +47,10 @@ const PopupView =  {
         })
     },
 
+    confirm: function (data,afterInit, afterClose) {
+        return popup("confirm",data,afterInit,afterClose);
+    },
+
     awardList: function (data,afterInit, afterClose) {
         return popup("awardList",data,afterInit,afterClose);
     },
@@ -57,7 +61,22 @@ const PopupView =  {
 
     form: function (data,afterInit, afterClose) {
         return popup("form",data,afterInit,afterClose);
-    }
+    },
+
+    giftCode: function (data,afterInit, afterClose) {
+        var _this = this;
+        return popup("giftCode",data,afterInit,afterClose)
+    },
+
+    giftNormal: function (data,afterInit, afterClose) {
+        return popup("giftNormal",data,function(){
+            var _pop = this,
+                $pop = this.obj;
+
+            typeof afterInit === "function" && afterInit.call(this);
+
+        },afterClose)
+    },
 
 };
 
@@ -70,7 +89,32 @@ const template = {
             </div>
         )
     },
-    
+
+    confirm : function({title,text,btnList}){
+
+        let btns = btnList.map(item => {
+            if(item == 'charge'){
+                return <a href="" target="_blank" className="dialog-btn dialog-btn--charge">充值中心</a>
+            }else if(item == 'intro'){
+                return <a href="javascript:;" className="dialog-btn">查看活动介绍</a>
+            }else if(item == 'confirm'){
+                return <a href="javascript:;" className="dialog-btn dialog-btn--confirm j-confirm">确定</a>
+            }else if(item == 'cancel'){
+                return <a href="javascript:;" className="dialog-btn dialog-btn--cancel j-cancel">取消</a>
+            }
+        })
+
+        return (
+            <div className="dialog-cont">
+                <h3 className="dialog-title">{title}</h3>
+                {text ? <p className="dialog-txt">{text}</p> : null}
+                <div className="dialog-opt">
+                    {btns}
+                </div>
+            </div>
+        )
+    },
+
     awardList : function({list}){
         return (
             <div className="dialog-cont">

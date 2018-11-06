@@ -1,5 +1,6 @@
 import React from 'react';
 import {PopupView} from './PopView';
+import DialogGiftCode from './dialog_giftCode';
 
 var ExchangeItem = React.createClass({
     getInitialState : function(){
@@ -9,11 +10,13 @@ var ExchangeItem = React.createClass({
             pid : this.props.item.pid,
             img : this.props.item.img,
             detail : this.props.item.detail,
-            point : /^\d{2}/.exec(this.props.item.p_name)
+            integral : /^\d{2}/.exec(this.props.item.p_name)
         }
     },
+
     exchangeHandle : function(){
-        let {point,name,code} = this.state;
+        let {integral,name,code} = this.state;
+        let _this = this;
     
         if(!userInfo.uid || userInfo.uid == 0){
             this.resolve({status:CONFIG.UNLOGIN});
@@ -34,8 +37,9 @@ var ExchangeItem = React.createClass({
             this.resolve({status:2,data:{prizeName : name, code : code}});
             return false;
         }
+        console.log(this.props.integral,integral);
 
-        if(userInfo.integral < point){
+        if(this.props.integral < integral){
             PopupView.confirm({
                 'title':'您的积分不足，无法兑换该礼包',
                 'text':'（您可在赛事直播期间，进行夺宝抽奖获得礼包兑换积分！）',
@@ -48,13 +52,14 @@ var ExchangeItem = React.createClass({
             'title' : '该礼包需要消耗' + integral + '积分进行兑换',
             'btnList' : ['confirm','cancel']
         },function () {
-            $('.j-confirm').unbind('click').bind('click',function () {
-                this.getPrize();
+            document.querySelector(".j-confirm").addEventListener("click",() => {
+                _this.getPrize();
             });
         });
     },
     getPrize : function(){
-        Ajax.post(ztUrl + "-ajaxGetPrize", {pid:this.state.pid},this.state.userInfo)
+        let _this = this;
+        Ajax.post(ztUrl + "-ajaxGetPrize", {pid:this.state.pid})
             .then(response => {
                 _this.resolve(response);
             },"json");
@@ -62,7 +67,7 @@ var ExchangeItem = React.createClass({
 
     resolve : function(result){
         
-        let {point,name,code} = this.state;
+        let {integral,name,code} = this.state;
 
         var _this = this;
         
@@ -90,47 +95,17 @@ var ExchangeItem = React.createClass({
             return false;
         }
 
-        if(result.status == CONFIG.START){
-            return true;
-        }
-
-        if(result.status == -3){
+        if(result.status < 0){
             PopupView.tip(result.msg);
-            _this.$target.attr("data-status",result.status);
             return false;
         }
 
         if(result.status > 0){
-            var _data = result.data;
-
-            PopupView.giftCode({ prizeName : _data.prizeName,code : _data.code},function () {
-                var _pop = this,
-                    $pop = this.obj;
-
-                /*复制*/
-
-                if(appInfo.environment == appInfo.WAP){
-                    Wap.copy("#j-copy-btn");
-                }
-                if(appInfo.environment == appInfo.BOX){
-                    $("#j-copy-btn").bind("click",function(){
-                        ClientBox.copy($("#j-copy-code").attr("value"));
-                    });
-                }
-                if(appInfo.environment == appInfo.YOUPAI){
-                    $("#j-copy-btn").bind("click",function(){
-                        ClientYoupai.copy($("#j-copy-code").attr("value"));
-                    });
-                }
-
-
-            },function () {
-               /* typeof clipboard.destroy === "function" && clipboard.destroy();*/
-            });
-
-            if(result.status == 1){
-                this.setState(_data);
-            }
+            this.setState({
+                code : result.data.code,
+                name : result.data.prizeName
+            })
+            PopupView.giftCode(<DialogGiftCode code={this.state.code} name={this.state.name}/>);
             return false;
         }
     },
@@ -140,11 +115,11 @@ var ExchangeItem = React.createClass({
     },
     
     render : function(){
-        let {point,img,detail,code} = this.state;
+        let {integral,img,detail,code} = this.state;
         return (
             <li className="lbdh-item">
                 <a href="javascript:;" className="item-cover" onClick={this.detailHandle}>
-                    <p className="item-int">{point}积分</p>
+                    <p className="item-int">{integral}积分</p>
                     <img className="item-img" src={img} alt=""/>
                     <p className="item-more" data-detail={detail}>查看详情</p>
                 </a>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {PopupView,PopupTemp} from './PopView';
-import DialogMyAward from './dialog_myaward';
 import DialogForm from './dialog_form';
+import DialogMyAward from './dialog_myaward';
 import Pubsub from 'pubsub-js';
 import './dialog.scss';
 
@@ -37,24 +37,14 @@ var MyAward = React.createClass({
                     return false
                 }
                 if(response.status == 1){
-                    PopupView.myaward(
-                        <div className="dialog-cont">
-                            <h3 className="dialog-title">奖品详情列表</h3>
-                            <DialogMyAward list={response.data.prizeList} perPage={response.data.perPage}/>
-                        </div>
-                    );
+                    PopupView.myaward(<DialogMyAward list={response.data.prizeList} perPage={response.data.perPage}/>);
                 }
             });
     },
     
     componentDidMount : function(){
         Pubsub.subscribe("DIALOG_FORM_OPEN",(msg,item) => {
-            PopupView.form(
-                <div className="dialog-cont dialog-form">
-                    <div className="dialog-title">收件信息</div>
-                    <DialogForm item={item}/>
-                </div>
-            )
+            PopupView.form(<DialogForm item={item}/>)
         });
     },
 

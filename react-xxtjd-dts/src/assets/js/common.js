@@ -3,7 +3,12 @@ import qs from 'qs';
 
 window.ztUrl = 'http://';
 window.ztInfo = {
-    status : "3"
+    status : "3",
+
+    environment : "",
+    environmentMode : "",
+    checkIphone : "",
+    mobiLoginUrl : "",
 },
 window.userInfo = {
     scookie : "",
@@ -12,12 +17,6 @@ window.userInfo = {
     avatar : "",
     level : ""
 }
-window.appInfo = {
-    environment : "",
-    environmentMode : "",
-    checkIphone : "",
-    mobiLoginUrl : "",
-},
 window.packageInfo = {
     "id": "<{$tplCfg.pkg.id}>",
     "packageName": "<{$tplCfg.pkg.pkgname}>",
@@ -59,9 +58,10 @@ window.CONFIG = {
     BOX : 'box',
     YOUPAI : 'youpai',
     WAP : 'pc',
-    PRO : 'PRO',
     IOS : "ios",
-    ANDROID : "android"
+    ANDROID : "android",
+    PRO : 'PRO',
+    DEV : 'DEV',
 };
 
 window.Ajax = {

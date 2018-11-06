@@ -13,7 +13,7 @@ var App = React.createClass({
         return {
             isShare : null,
             lastTimes: 0,
-            score: null,
+            integral: null,
             zbStatus : {},
             zbList : {},
             dhPrize : {}
@@ -21,15 +21,19 @@ var App = React.createClass({
     },
 
     componentDidMount : function(){
-        Ajax.post(ztUrl + '-ajaxInitBx',{},this.state.userInfo)
+        Ajax.post(ztUrl + '-ajaxInitBx',{})
             .then(response => {
                 ztInfo.status = response.data.zt.status;
+                ztInfo.terminal = response.data.zt.terminal,
+                ztInfo.environment = response.data.zt.environment,
+                ztInfo.checkIphone = response.data.zt.checkIphone,
+                ztInfo.mobiLoginUrl = response.data.zt.mobiLoginUrl,
                 userInfo.uid = response.data.uid;
                 userInfo.nick = response.data.nick;
                 this.setState({
                     isShare : response.data.pageInfo.isShare,
                     lastTimes: response.data.pageInfo.lastTimes,
-                    score: response.data.pageInfo.score,
+                    integral: response.data.pageInfo.point,
                     zbList : response.data.zbList,
                     zbStatus : response.data.zbStatus,
                     dhPrize : response.data.pageInfo.dhPrize
@@ -53,7 +57,7 @@ var App = React.createClass({
                         <Download />
                         <Live zbStatus={this.state.zbStatus} />
                         <LiveList zbList={this.state.zbList} />
-                        <Exchange list={this.state.dhPrize}  userInfo={this.state.userInfo}/>
+                        <Exchange list={this.state.dhPrize} integral={this.state.integral}/>
                         <MyAward />
                     </div>
                     <div className="footer">本活动最终解释权归赛事举办方所有</div>

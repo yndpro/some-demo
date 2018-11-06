@@ -1,11 +1,11 @@
 
+import ClipboardJS from 'clipboard';
+import {PopupView} from '../../components/PopView';
 
-
-
-if(appInfo.environmentMode == appInfo.PRO){
+if(ztInfo.environmentMode == CONFIG.PRO){
     window.mobileLogin = {
         login: function () {
-            window.location.href = appInfo.mobiLoginUrl;
+            window.location.href = ztInfo.mobiLoginUrl;
         },
         logout:function (url) {
             var ck_mobi_user = "mobi_user_code8d8";
@@ -70,6 +70,7 @@ var Wap = {
             })
         }else{
             var _copy = new ClipboardJS(btn);
+            console.log(_copy);
             _copy.on('success', function(e) {
                 PopupView.tip("已复制到剪切板");
                 /*console.info('Action:', e.action);
@@ -86,5 +87,5 @@ var Wap = {
     }
 };
 
-
+window.Wap = Wap
     

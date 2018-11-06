@@ -70,7 +70,8 @@ var MyAwardPop = React.createClass({
         }
 
         return (
-            <div> 
+            <div className="dialog-cont">
+                <h3 className="dialog-title">奖品详情列表</h3>
                 <ul className="myaward-list">
                 {
                     list.slice((page - 1) * perPage,page * perPage).map(item => 
