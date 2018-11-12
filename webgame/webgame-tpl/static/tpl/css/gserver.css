@@ -1,0 +1,42 @@
+/* ue_notice */
+.ue_notice{ position:absolute; top: 220px;left: 50%;margin-left:-460px;z-index: 99;}
+
+/*ser_out_face*/
+.ser_out_face{top:200px;opacity:1;filter:alpha(opacity=100);width: 618px;margin-left: -450px;z-index: 99;}
+.out_face_hd,.out_face_bd,.out_face_fd{background:url(../images/sprite_serv.png);}
+.out_face_hd,.out_face_hd a{ color:#fff88f; }
+.out_face_hd{ background-position:0 0;padding: 16px 50px 0 8px;height: 38px;}
+.out_face_bd{ overflow:hidden;background-position:-618px 0;padding: 0 25px;background-repeat: repeat-y;}
+.out_face_fd{padding-bottom:24px; zoom:1;background-position:-1236px bottom;background-repeat: no-repeat;}
+
+/* store_btn */
+.sns_textscroll h2{color:#ffdc51;}
+.text_scroll_bx{ height:24px;}
+.text_scroll_bx a{color:#ffdc51;}
+.text_scroll_bx a:hover{ color:#fff437;}
+.text_scroll_bx li img{ display:inline-block; *display: inline; *zoom:1; margin:5px 3px;}
+.m_server {}
+.m_server .m_server_hd,.m_server .m_server_bd,.m_server .m_server_fd{ background:none;}
+.m_server .m_server_hd{ width:0; height:0;}
+.m_server .m_server_bd { padding-left:0; width:580px;}
+.m_server_bd h2{ background:none; font-size:14px; font-family:"microsoft yahei"; font-weight:700; color:#c8e9f4; text-indent:0; line-height:36px;}
+.alert_w{ background:url(../images/sprite_6.png) no-repeat 0 0;}
+.select_ser{ color:#c8e9f4;}
+.m_played_ser .nplay { color:#c8e9f4;}
+.m_server .m_server_fd{ height:0; width:594px;}
+
+/*server_box*/
+.server_num li{ background: #5582ad; border-color:#234458; color: #c8e9f4;}
+.server_num li.cur{ background:#2a4b6b;border-bottom-color:#2a4b6b;color: #c8e9f4;}
+.server_all .m_server_num{border-bottom-color: #234458;}
+
+/*scrollbar*/
+.jScrollPaneContainer{outline: none;}
+a.jScrollArrowUp { background:url(../images/sprite_6.png) no-repeat  0 -76px;}
+a.jScrollArrowDown { background: url(../images/sprite_6.png) no-repeat -17px -76px;}
+a.jScrollArrowUp:hover{ background:url(../images/sprite_6.png) no-repeat 0  -88px;}
+a.jScrollArrowDown:hover{ background: url(../images/sprite_6.png) no-repeat -17px -88px;}
+.jScrollPaneTrack{background:#59595a;}
+.jScrollPaneDrag{background:#3c3c3d;}
+.allTxt_box .allTxt{color:#c8e9f4;}
+.server_all  .server_box{height: 105px;}

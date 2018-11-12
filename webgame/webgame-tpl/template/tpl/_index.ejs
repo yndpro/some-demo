@@ -1,0 +1,28 @@
+<{template _web_header dir=webgame}>
+<{css tpl/css/gserver.css group=2}>
+<{css tpl/css/game.css group=2 fixed=1}>
+<div class="view">
+    <!--wg head-->
+    <div class="wg-head">
+        <div class="head-bg">
+            <!--wrapper begin-->
+            <div class="wrapper">
+                <!-- 选服框 -->
+                <{if $_appInfo.app_real_status == 1}>
+                <{template _home_server_list dir=webgame}>
+                <{else}>
+                <{template _home_app_showtpl dir=webgame}>
+                <{/if}>
+                <div class="bg-1"></div>
+                <div class="bg-2"></div>
+                <div class="bg-3"></div>
+            </div>
+            <!--wrapper end-->
+        </div>
+    </div>
+    <!--wg head-->
+    <{if empty($_arrayConfig._bak)}>
+    <{template /tpl/_info}>
+    <{/if}>
+</div>
+<{template _web_footer dir=webgame}>

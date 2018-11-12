@@ -1,0 +1,164 @@
+@charset "utf-8";
+body{background:url(../images/iserver_bg.png) repeat 0 0;}
+/*hzdmx ptlogin*/
+.loginDiv {
+    width: 540px;
+    left: 50%;
+    background: none;
+    border: none;
+    margin-left: -406px;
+}
+
+.login_hd, #login_tagnum, .login_fd {
+    background: url(../images/sprite_login.png);
+}
+
+.login_hd {
+    height: 50px;
+    padding-left: 49px;
+    background-position: 0 0;
+}
+
+#login_tagnum {
+    padding: 0 14px;
+    background-position: -540px 0;
+    background-repeat: repeat-y;
+}
+
+.login_fd {
+    background-position: -1080px bottom;
+    height: 30px;
+    zoom: 1;
+}
+
+#login_tag {
+    height: 36px;
+    padding-top: 17px;
+}
+
+#login_tag li {
+    top: 0;
+    text-align: center;
+    margin-right: 0;
+    border-radius: 0;
+}
+
+#login_tag li,
+#login_tag li a,
+#login_tag li.selectTag,
+#login_tag li.selectTag a {
+    background: none;
+    color: #6bafe0;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0;
+    margin-right: 0;
+    font-weight: bold;
+    font-size:16px;
+}
+
+#login_tag li a:hover {
+    text-decoration: none;
+}
+
+#login_tag li.selectTag a {
+    color: #c8e9f4;
+    border-radius: 0;
+    background:url(../images/s_60.png) 0 0;
+}
+
+/*按钮*/
+.login_vertical .ptlogin_btn{
+    background:url(../images/ptlogin_btn.png) 0 0;
+    width:77px;
+    height:33px;
+    overflow:hidden;
+}
+.login_vertical #login_simple_toregister{
+     background:url(../images/ptlogin_btn.png) 0 -33px;
+     width:77px;
+     height:33px;
+     overflow:hidden;
+}
+.login_vertical .unilogin_box .ptlogin_register{
+    width: 99px;
+    height: 33px;
+    background: url(../images/ptlogin_btn.png) no-repeat 0 -66px;
+}
+
+
+
+
+
+
+.login_vertical .login_hor label,.login_vertical .login_tip #reg_autoLogin_tip{ color:#c8e9f4;}
+.login_vertical .login_hor span{width: 172px;color: #000;}
+.login_horizon a, .login_vertical a{ color:#fd4d00;}
+
+.login_vertical .login_hor .q_tip{ color:#ef5716;}
+.login_close {display: none;}
+.q_perinfo li{color:#cead5c}
+
+.switch_reg_mod_tip   label{ color:#555555;}
+.login_success p{ color:#555555;}
+
+
+/*#popup_reg_div{ padding-bottom:5px;}
+.login_qq{ margin-top:5px;}
+.login_logging{ padding:5px 0;}*/
+.login_vertical .unilogin_box{ padding-top:5px}
+.login_prev_tip,.login_qq{ color:#555555}
+.login_vertical #hr_label_qqlogin,.login_vertical #hr_label_weibologin,.login_vertical #hr_label_weixinlogin{color:#555555}
+.login_logging a {color: #555555}
+/*.login_qq{ border-top:dashed 1px #555555;}*/
+
+.login_qrmodule .qr_imgdiv .qr_tipimgani{
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+}
+.login_qrmodule .qr_tipimg{
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+
+
+.login_vertical .login_qq{
+    color: #c8e9f4;
+}
+.fltit  .line, .login_vertical .fltit  .line{
+    background-color: #c8e9f4;
+}
+
+.login_vertical .login_qq,.login_logging .ftip,.fltit .tit{
+    color: #c8e9f4;
+}
+.login_qrmodule{
+    width: auto;
+}
+.login_qrmodule .qr_imgdiv{
+    margin: 0 auto;
+}
+.login_qrmodule .qr_imgdiv p{
+    color: #c8e9f4;
+}
+#reg_eula_info{
+    color: #c8e9f4;
+}
+
+.login_vertical .unilogin_box .nflogin_tip{
+    float: left;
+}
+
+.login_qrmodule .qr_imgdiv .qr_image{
+    border-color: #9ca09f;
+}
+.flogin_prev_tip .q_tip{
+    color: #c8e9f4;
+}
+
+
+
+.login_vertical .login_hor .input_tip{
+    color:#c8e9f4;
+}
+
+#qq_login .ftip,.fltit .tit,#reg_eula_info{color: #c8e9f4;}

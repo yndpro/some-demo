@@ -1,0 +1,15 @@
+<?php
+
+namespace Webgame\<$= name  $>;
+
+class ctlIndex extends ctlBase
+{
+    use \Webgame\home\trtCtlIndex;
+
+    public function funcIndex()
+    {
+        $pageSet = $this->mkAppPageCfg();
+        $this->setHomeJsonCfg($pageSet['homeJsonCfg']);
+        $this->_trtIndex($pageSet['pageCfg']);
+    }
+}

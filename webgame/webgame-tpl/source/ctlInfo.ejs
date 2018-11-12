@@ -1,0 +1,29 @@
+<?php
+
+namespace Webgame\<$= name  $>;
+
+class ctlInfo extends ctlBase
+{
+    use \Webgame\home\trtCtlInfo;
+
+    public function initialize($entry, $handle, $module, $method, $base, $dir)
+    {
+        parent::initialize($entry, $handle, $module, $method, $base, $dir);
+        $this->_trtInfoInit();
+    }
+
+    public function funcIndex()
+    {
+        $this->_trtInfoIndex();
+    }
+
+    public function funcSearch()
+    {
+        $this->_trtInfoSearch();
+    }
+
+    public function ajaxAttitude()
+    {
+        $this->_trtInfoAjaxAttitude();
+    }
+}
