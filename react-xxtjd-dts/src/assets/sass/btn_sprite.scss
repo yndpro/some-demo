@@ -9,40 +9,65 @@
 //
 // At the bottom of this section, we provide information about the spritesheet itself
 // $spritesheet: width height image $spritesheet-sprites;
+            @mixin btn_1 {
+                background-position: 0  px(-158) ;
+                width: px(223);
+                height: px(63);
+            }
+            @mixin btn_7 {
+                background-position:  px(-223)   px(-158) ;
+                width: px(173);
+                height: px(49);
+            }
+            @mixin btn_8 {
+                background-position:  px(-396)   px(-158) ;
+                width: px(173);
+                height: px(49);
+            }
+            @mixin btn_9 {
+                background-position:  px(-182)   px(-285) ;
+                width: px(89);
+                height: px(34);
+            }
             @mixin btn_dh {
-                background-position: 0  px(-153) ;
+                background-position: 0  px(-221) ;
                 width: px(182);
                 height: px(64);
             }
             @mixin btn_dhed {
-                background-position: 0  px(-217) ;
+                background-position: 0  px(-285) ;
                 width: px(182);
                 height: px(64);
             }
             @mixin btn_long {
-                background-position: 0 0;
+                background-position: 0  px(-73) ;
                 width: px(339);
                 height: px(85);
             }
             @mixin btn_mid {
-                background-position:  px(-339)  0;
+                background-position:  px(-182)   px(-221) ;
                 width: px(182);
                 height: px(64);
             }
+            @mixin btn_more {
+                background-position: 0 0;
+                width: px(602);
+                height: px(73);
+            }
             @mixin btn_share {
-                background-position:  px(-339)   px(-64) ;
+                background-position:  px(-364)   px(-221) ;
                 width: px(182);
                 height: px(64);
             }
             @mixin btn_youpai {
-                background-position: 0  px(-85) ;
+                background-position:  px(-339)   px(-73) ;
                 width: px(254);
                 height: px(68);
             }
         %btn_sprite {
             background-image: url(../assets/images/btn_sprite.png);
             background-repeat: no-repeat;
-            background-size: px(521) px(281);
+            background-size: px(602) px(349);
         }
 
 

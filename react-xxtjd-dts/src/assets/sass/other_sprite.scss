@@ -10,49 +10,59 @@
 // At the bottom of this section, we provide information about the spritesheet itself
 // $spritesheet: width height image $spritesheet-sprites;
             @mixin deco_bullet {
-                background-position:  px(-398)   px(-220) ;
+                background-position:  px(-598)   px(-36) ;
                 width: px(124);
                 height: px(127);
             }
+            @mixin ibg_3 {
+                background-position: 0 0;
+                width: px(598);
+                height: px(121);
+            }
+            @mixin ibg_4 {
+                background-position:  px(-722)   px(-36) ;
+                width: px(89);
+                height: px(34);
+            }
             @mixin ico_close {
-                background-position:  px(-552)   px(-89) ;
+                background-position:  px(-811)   px(-36) ;
                 width: px(30);
                 height: px(30);
             }
             @mixin pro_1 {
-                background-position: 0 0;
+                background-position: 0  px(-121) ;
                 width: px(285);
                 height: px(220);
             }
             @mixin pro_2 {
-                background-position:  px(-197)   px(-220) ;
+                background-position: 0  px(-430) ;
                 width: px(201);
                 height: px(167);
             }
             @mixin pro_3 {
-                background-position: 0  px(-220) ;
+                background-position:  px(-285)   px(-121) ;
                 width: px(197);
                 height: px(203);
             }
             @mixin tit_1 {
-                background-position:  px(-285)  0;
+                background-position: 0  px(-341) ;
                 width: px(520);
                 height: px(89);
             }
             @mixin tit_2 {
-                background-position:  px(-285)   px(-89) ;
+                background-position:  px(-201)   px(-430) ;
                 width: px(267);
                 height: px(90);
             }
             @mixin txt_tit {
-                background-position:  px(-285)   px(-179) ;
+                background-position:  px(-598)  0;
                 width: px(510);
                 height: px(36);
             }
         %other_sprite {
             background-image: url(../assets/images/other_sprite.png);
             background-repeat: no-repeat;
-            background-size: px(805) px(423);
+            background-size: px(1108) px(597);
         }
 
 

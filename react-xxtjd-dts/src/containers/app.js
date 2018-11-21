@@ -1,10 +1,12 @@
 import React from 'react';
+import API from '../assets/js/api';
 import PopupView from '../components/PopView';
 import Download from '../components/download';
 import Live from '../components/live';
 import LiveList from '../components/live_list';
 import Exchange from '../components/exchange';
 import MyAward from '../components/myaward';
+import Guess from '../components/guess';
 import './app.scss';
 
 var App = React.createClass({
@@ -16,12 +18,13 @@ var App = React.createClass({
             integral: null,
             zbStatus : {},
             zbList : {},
-            dhPrize : {}
+            dhPrize : {},
+            guess : []
         }
     },
 
     componentDidMount : function(){
-        Ajax.post(ztUrl + '-ajaxInitBx',{})
+        Ajax.post(API.init,{})
             .then(response => {
                 ztInfo.status = response.data.zt.status;
                 ztInfo.terminal = response.data.zt.terminal,
@@ -36,7 +39,8 @@ var App = React.createClass({
                     integral: response.data.pageInfo.point,
                     zbList : response.data.zbList,
                     zbStatus : response.data.zbStatus,
-                    dhPrize : response.data.pageInfo.dhPrize
+                    dhPrize : response.data.pageInfo.dhPrize,
+                    guess : response.data.pageInfo.jc
                 })
             })
             // .catch(function (error) {
@@ -45,6 +49,7 @@ var App = React.createClass({
     },
 
     render : function(){
+        console.log(this.state.guess)
         return (
             <div className="view">
                 <div className="wrap">
@@ -58,6 +63,7 @@ var App = React.createClass({
                         <Live zbStatus={this.state.zbStatus} />
                         <LiveList zbList={this.state.zbList} />
                         <Exchange list={this.state.dhPrize} integral={this.state.integral}/>
+                        <Guess stageList={this.state.guess} integral={this.state.integral}/>
                         <MyAward />
                     </div>
                     <div className="footer">本活动最终解释权归赛事举办方所有</div>

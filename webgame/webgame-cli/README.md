@@ -1,12 +1,12 @@
 # webgame-cli
 
-页游官网生产器, [more](https://landing.ant.design). 🎉🎉🎉
+页游官网生产器. 🎉🎉🎉
 
 ## Develop
 
 ```
 cd webgame
-npm install webgame-cli --save-dev
+npm install webgame-cli -g
 webgame init
 ```
 

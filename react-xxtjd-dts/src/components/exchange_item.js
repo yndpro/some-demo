@@ -1,4 +1,5 @@
 import React from 'react';
+import API from '../assets/js/api';
 import {PopupView} from './PopView';
 import DialogGiftCode from './dialog_giftCode';
 
@@ -59,7 +60,7 @@ var ExchangeItem = React.createClass({
     },
     getPrize : function(){
         let _this = this;
-        Ajax.post(ztUrl + "-ajaxGetPrize", {pid:this.state.pid})
+        Ajax.post(API.getPrize, {pid:this.state.pid})
             .then(response => {
                 _this.resolve(response);
             },"json");

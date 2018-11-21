@@ -1,7 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
 
-window.ztUrl = 'http://';
 window.ztInfo = {
     status : "3",
 

@@ -29,37 +29,13 @@ let instanceSpritesmithPlugin = ['btn','other'].map(function(prefix){
     })
 })
 
+console.log("__dirname:",__dirname);
 module.exports = {
     entry : {
         // index: './src/index.js',
-        index: './src/index.js'
+        index: path.resolve(__dirname,"src/index.js")
     },
-    //which maps your compiled code back to your original source code
-    devtool: 'inline-source-map',
 
-    mode: "production",
-
-    //webpack-dev-server provides you with a simple web server and the ability to use live reloading
-    devServer: {
-        contentBase: path.resolve(__dirname,"dist"),
-        compress: true,
-        port: 9000,
-        proxy: [
-            {
-                 context: '/cn/xxtjd/*',
-                 target: 'http://web147.hd.4399.com',
-                 secure: false
-           }
-        ],
-        //HMR  It allows all kinds of modules to be updated at runtime without the need for a full refresh.
-        hot: true     //open Hot Module Replacement
-    },
-    output : {
-        path : path.resolve(__dirname,"dist"),
-        filename : "[name].bundle.js",
-        //The publicPath will be used within our server script as well in order to make sure files are served correctly on http://localhost:3000. 
-        publicPath: '/dist/'     //TODO: packed url can replace by CDN
-    },
     module: {
         rules: [
             {
@@ -110,13 +86,18 @@ module.exports = {
         // This is especially useful for webpack bundles that include a hash in the filename
         // which changes every compilation
         new HtmlWebpackPlugin({
-            template: './index.tpl.html',
+            template: path.resolve(__dirname,"index.tpl.html"),
             inject:'body',
-            filename: './index.html'
+            filename: './index.html',
+            // '../../../template/ztdj/index.html'
         }),
         new CleanWebpackPlugin(['dist']),
         new webpack.HotModuleReplacementPlugin(),
         ...instanceSpritesmithPlugin,
-        new ExtractTextPlugin("style.css")
+        new ExtractTextPlugin({
+            filename: "css/style.css",
+            disable: false,
+            allChunks: true
+        })
     ]
 };

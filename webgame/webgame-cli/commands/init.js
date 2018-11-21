@@ -16,7 +16,7 @@ const questions = [
     {
         type: 'input',
         name: 'name',
-        message: 'what\'s your webgame name?',
+        message: 'what\'s your webgame name?(请输入官网游戏的缩写，如ssjj)',
         validate: function(value) {
             if(!value) return 'Please enter webgame name';
             return true;

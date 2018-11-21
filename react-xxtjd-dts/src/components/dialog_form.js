@@ -1,4 +1,5 @@
 import React from 'react';
+import API from '../assets/js/api';
 import Pubsub from 'pubsub-js';
 import {PopupView,PopupTemp} from './PopView';
 import './dialog.scss';
@@ -31,7 +32,7 @@ var DialogForm = React.createClass({
         }
 
         if(validate){
-            Ajax.post(ztUrl + '-ajaxWriteUserInfo',{
+            Ajax.post(API.writeUserInfo,{
                 id:item.id,
                 uname:item.uinfo.uname,
                 uphone:item.uinfo.uphone,

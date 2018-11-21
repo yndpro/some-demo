@@ -1,4 +1,5 @@
 import React from 'react';
+import API from '../assets/js/api';
 import {PopupView,PopupTemp} from './PopView';
 import DialogForm from './dialog_form';
 import DialogMyAward from './dialog_myaward';
@@ -22,7 +23,7 @@ var MyAward = React.createClass({
             return false;
         }
 
-        Ajax.post(ztUrl + '-ajaxGetMyPrize',{})
+        Ajax.post(API.getMyPrize,{})
             .then(response => {
                 if(response.status == -2){
                     PopupView.confirm({

@@ -1,3 +1,4 @@
+
 const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
@@ -5,7 +6,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const proxy = require('http-proxy-middleware');
 
 const app = express();
-const config = require('./webpack.config.js');
+const config = require('./webpack.dev');
 const compiler = webpack(config);
 const apiProxy = proxy({
   target: 'http://web147.hd.4399.com',
