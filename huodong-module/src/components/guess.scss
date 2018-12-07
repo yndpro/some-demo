@@ -1,0 +1,276 @@
+@import '../assets/sass/mixin.scss';
+
+.mod--ssjc {}
+
+.ssjc-share {
+    .share-instr {
+        text-align: center;
+        margin-bottom: px(17);
+        line-height: px(50);
+        color: #fff;
+        font-size: px(24);
+        font-weight: bold;
+        text-shadow: px(2) px(2) px(2) #9a152d;
+        span {
+            color: #ff7e00;
+        }
+    }
+    .share-oper {
+        text-align: center;
+        margin-bottom: px(26);
+        a {
+            @extend %btn--mid;
+            display: inline-block;
+            margin: 0 px(10);
+        }
+    }
+}
+
+
+.ssjc-mid{
+    color: #fff;
+    font-weight: bold;
+    text-shadow: px(2) px(2) px(2) #9a152d;
+    margin-bottom: px(30); 
+    line-height: 50px;
+    text-align: center;
+    &>div{
+        display: inline-block;
+    }
+}
+.ssjc-user {
+    color: #fff;
+    &>div {
+        display: inline-block;
+    }
+    a {
+        color: #fff;
+    }
+}
+
+.ssjc-integ {
+    span {
+        color: #ff7e00;
+    }
+}
+
+.ssjc-more {
+    @extend %btn--long;
+    margin: 0 auto;
+    display: block;
+}
+
+.ssjc-encounter {
+    padding-bottom: px(20);
+
+    .encounter-tit {
+        @extend %other_sprite;
+        @include tit_3;
+        text-align: center;
+        margin: 0 auto px(30);
+
+        h6 {
+            display: inline-block;
+            line-height: px(50);
+            font-size: px(30);
+            font-weight: bold;
+            color: #fff;
+        }
+    }
+
+    .encounter-nodata {
+        color: #fff;
+        font-weight: bold;
+        text-shadow: px(2) px(2) px(2) #9a152d;
+        line-height: px(60);
+        text-align: center;
+    }
+
+    .encounter-list {
+        li {
+            @extend %other_sprite;
+            @include ibg_3;
+            @include clearfix;
+            display: block;
+            margin: 0 auto px(40);
+        }
+
+        .item-team {
+            text-align: center;
+            position: relative;
+            width: px(232);
+            padding-top: px(47);
+        }
+
+        .item-team:nth-child(odd) {
+            margin-left: px(58);
+            float: left;
+        }
+
+        .item-team:nth-child(even) {
+            margin-right: px(58);
+            float: right;
+        }
+
+        .team-name {
+            color: #fae9af;
+            line-height: px(86);
+            font-weight: bold;
+            font-size: px(24);
+            margin-bottom: px(3);
+            @include ellipsis;
+        }
+
+        .item-pass {
+            position: absolute;
+            @extend %other_sprite;
+            @include ibg_4;
+            top: px(22);
+            left: 50%;
+            color: #fff;
+            font-weight: bold;
+            font-size: px(20);
+            line-height: px(46);
+            margin-left: px(-42);
+        }
+
+        .team-guess {
+            @extend %btn_sprite;
+            @include btn_7;
+            color: #f7e7b5;
+            font-size: px(20);
+            font-weight: bold;
+            line-height: px(40);
+            display: inline-block;
+        }
+
+        .team-guess.guessed,
+        .team-guess.missed {
+            @include btn_8;
+            color: #aa6120;
+        }
+    }
+}
+
+.ssjc-encounter--4 .encounter-tit h6 {
+    background: linear-gradient(to right, #d19740, #f6f1d8 50%, #d19740);
+    -webkit-background-clip: text;
+}
+
+.result-encounter {
+    margin: 0 px(10);
+
+    .encounter-tit {
+        h6 {
+            line-height: px(42);
+            font-size: px(24);
+            font-weight: bold;
+            text-align: center;
+            color: #fc255c;
+        }
+
+        padding: 0 0 px(10);
+        margin-bottom: px(10);
+        border-bottom: 1px dashed #fc255c;
+    }
+
+    .encounter-cont {
+        line-height: px(42);
+        font-size: px(24);
+
+        dt {
+            font-weight: bold;
+            color: #fc255c;
+        }
+
+        dd {
+            @include clearfix;
+        }
+
+        ul {
+            li {
+                @include clearfix;
+            }
+        }
+
+        .item-team:nth-child(odd) {
+            position: relative;
+            padding-right: px(100);
+            float: left;
+        }
+
+        .item-team:nth-child(even) {
+            float: right;
+        }
+
+        .team-pass {
+            position: absolute;
+            // @extend %btn_sprite;
+            // @include btn_9;
+            text-align: center;
+            line-height: px(34);
+            top: px(4);
+            left: px(175);
+            font-weight: bold;
+        }
+
+        .item-team {
+            @include ellipsis;
+            width: px(175);
+        }
+    }
+}
+
+.dialog--guessResult{
+    .dialog-cont{
+        overflow: hidden;
+        max-height: px(500);
+    }
+    .result-scroll{
+        -webkit-transform:translate3d(0,0,0);
+    }
+}
+
+.dialog--guessInstr{
+    
+    .instr-txt{
+      line-height: px(42);
+      font-size: px(24);
+      padding: 0 0 px(10);
+      margin:0 px(40) px(10);
+      border-bottom: 1px solid #62553d;
+    }
+    .instr-link{
+      font-weight: bold;
+      text-align: center;
+      width: px(500);
+      margin: 0 auto;
+      display: block;
+      line-height: px(50);
+      font-size: px(24);
+    }
+}
+
+.iScrollVerticalScrollbar{
+    position: absolute;
+    z-index: 9999;
+    width: 7px;
+    bottom: 2px;
+    top: 2px;
+    right: 1px;
+    overflow: hidden;
+    pointer-events: none;
+}
+.iScrollIndicator{
+    box-sizing: border-box;
+    position: absolute;
+    background: rgba(252,37,92, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 3px;
+    width: 100%;
+    transition-duration: 0ms;
+    display: block;
+    height: 209px;
+    transform: translate(0px, 0px) translateZ(0px);
+    transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);
+}

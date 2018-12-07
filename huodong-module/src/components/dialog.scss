@@ -1,0 +1,356 @@
+$color_1:#682c10;
+$color_2:#af674e;
+$color_3:#e7a569;
+$color_4:#32d1d3;
+$color_5:#fc255c;
+
+@import '../assets/sass/mixin.scss';
+@import '../assets/sass/btn_sprite.scss';
+
+
+body.dialog-opened{
+  position: fixed;
+  width: 100%;
+}
+
+.dialog {
+  box-sizing: border-box;
+  touch-action: none;
+  position: relative;
+  @include lfont(18, 20, $color_1);
+  width: px(618);
+
+  a {
+    color: #682c10;
+
+    &:hover {
+      color: #682c10;
+      text-decoration: none;
+    }
+  }
+
+  input[type="text"],
+  textarea {
+    @include lfont(18, 24, $color_1);
+    background: $color_2;
+    border: px(1) solid $color_3;
+    padding: px(5);
+    box-shadow: 0 0 px(8) px(2) #6B311C inset;
+    color: #fff;
+  }
+
+  textarea::-webkit-input-placeholder {
+    color: #fff;
+  }
+
+  textarea:-moz-placeholder {
+    color: #fff;
+  }
+
+  textarea:-ms-input-placeholder {
+    color: #fff;
+  }
+
+  .dialog-close {
+    position: absolute;
+    width: px(32);
+    height: px(32);
+    top: px(22);
+    right: px(22);
+    z-index: 9;
+
+    @include lfont(40, 30, #682c10);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .dialog-hd {
+    background: url(../assets/images/dialog_hd.png) no-repeat;
+    background-size: cover;
+    height: px(46);
+  }
+
+  .dialog-fd {
+    background: url(../assets/images/dialog_fd.png) no-repeat;
+    background-size: cover;
+    height: px(46);
+  }
+
+  .dialog-body {
+    background: url(../assets/images/dialog_bd.png) repeat-y;
+    background-size: 100% auto;
+    position: relative;
+    *zoom: 1;
+    padding: px(10) px(9);
+  }
+
+  .dialog-title {
+    text-align: center;
+    @include bfont(30, 40, $color_1);
+    margin-bottom: px(10);
+
+    span {
+      color: $color_5;
+    }
+  }
+
+
+  .dialog-txt {
+    text-align: center;
+  }
+
+  .dialog-tips {
+    position: relative;
+    text-align: center;
+    line-height: px(22);
+
+    span {
+      position: absolute;
+      top: 0;
+      left: px(22);
+    }
+  }
+
+  .dialog-opt {
+    text-align: center;
+    padding: px(10) 0;
+  }
+
+  .dialog-btn {
+    @extend %btn--mid;
+    margin: 0 px(8);
+    /*color: #fff;
+    width: px(130);
+    height: px(40);
+    display: inline-block;
+    @include bfont(16, 40, $color_1);*/
+    text-align: center;
+    border: none;
+    cursor: pointer;
+
+    /*background-color: $color_4;*/
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .dialog-btn--cancel {
+    @extend %btn--mid--pink;
+  }
+
+  .dialog-txt {
+    text-align: center;
+  }
+}
+
+.dialog-pager {
+  position: relative;
+
+  span,
+  a {
+    display: none;
+  }
+
+  span.pager-pre,
+  a.pager-pre,
+  span.pager-next,
+  a.pager-next {
+    display: block;
+    width: px(90);
+    line-height: px(48);
+    height: px(48);
+    position: absolute;
+    top: 0;
+    font-size: px(24);
+    border: px(5) solid #6995db;
+    text-align: center;
+    background: #15225b;
+    opacity: .5;
+    color: #9ad6ff;
+    border-radius: px(5);
+  }
+
+  span.pager-pre,
+  a.pager-pre {
+    left: px(-18);
+    border-left: none;
+  }
+
+  span.pager-next,
+  a.pager-next {
+    right: px(-18);
+    border-right: none;
+  }
+
+  span.pager-pre,
+  span.pager-next {
+    color: #747474;
+  }
+
+  .pager-count {
+    display: block;
+  }
+}
+
+.item--award {
+  height: px(50);
+  overflow: hidden;
+  line-height: px(50);
+  margin-bottom: px(5);
+
+  .item-label {
+    float: left;
+    padding: 0 px(10) 0 0;
+    width: px(170);
+    text-align: right;
+  }
+
+  .item-oper {
+    float: left;
+    width: px(368);
+
+    a {
+      color: $color_1;
+    }
+  }
+
+  .item-text {
+    padding: 0 px(7);
+    float: left;
+  }
+
+  .item-num {
+    float: left;
+    width: px(50);
+  }
+}
+
+.item--copy {
+  .copy-input {
+    padding: 0 px(5);
+    width: px(200);
+    float: left;
+    height: px(40);
+    line-height: px(40);
+    margin-right: px(5);
+  }
+
+  a.copy-btn {
+    line-height: px(50);
+    @extend %btn_sprite;
+    @include btn_2;
+    color: #f7e7b5;
+    text-align: center;
+    float: left;
+    font-weight: bold;
+
+    &:hover {
+      opacity: 0.9;
+      text-decoration: underline;
+    }
+  }
+}
+
+.dialog--myaward {
+  .dialog-cont {
+    padding: px(10) px(30);
+  }
+}
+
+.dialog-form {
+  .form-item {
+    position: relative;
+    *zoom: 1;
+    padding-left: px(180);
+    margin-bottom: px(5);
+  }
+
+  .form-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: px(180);
+    text-align: right;
+    line-height: px(40);
+  }
+
+  .form-input {
+    height: px(28);
+    line-height: px(28);
+    width: px(180);
+  }
+
+  .form-textarea {
+    line-height: px(28);
+    padding: px(5);
+    width: px(300);
+    height: px(120);
+  }
+
+  .dialog-tips {
+    margin-left: px(120);
+  }
+}
+
+.dialog--tip {
+  .dialog-body {
+    padding: px(20) 0;
+    text-align: center;
+
+    .dialog-title {
+      font-size: px(24);
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+}
+
+.dialog--giftCode {
+  .giftCode-tip {
+    text-align: center;
+    margin-bottom: px(10);
+  }
+
+  .giftCode-link {
+    float: right;
+    margin-right: px(10);
+  }
+}
+
+.dialog--awardList {
+  .awardList-list {
+    text-align: center;
+
+    li {
+      line-height: px(40);
+      font-size: px(24);
+    }
+  }
+}
+
+.dialog--award {
+  .award-list {
+    text-align: center;
+
+    li {
+      line-height: px(40);
+      font-size: px(24);
+    }
+  }
+}
+
+.dialog--prob {
+  .prob-list {
+    text-align: center;
+
+    li {
+      line-height: px(40);
+      font-size: px(24);
+    }
+  }
+}
+

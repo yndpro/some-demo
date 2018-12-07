@@ -1,0 +1,74 @@
+@import '../assets/sass/mixin.scss';
+
+
+.mod--sclb{
+  @extend %ibg_sprite;
+  @include ibg_1;
+  padding: px(46) 0 0;
+}
+.sclb-tit{
+  text-align: center;
+  color: #682c10;
+  font-size: px(32);  
+  font-weight: bold;
+  line-height: px(72);
+  margin-bottom: px(20);
+}
+.sclb-list{
+    @include clearfix;
+    padding: 0 px(72);
+    li{
+      float: left;
+      @extend %other_sprite;
+      @include pro_2;
+      text-align: center;
+      margin-right: px(8);
+      overflow: hidden;
+      padding-top: px(23);
+      padding-right: px(8);
+      position: relative;
+    }
+    li:last-of-type{
+      margin-right: 0;
+    }
+    .item-time{
+      font-size:px(18);
+      line-height:px(40);
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: px(22);
+    }
+    .item-stage{
+      font-size:px(32);
+      line-height:px(66);
+      font-weight: bold;
+      background: linear-gradient(to bottom, #ae6f4a, #6b2f13);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: px(55);
+    }
+    .item-closest{
+      @extend %other_sprite;
+      @include ico_1;
+      position: absolute;
+      left:px(120);
+      top:px(160);
+    }
+    .item-status{
+      line-height: px(52);
+      font-size:px(24);
+      font-weight: bold;
+    }
+    .item-status--live{
+      color: #ff6c00;
+    }
+    .item-status--ready{
+      color: #ff6c00;
+    }
+    .item-status--expect{
+      color: #13A0C4;
+    }
+    .item-status--over{
+      color: #545454;
+    }
+  }

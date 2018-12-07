@@ -1,0 +1,35 @@
+@import '../assets/sass/mixin.scss';
+
+.mod{
+  @include bfc;
+  margin-bottom:px(30);
+  .mod-hd{
+    position: relative;
+    margin-bottom:px(26);
+  }
+  .mod-tit{
+    @extend %other_sprite;
+    @include tit_1;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    font-size: px(32);
+    font-weight: 700;
+    line-height: px(72);
+  }
+  .mod-stit{
+    @extend %other_sprite;
+    @include tit_2;
+    display: block;
+    margin: px(-7) auto 0;
+    position: relative;
+    z-index: 3;
+    line-height: px(42);
+    padding-top: px(37);
+    text-align: center;
+    color: #fff;
+    text-shadow: px(2) px(2) px(2) #12269d;
+    font-size: px(24);
+  }
+}

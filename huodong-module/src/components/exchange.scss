@@ -1,0 +1,76 @@
+@import '../assets/sass/mixin.scss';
+
+
+.lbdh-integ{
+  color: #fff;
+  font-weight: 700;
+  text-shadow: px(2) px(2) px(2) #9a152d;
+  line-height: px(60);
+  text-align: center;
+  margin-bottom: px(20);
+}
+.lbdh-list{
+    @include clearfix;
+    padding: 0 px(35);
+    li{
+      float: left;
+      text-align: center;
+      height: px(397);
+      margin-bottom: px(60);
+    }
+    .item-cover{
+      display: block;
+      position: relative;
+      cursor:pointer;
+      padding-top: px(86);
+    }
+    .item-int{
+      @extend %pro_sprite;
+      line-height: px(67);
+      font-size: px(30);
+      padding-top: px(14);
+      color: #264d89;
+      font-weight: bold;
+      position: absolute;
+      top:0;
+    }
+    .item-spin{
+      @extend %pro_sprite;
+      @include pro_14;
+      padding-top: px(10);
+      margin-bottom: px(19);
+    }
+    .item-img{
+      width: px(163);
+      height: px(110);
+      margin: 0 auto px(25);
+    }
+    .item-more{
+      line-height: px(36);
+      color: #fff;
+      font-size:px(24);
+    }
+    .item-dh{
+      @extend %btn--mid; 
+    }
+    .item-dh.geted{
+      @extend %btn--mid--pink;
+    }
+  
+    li:nth-of-type(odd){
+      float: left;
+      .item-int{
+        @include pro_11_l;
+        padding-left: px(94);
+        left: px(-35);
+      }
+    }
+    li:nth-of-type(even){
+      float: right;
+      .item-int{
+        @include pro_11_r;
+        padding-right: px(94);
+        right: px(-35);
+      }
+    }
+  }

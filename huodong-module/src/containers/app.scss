@@ -1,0 +1,88 @@
+
+
+@import '../assets/sass/mixin.scss';
+
+  // a{
+  //   font-size:px(24);
+  // }
+  .view{
+    font-family: "microsoft yahei", sans-serif;
+    font-size:px(24);
+    background: url(../assets/images/bg.jpg) repeat;
+    color: #232879;
+    *,:after,:before{
+      box-sizing: border-box;
+    }
+    
+  }
+  
+  .wrap{
+    margin:0 auto;
+    max-width: 750px;
+  }
+  
+  .bg{
+    margin-top: px(-2);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .bg1{
+    @extend .bg;
+    height:px(250);
+    background-image: url(../assets/images/bg_1.jpg);
+  }
+  
+  .bg2{
+    @extend .bg;
+    height:px(250);
+    background-image: url(../assets/images/bg_2.jpg);
+  }
+  
+  .bg3{
+    @extend .bg;
+    height:px(250);
+    background-image: url(../assets/images/bg_3.jpg);
+  }
+
+  .bg4{
+    @extend .bg;
+    height:px(281);
+    background-image: url(../assets/images/bg_4.png);
+  }
+  
+  
+  
+  .time{
+    line-height: px(50);
+    color: #fff;
+    font-size:px(24);
+    font-weight: bold;
+    text-shadow: px(2) px(2) px(2) #9a152d;
+    text-align: center;
+  }
+  
+  .container{
+    margin-top: px(-272);
+    position: relative;
+    @include bfc();
+  }
+
+
+  .footer{
+    background: rgba(239,122,141,.5);
+    font-size:px(24);
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0.02rem 0.02rem 0.02rem #9a152d;
+    text-align: center;
+    line-height:px(48);
+    padding: px(20) 0;
+  }
+
+  a.btn--download{
+    @extend %btn--large;
+    font-size: px(32);
+    display: block;
+    margin: 0 auto px(20);
+  }
