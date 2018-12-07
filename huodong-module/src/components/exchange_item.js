@@ -19,7 +19,7 @@ var ExchangeItem = React.createClass({
         }
 
         if(code){
-            this.resolve({status:2});
+            this.resolve({status:2,data:{code:this.props.item.code,prizeName:this.props.item.p_name}});
             return false;
         }
         
@@ -95,8 +95,7 @@ var ExchangeItem = React.createClass({
                 Pubsub.publish("UPDATE_EXCHANGE_ITEM",{pid:this.props.item.pid,code:result.data.code});
                 Pubsub.publish("UPDATE_INTEGRAL",result.data.point);
             }
-            console.log(this.props.item.code);
-            PopupView.giftCode(<DialogGiftCode code={result.data.code} name={this.props.item.p_name}/>,null,function(){
+            PopupView.giftCode(<DialogGiftCode code={result.data.code} name={result.data.prizeName}/>,null,function(){
                 window._copy.destroy();
                 window._copy = null;
             });

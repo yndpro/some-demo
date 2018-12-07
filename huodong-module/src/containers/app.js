@@ -97,7 +97,7 @@ var App = React.createClass({
         }
     },
 
-    getInit : function(){
+    getInitData : function(){
         this.loading = true;
         Ajax.post(API.init,{})
             .then(response => {
@@ -141,9 +141,9 @@ var App = React.createClass({
             ClientBox.init();
         }
         if(ztInfo.terminal == CONFIG.YOUPAI){
-            ClientYoupai.init(this.getInit);
+            ClientYoupai.init(this.getInitData);
         }else{
-            this.getInit();
+            this.getInitData();
         }
         
         Pubsub.subscribe("UPDATE_INTEGRAL",(msg,newIntegral) => {
