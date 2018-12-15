@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "clipboard": "^2.0.1",
     "iscroll": "^5.2.0",
+    "lodash": "^4.17.11",
     "pubsub-js": "^1.5.4",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
@@ -15,6 +16,7 @@
   "devDependencies": {
     "apidoc": "^0.17.6",
     "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-external-helpers": "^6.4.0",

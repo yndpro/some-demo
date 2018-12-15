@@ -1,6 +1,8 @@
 
+import _ from 'lodash';
 
+console.log(_.join(['test', 'module', 'loaded!'], ' '));
 
-module.exports = function () {
+export function test() {
     return 'czj1001'
-};
+}

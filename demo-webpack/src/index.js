@@ -1,9 +1,12 @@
+import _ from 'lodash';
+import {test} from './test.js';
 
-const test = require('./test.js');
 require('./index.scss');
 const icon = require('./react.png');
 
-console.dir(icon);
+// console.dir(icon);
+
+console.log(_.join(['main', 'module', 'loaded!'], ' '));
 
 function component() {
     var root = document.createElement('div');
@@ -30,7 +33,7 @@ function component() {
 
 document.body.appendChild(component());
 
-console.log("I love u,orange,orange");
+// console.log("I love u,orange,orange");
 
 
 

@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry : {
-        index: './src/index.js',
+        index: './src/module1.js',
         // app: './src/app.js'
     },
     //which maps your compiled code back to your original source code

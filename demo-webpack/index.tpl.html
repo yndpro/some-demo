@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/reset.css">
+</head>
+<body>
+    <script>
+        // document.domain = "4399.com";
+        var _zt = {
+            "_zt":"xszds4",
+            "_game":"xxtjdyp",
+            "_ztUrl":"http://192.168.57.190:3030/dist/",
+            "_method":"index",
+            "_imgUrl":"http://192.168.57.190:3030/dist/images/"
+        };
+    </script>
+    <script>
+        dw();
+        window.onresize=function(){dw()};
+        function dw(){
+            var deviceWidth = document.documentElement.clientWidth;
+            if(deviceWidth > 750)
+                deviceWidth = 750;
+            document.documentElement.style.fontSize = deviceWidth / 6.4 + "px";
+        }
+    </script>
+    <div id="root"></div>
+    <script src="/static/js/clipboard.js"></script>
+    <script src="/static/js/gameBox.share.js"></script>
+    <script src="/static/js/common.js"></script>
+</body>
+</html>
