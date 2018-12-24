@@ -36,7 +36,8 @@ console.log("__dirname:",__dirname);
 module.exports = {
     entry : {
         // index: './src/index.js',
-        index: path.resolve(__dirname,"src/index.js")
+        index: path.resolve(__dirname,"src/index.js"),
+        test: path.resolve(__dirname,"src/test.js")
     },
 
     module: {
