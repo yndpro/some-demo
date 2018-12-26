@@ -1,9 +1,7 @@
 import React from 'react';
 import API from '../assets/js/api';
 import {PopupView} from './PopView';
-import DialogForm from './dialog_form';
 import DialogMyAward from './dialog_myaward';
-import Pubsub from 'pubsub-js';
 import './dialog.scss';
 
 var MyAward = React.createClass({
@@ -42,20 +40,10 @@ var MyAward = React.createClass({
                 }
             });
     },
-    
-    componentDidMount : function(){
-        Pubsub.subscribe("DIALOG_FORM_OPEN",(msg,item) => {
-            PopupView.form(<DialogForm item={item}/>)
-        });
-    },
-
-    componentWillUnmount : function(){
-        Pubsub.unsubscribe("DIALOG_FORM_OPEN");
-    },
 
     render : function(){
         return (
-            <a href="javascript:;" className="" onClick={this.clickHandle}>我的奖励</a>
+            <a href="javascript:;" className="btn--myaward" onClick={this.clickHandle}>我的奖励</a>
         )
     }
 })

@@ -10,4 +10,5 @@ export default {
     writeUserInfo: getApi('-ajaxWriteUserInfo'),
     postShare: getApi('-ajaxShare'),
     postGuess: getApi('-ajaxGuess'),
+    getLottery: getApi('-ajaxLottery'),
 }

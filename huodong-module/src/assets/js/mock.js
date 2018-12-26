@@ -64,6 +64,7 @@ Mock.mock(host + '-ajaxInitApp', {
             "time": "2018.12.07-2018.12.24",
             "isShare":false,
             "point":30,
+            "lastTimes":30,
             "dhPrize":[
                 {
                     "code":"301362655_8",
@@ -396,6 +397,20 @@ Mock.mock(host + '-ajaxInitApp', {
                     "cnStatus":"已结束"
                 }
             ],
+            "lottery":{
+                "prizes":[
+                    {
+                        "pid":"1",
+                        "name":"奖品1",
+                        "pic":"//fs.img4399.com/images~2018/09/21/14_V1dW0cZH1M.397x79.jpg",
+                    },
+                    {
+                        "pid":"2",
+                        "name":"奖品2",
+                        "pic":"//fs.img4399.com/images~2018/09/21/14_V1dW0cZH1M.397x79.jpg",
+                    }
+                ]
+            }
         },
         
     }

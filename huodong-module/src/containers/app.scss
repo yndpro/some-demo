@@ -1,5 +1,4 @@
 
-
 @import '../assets/sass/mixin.scss';
 
   // a{
@@ -8,7 +7,7 @@
   .view{
     font-family: "microsoft yahei", sans-serif;
     font-size:px(24);
-    background: url(../assets/images/bg.jpg) repeat;
+    background: #fff;
     color: #232879;
     *,:after,:before{
       box-sizing: border-box;
@@ -20,38 +19,7 @@
     margin:0 auto;
     max-width: 750px;
   }
-  
-  .bg{
-    margin-top: px(-2);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  .bg1{
-    @extend .bg;
-    height:px(250);
-    background-image: url(../assets/images/bg_1.jpg);
-  }
-  
-  .bg2{
-    @extend .bg;
-    height:px(250);
-    background-image: url(../assets/images/bg_2.jpg);
-  }
-  
-  .bg3{
-    @extend .bg;
-    height:px(250);
-    background-image: url(../assets/images/bg_3.jpg);
-  }
 
-  .bg4{
-    @extend .bg;
-    height:px(281);
-    background-image: url(../assets/images/bg_4.png);
-  }
-  
-  
   
   .time{
     line-height: px(50);
@@ -63,7 +31,6 @@
   }
   
   .container{
-    margin-top: px(-272);
     position: relative;
     @include bfc();
   }
@@ -81,6 +48,13 @@
   }
 
   a.btn--download{
+    @extend %btn--large;
+    font-size: px(32);
+    display: block;
+    margin: 0 auto px(20);
+  }
+
+  a.btn--myaward{
     @extend %btn--large;
     font-size: px(32);
     display: block;

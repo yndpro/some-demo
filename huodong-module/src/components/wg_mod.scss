@@ -1,0 +1,44 @@
+$theme_color_1 : #fecea8;
+$theme_color_2 : #ff847c;
+$theme_color_3 : #e84a5f;
+$theme_color_4 : #2a363b;
+
+
+@function px($px){
+  @return ($px/100) + rem;
+}
+@function px($px){
+  @return ($px/100) + rem;
+}
+@mixin bfc {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+}
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@mixin shadow {
+  box-shadow:0 10px 40px -10px rgba(42, 54, 59, .2)
+}
+
+
+.wg-mod{
+    @include shadow;
+    margin: px(8);
+    .wg-mod-hd{
+      padding: px(10) 0;
+    }
+    .wg-mod-tit{
+      color: $theme_color_4;
+      text-align: center;
+      font-size: px(20);
+    }
+    .wg-mod-bd{
+      padding: px(10) 0 px(25);
+    }
+}
