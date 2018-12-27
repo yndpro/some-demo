@@ -94,6 +94,12 @@ var App = React.createClass({
         })
     },
 
+    updateLotteryRotate : function(rotate){
+        this.setState({
+            lottery : Object.assign({}, this.state.lottery, {rotate : rotate})
+        })
+    },
+
     checkTerminal : function(){
         let prefix = {
             BOX : "4399GameCenter",
@@ -136,7 +142,10 @@ var App = React.createClass({
                     dhPrize : response.data.pageInfo.dhPrize || [],
                     award : response.data.pageInfo.award || [],
                     guess : response.data.pageInfo.jc || [],
-                    lottery : response.data.pageInfo.lottery || {}
+                    lottery : {
+                        rotate : 0,
+                        prizes : response.data.pageInfo.lottery.prizes
+                    }
                 })
                 this.download('.j-download');
             })
@@ -173,6 +182,9 @@ var App = React.createClass({
         Pubsub.subscribe("UPDATE_EXCHANGE_ITEM",(msg,data) => {
             this.updataExchangeItem(data);
         });
+        Pubsub.subscribe("UPDATE_LOTTERY_ROTATE",(msg,rotate) => {
+            this.updateLotteryRotate(rotate);
+        });
         Pubsub.subscribe("DIALOG_FORM_OPEN",(msg,item) => {
             PopupView.form(<DialogForm item={item}/>)
         });
@@ -185,6 +197,7 @@ var App = React.createClass({
         Pubsub.unsubscribe("UPDATE_SHARE_STATUS");
         Pubsub.unsubscribe("UPDATE_GUESS_ITEM");
         Pubsub.unsubscribe("UPDATE_EXCHANGE_ITEM");
+        Pubsub.unsubscribe("UPDATE_LOTTERY_ROTATE");
         Pubsub.unsubscribe("DIALOG_FORM_OPEN");
     },
 
@@ -235,7 +248,7 @@ var App = React.createClass({
                             <MyAward />
                         </WgMod>
                         <WgMod title="转盘抽奖模块">
-                            {this.loading == true ? "loading..." : <LotteryTurntable prizes={this.state.lottery.prizes} lastTimes={this.state.lastTimes}/>}
+                            {this.loading == true ? "loading..." : <LotteryTurntable prizes={this.state.lottery.prizes} rotate={this.state.lottery.rotate} lastTimes={this.state.lastTimes}/>}
                         </WgMod>
                     </div>
                 </div>

@@ -408,7 +408,37 @@ Mock.mock(host + '-ajaxInitApp', {
                         "pid":"2",
                         "name":"奖品2",
                         "pic":"//fs.img4399.com/images~2018/09/21/14_V1dW0cZH1M.397x79.jpg",
-                    }
+                    },
+                    {
+                        "pid":"3",
+                        "name":"奖品3",
+                        "pic":"//fs.img4399.com/images~2018/09/21/14_V1dW0cZH1M.397x79.jpg",
+                    },
+                    {
+                        "pid":"4",
+                        "name":"奖品4",
+                        "pic":"//fs.img4399.com/images~2018/09/21/14_V1dW0cZH1M.397x79.jpg",
+                    },
+                    {
+                        "pid":"5",
+                        "name":"奖品5",
+                        "pic":"//fs.img4399.com/images~2018/09/21/14_V1dW0cZH1M.397x79.jpg",
+                    },
+                    {
+                        "pid":"6",
+                        "name":"奖品6",
+                        "pic":"//fs.img4399.com/images~2018/09/21/14_V1dW0cZH1M.397x79.jpg",
+                    },
+                    {
+                        "pid":"7",
+                        "name":"奖品7",
+                        "pic":"//fs.img4399.com/images~2018/09/21/14_V1dW0cZH1M.397x79.jpg",
+                    },
+                    {
+                        "pid":"8",
+                        "name":"奖品8",
+                        "pic":"//fs.img4399.com/images~2018/09/21/14_V1dW0cZH1M.397x79.jpg",
+                    },
                 ]
             }
         },
@@ -540,9 +570,9 @@ Mock.mock(host + '-ajaxLottery', {
     "data":{
         "prizeList":[
             {
-                "pid":0,
+                "pid":2,
                 "prizeName":"20积分",
-                "kind":0,
+                "kind":1,
                 "code":"301362655_2"
             }
         ],

@@ -5,17 +5,12 @@ import {PopupView} from './PopView';
 import DialogGiftCode from './dialog_giftCode';
 import './lotteryTurntable.scss';
 
-var Lottery = {
-    start : function(){
-
-    },
-    stop : function(index,callback){
-        typeof callback === "function" && callback();
-    }
-}
-
 var LotteryTurntable = React.createClass({
     start : function(){
+    
+        if(this.local.rotating){
+            return false;
+        }
     
         if(!userInfo.uid || userInfo.uid == 0){
             this.resolve({status:CONFIG.UNLOGIN});
@@ -41,9 +36,7 @@ var LotteryTurntable = React.createClass({
     getLottery : function(){
         Ajax.post(API.getLottery, {})
             .then(response => {
-                Lottery.stop(index, () => {
-                    this.resolve(response);
-                });
+                this.resolve(response);
             });
     },
     resolve : function(result){
@@ -87,37 +80,64 @@ var LotteryTurntable = React.createClass({
         }
 
         if(result.status > 0){
+            let index = this.props.prizes.findIndex(item => item.pid == result.data.prizeList[0].pid);
             Pubsub.publish("UPDATE_LASTTIMES",result.data.lastTimes);
-            this.showPop(result.data.prizeList[0]);
+            this.setRotate(index,() => {
+                this.showPop(result.data.prizeList[0]);
+            });
             return false;
         }
     },
-    showPop : function(item){
-        if (item.kind == CONFIG.GIFT) {
-            PopupView.giftCode(<DialogGiftCode code={prize.code} name={prize.name}/>,null,function(){
+    showPop : function(prize){
+        console.log(prize)
+        if (prize.kind == CONFIG.GIFT) {
+            PopupView.giftCode(<DialogGiftCode code={prize.code} name={prize.prizeName}/>,null,function(){
                 window._copy.destroy();
                 window._copy = null;
             });
         }
-        if(item.kind == CONFIG.UNNEED_UINFO){
-            PopupView.giftNormal(item)
+        if(prize.kind == CONFIG.UNNEED_UINFO){
+            PopupView.giftNormal(prize)
         }
-        if (item.kind == CONFIG.NEED_UINFO) {
-            item.fst = 1;
-            Pubsub.publish("DIALOG_FORM_OPEN",item);
+        if (prize.kind == CONFIG.NEED_UINFO) {
+            prize.fst = 1;
+            Pubsub.publish("DIALOG_FORM_OPEN",prize);
         }
-        if (item.kind == CONFIG.COLLECTIONS) {
+        if (prize.kind == CONFIG.COLLECTIONS) {
             //TODO:
         }
     },
+    local : {
+        second : 6,
+        angle : 0,
+        defaultTurn : 5,
+        orientation : 1,
+        rotating : false
+    },
+    setRotate : function(index,callback){
+        let {angle,defaultTurn,orientation,second} = this.local;
+        let realAngle = orientation == 1 ? (360 -  angle * index) : (angle * index);
+        let rotate =  this.props.rotate - (this.props.rotate % 360) + (orientation * (defaultTurn * 360 + realAngle));
+        this.local.rotating = true;
+        Pubsub.publish("UPDATE_LOTTERY_ROTATE",rotate);
+        setTimeout(function(){
+            this.local.rotating = false;
+            typeof callback === "function" && callback();
+        }.bind(this),(second + 1) * 1000)
+    },
+    componentWillMount : function(){
+        let {prizes} = this.props;
+        this.local.angle = 360 / prizes.length;
+    },
     render : function(){
-        let {prizes = [],lastTimes} = this.props;
+        let {prizes,lastTimes,rotate} = this.props;
+            
         return (
             <div className="lottery">
-                <ul className="lotte-table">
+                <ul className="lotte-table" style={{transform:`rotate(${rotate}deg)`}}>
                 {
                     prizes.map((item,index) => 
-                        <li key={index} className={`item${index}`}>
+                        <li key={index} style={{transform:`rotate(${this.local.angle * index}deg)`}}>
                             <div className="item-img"><img alt={item.name} src={item.pic} /></div>
                             <div className="item-txt">{item.name}</div>
                         </li>
@@ -126,7 +146,8 @@ var LotteryTurntable = React.createClass({
                 </ul>
                 <div className="lotte-oper">
                     <a href="javascript:;" className="lotte-start" onClick={this.start}>
-                        <span className="lotte-remain">（剩余次数：<span>{lastTimes}</span>）</span>
+                        开始
+                        <span className="lotte-lastTimes">（剩余次数：<span>{lastTimes}</span>）</span>
                     </a>
                 </div>
             </div>

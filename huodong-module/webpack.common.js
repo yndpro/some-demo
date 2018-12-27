@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const SpritesmithPlugin = require('webpack-spritesmith');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-let instanceSpritesmithPlugin = ['btn','other','ibg','pro'].map(function(prefix){
+let instanceSpritesmithPlugin = ['btn','other','ibg','pro','lottery'].map(function(prefix){
     return new SpritesmithPlugin({
         src: {
             cwd: path.resolve(__dirname, `src/assets/images/${prefix}_sprite`),
