@@ -2,42 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const SpritesmithPlugin = require('webpack-spritesmith');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-let instanceSpritesmithPlugin = ['btn','other','ibg','pro'].map(function(prefix){
-    return new SpritesmithPlugin({
-        src: {
-            cwd: path.resolve(__dirname, `src/assets/images/${prefix}_sprite`),
-            glob: '*.png'
-        },
-        target: {
-            image: path.resolve(__dirname, `src/assets/images/${prefix}_sprite.png`),
-            css: [
-                [path.resolve(__dirname, `src/assets/sass/${prefix}_sprite.scss`), {
-                    format: 'handlebars_based_template',
-                    formatOpts : prefix
-                }]
-            ]
-        },
-        apiOptions: {
-            cssImageRef : `../assets/images/${prefix}_sprite.png`
-        },
-        spritesmithOptions : {
-            padding : 4
-        },
-        customTemplates: {
-            'handlebars_based_template': path.resolve(__dirname, 'src/assets/scss.handlebars')
-        },
-    })
-})
 
 console.log("__dirname:",__dirname);
 module.exports = {
     entry : {
         // index: './src/index.js',
-        index: path.resolve(__dirname,"src/index.js"),
-        test: path.resolve(__dirname,"src/test.js")
+        index: path.resolve(__dirname,"src/index.js")
     },
 
     module: {
@@ -97,7 +69,6 @@ module.exports = {
         }),
         new CleanWebpackPlugin(['dist']),
         new webpack.HotModuleReplacementPlugin(),
-        ...instanceSpritesmithPlugin,
         new ExtractTextPlugin({
             filename: "css/style.css",
             disable: false,
