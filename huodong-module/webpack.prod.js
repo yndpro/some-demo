@@ -17,5 +17,20 @@ module.exports = merge(common, {
         new BundleAnalyzerPlugin({
             analyzerPort : 8989
         })
-    ]
+    ],
+
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        },
+        runtimeChunk: {
+            name: "manifest",
+        }
+    }
 })

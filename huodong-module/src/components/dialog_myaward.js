@@ -1,6 +1,6 @@
 import React from 'react';
 import Pubsub from 'pubsub-js';
-import Dialog from './dialog';
+import Copy from './copy';
 import './dialog.scss';
 import './myaward.scss';
 import './page.scss';
@@ -40,7 +40,6 @@ var DialogMyAward = React.createClass({
     
     componentDidMount : function(){
         Pubsub.subscribe("DIALOG_FORM_SUBMIT_SUCCESS",(msg,newItem) => {
-            Dialog.list["j-form_popup"].close();
             this.updateList(newItem);
         });
     },
@@ -54,10 +53,7 @@ var DialogMyAward = React.createClass({
         
         const renderOper = item => {
             if(item.kind == CONFIG.GIFT){
-                return <div className="item-oper item--copy">
-                            <input className="copy-input" id={`j-copy-code${item.id}`} type="text" value={item.code} readOnly="readonly"/>
-                            <a href="javascript:;" className="copy-btn" id={`j-copy-btn${item.id}`} data-clipboard-target={`#j-copy-code${item.id}`}>复制</a>
-                          </div>
+                return <Copy code={item.code} id={item.id}/>
             }else if(item.kind == CONFIG.UNNEED_UINFO){
                 return <div className="item-text">(获得的积分可在页面底部进行礼包兑换)</div>
             }else if(item.kind == CONFIG.NEED_UINFO){

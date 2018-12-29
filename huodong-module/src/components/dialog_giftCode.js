@@ -12,7 +12,10 @@ var DialogGiftCode = React.createClass({
             <div className="dialog-cont">
                 <h3 className="dialog-title">恭喜您，获得<span>【{name}】</span></h3>
                 {ztInfo.deadline ? <div className="giftCode-tip">（礼包兑换码有效截止{ztInfo.deadline}，逾期作废）</div> : ""}
-                <Copy code={code}/>
+                <div className="item--award item--copy">
+                    <label className="item-label">礼包激活码：</label>
+                    <Copy code={code}/>
+                </div>
                 <div className="dialog-opt">
                     {/* <a href={} target="_href" className="dialog-btn">立即兑换</a> */}
                     <a href="javascript:;" className="dialog-btn j-confirm">确定</a>

@@ -164,6 +164,7 @@ Webgame.logout = function(){
  * Mobile
  *  */
 var Wap = {
+    _copy : {},
     init : function(){
 
     },
@@ -190,19 +191,19 @@ var Wap = {
         return false;
     },
     copy : function(btn){
-        if(!window._copy){
-            window._copy = new ClipboardJS(btn);
-            _copy.on('success', function(e) {
+        if(!this._copy[btn]){
+            this._copy[btn] = new ClipboardJS(btn);
+            this._copy[btn].on('success', function(e) {
                 alert("已复制到剪切板");
                 /*console.info('Action:', e.action);
-                 console.info('Text:', e.text);
-                 console.info('Trigger:', e.trigger);*/
+                    console.info('Text:', e.text);
+                    console.info('Trigger:', e.trigger);*/
                 e.clearSelection();
             });
-            _copy.on('error', function(e) {
+            this._copy[btn].on('error', function(e) {
                 alert("请手动复制礼包码");
                 /*console.error('Action:', e.action);
-                 console.error('Trigger:', e.trigger);*/
+                    console.error('Trigger:', e.trigger);*/
             });
         }
     }

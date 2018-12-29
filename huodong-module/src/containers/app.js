@@ -10,9 +10,10 @@ import Award from '../components/award';
 import Share from '../components/share';
 import Guess from '../components/guess';
 import MyAward from '../components/myaward';
-import LotteryTurntable from '../components/lotteryTurntable';
+import Lottery from '../components/lottery';
 import {appDownload} from '../components/download';
 import DialogForm from '../components/dialog_form';
+import LoadingEllipsis from '../components/loadings-ellipsis';
 import WgMod from '../components/wg_mod';
 import './app.scss';
 
@@ -94,9 +95,10 @@ var App = React.createClass({
         })
     },
 
-    updateLotteryRotate : function(rotate){
+    updateLotteryIndex : function(index){
+        this.state.lottery.index = index;
         this.setState({
-            lottery : Object.assign({}, this.state.lottery, {rotate : rotate})
+            lottery : this.state.lottery
         })
     },
 
@@ -143,7 +145,7 @@ var App = React.createClass({
                     award : response.data.pageInfo.award || [],
                     guess : response.data.pageInfo.jc || [],
                     lottery : {
-                        rotate : 0,
+                        index : 0,
                         prizes : response.data.pageInfo.lottery.prizes
                     }
                 })
@@ -182,8 +184,8 @@ var App = React.createClass({
         Pubsub.subscribe("UPDATE_EXCHANGE_ITEM",(msg,data) => {
             this.updataExchangeItem(data);
         });
-        Pubsub.subscribe("UPDATE_LOTTERY_ROTATE",(msg,rotate) => {
-            this.updateLotteryRotate(rotate);
+        Pubsub.subscribe("UPDATE_LOTTERY_INDEX",(msg,index) => {
+            this.updateLotteryIndex(index);
         });
         Pubsub.subscribe("DIALOG_FORM_OPEN",(msg,item) => {
             PopupView.form(<DialogForm item={item}/>)
@@ -197,60 +199,58 @@ var App = React.createClass({
         Pubsub.unsubscribe("UPDATE_SHARE_STATUS");
         Pubsub.unsubscribe("UPDATE_GUESS_ITEM");
         Pubsub.unsubscribe("UPDATE_EXCHANGE_ITEM");
-        Pubsub.unsubscribe("UPDATE_LOTTERY_ROTATE");
+        Pubsub.unsubscribe("UPDATE_LOTTERY_INDEX");
         Pubsub.unsubscribe("DIALOG_FORM_OPEN");
     },
 
     render : function(){
         return (
-            <div className="view">
-                <div className="wrap">
-                    <div className="container">
-                        <WgMod title="游戏下载模块">
-                            <a href="javascript:;" className="btn--download j-download">游戏下载</a>
-                        </WgMod>
-                        <WgMod title="赛事直播模块">
-                            {this.loading == true ? 
-                                "loading..." 
-                                :
-                                <Mod name="sszb" titleName={this.state.zbStatus.headTit
-                                    // "A|B"
-                                    //     .replace("A",/^[\u4e00-\u9fa5]{2}/.exec(this.state.zbStatus.headTit))
-                                    //     .replace("B",/[\u4e00-\u9fa5]{2}$/.exec(this.state.zbStatus.headTit))
-                                    }
-                                >
-                                    <Live zbStatus={this.state.zbStatus} />
-                                </Mod>
-                            }
-                        </WgMod>
-                        <WgMod title="赛事列表模块">
-                            <Mod name="ssjl" titleName="赛事列表">
-                                {this.loading == true ? "loading..." : <LiveList zbList={this.state.zbList} />}
+            <div className="wrap">
+                <div className="container">
+                    <WgMod title="游戏下载模块">
+                        <a href="javascript:;" className="btn--download j-download">游戏下载</a>
+                    </WgMod>
+                    <WgMod title="赛事直播模块">
+                        {this.loading == true ? 
+                            <LoadingEllipsis/>
+                            :
+                            <Mod name="sszb" titleName={this.state.zbStatus.headTit
+                                // "A|B"
+                                //     .replace("A",/^[\u4e00-\u9fa5]{2}/.exec(this.state.zbStatus.headTit))
+                                //     .replace("B",/[\u4e00-\u9fa5]{2}$/.exec(this.state.zbStatus.headTit))
+                                }
+                            >
+                                <Live zbStatus={this.state.zbStatus} />
                             </Mod>
-                        </WgMod>
-                        <WgMod title="赛事奖励模块">
-                            <Mod name="ssjl" titleName="赛事奖励">
-                                {this.loading == true ? "loading..." : <Award list={this.state.award}/>}
-                            </Mod>
-                        </WgMod>
-                        <WgMod title="赛事竞猜模块">
-                            <Mod name="ssjc" titleName="赛事竞猜">
-                                {this.loading == true ? "loading..." : <Share isShare={this.state.isShare}></Share>}
-                                {this.loading == true ? "loading..." : <Guess stageList={this.state.guess} integral={this.state.integral} isShare={this.props.isShare}/>}
-                            </Mod>
-                        </WgMod>
-                        <WgMod title="礼包兑换模块">
-                            <Mod name="lbdh" titleName="礼包兑换">
-                                {this.loading == true ? "loading..." : <Exchange list={this.state.dhPrize} integral={this.state.integral}/>}
-                            </Mod>
-                        </WgMod>
-                        <WgMod title="我的礼包模块">
-                            <MyAward />
-                        </WgMod>
-                        <WgMod title="转盘抽奖模块">
-                            {this.loading == true ? "loading..." : <LotteryTurntable prizes={this.state.lottery.prizes} rotate={this.state.lottery.rotate} lastTimes={this.state.lastTimes}/>}
-                        </WgMod>
-                    </div>
+                        }
+                    </WgMod>
+                    <WgMod title="赛事列表模块">
+                        <Mod name="ssjl" titleName="赛事列表">
+                            {this.loading == true ? <LoadingEllipsis/> : <LiveList zbList={this.state.zbList} />}
+                        </Mod>
+                    </WgMod>
+                    <WgMod title="赛事奖励模块">
+                        <Mod name="ssjl" titleName="赛事奖励">
+                            {this.loading == true ? <LoadingEllipsis/> : <Award list={this.state.award}/>}
+                        </Mod>
+                    </WgMod>
+                    <WgMod title="赛事竞猜模块">
+                        <Mod name="ssjc" titleName="赛事竞猜">
+                            {this.loading == true ? <LoadingEllipsis/> : <Share isShare={this.state.isShare}></Share>}
+                            {this.loading == true ? <LoadingEllipsis/> : <Guess stageList={this.state.guess} integral={this.state.integral} isShare={this.props.isShare}/>}
+                        </Mod>
+                    </WgMod>
+                    <WgMod title="礼包兑换模块">
+                        <Mod name="lbdh" titleName="礼包兑换">
+                            {this.loading == true ? <LoadingEllipsis/> : <Exchange list={this.state.dhPrize} integral={this.state.integral}/>}
+                        </Mod>
+                    </WgMod>
+                    <WgMod title="我的礼包模块">
+                        <MyAward />
+                    </WgMod>
+                    <WgMod title="转盘抽奖模块">
+                        {this.loading == true ? <LoadingEllipsis/> : <Lottery prizes={this.state.lottery.prizes} index={this.state.lottery.index} lastTimes={this.state.lastTimes}/>}
+                    </WgMod>
                 </div>
             </div>
         )

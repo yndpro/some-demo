@@ -12,8 +12,6 @@ var GuessMatchItem = React.createClass({
         this.tid = tid;
         this.mid = mid;
 
-        console.log(userInfo);
-
         if(!userInfo.uid || userInfo.uid == 0){
             this.resolve({status:CONFIG.UNLOGIN});
             return false;
@@ -76,7 +74,7 @@ var GuessMatchItem = React.createClass({
 
         if(result.status == 1){
             PopupView.tip("竞猜成功！");
-            Pubsub.publish("UPDATE_GUESS",{
+            Pubsub.publish("UPDATE_GUESS_ITEM",{
                 stageId : this.props.stageId,
                 mid : this.mid,
                 tid : this.tid

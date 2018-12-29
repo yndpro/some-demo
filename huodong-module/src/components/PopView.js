@@ -64,18 +64,11 @@ const PopupView =  {
     },
 
     giftCode: function (data,afterInit, afterClose) {
-        var _this = this;
         return popup("giftCode",data,afterInit,afterClose)
     },
 
     giftNormal: function (data,afterInit, afterClose) {
-        return popup("giftNormal",data,function(){
-            var _pop = this,
-                $pop = this.obj;
-
-            typeof afterInit === "function" && afterInit.call(this);
-
-        },afterClose)
+        return popup("giftNormal",data,afterInit,afterClose)
     },
 
     guessResult: function (data,afterInit, afterClose) {

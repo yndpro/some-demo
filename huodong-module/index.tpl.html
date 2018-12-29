@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/loading.css">
 </head>
 <body>
     <script>
@@ -19,16 +20,37 @@
         };
     </script>
     <script>
-        dw();
-        window.onresize=function(){dw()};
-        function dw(){
-            var deviceWidth = document.documentElement.clientWidth;
-            if(deviceWidth > 750)
-                deviceWidth = 750;
-            document.documentElement.style.fontSize = deviceWidth / 6.4 + "px";
+        ! function(a) {
+      function b() {
+        if (a.navigator.appVersion.match(/window/gi)) {
+          m = f.getBoundingClientRect().width > 480 ? 480 : f.getBoundingClientRect().width;
+        } else {
+          m = f.getBoundingClientRect().width;
         }
+        a.rem = m / 6.4,
+          f.style.fontSize = a.rem + "px";
+      }
+      var c,
+        d = a.navigator.appVersion.match(/iphone/gi) ? a.devicePixelRatio : 1,
+        e = 1 / d,
+        f = document.documentElement,
+        g = document.createElement("meta");
+      if (a.dpr = d, a.addEventListener("resize", function() {
+          clearTimeout(c), c = setTimeout(b, 300)
+        }, !1), a.addEventListener("pageshow", function(a) {
+          a.persisted && (clearTimeout(c), c = setTimeout(b, 300))
+        }, !1), f.setAttribute("data-dpr", d), g.setAttribute("name", "viewport"), g.setAttribute("content", "initial-scale=" + e + ", maximum-scale=" + e + ", minimum-scale=" + e + ", user-scalable=no"), f.firstElementChild) f.firstElementChild.appendChild(
+        g);
+      else {
+        var h = document.createElement("div");
+        h.appendChild(g),
+          document.write(h.innerHTML)
+      }
+      b()
+    }(window);
     </script>
-    <div id="root"></div>
+    <div id="loadingBox" class="loadingBox" style=""><div class="loading"><div class="mask"></div><div class="tree"></div><div class="car"><div class="wheel left"></div><div class="wheel right"></div></div></div><h3>ε=(´ο｀*)))我在努力加载，等等我...</h3></div>
+    <div id="root" class="view"></div>
     <script src="/static/js/clipboard.js"></script>
     <script src="/static/js/gameBox.share.js"></script>
     <script src="/static/js/common.js"></script>

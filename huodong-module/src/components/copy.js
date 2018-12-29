@@ -1,33 +1,45 @@
 import React from 'react';
+import '../components/copy.scss';
 
 var Copy = React.createClass({
+    getDefaultProps : function(){
+        return {
+            id : "5201314"
+        }
+    },
     componentDidMount : function(){
-        let {code} = this.props; 
+        let {code,id} = this.props; 
         
         if(ztInfo.terminal == CONFIG.WAP){
-            Wap.copy("#j-copy-btn");
+            console.log(id);
+            Wap.copy(`#j-copy-btn${id}`);
         }
         if(ztInfo.terminal == CONFIG.BOX){
-            document.querySelector("#j-copy-btn").addEventListener("click",() => {
+            document.querySelector(`#j-copy-btn${id}`).addEventListener("click",() => {
                 ClientBox.copy(code);
             });
         }
         if(ztInfo.terminal == CONFIG.YOUPAI){
-            document.querySelector("#j-copy-btn").addEventListener("click",() => {
+            document.querySelector(`#j-copy-btn${id}`).addEventListener("click",() => {
                 ClientYoupai.copy(code);
             });
         }
     },
+    componentWillUnmount : function(){
+        let {id} = this.props; 
+        if(ztInfo.terminal == CONFIG.WAP){
+            console.log(Wap._copy[`#j-copy-btn${id}`]);
+            Wap._copy[`#j-copy-btn${id}`].destroy();
+            Wap._copy[`#j-copy-btn${id}`]= null;
+        }
+    },
     render : function(){
-        let {code} = this.props;
+        let {code,id} = this.props;
         
         return (
-            <div className="item--award item--copy">
-                <label className="item-label">礼包激活码：</label>
-                <div className="item-oper">
-                    <input className="copy-input" type="text" id="j-copy-code" readOnly value={code}/>
-                    <a className="copy-btn" href="javascript:;" id="j-copy-btn" data-clipboard-target="#j-copy-code">复制</a>
-                </div>
+            <div className="item-oper copy">
+                <input className="copy-input" type="text" id={`j-copy-code${id}`} readOnly value={code}/>
+                <a className="copy-btn" href="javascript:;" id={`j-copy-btn${id}`} data-clipboard-target={`#j-copy-code${id}`}>复制</a>
             </div>
         )
     }

@@ -28,7 +28,10 @@ module.exports = merge(common, {
                     chunks: 'all'
                 }
             }
-        }
+        },
+        runtimeChunk: {
+            name: "manifest",
+        },
     }
 
 

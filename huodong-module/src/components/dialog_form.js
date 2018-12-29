@@ -1,7 +1,8 @@
 import React from 'react';
 import API from '../assets/js/api';
 import Pubsub from 'pubsub-js';
-import {PopupView,PopupTemp} from './PopView';
+import {PopupView} from './PopView';
+import Dialog from './dialog';
 import './dialog.scss';
 
 var DialogForm = React.createClass({
@@ -40,6 +41,7 @@ var DialogForm = React.createClass({
             }).then(response => {
                 if(response.status == 1){
                     PopupView.tip(response.msg);
+                    Dialog.list["j-form_popup"].close();
                     Pubsub.publish("DIALOG_FORM_SUBMIT_SUCCESS",item);
                     return false
                 }
@@ -54,7 +56,7 @@ var DialogForm = React.createClass({
     getInitialState : function(){
         let item = this.props.item;
         return {
-            id : item.id,
+            id : item.id ? item.id : "",
             uinfo : {
                 uname : item.uinfo ? item.uinfo.uname : "",
                 uphone : item.uinfo ? item.uinfo.uphone : "",
@@ -66,15 +68,14 @@ var DialogForm = React.createClass({
     render : function(){
         let item = this.state;
         return (
-            <div className="dialog-cont dialog-form">
+            <div className="dialog-cont">
+                {this.props.item.fst == 1 ? 
+                <div className="dialog-title">恭喜您获得了<span>{this.props.item.prizeName}</span></div>
+                :
                 <div className="dialog-title">收件信息</div>
-                <div className="clearfix">
-                    <form className="j-form">
-                        {!this.props.item.uinfo ?
-                        <input type="hidden" name="id" value={item.id}/>
-                        :
-                        null
-                        }
+                }
+                <div className="dialog-form">
+                    <form>
                         <div className="form-item form-item1">
                             <label htmlFor="" className="form-label">姓名：</label>
                             {this.props.item.uinfo ? 

@@ -572,7 +572,7 @@ Mock.mock(host + '-ajaxLottery', {
             {
                 "pid":2,
                 "prizeName":"20积分",
-                "kind":1,
+                "kind":3,
                 "code":"301362655_2"
             }
         ],

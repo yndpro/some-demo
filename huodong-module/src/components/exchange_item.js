@@ -95,10 +95,7 @@ var ExchangeItem = React.createClass({
                 Pubsub.publish("UPDATE_EXCHANGE_ITEM",{pid:this.props.item.pid,code:result.data.code});
                 Pubsub.publish("UPDATE_INTEGRAL",result.data.point);
             }
-            PopupView.giftCode(<DialogGiftCode code={result.data.code} name={result.data.prizeName}/>,null,function(){
-                window._copy.destroy();
-                window._copy = null;
-            });
+            PopupView.giftCode(<DialogGiftCode code={result.data.code} name={result.data.prizeName}/>);
             return false;
         }
     },

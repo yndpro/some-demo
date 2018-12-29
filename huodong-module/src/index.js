@@ -12,3 +12,4 @@ render(
     <App/>,
     document.getElementById('root')
 )
+document.getElementById("loadingBox").style.opacity = "0";

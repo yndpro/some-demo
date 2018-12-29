@@ -1,0 +1,27 @@
+@import '../assets/sass/mixin.scss';
+
+.copy {
+  .copy-input {
+    padding: 0 px(5);
+    width: px(200);
+    float: left;
+    height: px(40);
+    line-height: px(40);
+    margin-right: px(5);
+  }
+
+  a.copy-btn {
+    line-height: px(50);
+    @extend %btn_sprite;
+    @include btn_2;
+    color: #f7e7b5;
+    text-align: center;
+    float: left;
+    font-weight: bold;
+
+    &:hover {
+      opacity: 0.9;
+      text-decoration: underline;
+    }
+  }
+}
