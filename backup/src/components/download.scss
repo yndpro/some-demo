@@ -1,9 +1,0 @@
-@import '../assets/sass/mixin.scss';
-
-
-a.btn--download{
-    @extend %btn--long;
-    font-size: px(32);
-    display: block;
-    margin: 0 auto px(20);
-}
