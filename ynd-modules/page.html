@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+	<div class="tab" id="j-tab">
+		<ul class="tab-hd">
+			<li>111111111111</li>
+			<li>222222222222</li>
+		</ul>
+		<div class="tab-bd">
+			<div class="tab-cont">11111 <br>11111 <br>11111 <br>11111 <br>11111 <br></div>
+			<div class="tab-cont">222222 <br>222222 <br>222222 <br>222222 <br>222222 <br></div>
+		</div>
+	</div>
+
+	<input type="text" id="j-textcount" value="dsdddd">
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+	<div class="drag" id="j-drag">
+		<div class="drag-block" style="left:30px;top:50px;width: 50px;height: 50px;z-index: 2"></div>
+		<div id="j-drag-block2" class="drag-block" style="left:0px;top:60px;width: 70px;height: 70px;z-index: 3;margin: 10px;"></div>
+		<div id="j-drag-block3" class="drag-block" style="left:463px;top:590px;width: 50px;height: 50px;z-index: 5;position: fixed;"></div>
+		<div class="drag-block" style="left:80px;top:80px;width: 50px;height: 50px;z-index: 7">7</div>
+	</div>
+
+
+	<script src="lib/jquery.min.js"></script>
+	<script src="assets/js/Ac_tab.js"></script>
+	<script src="assets/js/Ac_drag.js"></script>
+	<script src="assets/js/ks-textcount.js"></script>
+	<script>
+		$(function() {
+
+			TextCount.init({
+				input:"#j-textcount"
+			}).render();
+
+			new Ac.tab({
+				'tabItem':'#j-tab .tab-hd li',
+				'tabCont':'#j-tab .tab-cont',
+				'triggerType':'mouseover',
+				'tabItemCur':'cur',
+				'beforeSwitch':function(index){
+					console.log(index);
+				},
+				'afterSwitch':function(){}
+			});
+
+			var drag1 = new Ac.drag({
+				'target':'.drag-block',
+				'boundary':'#j-drag',
+				'beforeDrag':function(e){
+					console.log(e.target.id);
+				},
+				'onDrag':function(){
+					console.log('onDrag!');
+				},
+				'afterDrag':function(){
+					console.log('afterDrag!');
+				}
+			});
+			var drag2 = new Ac.drag({
+				'target':'#j-drag-block2',
+				'boundary':'#j-drag',
+				'beforeDrag':function(){
+					console.log('beforeDrag2!');
+				},
+				'onDrag':function(){
+					console.log('onDrag2!');
+				},
+				'afterDrag':function(){
+					console.log('afterDrag2!');
+				}
+			});
+			var drag3 = new Ac.drag({
+				'target':'#j-drag-block3',
+				'boundary':'document'
+			});
+			
+		})
+	</script>
+</body>
+</html>

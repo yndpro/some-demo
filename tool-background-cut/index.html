@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+    </style>
+</head>
+<body>
+    <a href="" id="test">test</a>
+    <input type="file" id="btnFile">
+    <a href="javascript:;" id="btnCut">裁切</a>
+    <a href="javascript:;" id="btnSave">保存</a>
+    <div id="wrap"></div>
+</body>
+<script>
+    // var elTest = document.getElementById("test");
+    // elTest.addEventListener("click",function(){
+    //     alert("a")
+    // },false);
+    // var evt = document.createEvent("HTMLEvents");
+    //     evt.initEvent("click",false,false);
+    //     setTimeout(function(){
+            
+    //     },3000);
+        
+
+    
+    var options = {
+        "midWidth":"1000",
+        "simgs":[
+            {
+                "id":"1",
+                "name":"a",
+                "height":"190"
+            },
+            {
+                "id":"2",
+                "name":"a",
+                "height":"252"
+            },
+            {
+                "id":"3",
+                "name":"a",
+                "height":"449"
+            }
+        ],
+        "bimgs":[
+            {
+                "id":"1",
+                "name":"a",
+                "height":"190"
+            }
+        ],
+        
+    }
+
+    var Cut = {
+
+        init : function(options){
+            var ctx = this;
+            //DOM
+            this.btnFile = document.getElementById("btnFile");
+            this.btnSave = document.getElementById("btnSave");
+            this.btnCut = document.getElementById("btnCut");
+            this.wrap    = document.getElementById("wrap");
+
+            this.options = options;
+            //获取图片
+            this.oImg = new Image();
+            this.btnFile.addEventListener("change",function(){
+                var reader = new FileReader();
+                reader.readAsDataURL(ctx.btnFile.files[0]);
+                reader.onload = function(){
+                    //加载图片
+                    ctx.oImg.src = this.result;
+                    ctx.oImg.onload = function(){
+                        
+                    }
+                }
+            },false);
+            
+            //裁切图片
+            this.btnCut.addEventListener("click",function(){
+                ctx.clipSmallImg();
+                ctx.clipHugeImg();
+            },false);
+
+            //保存图片
+            this.btnSave.addEventListener("click",function(){
+                
+                var len = ctx.wrap.children.length;
+                for(var i = 0;i < len;i++){
+                    var canvas = ctx.wrap.children[i];
+
+                    var elLink = document.createElement("a");
+                    var blob = ctx.base64Img2Blob(canvas.toDataURL('image/jpeg'))    //canvas => base64 => blob
+                    elLink.href = canvas.toDataURL('image/jpeg');
+                    elLink.download = "bg_" + i;
+                    elLink.innerHTML = "bg_" + i;
+
+                    //ctx.wrap.appendChild(elLink);
+                    
+                    // var evt = document.createEvent("HTMLEvents");
+                    // evt.initEvent("click",false,false);
+                    // elLink.dispatchEvent(evt);
+                    elLink.click();
+                }
+            },false);
+        
+        },
+
+
+        base64Img2Blob : function (code){
+            var parts = code.split(';base64,');
+            var contentType = parts[0].split(':')[1];
+            var raw = window.atob(parts[1]);
+            var rawLength = raw.length;
+
+            var uInt8Array = new Uint8Array(rawLength);
+
+            for (var i = 0; i < rawLength; ++i) {
+                uInt8Array[i] = raw.charCodeAt(i);
+            }
+
+            return new Blob([uInt8Array], {type: contentType}); 
+        },
+
+        clipHugeImg : function(){
+            var ctx = this;
+            
+            var midWidth = this.options.midWidth;
+            var len = this.options.bimgs.length;
+            var offsetTop = 0;
+
+            // 创建一个画布 镂空
+            var canvas = document.createElement('canvas');
+            
+            
+        },
+
+        clipSmallImg : function(){
+            var ctx = this;
+            
+            var midWidth = this.options.midWidth;
+            var len = this.options.simgs.length;
+            var offsetTop = 0;
+            for(var i = 0;i < len;i++){
+
+                var simg = this.options.simgs[i];
+
+                // 生成画布
+                var canvas = document.createElement('canvas');
+                canvas.width = midWidth;
+                canvas.height = simg.height;
+                this.wrap.appendChild(canvas);
+
+                // 裁切图片
+                var context = canvas.getContext("2d");
+                var param = {
+                    img : this.oImg,
+                    cx : (this.oImg.width - midWidth) / 2,
+                    cy : offsetTop,
+                    cw : parseInt(midWidth),
+                    ch : parseInt(simg.height)
+                }
+                context.drawImage(param.img,param.cx,param.cy,param.cw,param.ch,0,0,param.cw,param.ch);
+
+                offsetTop += parseInt(simg.height);
+            }
+            
+            
+        }
+
+    }
+
+    window.onload = function(){
+        Cut.init(options);
+    }
+</script>
+</html>
