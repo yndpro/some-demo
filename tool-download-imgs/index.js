@@ -1,25 +1,9 @@
-// let arrImgUrl = [];
-// document.querySelectorAll(".swp-hd-list .swp-img").forEach((el) => {
-//     let src 	= el.getAttribute("data-src");
-//     let elImg 	= el.children[0];
-//     if(src){
-//         arrImgUrl.push(src);
-//         return false;
-//     }
-//     if(elImg){
-//         arrImgUrl.push(elImg.src);
-//         return false;
-//     }
-// });
-// console.log(arrImgUrl);
-
-
 const rp = require("request-promise");
 const fs = require("fs");
 const cheerio = require("cheerio");
 const depositPath = "/Users/adrianyoung/Downloads/";
-const name = "韩国美女健身教练、模特RayYang";
-const url = "http://slide.sports.sina.com.cn/o/slide_2_730_200658.html?cre=picpagepc&mod=photo&loc=9&r=0&doct=0&rfunc=47&tj=none#p=2";
+const name = "一组来自模特美女娜娜的运动美照";
+const url = "http://slide.sports.sina.com.cn/o/slide_2_730_226298.html#p=2";
 let downloadPath = "";
 
 
@@ -88,3 +72,54 @@ async function main() {
 }
 
 main();
+
+
+
+
+// var objDownloadImage = (function() {
+//
+// 	function downloadImage(url,filename){
+//         var ele = document.createElementNS('http://www.w3.org/1999/xhtml', 'a'),
+//         	event = document.createEvent('MouseEvents');
+//
+//         ele.href = url;
+//         ele.download = filename + new Date().getTime() + ".jpg";
+//         event.initMouseEvent('click',true,false,window,0,0,0,0,0,false,false,false,false,0,null);
+//         ele.dispatchEvent(event);
+//     }
+//
+// 	return {
+//
+// 		/**
+// 		 *   images download snippet for sina album.
+// 		 */
+// 		forSina : function(){
+// 			var nData = document.getElementById('eData'),
+// 					num = nData.children.length;
+//
+// 			for (var i = 0, len = num; i < len; i++) {
+// 				var nImg = document.createElement("img");
+// 				nImg.src = nData.children[i].getElementsByTagName("dd")[0].innerHTML;
+// 				downloadImage(nImg.src, "liuxiang");
+// 			}
+// 		},
+//
+// 		/**
+// 		 *   images download snippet for sina album.
+// 		 */
+// 		forTmall : function(){
+// 			var nContent = document.getElementById('description'),
+// 					nImgList = nContent.getElementsByTagName('img');
+//
+// 			for(var i = 0,len = nImgList.length;i < len;i++){
+// 				var nImg = nImgList[i];
+// 				downloadImage(nImg.src, "liuxiang");
+// 			}
+// 		}
+// 	}
+//
+// })();
+//
+//
+// objDownloadImage.forTmall();
+//objDownloadImage.forSina();
