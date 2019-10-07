@@ -1,9 +1,8 @@
 const model= require('./model');
 
-const basicPath = "https://www.mzitu.com/159515";
+const basicPath = "https://www.mzitu.com/11062";
 const host = "i5.meizitu.net";
 const depositPath = "/Users/adrianyoung/Downloads/";
-// let name = "网红正妹若彤boomboom";
 
 const main = async _url => {
     let page = await model.getPage(_url);
