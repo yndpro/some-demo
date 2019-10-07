@@ -20,3 +20,24 @@ const main = async _url => {
 };
 
 main(basicPath);
+
+const role = {
+    '许诺Sabrina':'https://www.mzitu.com/tag/xunuo/',
+    '刘奕宁':'https://www.mzitu.com/tag/liuyining/',
+    '筱慧':'https://www.mzitu.com/tag/xiaohui/',
+    'Sugar小甜心(杨晨晨)':'https://www.mzitu.com/tag/xiaotianxin-gugar/',
+    '周于希':'https://www.mzitu.com/tag/zhouyuxi-dummy/',
+    '唐婉儿':'https://www.mzitu.com/tag/tangwaner/',
+    '谢芷馨(绯月樱)':'https://www.mzitu.com/tag/xiezhixin/',
+    '刘钰儿':'https://www.mzitu.com/tag/liuyuer/',
+    '何晨曦':'https://www.mzitu.com/tag/hechenxi/',
+    '于姬Una':'https://www.mzitu.com/tag/yuji-una/',
+    '土肥圆矮挫穷(周妍希)':'https://www.mzitu.com/tag/tufeiyuanai/',
+    '穆菲菲':'https://www.mzitu.com/tag/mufeifei/',
+    '琳琳ailin(小沫琳)':'https://www.mzitu.com/tag/linlin-ailin/',
+    '宋KiKi':'https://www.mzitu.com/tag/song-kiki/',
+    'Luffy菲菲':'https://www.mzitu.com/tag/luffy-feifei/',
+    '王婉悠':'https://www.mzitu.com/tag/wangwanyou/',
+    '顾欣怡':'https://www.mzitu.com/tag/guxinyi/',
+    '卓娅祺':'https://www.mzitu.com/tag/zhuoyaqi/'
+};
