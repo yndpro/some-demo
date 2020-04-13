@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script LANGUAGE="VBSCRIPT">
+        sub CMD()
+        DIM objShell
+        Set objShell=CreateObject("WScript.Shell")
+        objShell.Run "C:\Windows\System32\cmd.exe",1,FALSE
+        Set objShell = Nothing
+        end sub
+    </script>
+    <a href="#" onclick="CMD();">CMD</a>
+</body>
+</html>

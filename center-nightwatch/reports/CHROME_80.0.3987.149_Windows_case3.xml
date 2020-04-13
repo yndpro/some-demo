@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="case3"
+    errors="0" failures="0" hostname="" id="" package="case3" skipped="0"
+    tests="1" time="24.45" timestamp="">
+  
+    <testcase name="loginByUnverify4399AccountInMy.4399.com" classname="case3" time="24.45" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>
