@@ -4,60 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <div class="u-dialog dialog-security">
-        <a href="" class="dialog-close"></a>
-        <div class="dialog-tit">安全验证</div>
-        <div class="dialog-sub">为了您的账号安全，请先验证密保后再完善身份信息</div>
-        <div class="dialog-cont">
-
-            
-            <div class="dialog-tip">您绑定的手机号：<span>152****6152</span></div>
-            <form class="u-form" action="">
-                
-                <div class="form-group form-group-horizen">
-                    <label class="form-label" for="">手机号</label>
-                    <input class="form-control" type="text" value="">
-                    <span class="invalid-feedback">这里显示错误提示</span>
-                </div>
-                <div class="form-group form-group-horizen form-group-verifycode">
-                    <label class="form-label" for="">验证码</label>
-                    <input class="form-control" type="text" value="">
-                    <a href="" class="verifycode">获取验证码</a>
-                    <span class="invalid-feedback"></span>
-                </div>
-                <div class="form-group-btn">
-                    <button type="submit" class="btn btn-primary">提交</button>
-                </div>
-            </form>
-
-
-            <div class="u-tab">
-                <ul class="tab-hd">
-                    <li class="cur"><span>问题验证</span></li>
-                    <li><span></span>邮箱验证</span></li>
-                    <li><span></span>QQ验证</span></li>
-                </ul>
-                <div class="tab-bd">
-                    <div class="tab-cont">
-                        <form class="u-form">
-                            <div class="form-group form-group-vertical">
-                                <label class="form-label" for="">这里显示密保问题？</label>
-                                <input class="form-control" type="text" value="">
-                                <span class="invalid-feedback"></span>
-                            </div>
-                            <div class="form-group-btn">
-                                <button type="submit" class="btn btn-primary">提交</button>
-                            </div>
-                        </form>
+    <button id="trigger">trigger</button>
+    
+    <script type="text/template" id="securityTmpl">
+        <div class="u-dialog dialog-security">
+            <a href="javascript:;" class="dialog-close"></a>
+            <% if(hasSecurity){ %>
+            <div class="dialog-tit">绑定手机号</div>
+            <div class="dialog-sub">为了您的账号安全，请先绑定手机后再完善身份信息</div>
+            <div class="dialog-cont">
+                <form class="u-form" action="">
+                    <div class="form-group form-group-horizen">
+                        <label class="form-label" for="">手机号</label>
+                        <input class="form-control" type="text" value="" name="phone">
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group form-group-horizen form-group-verifycode">
+                        <label class="form-label" for="">验证码</label>
+                        <input class="form-control" type="text" value="" name="verify">
+                        <a href="javascript:;" class="verifycode disable">获取验证码</a>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group-btn">
+                        <button type="submit" class="btn btn-primary disable">提交</button>
+                    </div>
+                </form>
+            </div>
+            <div class="dialog-layer">
+                <div class="dialog-layout-vertical-center">
+                    <a href="javascript:;" class="layer-close"></a>
+                    <div class="dialog-layout-vertical-center-inner">
+                        <div class="dialog-tit">手机验证码已达到发送上限</div>
+                        <div class="dialog-sub">编辑短信<span>709411</span>发送到<span>1069 1189 4399 1</span>即可成功
+                            <br>绑定。（此短信免费）</div>
                     </div>
                 </div>
             </div>
+            <% }else{ %>
+                <div class="dialog-tit">安全验证</div>
+                <div class="dialog-sub">为了您的账号安全，请先验证密保后再完善身份信息</div>
+                <div class="dialog-cont">
+                    <div class="dialog-tip">您绑定的手机号：<span>152****6152</span></div>
+                    <form class="u-form" action="">
+                        <div class="form-group form-group-horizen">
+                            <label class="form-label" for="">手机号</label>
+                            <input class="form-control" type="text" value="">
+                            <div class="invalid-feedback">div</span>
+                        </div>
+                        <div class="form-group form-group-horizen form-group-verifycode">
+                            <label class="form-label" for="">验证码</label>
+                            <input class="form-control" type="text" value="">
+                            <a href="" class="verifycode">获取验证码</a>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group-btn">
+                            <button type="submit" class="btn btn-primary">提交</button>
+                        </div>
+                    </form>
+                </div>
 
-
+                <div class="u-tab">
+                    <ul class="tab-hd">
+                        <li class="cur"><span>问题验证</span></li>
+                        <li><span></span>邮箱验证</span></li>
+                        <li><span></span>QQ验证</span></li>
+                    </ul>
+                    <div class="tab-bd">
+                        <div class="tab-cont">
+                            <form class="u-form">
+                                <div class="form-group form-group-vertical">
+                                    <label class="form-label" for="">这里显示密保问题？</label>
+                                    <input class="form-control" type="text" value="">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="form-group-btn">
+                                    <button type="submit" class="btn btn-primary">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+        <% } %>
+    </script>
+    <script src="./js/jquery.min.1.7.2.js"></script>
+    <script src="./js/baiduTemplate.js"></script>
+    <script src="./js/ks.dialog.js"></script>
+    <script>
+        var securityData = {
+            hasSecurity : true,
+            hasBindedPhone : true
+        }
+        var strategies = {
+            isEmpty :function(value, errorMsg) {
+                return value === '' ?
+                    errorMsg : void 0
+            },
+            isMoblie :function(value, errorMsg) {
+                if(value == "")
+                    return void 0;
+
+                return !/^0?(13|14|15|17|18)[0-9]{9}$/.test(value) ?
+                    errorMsg : void 0
+            },
+            isNumber : function(value,errorMsg) {
+                var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+                var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+                if(regPos.test(value) && regNeg.test(value)){
+                    return void 0;
+                }else{
+                    return errorMsg;
+                }
+            },
+            maxLength :function(value, length ,errorMsg) {
+                return value.length > length ?
+                    errorMsg : void 0
+            }
+        };
+
+        var ValidateModel = {
+            cache : [],
+            add : function(dom,rules){
+                var _this = this;
+
+                for(var i=0;i < rules.length;i++){
+                    (function (i){
+                        var rule = rules[i];
+                        var strategyArr = rule.strategy.split(':');
+                        var strategy = strategyArr.shift();
+                        strategyArr.unshift(dom.value);
+                        strategyArr.push(rule.errorMsg);
+                        _this.cache.push({
+                            dom : dom,
+                            handle : function(){
+                                return strategies[strategy].apply(dom,strategyArr);
+                            }
+                        })
+                    })(i)
+                }
+            },
+            start : function(){
+                for(var i=0;i < this.cache.length;i++){
+                    var errorMsg = this.cache[i].handle();
+                    if(errorMsg){
+                        return errorMsg
+                    }
+                }
+            }
+        }
+
+        
+        $(document).on("click","#trigger",function(params) {
+            ue.dialog({
+                id: "j-security_popup",
+                content: baidu.template('securityTmpl',securityData),
+                lock: true,
+                force: true,
+                drag : true,
+                closeBtn: ".dialog-close",
+                init: function () {
+                    var _pop = this,
+                        $pop = this.obj;
+
+                    $pop.on('click','.dialog-close',function(){
+                        _pop.close();
+                    });
+                    $pop.on('click','.layer-close',function(){
+                        $pop.find('.dialog-layer').hide();
+                    });
+
+                    $pop.find('input[name=phone]').bind('input propertychange',function(){
+                        
+                        this.value = this.value.replace(/[^\d]/g,'');
+                        this.value = this.value.slice(0,11);
+                        
+                        checkBtnAvailable();
+                        inputCheck(this,[{
+                            strategy: 'isEmpty',errorMsg: '手机号不能为空'
+                        },{
+                            strategy: 'isMoblie',errorMsg: '请输入正确手机号'
+                        }]);
+                    });
+                    $pop.find('input[name=verify]').bind('input propertychange',function(){
+                        this.value = this.value.slice(0,6);
+
+                        checkBtnAvailable();
+                        inputCheck(this,[{
+                            strategy: 'isEmpty',errorMsg: '验证码不能为空'
+                        }]);
+                    })
+                    $pop.find(".verifycode").bind('click',function(){
+                        if($(this).hasClass("disable")){
+                            return false
+                        }
+                        $pop.find('.dialog-layer').show();
+                        //countDown();
+                        // $.post("-ajaxGetFireCode", {}, function (result) {
+                        //     
+                        // },"json");
+                    })
+                    $pop.find(".btn-primary").bind('click',function(){
+                        if($(this).hasClass("disable")){
+                            return false
+                        }
+                    })
+
+                    function inputCheck(dom,rules){
+                        var $error = $(dom).closest(".form-group").find(".invalid-feedback");
+                        $error.html('').hide();
+                        ValidateModel.cache = [];
+                        ValidateModel.add(dom,rules);
+                        var errorMsg = ValidateModel.start();
+                        if(errorMsg){
+                            $error.html(errorMsg).show();
+                        }
+                    }
+                    
+                    function checkBtnAvailable(){
+                        if($pop.find('input[name=phone]').val().length >= 11){
+                            $pop.find(".verifycode").removeClass("disable");
+                            console.log($pop.find('input[name=verify]').val());
+                            if($pop.find('input[name=verify]').val() === ""){
+                                $pop.find(".btn-primary").addClass("disable");
+                            }else{
+                                $pop.find(".btn-primary").removeClass("disable");
+                            }
+                        }else{
+                            $pop.find(".verifycode").addClass("disable");
+                        }
+                    }
+                    
+                    function countDown(){
+                        var _t = 6;
+                        function countTime(){		
+                            _t--;
+                            if( _t<=0 ){
+                                $pop.find(".verifycode").attr("class","verifycode").html('重新获取');
+                            }else{
+                                $pop.find(".verifycode").attr("class","verifycode disable").html('已发送（' + _t +'S）');
+                                setTimeout(arguments.callee,1000);
+                            }
+                        }
+                        setTimeout(countTime,1000);
+                    }
+
+                    // this.add(form['teamName'], [{
+                    //     strategy: 'isNonEmpty',errorMsg: '队伍名称不能为空'
+                    // }]);
+
+                    // this.subMember.map((item,index) => {
+                    //     if(form[`alternate[${item - 1}][name]`].value){
+                    //         this.add(form[`alternate[${item - 1}][lv]`], [{
+                    //             strategy: 'isNonEmpty',errorMsg: `替补队员${item}段位不能为空`
+                    //         }]);
+                    //         this.add(form[`alternate[${item - 1}][qq]`], [{
+                    //             strategy: 'isNonEmpty',errorMsg: `替补队员${item}手机号不能为空`
+                    //         },{
+                    //             strategy: 'isQQ',errorMsg: `请填写正确的替补队员${item}手机号`
+                    //         }]);
+                    //     }
+                    // });
+
+
+                    // let errorMsg = this.start();
+                    // if(errorMsg){
+                    //     tip.innerHTML = errorMsg;
+                    //     return false
+                    // }else{
+                    //     return true
+                    // }
+
+                },
+                afterClose: function() {
+                    
+                }
+            });
+        })
+    </script>
 </body>
 </html>

@@ -92,11 +92,26 @@ img {
 .u-dialog{
     width: 400px;
     padding: 0 30px;
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
 }
 .u-dialog *{
     color: #444444;
     font-size: 14px;
     font-family: "microsoft yahei", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+.dialog-close{
+    position: absolute;
+    top: 23px;
+    right: 30px;
+    width: 22px;
+    height: 22px;
+    background:url(../images/close.png) no-repeat;
+}
+.dialog-close:hover{
+    background-image:url(../images/close_h.png);
 }
 .dialog-tit{
     text-align: center;
@@ -108,6 +123,9 @@ img {
 .dialog-sub{
     margin-bottom: 4px;
     line-height: 28px;
+}
+.dialog-sub span{
+    color: #ffa92d;
 }
 .dialog-tip{
     color: #999999;
@@ -123,6 +141,34 @@ img {
 .dialog-cont{
     
 }
+.dialog-layer{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: none;
+}
+.dialog-layer .layer-close{
+    position: absolute;
+    top: 23px;
+    right: 30px;
+    width: 22px;
+    height: 22px;
+    background: url(../images/close.png) no-repeat;
+}
+.dialog-layout-vertical-center{
+    display: table;
+}
+.dialog-layout-vertical-center-inner{
+    display: table-cell;
+    vertical-align:middle;
+}
+
+
+
+
 input[type=text].form-control{
     padding: 0 10px;
     line-height: 32px;
@@ -165,7 +211,7 @@ label.form-label{
     padding: 16px 0;
 }
 .verifycode{
-    background: #c8c8c8;
+    background: #70c700;
     width: 98px;
     text-align: center;
     line-height: 34px;
@@ -173,6 +219,14 @@ label.form-label{
     float: right;
     border-radius: 4px;
     text-decoration: none;
+}
+.verifycode:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.verifycode.disable{
+    background: #c8c8c8;
+    cursor: default;
 }
 .invalid-feedback{
     line-height: 14px;
@@ -182,6 +236,7 @@ label.form-label{
     display: inline-block;
     padding-top: 11px;
     display: none;
+    background:url(../images/icon_invalid.png) no-repeat 11px 11px;
 }
 .btn-primary{
     width: 120px;
@@ -195,12 +250,17 @@ label.form-label{
     border-radius: 4px;
     cursor: pointer;
 }
+.btn.disable{
+    background: #c8c8c8;
+    cursor: default;
+}
 
 .u-tab{
     overflow: hidden;
 }
 .u-tab .tab-hd{
     height: 33px;
+    margin-bottom: 10px;
     border-bottom: 1px solid #e5e5e5;
 }
 .u-tab li{
@@ -214,4 +274,16 @@ label.form-label{
 .u-tab li.cur span{
     display: block;
     border-bottom: 2px solid #70c700;
+}
+
+.dialog-security .dialog-layer .dialog-tit{
+    padding-top: 0;
+}
+.dialog-security .dialog-layout-vertical-center{
+    padding: 0 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 340px;
+    height: 100%;
 }
