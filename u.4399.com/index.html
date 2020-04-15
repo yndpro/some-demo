@@ -16,7 +16,7 @@
             <div class="dialog-tit">绑定手机号</div>
             <div class="dialog-sub">为了您的账号安全，请先绑定手机后再完善身份信息</div>
             <div class="dialog-cont">
-                <form class="u-form" action="">
+                <form class="u-form" name="bind" action="">
                     <div class="form-group form-group-horizen">
                         <label class="form-label" for="">手机号</label>
                         <input class="form-control" type="text" value="" name="phone">
@@ -47,24 +47,22 @@
                 <div class="dialog-tit">安全验证</div>
                 <div class="dialog-sub">为了您的账号安全，请先验证密保后再完善身份信息</div>
                 <% if(hasBindedPhone){ %>
-                <div class="dialog-tit">安全验证</div>
-                <div class="dialog-sub">为了您的账号安全，请先验证密保后再完善身份信息</div>
                 <div class="dialog-cont">
                     <div class="dialog-tip">您绑定的手机号：<span>152****6152</span></div>
-                    <form class="u-form" action="">
+                    <form class="u-form" name="bind" action="">
                         <div class="form-group form-group-horizen">
                             <label class="form-label" for="">手机号</label>
-                            <input class="form-control" type="text" value="">
-                            <div class="invalid-feedback">div</span>
+                            <input class="form-control" type="text" value="" name="phone">
+                            <div class="invalid-feedback"></div>
                         </div>
                         <div class="form-group form-group-horizen form-group-verifycode">
                             <label class="form-label" for="">验证码</label>
-                            <input class="form-control" type="text" value="">
-                            <a href="javascript:;" class="verifycode">获取验证码</a>
+                            <input class="form-control" type="text" value="" name="verify">
+                            <a href="javascript:;" class="verifycode disable">获取验证码</a>
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="form-group-btn">
-                            <button type="submit" class="btn btn-primary">提交</button>
+                            <button type="submit" class="btn btn-primary disable">提交</button>
                         </div>
                     </form>
                 </div>
@@ -77,8 +75,8 @@
                             <li><span>QQ验证</span></li>
                         </ul>
                         <div class="tab-bd">
-                            <div class="tab-cont tab-cont-qa" style="display:block;">
-                                <form class="u-form">
+                            <div class="tab-cont" style="display:block;">
+                                <form class="u-form" name="qa">
                                     <div class="form-group form-group-vertical">
                                         <label class="form-label" for="">这里显示密保问题？</label>
                                         <input class="form-control" name="q1" type="text" value="">
@@ -99,31 +97,31 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="tab-cont tab-cont-email">
+                            <div class="tab-cont">
                                 <div class="dialog-tip">我们将向您的QQ邮箱（<span>393546680@qq.com</span>）发送一封
                                     <br>验证邮件，验证码5分钟内有效，请尽快前往验证。</div>
-                                <form class="u-form">
+                                <form class="u-form form-email" name="email">
                                     <div class="form-group form-group-horizen form-group-verifycode">
-                                        <input class="form-control" type="text" value="">
+                                        <input class="form-control" type="text" value="" name="verify">
                                         <a href="javascript:;" class="verifycode">获取验证码</a>
                                         <div class="invalid-feedback"></div>
                                     </div>
                                     <div class="form-group-btn">
-                                        <button type="submit" class="btn btn-primary">提交</button>
+                                        <button type="submit" class="btn btn-primary disable">提交</button>
                                     </div>
                                 </form>
                             </div>
-                            <div class="tab-cont tab-cont-qq">
+                            <div class="tab-cont">
                                 <div class="dialog-tip">我们将向您的QQ邮箱（<span>393546680@qq.com</span>）发送一封
                                     <br>验证邮件，验证码5分钟内有效，请尽快前往验证。</div>
-                                <form class="u-form">
+                                <form class="u-form form-qq" name="qq">
                                     <div class="form-group form-group-horizen form-group-verifycode">
-                                        <input class="form-control" type="text" value="">
+                                        <input class="form-control" type="text" value="" name="verify">
                                         <a href="javascript:;" class="verifycode">获取验证码</a>
                                         <div class="invalid-feedback"></div>
                                     </div>
                                     <div class="form-group-btn">
-                                        <button type="submit" class="btn btn-primary">提交</button>
+                                        <button type="submit" class="btn btn-primary disable">提交</button>
                                     </div>
                                 </form>
                             </div>
@@ -141,7 +139,7 @@
     <script>
         var securityData = {
             hasSecurity : false,
-            hasBindedPhone : false
+            hasBindedPhone : true
         }
         var strategies = {
             isEmpty :function(value, errorMsg) {
@@ -226,50 +224,68 @@
                         $pop.find('.u-tab .tab-cont').eq(index).show().siblings().hide();
                     })
                     
-                    //手机号输入框
-                    $pop.find('input[name=phone]').bind('input propertychange',function(){
-                        
-                        this.value = this.value.replace(/[^\d]/g,'');
-                        this.value = this.value.slice(0,11);
-                        
-                        checkBtnAvailable();
-                        inputCheck(this,[{
-                            strategy: 'isEmpty',errorMsg: '手机号不能为空'
-                        },{
-                            strategy: 'isMoblie',errorMsg: '请输入正确手机号'
-                        }]);
-                    });
+                
+                    var forms = [
+                        $pop.find(".u-form[name='bind']")[0],
+                        $pop.find(".u-form[name='qa']")[0],
+                        $pop.find(".u-form[name='email']")[0],
+                        $pop.find(".u-form[name='qq']")[0]
+                    ]
 
-                    //验证码输入框
-                    $pop.find('input[name=verify]').bind('input propertychange',function(){
-                        this.value = this.value.slice(0,6);
+                    $.each(forms,function(j,form) {
+                        if(!form) return true;
+                        var $form = $(form);
 
-                        checkBtnAvailable();
-                        inputCheck(this,[{
-                            strategy: 'isEmpty',errorMsg: '验证码不能为空'
-                        }]);
-                    })
-
-                    //密保问题输入框
-                    for (var i = 1; i <= 3; i++) {
-                        $pop.find('input[name=q' + i + ']').bind('input propertychange',function(){
+                        //手机号输入框
+                        $form.find('input[name=phone]').bind('input propertychange',function(){
+                            
+                            this.value = this.value.replace(/[^\d]/g,'');
+                            this.value = this.value.slice(0,11);
+                            
+                            checkBtnAvailable(form);
                             inputCheck(this,[{
-                                strategy: 'isEmpty',errorMsg: '密保问题不能为空'
+                                strategy: 'isEmpty',errorMsg: '手机号不能为空'
+                            },{
+                                strategy: 'isMoblie',errorMsg: '请输入正确手机号'
+                            }]);
+                        });
+
+                        //验证码输入框
+                        $form.find('input[name=verify]').bind('input propertychange',function(){
+                            this.value = this.value.slice(0,6);
+
+                            checkBtnAvailable(form);
+                            inputCheck(this,[{
+                                strategy: 'isEmpty',errorMsg: '验证码不能为空'
                             }]);
                         })
-                    }
 
-                    //获取验证码
-                    $pop.find(".verifycode").bind('click',function(){
-                        if($(this).hasClass("disable")){
-                            return false
+                        //获取验证码
+                        $form.find(".verifycode").bind('click',function(){
+                            if($(this).hasClass("disable")){
+                                return false
+                            }
+                            $pop.find('.dialog-layer').show();
+                            countDown(form);
+                            // $.post("-ajaxGetFireCode", {}, function (result) {
+                            //     
+                            // },"json");
+                        })
+
+                        //密保问题输入框
+                        for (var i = 1; i <= 3; i++) {
+                            $form.find('input[name=q' + i + ']').bind('input propertychange',function(){
+                                inputCheck(this,[{
+                                    strategy: 'isEmpty',errorMsg: '密保问题不能为空'
+                                }]);
+                            })
                         }
-                        $pop.find('.dialog-layer').show();
-                        countDown();
-                        // $.post("-ajaxGetFireCode", {}, function (result) {
-                        //     
-                        // },"json");
+
+
                     })
+                    
+
+                    
 
                     //提交问题验证
                     $pop.find(".j-submit-qa").bind('click',function(){
@@ -290,7 +306,6 @@
                     })
                     
                     
-
                     function inputCheck(dom,rules){
                         var $error = $(dom).closest(".form-group").find(".invalid-feedback");
                         $error.html('').hide();
@@ -304,28 +319,39 @@
                         return true
                     }
                     
-                    function checkBtnAvailable(){
-                        if($pop.find('input[name=phone]').val().length >= 11){
-                            $pop.find(".verifycode").removeClass("disable");
-                        }else{
-                            $pop.find(".verifycode").addClass("disable");
+                    function checkBtnAvailable(form){
+                        var $form = $(form);
+                        
+                        if(($form.find('input[name=phone]').length > 0) && ($form.find('input[name=verify]').length > 0)){
+                            if($form.find('input[name=phone]').val().length >= 11){
+                                $form.find(".verifycode").removeClass("disable");
+                            }else{
+                                $form.find(".verifycode").addClass("disable");
+                            }
+                            if(($form.find('input[name=phone]').val().length >= 11) && ($form.find('input[name=verify]').val() != "")){
+                                $form.find(".btn-primary").removeClass("disable");
+                            }else{
+                                $form.find(".btn-primary").addClass("disable");
+                            }
                         }
-                       
-                        if(($pop.find('input[name=phone]').val().length >= 11) && ($pop.find('input[name=verify]').val() != "")){
-                            $pop.find(".btn-primary").removeClass("disable");
-                        }else{
-                            $pop.find(".btn-primary").addClass("disable");
+                        if($form.find('input[name=verify]').length > 0){
+                            if($form.find('input[name=verify]').val() != ""){
+                                $form.find(".btn-primary").removeClass("disable");
+                            }else{
+                                $form.find(".btn-primary").addClass("disable");
+                            }
                         }
                     }
                     
-                    function countDown(){
+                    function countDown(form){
+                        var $form = $(form);
                         var _t = 6;
                         function countTime(){		
                             _t--;
                             if( _t<=0 ){
-                                $pop.find(".verifycode").attr("class","verifycode").html('重新获取');
+                                $form.find(".verifycode").attr("class","verifycode").html('重新获取');
                             }else{
-                                $pop.find(".verifycode").attr("class","verifycode disable").html('已发送（' + _t +'S）');
+                                $form.find(".verifycode").attr("class","verifycode disable").html('已发送（' + _t +'S）');
                                 setTimeout(arguments.callee,1000);
                             }
                         }

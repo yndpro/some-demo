@@ -291,9 +291,11 @@ label.form-label{
     width: 340px;
     height: 100%;
 }
-.tab-cont-email .form-group-verifycode{
+.form-email .form-group-verifycode,
+.form-qq .form-group-verifycode{
     padding-left: 0;
 }
-.tab-cont-email .form-group-verifycode input[type=text].form-control{
+.form-email .form-group-verifycode input[type=text].form-control,
+.form-qq .form-group-verifycode input[type=text].form-control{
     width: 268px;
 }
