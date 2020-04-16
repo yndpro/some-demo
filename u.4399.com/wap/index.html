@@ -20,7 +20,7 @@
     <div class="u-alert alert-warning">
         为了您的账号安全，请先绑定手机后完善身份信息
     </div>
-    <div class="u-section" style="display: none;">
+    <div class="u-section">
         <form class="u-form" name="phone" action="">
             <div class="invalid-feedback j-global-invalid-feedback"></div>
             <div class="bind-phone">
@@ -218,6 +218,12 @@
                 
                 this.value = this.value.replace(/[^\d]/g,'');
                 this.value = this.value.slice(0,11);
+
+                if(this.value == ""){
+                    $(this).closest(".form-group").find(".form-clear").hide()
+                }else{
+                    $(this).closest(".form-group").find(".form-clear").show()
+                }
                 
                 checkBtnAvailable(form);
                 inputCheck(this,globalInvalidFeedback,[{
@@ -226,6 +232,11 @@
                     strategy: 'isMoblie',errorMsg: '请输入正确手机号'
                 }]);
             });
+
+            $form.find('.form-clear').bind('click',function(){
+                $(this).closest(".form-group").find("input[type=text]").val("").trigger("input");
+                return false
+            })
 
             //验证码输入框
             $form.find('input[name=verify]').bind('input propertychange',function(){
