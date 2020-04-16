@@ -20,7 +20,7 @@
     <div class="u-alert alert-warning">
         为了您的账号安全，请先绑定手机后完善身份信息
     </div>
-    <div class="u-section">
+    <div class="u-section" style="display: none;">
         <form class="u-form" name="phone" action="">
             <div class="invalid-feedback j-global-invalid-feedback"></div>
             <div class="bind-phone">
@@ -44,6 +44,85 @@
                 <button type="button" class="btn btn-primary disable">提交</button>
             </div>
         </form>
+    </div>
+    
+    <div class="u-tab">
+        <ul class="tab-hd">
+            <li class="cur">问题验证</li>
+            <li>邮箱验证</li>
+            <li>QQ验证</li>
+        </ul>
+        <div class="tab-bd">
+            <div class="tab-cont" style="display:block;">
+                <div class="u-section">
+                    <form class="u-form" name="qa">
+                        <div class="form-group form-group-vertical">
+                            <label class="form-label">问题1</label>
+                            <div class="form-control">
+                                <input class="" type="text" name="q1">
+                            </div>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group form-group-vertical">
+                            <label class="form-label">问题2</label>
+                            <div class="form-control">
+                                <input class="" type="text" name="q2">
+                            </div>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group form-group-vertical">
+                            <label class="form-label">问题3</label>
+                            <div class="form-control">
+                                <input class="" type="text" name="q3">
+                            </div>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group-btn">
+                            <button type="button" class="btn btn-primary">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-cont">
+                <div class="u-section">
+                    <form class="u-form form-email" name="email">
+                        <div class="invalid-feedback j-global-invalid-feedback"></div>
+                        <div class="form-group form-group-horizen form-group-verifycode">
+                            <label class="form-label">验证码</label>
+                            <div class="form-control">
+                                <input class="" type="text" name="verify">
+                            </div>
+                            <a href="javascript:;" class="verifycode" iscounting="false">获取验证码</a>
+                        </div>
+                        <div class="form-group-btn">
+                            <button type="button" class="btn btn-primary disable">提交</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="u-txt">我们将向您的QQ邮箱（<span>393546680@qq.com</span>）发送一封验证邮件，验证码5分钟内有效，请尽快前往验证。</div>
+            </div>
+            <div class="tab-cont">
+                <div class="u-section">
+                    <form class="u-form form-qq" name="qq">
+                        <div class="invalid-feedback j-global-invalid-feedback"></div>
+                        <div class="form-group form-group-horizen form-group-verifycode">
+                            <label class="form-label">验证码</label>
+                            <div class="form-control">
+                                <input class="" type="text" name="verify">
+                            </div>
+                            <a href="javascript:;" class="verifycode" iscounting="false">获取验证码</a>
+                        </div>
+                        <div class="form-group-btn">
+                            <button type="button" class="btn btn-primary disable">提交</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="u-txt">我们将向您的QQ邮箱（<span>393546680@qq.com</span>）发送一封验证邮件，验证码5分钟内有效，请尽快前往验证。</div>
+            </div>
+        </div>
+    </div>
+
+
     </div>
     <div class="u-dialog-wrap" id="j-limitSms-dialog">
         <div class="u-dialog-mask"></div>
@@ -153,13 +232,15 @@
                 this.value = this.value.slice(0,6);
 
                 checkBtnAvailable(form);
-                if(!inputCheck($form.find('input[name=phone]')[0],globalInvalidFeedback,[{
-                    strategy: 'noEmpty',errorMsg: '手机号不能为空'
-                },{
-                    strategy: 'isMoblie',errorMsg: '请输入正确手机号'
-                }])){
-                    return false
-                };
+                if($form.find('input[name=phone]').length > 0){
+                    if(!inputCheck($form.find('input[name=phone]')[0],globalInvalidFeedback,[{
+                        strategy: 'noEmpty',errorMsg: '手机号不能为空'
+                    },{
+                        strategy: 'isMoblie',errorMsg: '请输入正确手机号'
+                    }])){
+                        return false
+                    };
+                }
                 inputCheck(this,globalInvalidFeedback,[{
                     strategy: 'noEmpty',errorMsg: '验证码不能为空'
                 }]);
@@ -171,7 +252,7 @@
                 if($(this).hasClass("disable")){
                     return false
                 }
-                if($form.find('input[name=phone]')[0].length > 0){
+                if($form.find('input[name=phone]').length > 0){
                     if(!inputCheck($form.find('input[name=phone]')[0],globalInvalidFeedback,[{
                         strategy: 'noEmpty',errorMsg: '手机号不能为空'
                     },{
@@ -190,7 +271,7 @@
             //密保问题输入框
             for (var i = 1; i <= 3; i++) {
                 $form.find('input[name=q' + i + ']').bind('input propertychange',function(){
-                    inputCheck(this,globalInvalidFeedback,[{
+                    inputCheck(this,$(this).closest(".form-group").find(".invalid-feedback")[0],[{
                         strategy: 'noEmpty',errorMsg: '密保问题不能为空'
                     }]);
                 })
@@ -218,7 +299,9 @@
                 }
                 if(form.name == "qa"){
                     for (var i = 1; i <= 3; i++) {
-                        errorMsg = inputCheck($form.find('input[name=q' + i + ']')[0],globalInvalidFeedback,[{
+                        var _dom = $form.find('input[name=q' + i + ']')[0],
+                            _invalidFeedback = $form.find('input[name=q' + i + ']').closest(".form-group").find(".invalid-feedback")[0];
+                        errorMsg = inputCheck(_dom,_invalidFeedback,[{
                             strategy: 'noEmpty',errorMsg: '密保问题不能为空'
                         }])
                     }
