@@ -1,0 +1,223 @@
+body, button, input, select, textarea{ font:14px/1.125 "Microsoft Yahei",Arial,Helvetica,sans-serif;}
+    body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, th, td, p, blockquote, pre, form, fieldset, legend, input, button, textarea, hr { margin: 0; padding: 0;}
+    img{ border: 0 none;}
+    ul, ol{ list-style-type: none;}
+    input, button, select, textarea{ outline: medium none;}
+    body{ background:#eee;}
+    a{ text-decoration:none;}
+    .left{ float:left;}
+    .right{ float:right;}
+    .clearfix:after{ content:""; height:0; visibility:hidden; display:block; clear:both;}
+    .clearfix{ zoom:1;}
+
+    input:-webkit-autofill {   
+        -webkit-box-shadow: 0 0 0px 100px #fff inset !important;   
+        box-shadow: 0 0 0px 100px #fff inset !important;   
+    }  
+
+    body{
+        color: #666;
+    }
+
+.u-head {
+    background:#2b2b2b;
+    width:100%;
+    height:48px;
+    line-height:46px;
+    position:relative;
+}
+.u-head h2 {
+    padding:0 20px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    font-size:20px;
+    color:#fff;
+    font-weight:500;
+    text-align:center;
+    text-shadow:0 -1px 1px rgba(0, 0, 0, 0.35);
+}
+.u-section{
+    margin: 0 10px;
+    padding-top: 10px;
+    position: relative;
+}
+
+
+/* u-form*/
+.form-group{
+    position: relative;
+    margin-bottom: 8px;
+}
+.u-form .form-group:last-of-type{
+    margin-bottom: 0;
+}
+.form-group-btn{
+    padding-top: 20px;
+}
+.form-control{
+    background-color: #fff;
+    border: solid 1px #e0e0e0;
+    border-radius: 3px;
+}
+.form-control input[type=text]{
+    width: 100%;
+    padding: 18px 0;
+    height: 18px;
+    line-height: 18px;
+    margin: 0 auto;
+    display: block;
+    border: 0 none;
+}
+.form-group-horizen .form-control{
+    padding: 0 30px 0 70px;
+}
+.form-group-horizen .form-label{
+    position: absolute;
+    height: 54px;
+    line-height: 54px;
+    color: #666;
+    width: 70px;
+    text-align: center;
+}
+.form-clear{
+    background: url(../images/ico_clear.png) 0 0 no-repeat;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    margin-top: -8px;
+    right: 10px;
+    position: absolute;
+}
+.form-group-verifycode .form-control{
+    margin-right: 110px;
+    padding-right: 0;
+}
+
+
+.verifycode {
+    background: #70c700;
+    width: 98px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top:0;
+    right: 0;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.verifycode.disable{
+    background: #bbbbbb;
+}
+
+/* u-btn*/
+.btn-primary {
+    -webkit-appearance: none;
+    background: #70c700;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 0 none;
+    color: #fff;
+    border-radius: 3px;
+}
+.btn.disable{
+    background: #bbbbbb;
+}
+
+/* u-alert*/
+.u-alert{
+    padding: 4px 10px;
+    line-height: 28px;
+}
+.u-alert.alert-warning{
+    color: #585247;
+    background-color: #fff1d2;
+    border-color: #fff1d2;
+}
+
+
+/* u-dialog*/
+.u-dialog-wrap{
+    display: none;
+}
+.u-dialog-mask{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 100;
+}
+.u-dialog{
+    width: 270px;
+    background: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin: -90px 0 0 -135px;
+    z-index: 110;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+.dialog-content{
+    padding: 25px 30px;
+    line-height: 24px;
+    color: #666;
+    font-size: 12px;
+}
+.dialog-content p{
+
+}
+.dialog-content p span{
+    color: #ffa92d;
+}
+.dialog-btns{
+    border-top: 1px solid #ddd;
+    overflow: hidden;
+    background: #fff;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.dialog-btn{
+    float: left;
+    width: 50%;
+    text-align: center;
+    line-height: 48px;
+    border-right: 1px solid #ddd;
+    margin-right: -2px;
+    color: #666;
+}
+.dialog-btn-primary{
+    color: #70c700;
+}
+
+
+.invalid-feedback{
+    background: url(../images/ico_waring.png) 0 1px no-repeat;
+    background-size: 16px 16px;
+    line-height: 18px;
+    padding: 0 0 5px 22px;
+    font-size: 15px;
+    color: #ff5b45;
+    display: none;
+}
+
+
+
+
+/*custorm*/
+.bind-phone{
+    line-height: 28px;
+    margin-bottom: 5px;
+}
+.bind-phone span{
+    color: #ffa92d;
+}

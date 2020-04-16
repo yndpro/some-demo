@@ -127,7 +127,7 @@ img {
 .dialog-sub span{
     color: #ffa92d;
 }
-.dialog-tip{
+.dialog-txt{
     color: #999999;
     background: #f2f2f2;
     line-height: 28px;
@@ -135,7 +135,7 @@ img {
     border-radius: 8px;
     margin-bottom: 20px;
 }
-.dialog-tip span{
+.dialog-txt span{
     color: #ffa92d;
 }
 .dialog-cont{
@@ -270,6 +270,7 @@ label.form-label{
     padding-right: 20px;
     margin-right: 20px;
     cursor: pointer;
+    background: url(../images/line_v.png) no-repeat right center;
 }
 .u-tab li.cur span{
     display: block;
