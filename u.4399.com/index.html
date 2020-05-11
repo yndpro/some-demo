@@ -12,10 +12,10 @@
     <script type="text/template" id="securityTmpl">
         <div class="u-dialog dialog-security">
             <a href="javascript:;" class="dialog-close"></a>
-            <% if(hasSecurity){ %>
+            <% if(list){ %>
                 <div class="dialog-tit">安全验证</div>
                 <div class="dialog-sub">为了您的账号安全，请先验证密保后再完善身份信息</div>
-                <% if(hasBindedPhone){ %>
+                <% if(list.phone){ %>
                 <div class="dialog-cont">
                     <div class="dialog-txt">您绑定的手机号：<span id="j-binded-phone" phone="15256786152">152****6152</span></div>
                     <form class="u-form" name="phone" action="">
@@ -39,9 +39,17 @@
                 <div class="dialog-cont">
                     <div class="u-tab">
                         <ul class="tab-hd">
-                            <li class="cur"><span>问题验证</span></li>
-                            <li><span>邮箱验证</span></li>
-                            <li><span>QQ验证</span></li>
+                            <% for(var i = 0;i < list.length;i++){%>
+                            <li data-type="<%=list[i]%>" class="cur"><span>
+                                <% if(list.phone){ %>
+
+                                <% }else if(list.phone){ %>
+
+                                <% }else{ %>
+
+                                <% } %>
+                            </span></li>
+                            <% } %>
                         </ul>
                         <div class="tab-bd">
                             <div class="tab-cont" style="display:block;">
@@ -136,11 +144,11 @@
     <script src="./js/jquery.min.1.7.2.js"></script>
     <script src="./js/baiduTemplate.js"></script>
     <script src="./js/ks.dialog.js"></script>
+    <script src="./mock/mock-min.js"></script>
+    <script src="./mock/mock.js"></script>
     <script>
-        var securityData = {
-            hasSecurity : true,
-            hasBindedPhone : true
-        }
+        var host = "http://api.com";
+        
         var strategies = {
             noEmpty :function(value) {
                 return value === '' ?
@@ -186,12 +194,21 @@
                 }
             }
         }
-
         
         $(document).on("click","#trigger",function(params) {
-            ue.dialog({
+            var data = {};
+            $.getJSON(host + '/anquan/safe/?_c=verify&_a=checkVerifyStatus', function (res) {
+                
+                if(res.status){
+                    data.hasSecurity = true;
+                }else{
+                    $.getJSON('/anquan/safe/?_c=verify&_a=userInfo&jsoncallback=?', function (data) {
+                        console.log(data);
+                    });
+                }
+                ue.dialog({
                 id: "j-security_popup",
-                content: baidu.template('securityTmpl',securityData),
+                content: baidu.template('securityTmpl',data),
                 lock: true,
                 force: true,
                 drag : true,
@@ -264,11 +281,17 @@
                                     return false
                                 };
                             }
-                            $pop.find('.dialog-layer').show();
-                            countDown(form);
-                            // $.post("-ajaxGetFireCode", {}, function (result) {
-                            //     
-                            // },"json");
+                            $.post("http://api.com/getPhoneVerifyCode", {}, function (res) {
+                                if(res.code == 100){
+                                    if(res.result){
+                                        countDown(form);
+                                    }else{
+                                        $pop.find('.dialog-layer').show();
+                                    }
+                                }else{
+                                    alert(res.msg)
+                                }
+                            },"json");
                         })
 
                         //密保问题输入框
@@ -382,6 +405,213 @@
                     
                 }
             });
+                
+            })
+            // $.post("http://api.com/getSecurityInfo", {}, function (res) {
+            //     if(res.code == 100){
+                    
+            //         ue.dialog({
+            //     id: "j-security_popup",
+            //     content: baidu.template('securityTmpl',res.result),
+            //     lock: true,
+            //     force: true,
+            //     drag : true,
+            //     closeBtn: ".dialog-close",
+            //     init: function () {
+            //         var _pop = this,
+            //             $pop = this.obj;
+
+            //         $pop.on('click','.dialog-close',function(){
+            //             _pop.close();
+            //         });
+            //         $pop.on('click','.layer-close',function(){
+            //             $pop.find('.dialog-layer').hide();
+            //         });
+            //         $pop.find('.u-tab li').bind('click',function(){
+            //             var index = $(this).index();
+            //             $(this).addClass("cur").siblings().removeClass("cur");
+            //             $pop.find('.u-tab .tab-cont').eq(index).show().siblings().hide();
+            //         })
+                    
+                
+            //         var forms = [
+            //             $pop.find(".u-form[name='bind']")[0],
+            //             $pop.find(".u-form[name='phone']")[0],
+            //             $pop.find(".u-form[name='qa']")[0],
+            //             $pop.find(".u-form[name='email']")[0],
+            //             $pop.find(".u-form[name='qq']")[0]
+            //         ]
+
+            //         $.each(forms,function(j,form) {
+            //             if(!form) return true;
+            //             var $form = $(form)
+                            
+
+            //             //手机号输入框
+            //             $form.find('input[name=phone]').bind('input propertychange',function(){
+                            
+            //                 this.value = this.value.replace(/[^\d]/g,'');
+            //                 this.value = this.value.slice(0,11);
+                            
+            //                 checkBtnAvailable(form);
+            //                 inputCheck(this,[{
+            //                     strategy: 'noEmpty',errorMsg: '手机号不能为空'
+            //                 },{
+            //                     strategy: 'isMoblie',errorMsg: '请输入正确手机号'
+            //                 }]);
+            //             });
+
+            //             //验证码输入框
+            //             $form.find('input[name=verify]').bind('input propertychange',function(){
+            //                 this.value = this.value.slice(0,6);
+
+            //                 checkBtnAvailable(form);
+            //                 inputCheck(this,[{
+            //                     strategy: 'noEmpty',errorMsg: '验证码不能为空'
+            //                 }]);
+            //             })
+
+            //             //获取验证码
+            //             $form.find(".verifycode").bind('click',function(){
+            //                 if($(this).hasClass("disable")){
+            //                     return false
+            //                 }
+            //                 if($form.find('input[name=phone]').length > 0){
+            //                     if(!inputCheck($form.find('input[name=phone]')[0],[{
+            //                         strategy: 'noEmpty',errorMsg: '手机号不能为空'
+            //                     },{
+            //                         strategy: 'isMoblie',errorMsg: '请输入正确手机号'
+            //                     }])){
+            //                         return false
+            //                     };
+            //                 }
+            //                 $.post("http://api.com/getPhoneVerifyCode", {}, function (res) {
+            //                     if(res.code == 100){
+            //                         if(res.result){
+            //                             countDown(form);
+            //                         }else{
+            //                             $pop.find('.dialog-layer').show();
+            //                         }
+            //                     }else{
+            //                         alert(res.msg)
+            //                     }
+            //                 },"json");
+            //             })
+
+            //             //密保问题输入框
+            //             for (var i = 1; i <= 3; i++) {
+            //                 $form.find('input[name=q' + i + ']').bind('input propertychange',function(){
+            //                     inputCheck(this,[{
+            //                         strategy: 'noEmpty',errorMsg: '密保问题不能为空'
+            //                     }]);
+            //                 })
+            //             }
+
+            //             //提交表单
+            //             $form.find('.btn-primary').bind('click',function(e){
+
+            //                 if($(this).hasClass("disable")){
+            //                     return false
+            //                 }
+
+            //                 var errorMsg;
+            //                 if(form.name == "phone"){
+            //                     var bindedPhone = $("#j-binded-phone").attr("phone");
+            //                     if(bindedPhone){
+            //                         strategies['equalPhone'] = function(value) {
+            //                             return value !== bindedPhone ?
+            //                                 false : true
+            //                         };
+            //                     }
+            //                     errorMsg = inputCheck($form.find('input[name=phone]')[0],[{
+            //                         strategy: 'equalPhone',errorMsg: '输入手机号与绑定手机号不一致'
+            //                     }])
+            //                 }
+            //                 if(form.name == "qa"){
+            //                     for (var i = 1; i <= 3; i++) {
+            //                         errorMsg = inputCheck($form.find('input[name=q' + i + ']')[0],[{
+            //                             strategy: 'noEmpty',errorMsg: '密保问题不能为空'
+            //                         }])
+            //                     }
+            //                 }
+
+            //                 if(errorMsg){
+            //                     return false;
+            //                 }
+            //                 //$pop.find(".u-form").submit()
+            //                 return false;
+            //             })
+            //         })
+                    
+                    
+            //         function inputCheck(dom,rules){
+            //             var $error = $(dom).closest(".form-group").find(".invalid-feedback");
+            //             $error.html('').hide();
+            //             ValidateModel.cache = [];
+            //             ValidateModel.add(dom,rules);
+            //             var errorMsg = ValidateModel.start();
+            //             if(errorMsg){
+            //                 $error.html(errorMsg).show();
+            //                 return false
+            //             }
+            //             return true
+            //         }
+                    
+            //         function checkBtnAvailable(form){
+            //             var $form = $(form);
+                        
+            //             if(($form.find('input[name=phone]').length > 0) && ($form.find('input[name=verify]').length > 0)){
+            //                 if($form.find(".verifycode").attr("isCounting") === "false"){
+            //                     if($form.find('input[name=phone]').val().length >= 11){
+            //                         $form.find(".verifycode").removeClass("disable");
+            //                     }else{
+            //                         $form.find(".verifycode").addClass("disable");
+            //                     }
+            //                 }
+            //                 if(($form.find('input[name=phone]').val().length >= 11) && ($form.find('input[name=verify]').val() != "")){
+            //                     $form.find(".btn-primary").removeClass("disable");
+            //                 }else{
+            //                     $form.find(".btn-primary").addClass("disable");
+            //                 }
+            //             }
+            //             if($form.find('input[name=verify]').length > 0){
+            //                 if($form.find('input[name=verify]').val() != ""){
+            //                     $form.find(".btn-primary").removeClass("disable");
+            //                 }else{
+            //                     $form.find(".btn-primary").addClass("disable");
+            //                 }
+            //             }
+            //         }
+                    
+                    
+            //         function countDown(form){
+            //             var $form = $(form);
+            //             var $verifycode = $form.find(".verifycode");
+            //             var _t = 6;
+            //             $verifycode.attr("isCounting","true");
+            //             function countTime(){		
+            //                 _t--;
+            //                 if( _t<=0 ){
+            //                     $verifycode.attr("class","verifycode").html('重新获取');
+            //                     $verifycode.attr("isCounting","false");
+            //                     checkBtnAvailable(form);
+            //                 }else{
+            //                     $verifycode.attr("class","verifycode disable").html('已发送（' + _t +'S）');
+            //                     setTimeout(arguments.callee,1000);
+            //                 }
+            //             }
+            //             setTimeout(countTime,1000);
+            //         }
+             
+
+            //     },
+            //     afterClose: function() {
+                    
+            //     }
+            // });
+            //     }
+            // },"json");
+        
         })
     </script>
 </body>
