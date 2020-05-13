@@ -133,7 +133,7 @@ img {
     line-height: 28px;
     padding: 8px 16px;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .dialog-txt span{
     color: #ffa92d;
@@ -165,7 +165,9 @@ img {
 }
 
 
-
+.u-form{
+    padding-top: 10px;
+}
 
 input[type=text].form-control{
     padding: 0 10px;
