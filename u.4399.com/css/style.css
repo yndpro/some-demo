@@ -165,10 +165,6 @@ img {
 }
 
 
-.u-form{
-    padding-top: 10px;
-}
-
 input[type=text].form-control{
     padding: 0 10px;
     line-height: 32px;
@@ -236,6 +232,7 @@ label.form-label{
     display: inline-block;
     padding-top: 11px;
     display: none;
+    margin-bottom: 11px;
     background:url(../images/icon_invalid.png) no-repeat 11px 11px;
 }
 .btn-primary{

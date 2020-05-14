@@ -16,10 +16,10 @@ Mock.mock(RegExp(url + '.*'),'get', function(options) {
         return {
             "status": true, //当status=false时 解析报错信息
             "data": {//为空表示没有设置密保
-                "phone": {
-                    "name": "绑定手机",
-                    "data": "1805****767"
-                },
+                // "phone": {
+                //     "name": "绑定手机",
+                //     "data": "1805****767"
+                // },
                 "question": {
                     "name": "密保问题",
                     "data": [
@@ -43,9 +43,26 @@ Mock.mock(RegExp(url + '.*'),'get', function(options) {
             }
         }
     }else if(_a == "send"){
-        return {
-            "status":true
+        if(type == "qq"){
+            return {
+                status: true,
+                sender: "xxxx@qq.com",
+                error: "",
+                jump: "",
+                msg: "注意：如果在您的收件箱中没有查看到邮件，请查看一下垃圾邮件处。",
+                extend: []
+            }
+        }else if(type == "email"){
+            return {msg: "发送速度过快，请x秒后重试", status:false, extend:["","发送速度过快，请x秒后重试"]}
+        }else{
+            return {
+                "status":true
+            }
         }
+    }else if(_a == "check"){
+        return {
+            data: "0" //0-未验证 1-验证通过
+        } 
     }
 
 })
@@ -56,11 +73,15 @@ Mock.mock(RegExp(url + '.*'),'post', function(options) {
     if(_a == "confirm"){
         if(type == "phone"){
             return {
-                "status":true
+                msg: "验证码错误，请重新输入",
+                status: false,
+                extend: ""
             }
         }else{
             return {
-                "status":true
+                msg: "验证码错误，请重新输入密保问题回答不正确",
+                status: false,
+                extend: ""
             }
         }
     }
