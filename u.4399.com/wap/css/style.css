@@ -161,6 +161,9 @@ body, button, input, select, textarea{ font:14px/1.125 "Microsoft Yahei",Arial,H
 }
 
 /* u-btn*/
+.btn{
+    display: inline-block;
+}
 .btn-primary {
     -webkit-appearance: none;
     background: #70c700;
@@ -269,8 +272,6 @@ body, button, input, select, textarea{ font:14px/1.125 "Microsoft Yahei",Arial,H
 }
 
 
-
-
 /*custorm*/
 .bind-phone{
     line-height: 28px;
@@ -278,4 +279,19 @@ body, button, input, select, textarea{ font:14px/1.125 "Microsoft Yahei",Arial,H
 }
 .bind-phone span{
     color: #ffa92d;
+}
+
+
+.bind-progress{
+    height: 42px;
+    margin-bottom: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.step-1 .bind-progress{
+    background-image: url(../images/progress_1.png);
+}
+.step-2 .bind-progress{
+    background-image: url(../images/progress_2.png);
 }

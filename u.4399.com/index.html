@@ -93,22 +93,23 @@
             <div class="dialog-tit">绑定手机号</div>
             <div class="dialog-sub">为了您的账号安全，请先绑定手机后再完善身份信息</div>
             <div class="dialog-cont">
-                <form class="u-form" name="bind" action="">
-                    <div class="form-group form-group-horizen">
-                        <label class="form-label" for="">手机号</label>
-                        <input class="form-control" type="text" value="" name="phone">
+                <div class="bind-step step-1">
+                    <div class="bind-progress"></div>
+                    <form class="u-form" name="pwd" action="">
                         <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-group form-group-horizen form-group-verifycode">
-                        <label class="form-label" for="">验证码</label>
-                        <input class="form-control" type="text" value="" name="verify">
-                        <a href="javascript:;" class="verifycode disable" isCounting="false">获取验证码</a>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-group-btn">
-                        <button type="button" class="btn btn-primary disable">提交</button>
-                    </div>
-                </form>
+                        <div class="form-group form-group-horizen form-group-4em">
+                            <label class="form-label" for="">登录密码</label>
+                            <input class="form-control" type="text" value="" name="code">
+                        </div>
+                        <div class="form-group-btn">
+                            <button type="button" class="btn btn-primary j-submit disable">下一步</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="bind-step step-2" style="display:none;">
+                    <div class="bind-progress"></div>
+                    <div class="dialog-txt">编辑短信<span id="j-bind-phone"></span>发送到<span id="j-bind-bindingCode"></span>即可成功绑定。（此条短信4399不收取任何费用）验证邮件，验证码5分钟内有效，请尽快前往验证。</div>
+                </div>
             </div>
             <div class="dialog-layer">
                 <div class="dialog-layout-vertical-center">
@@ -130,5 +131,60 @@
     <script src="./mock/mock-min.js"></script>
     <script src="./mock/mock.js"></script>
     <script src="./js/main.js"></script>
+    <script>
+        function __checkIdcard(a){
+            var b=/^\d{15}(\d{2}[\dx])?$/i;
+            if(!b.test(a)){
+                return 0
+            };
+            var c=a.length,d;
+            if(c==15){
+                d='19'+a.substr(6,6)
+                console.log(d);
+            }else{
+                d=a.substr(6,8)
+            };
+            if((function(e){
+                var f=[31,28,31,30,31,30,31,31,30,31,30,31];
+                var g=e.substr(0,4)*1;
+                var h=e.substr(4,2)*1;
+                var j=e.substr(6,2)*1;
+                if(g<1850||g>2050){
+                    return 0
+                };
+                if(g%400==0||(g%4==0&&g%100!=0)){
+                    f[1]=29
+                };
+                if(h<1||h>12){
+                    return 0
+                };
+                if(j>f[h-1]||j<1){
+                    return 0
+                };
+                return 1
+            })(d)==0){
+                return 0
+            };
+            if(c==15){
+                return 1
+            };
+            return(function(e){
+                var f=[7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2];
+                var g=['1','0','X','9','8','7','6','5','4','3','2'];
+                var h=0;
+                for(var j=0;j<17;j++){
+                    h+=parseInt(e.substr(j,1))*f[j]
+                };
+                h=g[h%11];
+                if(h==e.substr(17).toUpperCase()){
+                    return 1
+                };
+                return 0
+            })(a)
+        } 
+        console.log(__checkIdcard("513436201801018"));
+        
+
+    </script>
 </body>
 </html>

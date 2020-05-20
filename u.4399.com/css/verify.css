@@ -188,6 +188,15 @@ label.form-label{
     top:0;
     left: 0;
 }
+.form-group-4em.form-group-horizen{
+    padding-left: 64px;
+}
+.form-group-4em.form-group-horizen .form-label{
+    width: 64px;
+}
+.form-group-4em.form-group-horizen input[type=text].form-control{
+    width: 314px;
+}
 
 .form-group-vertical{
     margin-bottom: 14px;
@@ -296,4 +305,17 @@ label.form-label{
 .form-email .form-group-verifycode input[type=text].form-control,
 .form-qq .form-group-verifycode input[type=text].form-control{
     width: 268px;
+}
+
+
+.bind-progress{
+    height: 30px;
+    margin-bottom: 20px;
+    background: url(../images/progress.png) no-repeat;
+}
+.step-1 .bind-progress{
+    background-position: 0 0;
+}
+.step-2 .bind-progress{
+    background-position: 0 -30px;
 }
