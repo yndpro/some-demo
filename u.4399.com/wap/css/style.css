@@ -203,6 +203,40 @@ body, button, input, select, textarea{ font:14px/1.125 "Microsoft Yahei",Arial,H
    color: #ffa92d;
 }
 
+/*u-toast*/
+.u-toast{
+    position: fixed;
+    padding: 20px 10px;
+    width: 220px;
+    left: 50%;
+    margin-left: -120px;
+    top:40%;
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 8px;
+}
+.toast-tit{
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.toast-txt{
+    line-height: 20px;
+    text-align: center;
+    color: #c0c0c0;
+}
+.icon-check{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+    width: 26px;
+    height: 26px;
+    margin-top: 7px;
+    background: url(../images/ico_check.png) no-repeat;
+    background-size: contain;
+}
+
 
 /* u-dialog*/
 .u-dialog-wrap{

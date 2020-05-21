@@ -48,19 +48,6 @@ var ValidateModel = {
     }
 }
 
-function toast(content) {
-    var _timer;
-    var _temp = "<div class='u-toast'>" + content + "</div>";
-    var _node;
-    document.body.append(_temp);
-    _node = document.querySelector(".u-toast");
-    clearTimeout(_timer);
-    _timer = setTimeout(function(){
-        document.body.removeChild(_node)
-    },3000)
-}
-toast("sss")
-
 function transferParamsObj2Query(obj, isPrefix) {
     isPrefix = isPrefix ? isPrefix : false;
     var prefix = isPrefix ? '?' : '';
@@ -197,6 +184,18 @@ function evokeSMS(dom) {
     else if(isIos == true){
         $(dom).attr("href","sms:&body="+current_url);
     }
+}
+
+function toast(content) {
+    var _timer;
+    var _node = document.createElement("div");
+    _node.className = 'u-toast';
+    _node.innerHTML = content;
+    document.body.appendChild(_node);
+    clearTimeout(_timer);
+    _timer = setTimeout(function(){
+        document.body.removeChild(_node)
+    },3000)
 }
 
 function bind() {
@@ -423,6 +422,9 @@ function bind() {
             $error.html('').hide();
             $.getJSON(host + '/anquan/safe/?' + transferParamsObj2Query(params), function(res) {
                 if (res.status) {
+                    toast("<div class=\"toast-tit\"><i class=\"icon-check\"></i>发送成功</div>" +
+                            "<div class=\"toast-txt\">请立即前往邮箱验证</div>"
+                    )
                     countDownSendEmail(form);
                     checkMailStatus(form.name);
                 } else {
