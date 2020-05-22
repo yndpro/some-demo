@@ -173,16 +173,15 @@ function checkPhoneBind(type) {
 	});
 }
 
-function evokeSMS(dom) {
+function evokeSMS(dom,content) {
     var u = navigator.userAgent;
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
     var isIos = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-    var current_url = window.location.href;
     if(isAndroid == true){
-        $(dom).attr("href","sms:?body="+current_url);
+        $(dom).attr("href","sms:?body="+content);
     }
     else if(isIos == true){
-        $(dom).attr("href","sms:&body="+current_url);
+        $(dom).attr("href","sms:&body="+content);
     }
 }
 
@@ -435,9 +434,9 @@ function bind() {
         })
 
         //调起手机短信
-        $form.find('.j-sms').bind('click',function(e){
+        $('.j-sms').bind('click',function(e){
             checkPhoneBind("phone");
-            evokeSMS(this);
+            evokeSMS(this,"");
         })
     })
 }
