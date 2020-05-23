@@ -214,46 +214,31 @@ label.form-label{
 /* u-dialog */
 .u-dialog{
     width: 400px;
-    padding: 0 30px;
+    padding: 0 20px;
     position: relative;
     background: #fff;
     border-radius: 8px;
     overflow: hidden;
 }
 
-.dialog-close{
-    position: absolute;
-    top: 23px;
-    right: 30px;
-    width: 22px;
-    height: 22px;
-    background:url(../img/close.png) no-repeat;
-}
-.dialog-close:hover{
-    background-image:url(../img/close_h.png);
-}
 .dialog-tit{
+    color: #444;
     text-align: center;
     line-height: 40px;
     font-size: 20px;
     font-weight: bold;
     padding: 14px 0 12px;
 }
-.dialog-sub{
-    margin-bottom: 4px;
-    line-height: 28px;
-}
-.dialog-sub span{
-    color: #ffa92d;
-}
 .dialog-txt{
-    color: #999999;
-    background: #f2f2f2;
     line-height: 28px;
-    padding: 8px 16px;
-    border-radius: 8px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
+.dialog-btns {
+    text-align: center;
+}
+
+
 
 
 /* oversea */
@@ -291,6 +276,14 @@ label.form-label{
     position: absolute;
     top:5px;
     left: 0;
+}
+.u-dialog{
+    width: 460px;
+    padding: 40px 20px;
+}
+.dialog-txt{
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 
@@ -380,3 +373,5 @@ label.form-label{
 .section-txt{
     margin-bottom: 15px;
 }
+
+
