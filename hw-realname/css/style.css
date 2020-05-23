@@ -145,18 +145,19 @@ label.form-label{
 .form-group-btn{
     text-align: center;
     padding: 16px 0;
+    clear: both;
 }
 
 .invalid-feedback{
     line-height: 14px;
     position: relative;
     color: #fc211f;
-    padding-left: 30px;
+    padding-left: 20px;
     display: inline-block;
     padding-top: 11px;
     display: none;
     margin-bottom: 11px;
-    background:url(../img/icon_invalid.png) no-repeat 11px 11px;
+    background:url(../images/icon_invalid.png) no-repeat 0 11px;
 }
 
 /* u-btn */
@@ -189,7 +190,7 @@ label.form-label{
     margin-right: 20px;
     cursor: pointer;
     font-size: 16px;
-    background: url(../img/line_v.png) no-repeat right center;
+    background: url(../images/line_v.png) no-repeat right center;
 }
 .u-tab li.cur span{
     display: block;
@@ -202,22 +203,71 @@ label.form-label{
     display: none;
 }
 
-
+/* u-tip */
 .u-tip{
     color: #999999;
     font-size: 14px;
 }
 
 
+
+/* u-dialog */
+.u-dialog{
+    width: 400px;
+    padding: 0 30px;
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dialog-close{
+    position: absolute;
+    top: 23px;
+    right: 30px;
+    width: 22px;
+    height: 22px;
+    background:url(../img/close.png) no-repeat;
+}
+.dialog-close:hover{
+    background-image:url(../img/close_h.png);
+}
+.dialog-tit{
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 14px 0 12px;
+}
+.dialog-sub{
+    margin-bottom: 4px;
+    line-height: 28px;
+}
+.dialog-sub span{
+    color: #ffa92d;
+}
+.dialog-txt{
+    color: #999999;
+    background: #f2f2f2;
+    line-height: 28px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
 /* oversea */
 .oversea{
+    position: relative;
+    margin-top: 0;
+    padding-top: 40px;
     font-size: 14px;
 }
 .oversea .u-tab{
     margin-bottom: 20px;
 }
 .oversea .u-tab .tab-hd{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 .oversea .btn-primary{
     float: left;
@@ -233,15 +283,100 @@ label.form-label{
 .oversea .form-group-horizen input[type=text].form-control{
     color: #aaaaaa;
 }
-.oversea-file{
-    
+.oversea .form-group-btn{
+    overflow: hidden;
+    margin-bottom: 30px;
 }
-.oversea-file input{
-   
+.oversea .global-invalid-feedback{
+    position: absolute;
+    top:5px;
+    left: 0;
 }
+
+
+.oversea-file,
+.oversea-example{
+    float: left;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    width: 320px;
+}
+.oversea-file .file-txt,
+.oversea-example .example-txt{
+    text-align: center;
+    line-height: 36px;
+}
+.oversea-file .file-field{
+    float: left;
+    width: 320px;
+    height: 204px;
+    position: relative;
+    background: url(../images/file_filed.png) no-repeat right center;
+}
+.oversea-file .file-layer{
+    width: 300px;
+    height: 184px;
+    position: absolute;
+    top:10px;
+    left: 9px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 6px;
+    display: none;
+    background: url(../images/ptlogin_mask2.png) repeat;
+}
+.oversea-file .file-layer-reupload i{
+    margin-top: 50px;
+    width: 84px;
+    height: 84px;
+    background: url(../images/icon_upload_plus.png) repeat;
+    display: inline-block;
+    *display: inline;
+    *zoom:1;
+}
+.oversea-file .file-layer-error .error-txt{
+    color: #fc211f;
+    padding-left: 20px;
+    display: inline-block;
+    margin-bottom: 8px;
+    margin-top: 60px;
+    background: url(../images/icon_invalid.png) no-repeat 0 6px;
+}
+.oversea-file img{
+    border-radius: 6px;
+    width: 300px;
+    height: 184px;
+    position: absolute;
+    top:10px;
+    left: 9px;
+}
+
+.oversea-file .file-field input{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top:0;
+    left: 0;
+    cursor: pointer;
+    filter:alpha(opacity=0);
+    z-index: 999;
+    *font-size:100px;
+    font-size:100px\0;
+}
+.oversea-example img{
+    display: block;
+    height: 204px;
+}
+
+
 .section-tit{
     font-weight: bold;
     line-height: 32px;
     font-size: 14px;
+    margin-bottom: 15px;
+}
+.section-txt{
     margin-bottom: 15px;
 }

@@ -16,6 +16,7 @@
         </div>
     </div>
     <div class="main fixed oversea">
+        <div class="invalid-feedback global-invalid-feedback" style="display: block;">您上次身份认证未通过，请填写真实的身份信息重新验证，否则可能无法进入游戏哦</div>
         <div class="u-tab">
             <ul class="tab-hd">
                 <li class="cur"><span>护照验证</span></li>
@@ -30,12 +31,12 @@
                             <div class="section-tit">填写个人信息</div>
                             <div class="form-group form-group-horizen">
                                 <label class="form-label" for="">姓       名</label>
-                                <input class="form-control" type="text" value="请输入你的姓名" name="phone" data-placeholder="请输入你的姓名" onblur="onBlur(this);" onfocus="onFocus(this);" >
+                                <input class="form-control" type="text" value="请输入你的姓名" name="name" data-placeholder="请输入你的姓名" onblur="onBlur(this);" onfocus="onFocus(this);" >
                                 <div class="form-tips">示例：张三</div>
                             </div>
                             <div class="form-group form-group-horizen">
                                 <label class="form-label" for="">证件号码</label>
-                                <input class="form-control" type="text" value="请输入护照号码" name="code" data-placeholder="请输入护照号码" onblur="onBlur(this);" onfocus="onFocus(this);">
+                                <input class="form-control" type="text" value="请输入护照号码" name="idcard" data-placeholder="请输入护照号码" onblur="onBlur(this);" onfocus="onFocus(this);">
                                 <div class="form-tips">示例：E00000000</div>
                             </div>
                         </div>
@@ -46,12 +47,21 @@
                                 <p>2、只支持上传JPG/JPEG/PNG文件</p>
                             </div>
                             <div class="oversea-file">
-                                <input class="" type="file" name="attach" size="25"/>
+                                <div class="file-field">
+                                    <input class="" type="file" id="fileField" name="attach" size="25"/>
+                                    <img class="file-img" src="" alt="">
+                                    <div class="file-layer file-layer-reupload"><i></i><p>重新上传</p></div>
+                                    <div class="file-layer file-layer-error"><p class="error-txt">文件格式错误</p><p>重新上传</p></div>                       
+                                </div>
+                                <p class="file-txt">请上传台胞证正面照片</p>
                             </div>
-                            <img class="oversea-example" src="" alt="">
+                            <div class="oversea-example">
+                                <img src="./images/oversea_1.jpg" alt="">
+                                <p class="example-txt">示例</p>
+                            </div>
                         </div>
                         <div class="form-group-btn">
-                            <button type="button" class="btn btn-primary j-submit">提交审核</button>
+                            <button type="button" class="btn btn-primary j-submit" onclick="submitForm(document.forms['a'])">提交审核</button>
                         </div>
                     </form>
                 </div>
@@ -73,6 +83,7 @@
         </div>
     </div>
     <script src="./js/jquery-1.4.4.min.js"></script>
+    <script src="./js/ajaxfileupload.js"></script>
     <script>
         function onBlur(ele) {
             var $ele = $(ele);
@@ -90,7 +101,110 @@
                 $ele.val("");
             }
         }
-        
+        function imageFormatCheck(ele) {
+            return /.(jpg|png|gif|bmp)$/.test(ele.value) ? true: (function() {
+                $(ele).siblings(".file-layer").hide();
+                $(ele).siblings(".file-layer-error").show();
+                return false;
+            })();
+        }
+    
+        function initForm(j,form) {
+            var $form = $(form);
+            var $fileField = $form.find('.file-field');
+            var $fileInput = $form.find('input[type=file]');
+            var $fileLayerError = $form.find(".file-layer-error");
+            var $fileLayerReupload = $form.find('.file-layer-reupload');
+            var $fileImg = $form.find(".file-img");
+            var $submit = $form.find(".j-submit");
+            var $error = $form.find(".invalid-feedback");
+            
+
+            $fileField.hover(function() {
+                if($fileInput.val()!=="" && imageFormatCheck($fileInput[0])){
+                    $fileLayerReupload.show()
+                }
+            },function(params) {
+                $fileLayerReupload.hide()
+            })
+            
+            $fileInput.change(function (e) {
+                
+                $fileLayerError.hide();
+                $fileImg.attr({ "src": "" });
+                $fileImg.css("filter","");
+                
+                if(imageFormatCheck(this)){
+                    var e = event||widow.event;
+                    if (navigator.userAgent.indexOf('MSIE 8') >= 0 || navigator.userAgent.indexOf('MSIE 9') >= 0) {
+                        $(this).select();
+                        window.parent.document.body.focus();
+                        var realpath = document.selection.createRange().text;
+                        $fileImg.css("filter", "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',src=\"" + realpath + "\",sizingMethod=scale)");
+                    }else {
+                        var file = e.target.files[0];
+                        var reader = new FileReader();
+                        var targetId = e.target.id;
+                        reader.readAsDataURL(file);
+                        reader.onload = function () {
+                            var picString = reader.result;
+                            $fileImg.attr({ "src": picString }).show();
+                        };
+                    }
+                }
+            });
+
+            $submit.click(function() {
+                var name    = $form.find("input[name=name]").val();
+                var idcard  = $form.find("input[name=idcard]").val();
+                var attach  = $form.find("input[name=attach]").val();
+                $error.hide()
+                if(name=="" || name=="请输入你的姓名"){
+                    $error.html("请输入你的姓名").show();
+                    return false
+                }
+                if(idcard=="" || idcard=="请输入护照号码"){
+                    $error.html("请输入护照号码").show();
+                    return false
+                }
+                if(attach==""){
+                    $error.html("请上传真实的证件照片").show();
+                    return false
+                }
+                $.ajaxFileUpload({
+                    url:"-ajaxUpload",
+                    secureuri:false,
+                    fileElementId:['fileField'],
+                    data: {
+                        name : $.trim(name),
+                        idcard : $.trim(idcard)
+                    },
+                    dataType: 'json',
+                    success: function (result){
+                        if(result.status == 1 ){
+                            
+                        }else{
+                            
+                        }
+                    },
+                    error:function(){
+                        $error.html('文件上传失败！').show();
+                    }
+                });
+            })
+        }
+        $(function() {
+            $(document).find('.u-tab li').bind('click',function(){
+                var index = $(this).index();
+                $(this).addClass("cur").siblings().removeClass("cur");
+                $(document).find('.u-tab .tab-cont').eq(index).show().siblings().hide();
+            })
+            $.each([
+                $(".u-form[name='a']")[0],
+                $(".u-form[name='b']")[0]
+            ],initForm);
+        })
+    
     </script>
 </body>
 </html>
