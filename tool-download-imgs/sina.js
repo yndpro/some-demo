@@ -1,7 +1,6 @@
 const model= require('./model');
-
-const name = "北京巅峰啦啦队备战新赛季";
-const url = "http://slide.sports.sina.com.cn/cba/slide_2_792_229658.html#p=4";
+const name = "萌系美女的健身靓照";
+const url = "http://slide.sports.sina.com.cn/o_fitness/slide_2_730_246069.html#p=4";
 const host = "n.sinaimg.cn";
 const depositPath = "/Users/adrianyoung/Downloads/";
 
