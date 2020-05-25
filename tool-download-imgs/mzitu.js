@@ -1,6 +1,6 @@
 const model= require('./model');
 
-const basicPath = "https://www.mzitu.com/11062";
+const basicPath = "https://www.mzitu.com/123444";
 const host = "i5.meizitu.net";
 const depositPath = "/Users/adrianyoung/Downloads/";
 

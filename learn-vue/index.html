@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="" id="app">
+        {{message}}
+        <div :title="title">hing</div>
+        <div v-if="seen">seen</div>
+        <ol>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ol>
+        <div @click="reverseMessage">click me reverse</div>
+        <input type="text" v-model="inputText">
+        <ol>
+            <club 
+                v-for="club in clubs" 
+                :club="club" 
+                :key="club.id">
+            </club>
+        </ol>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('club',{
+            props : ['club'],
+            template : '<li>{{ club.text }}</li>'
+        })
+
+        var app = new Vue({
+            el : "#app",
+            data : {
+                message : "hello vue",
+                title : "现在是" + new Date().toLocaleString(),
+                seen : false,
+                todos : [
+                    {text : "云课堂"},
+                    {text : "小橘子"},
+                    {text : "vue"}
+                ],
+                inputText : "input something",
+                clubs : [
+                    {id : "1",text : "mu"},
+                    {id : "2",text : "bcfc"},
+                    {id : "3",text : "realm"}
+                ]
+            },
+            methods : {
+                reverseMessage : function(){
+                    this.message = this.message.split("").reverse().join("");
+                }
+            }
+        })
+        app.message = "MUFC"
+    </script>
+</body>
+</html>
