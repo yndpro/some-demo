@@ -48,7 +48,7 @@
                             </div>
                             <div class="oversea-file">
                                 <div class="file-field">
-                                    <input class="" type="file" id="fileField" name="attach" size="25"/>
+                                    <input class="" type="file" id="fileField1" name="attach" size="25"/>
                                     <img class="file-img" src="" alt="">
                                     <div class="file-layer file-layer-reupload"><i></i><p>重新上传</p></div>
                                     <div class="file-layer file-layer-error"><p class="error-txt">文件格式错误</p><p>重新上传</p></div>                       
@@ -98,10 +98,10 @@
             </div>
         </div>
     </div>
-    <script src="./js/jquery-1.4.4.min.js"></script>
-    <script src="./js/ajaxfileupload.js"></script>
-    <script src="./js/ks.dialog.js"></script>
-    <script>
+    <script type="text/javascript" src="./js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="./js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="./js/ks.dialog.js"></script>
+    <script type="text/javascript">
         function onBlur(ele) {
             var $ele = $(ele);
             if($ele.val() === ""){
@@ -119,15 +119,27 @@
             }
         }
         function imageFormatCheck(ele) {
-            return /.(jpg|png|gif|bmp)$/.test(ele.value) ? true: (function() {
-                $(ele).siblings(".file-layer").hide();
-                $(ele).siblings(".file-layer-error").show();
-                return false;
-            })();
+            return /.(jpg|png|gif|bmp)$/.test(ele.value) ? true : false 
+        }
+        function getIdcardState(params) {
+            $.getJSON('/ptlogin/getIdcardState.do', function(res) {
+                if (res.code == 300) {
+                    if(foreign_idcard_state == 1){
+
+                    }
+                    timer[type] && clearTimeout(timer[type]);
+                    //验证通过
+                    alert('邮件验证通过 弹实名');
+                } else {
+                    alert(res.message);
+                }
+            });
         }
     
         function initForm(j,form) {
             var $form = $(form);
+            var $nameInput = $form.find("input[name=name]");
+            var $idCardInput = $form.find("input[name=idcard]");
             var $fileField = $form.find('.file-field');
             var $fileInput = $form.find('input[type=file]');
             var $fileLayerError = $form.find(".file-layer-error");
@@ -138,7 +150,7 @@
             
 
             $fileField.hover(function() {
-                if($fileInput.val()!=="" && imageFormatCheck($fileInput[0])){
+                if($fileImg.attr("src")!=="" && !$fileLayerError.is(":visible")){
                     $fileLayerReupload.show()
                 }
             },function(params) {
@@ -146,60 +158,95 @@
             })
             
             $fileInput.change(function (e) {
+
+                if($fileInput.val()=="") return false;
                 
                 $fileLayerError.hide();
                 $fileImg.attr({ "src": "" });
-                $fileImg.css("filter","");
+                //$fileImg.css("filter","");
                 
                 if(imageFormatCheck(this)){
-                    var e = event||widow.event;
-                    if (navigator.userAgent.indexOf('MSIE 8') >= 0 || navigator.userAgent.indexOf('MSIE 9') >= 0) {
-                        $(this).select();
-                        window.parent.document.body.focus();
-                        var realpath = document.selection.createRange().text;
-                        $fileImg.css("filter", "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',src=\"" + realpath + "\",sizingMethod=scale)");
-                    }else {
-                        var file = e.target.files[0];
-                        var reader = new FileReader();
-                        var targetId = e.target.id;
-                        reader.readAsDataURL(file);
-                        reader.onload = function () {
-                            var picString = reader.result;
-                            $fileImg.attr({ "src": picString }).show();
-                        };
-                    }
+                    // var e = event||widow.event;
+                    // if (navigator.userAgent.indexOf('MSIE 8') >= 0 || navigator.userAgent.indexOf('MSIE 9') >= 0) {
+                    //     $(this).select();
+                    //     window.parent.document.body.focus();
+                    //     var realpath = document.selection.createRange().text;
+                    //     $fileImg.css("filter", "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',src=\"" + realpath + "\",sizingMethod=scale)");
+                    // }else {
+                    //     var file = e.target.files[0];
+                    //     var reader = new FileReader();
+                    //     var targetId = e.target.id;
+                    //     reader.readAsDataURL(file);
+                    //     reader.onload = function () {
+                    //         var picString = reader.result;
+                    //         $fileImg.attr({ "src": picString }).show();
+                    //     };
+                    // }
+                    
+                    // $.ajaxFileUpload({
+                    //     url:"ajaxUpload",
+                    //     secureuri:false,
+                    //     fileElementId:['fileField1'],
+                    //     data: {},
+                    //     dataType: 'json',
+                    //     success: function (result){
+                            var result = {
+                                status : 1,
+                                data : {
+                                    src : "http://f.4399.com:8080/hw-realname/images/oversea_1.jpg"
+                                }
+                            }
+                            if(result.status == 1 ){
+                                $fileImg.attr({ "src": result.data.src }).show();
+                            }
+                    //     },
+                    //     error:function(){
+                    //         $error.html('文件上传失败！').show();
+                    //     }
+                    // });
+                
+                    
+                }else{
+                    $(this).siblings(".file-layer").hide();
+                    $(this).siblings(".file-layer-error").show();
                 }
             });
 
             $submit.click(function() {
-                var name    = $form.find("input[name=name]").val();
-                var idcard  = $form.find("input[name=idcard]").val();
-                var attach  = $form.find("input[name=attach]").val();
+                var name    = $.trim($nameInput.val());
+                var idcard  = $.trim($idCardInput.val());
+                var placeholder = $idCardInput.attr("data-placeholder");
+                var fileSrc  = $fileImg.attr("src");
                 $error.hide()
                 if(name=="" || name=="请输入你的姓名"){
                     $error.html("请输入你的姓名").show();
                     return false
                 }
-                if(idcard=="" || idcard=="请输入护照号码"){
-                    $error.html("请输入护照号码").show();
+                if(idcard=="" || idcard==placeholder){
+                    $error.html(placeholder).show();
                     return false
                 }
-                if(attach==""){
+                if(fileSrc==""){
                     $error.html("请上传真实的证件照片").show();
                     return false
                 }
-                
-                $.ajaxFileUpload({
-                    url:"-ajaxUpload",
-                    secureuri:false,
-                    fileElementId:['fileField'],
-                    data: {
-                        name : $.trim(name),
-                        idcard : $.trim(idcard)
-                    },
-                    dataType: 'json',
-                    success: function (result){
-                        if(result.status == 1 ){
+                console.log(name);
+                // $.ajax({
+                //     url: '/anquan/safe/?_c=verify&_a=confirm&type=phone',
+                //     data: {
+                //         name : name,
+                //         idcard : idcard
+                //     },
+                //     dataType: 'json',
+                //     type: 'POST',
+                //     success: function (res) {
+                        var res = {
+                            status : 1,
+                            data : {
+                                src : "http://f.4399.com:8080/hw-realname/images/oversea_1.jpg"
+                            }
+                        }
+                        if (res.status) {
                             ue.dialog({
                                 id: "j-confirm_popup",
                                 content: $("#j-confirm-temp").html(),
@@ -215,14 +262,9 @@
                                     });
                                 }
                             });
-                        }else{
-                            
                         }
-                    },
-                    error:function(){
-                        $error.html('文件上传失败！').show();
-                    }
-                });
+                //     }
+                // });
             })
         }
         $(function() {
@@ -235,6 +277,7 @@
                 $(".u-form[name='a']")[0],
                 $(".u-form[name='b']")[0]
             ],initForm);
+
             
         })
     

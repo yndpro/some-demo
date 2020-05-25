@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>港澳台/境外用户认证</title>
+</head>
+<body>
+    <a href="javascript:;" onclick="closeCallback()">关闭页面</a>
+    <input type="file">
+    <script>
+        function closeCallback(params) {
+            alert("关闭页面")
+            try {
+                android.finishActivity('{"action":"idcardVerify","code":100}') 
+            } catch (error) {
+                alert(error.message)
+            }
+        }
+    </script>
+</body>
+</html>
