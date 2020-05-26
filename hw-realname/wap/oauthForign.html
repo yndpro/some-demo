@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>港澳台/境外用户认证</title>
+    <link rel="stylesheet" href="https://ptlogin.3304399.net/resource/css/oauthBase.css?v=101">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="u-head">
+        <h2>港澳台/境外用户认证</h2>
+    </div>
+    <div class="u-container oversea">
+        <div class="oversea-writen">
+            <div class="u-alert alert-warning">您上次身份认证未通过，请填写真实的身份信息重新验证，否则可能无法进入游戏哦</div>
+            <div class="u-tab">
+                <ul class="tab-hd">
+                    <li data-type="" class="cur"><span>护照验证</span></li>
+                    <li data-type=""><span>台胞证验证</span></li>
+                    <li data-type=""><span>回乡证验证</span></li>
+                </ul>
+                <div class="tab-bd">
+                    <div class="tab-cont" style="display: block;">
+                        <div class="u-section">
+                            <form class="u-form" name="a">
+                                <div class="invalid-feedback j-global-invalid-feedback"></div>
+                                <div class="oversea-section">
+                                    <div class="section-tit">填写个人信息</div>
+                                    <div class="form-group form-group-horizen">
+                                        <label class="form-label">姓         名:</label>
+                                        <div class="form-control">
+                                            <input class="" type="text" name="realname" placeholder="请输入你的姓名">
+                                        </div>
+                                        <div class="form-tip">示例：张三</div>
+                                    </div>
+                                    <div class="form-group form-group-horizen">
+                                        <label class="form-label">证件号码:</label>
+                                        <div class="form-control">
+                                            <input class="" type="text" name="phone" placeholder="请输入护照号码">
+                                        </div>
+                                        <div class="form-tip">示例：E00000000</div>
+                                    </div>
+                                </div>
+                                <div class="oversea-section">
+                                    <div class="section-tit">上传台胞证照片</div>
+                                    <div class="section-txt">
+                                        <p>1、证件将会进行人工审核，请上传真实的证件照片，否则将不予通过审核</p>
+                                        <p>2、只支持上传JPG/JPEG/PNG文件</p>
+                                    </div>
+                                    <div class="oversea-file">
+                                        <div class="file-field">
+                                            <input class="" type="file" id="fileField1" name="attach" size="25">
+                                            <img class="file-img" src="" alt="">
+                                            <div class="file-layer file-layer-error"><p class="error-txt"><i></i>文件格式错误</p><p>重新上传</p></div> 
+                                            <img class="file-bg" src="../images/wap/file_filed.png" alt="">                      
+                                        </div>
+                                        <p class="file-txt">请上传台胞证正面照片</p>
+                                    </div>
+                                    <div class="oversea-example">
+                                        <img src="../images/oversea_1.jpg" alt="">
+                                        <p class="example-txt">示例</p>
+                                    </div>
+                                </div>
+                                <div class="form-group-btn">
+                                    <button type="button" class="btn btn-primary j-submit">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="u-section">
+                <div class="u-tip">
+                    <p><b>隐私申明</b></p>
+                    <p>用户填写的身份信息属于用户个人隐私，4399公司严格保护用户个人信息，不公开、 编辑或透露用户信息</p>
+                </div>
+            </div>
+            <div class="u-dialog-wrap oversea-confirm" id="j-confirm-temp">
+                <div class="u-dialog-mask"></div>
+                <div class="u-dialog">
+                    <div class="dialog-content">
+                        <div class="oversea-confirm-tit">提交成功</div>
+                        <div class="oversea-confirm-txt"></div>
+                    </div>
+                    <div class="dialog-btns">
+                        <a href="javascript:void(0);" class="dialog-btn j-confirm">我知道了</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="oversea-status oversea-success" style="display: none;">
+            <div class="status-icon"></div>
+            <div class="status-tit">认证成功</div>
+            <div class="status-txt">
+                <p>您已认证，基于隐私保护，已隐藏认证信息</p>
+                <p>返回原来的页面即可继续相关操作</p>
+            </div>
+        </div>
+
+        <div class="oversea-status oversea-wait" style="display: none;">
+            <div class="status-icon"></div>
+            <div class="status-tit">正在审核中</div>
+            <div class="status-txt">
+                <p>您已认证，基于隐私保护，已隐藏认证信息</p>
+                <p>返回原来的页面即可继续相关操作</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <a href="javascript:;" onclick="closeCallback()">关闭页面</a>
+    <input type="file">
+
+    <script src="../js/zepto.min.js"></script>
+    <script>
+        $(document).find('.u-tab li').bind('click',function(){
+            var index = $(this).index();
+            $(this).addClass("cur").siblings().removeClass("cur");
+            $(document).find('.u-tab .tab-cont').eq(index).show().siblings().hide();
+        })
+
+        function closeCallback(params) {
+            alert("关闭页面")
+            try {
+                android.finishActivity('{"action":"idcardVerify","code":100}') 
+            } catch (error) {
+                alert(error.message)
+            }
+        }
+    </script>
+</body>
+</html>

@@ -93,7 +93,7 @@
     border: 0 none;
 }
 .form-group-horizen .form-control{
-    padding: 0 30px 0 70px;
+    padding: 0 30px 0 80px;
 }
 .form-group-horizen .form-label{
     position: absolute;
@@ -101,7 +101,7 @@
     line-height: 44px;
     color: #666;
     width: 70px;
-    text-align: center;
+    text-align: right;
 }
 .form-group-vertical .form-control{
     padding-left: 13px;
@@ -157,6 +157,13 @@
    color: #ffa92d;
 }
 
+/* u-tip*/
+.u-tip {
+    color: #999999;
+    line-height: 20px;
+    font-size: 12px;
+}
+
 /*u-toast*/
 .u-toast{
     position: fixed;
@@ -207,6 +214,7 @@
     border-radius: 5px;
     -webkit-border-radius: 5px;
 }
+
 .dialog-content{
     padding: 25px 30px;
     line-height: 24px;
@@ -228,7 +236,7 @@
 }
 .dialog-btn{
     float: left;
-    width: 50%;
+    width: 100%;
     text-align: center;
     line-height: 48px;
     border-right: 1px solid #ddd;
@@ -264,33 +272,46 @@
 .oversea-example{
     float: left;
     margin-bottom: 30px;
-    margin-right: 20px;
-    width: 320px;
+    width: 50%;
+    max-width: 300px;
+    overflow: hidden;
+    box-sizing:border-box;
+}
+.oversea-file{
+    padding-right: 5px;
+}
+.oversea-example{
+    padding-left: 5px;
 }
 .oversea-file .file-txt,
 .oversea-example .example-txt{
     text-align: center;
-    line-height: 36px;
+    line-height: 26px;
 }
 .oversea-file .file-field{
-    float: left;
-    width: 320px;
-    height: 204px;
+    width: 100%;
     position: relative;
-    background: url(../images/file_filed.png) no-repeat right center;
+}
+.oversea-file .file-bg{
+    width: 100%;
 }
 .oversea-file .file-layer{
-    width: 300px;
-    height: 184px;
+    width: 100%;
+    height: 100%;
     position: absolute;
-    top:10px;
-    left: 9px;
+    top:0;
+    left: 0;
     color: #fff;
     text-align: center;
     overflow: hidden;
-    border-radius: 6px;
-    display: none;
-    background: url(../images/ptlogin_mask2.png) repeat;
+    border-radius: 4px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction:column;
+    opacity: 0;
+    align-items:center;
+    justify-content:center;
+    background: url(../../images/ptlogin_mask2.png) repeat;
 }
 .oversea-file .file-layer-reupload i{
     margin-top: 50px;
@@ -298,24 +319,29 @@
     height: 84px;
     background: url(../images/icon_upload_plus.png) repeat;
     display: inline-block;
-    *display: inline;
-    *zoom:1;
 }
 .oversea-file .file-layer-error .error-txt{
-    color: #fc211f;
+    color: #ff5b45;
     padding-left: 20px;
     display: inline-block;
-    margin-bottom: 8px;
-    margin-top: 60px;
-    background: url(../images/icon_invalid.png) no-repeat 0 6px;
+    margin-bottom: 12px;
+    position: relative;
 }
-.oversea-file img{
-    border-radius: 6px;
-    width: 300px;
-    height: 184px;
+.oversea-file .file-layer-error .error-txt i{
     position: absolute;
-    top:10px;
-    left: 9px;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: url(../../images/wap/icon_invalid.png) no-repeat 0 0;
+    background-size: contain;
+}
+.oversea-file .file-img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
 }
 
 .oversea-file .file-field input{
@@ -333,7 +359,8 @@
 }
 .oversea-example img{
     display: block;
-    height: 204px;
+    width: 100%;
+    height: auto;
 }
 
 .oversea-section{
@@ -348,4 +375,30 @@
 .section-txt{
     line-height: 20px;
     margin-bottom: 15px;
+}
+
+.oversea-status{
+    text-align: center;
+    padding-bottom: 110px;
+}
+.oversea-status .status-icon{
+    width: 80px;
+    height: 80px;
+    margin: 100px auto 0;
+}
+.oversea-status .status-tit{
+   font-weight: bold;
+   line-height: 60px;
+   font-size: 24px;
+   margin-bottom: 30px;
+}
+.oversea-status .status-txt{
+    line-height: 22px;
+    color: #666666;
+}
+.oversea-success .status-icon{
+    background: url(../../images/icon_success.png) no-repeat;
+}
+.oversea-wait .status-icon{
+    background: url(../../images/icon_wait.png) no-repeat;
 }
