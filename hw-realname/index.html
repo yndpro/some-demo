@@ -7,86 +7,101 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <div class="wrap">
-        <div class="top">
-            <div class="main">
-                <img src="images/logo2.jpg" alt="4399安全中心"/>
-                <span>港澳台/境外用户认证</span>
-            </div>
-        </div>
-    </div>
-    <div class="main fixed oversea">
-        <div class="invalid-feedback global-invalid-feedback" style="display: block;">您上次身份认证未通过，请填写真实的身份信息重新验证，否则可能无法进入游戏哦</div>
-        <div class="u-tab">
-            <ul class="tab-hd">
-                <li class="cur"><span>护照验证</span></li>
-                <li><span>台胞证验证</span></li>
-                <li><span>回乡证验证</span></li>
-            </ul>
-            <div class="tab-bd">
-                <div class="tab-cont" style="display: block;">
-                    <form class="u-form" name="a" action="">
-                        <div class="invalid-feedback"></div>
-                        <div class="oversea-section">
-                            <div class="section-tit">填写个人信息</div>
-                            <div class="form-group form-group-horizen">
-                                <label class="form-label" for="">姓       名</label>
-                                <input class="form-control" type="text" value="请输入你的姓名" name="name" data-placeholder="请输入你的姓名" onblur="onBlur(this);" onfocus="onFocus(this);" >
-                                <div class="form-tips">示例：张三</div>
-                            </div>
-                            <div class="form-group form-group-horizen">
-                                <label class="form-label" for="">证件号码</label>
-                                <input class="form-control" type="text" value="请输入护照号码" name="idcard" data-placeholder="请输入护照号码" onblur="onBlur(this);" onfocus="onFocus(this);">
-                                <div class="form-tips">示例：E00000000</div>
-                            </div>
-                        </div>
-                        <div class="oversea-section">
-                            <div class="section-tit">上传护照照片</div>
-                            <div class="section-txt">
-                                <p>1、证件将会进行人审核，请上传真实的证件照片，否则将不予通过审核</p>
-                                <p>2、只支持上传JPG/JPEG/PNG文件</p>
-                            </div>
-                            <div class="oversea-file">
-                                <div class="file-field">
-                                    <input class="" type="file" id="fileField1" name="attach" size="25"/>
-                                    <img class="file-img" src="" alt="">
-                                    <div class="file-layer file-layer-reupload"><i></i><p>重新上传</p></div>
-                                    <div class="file-layer file-layer-error"><p class="error-txt">文件格式错误</p><p>重新上传</p></div>                       
-                                </div>
-                                <p class="file-txt">请上传台胞证正面照片</p>
-                            </div>
-                            <div class="oversea-example">
-                                <img src="./images/oversea_1.jpg" alt="">
-                                <p class="example-txt">示例</p>
-                            </div>
-                        </div>
-                        <div class="form-group-btn">
-                            <button type="button" class="btn btn-primary j-submit">提交审核</button>
-                        </div>
-                    </form>
+    <div class="layout-stick">
+        <div class="layout-stick-main">
+            <div class="wrap">
+                <div class="top">
+                    <div class="main">
+                        <img src="images/logo2.jpg" alt="4399安全中心"/>
+                        <span>港澳台/境外用户认证</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="u-tip">
-            <p><b>隐私申明</b></p>
-            <p>用户填写的身份信息属于用户个人隐私，4399公司严格保护用户个人信息，不公开、 编辑或透露用户信息</p>
-        </div>
-
-        <div id="j-confirm-temp" style="display: none;">
-            <div class="u-dialog">
-                <div class="dialog-tit">提交成功</div>
-                <div class="dialog-txt">
-                    信息进入审核阶段，审核通过即可使用完整功能
+            <div class="main fixed oversea clearfix">
+                <div class="oversea-writen" style="display: none;">
+                    <div class="invalid-feedback global-invalid-feedback" style="display: none;"></div>
+                    <div class="u-tab">
+                        <ul class="tab-hd">
+                            <li class="cur"><span>护照验证</span></li>
+                            <li><span>台胞证验证</span></li>
+                            <li><span>回乡证验证</span></li>
+                        </ul>
+                        <div class="tab-bd">
+                            <div class="tab-cont" style="display: block;">
+                                <form class="u-form" name="a" action="">
+                                    <div class="invalid-feedback"></div>
+                                    <div class="oversea-section">
+                                        <div class="section-tit">填写个人信息</div>
+                                        <div class="form-group form-group-horizen">
+                                            <label class="form-label" for="">姓       名</label>
+                                            <input class="form-control" type="text" value="请输入你的姓名" name="name" data-placeholder="请输入你的姓名" onblur="onBlur(this);" onfocus="onFocus(this);" >
+                                            <div class="form-tips">示例：张三</div>
+                                        </div>
+                                        <div class="form-group form-group-horizen">
+                                            <label class="form-label" for="">证件号码</label>
+                                            <input class="form-control" type="text" value="请输入护照号码" name="idcard" data-placeholder="请输入护照号码" onblur="onBlur(this);" onfocus="onFocus(this);">
+                                            <div class="form-tips">示例：E00000000</div>
+                                        </div>
+                                    </div>
+                                    <div class="oversea-section">
+                                        <div class="section-tit">上传护照照片</div>
+                                        <div class="section-txt">
+                                            <p>1、证件将会进行人审核，请上传真实的证件照片，否则将不予通过审核</p>
+                                            <p>2、只支持上传JPG/JPEG/PNG文件</p>
+                                        </div>
+                                        <div class="oversea-file">
+                                            <div class="file-field">
+                                                <input class="" type="file" id="fileField1" name="attach" size="25"/>
+                                                <img class="file-img" src="" alt="">
+                                                <div class="file-layer file-layer-reupload"><i></i><p>重新上传</p></div>
+                                                <div class="file-layer file-layer-error"><p class="error-txt">文件格式错误</p><p>重新上传</p></div>                       
+                                            </div>
+                                            <p class="file-txt">请上传台胞证正面照片</p>
+                                        </div>
+                                        <div class="oversea-example">
+                                            <img src="./images/oversea_1.jpg" alt="">
+                                            <p class="example-txt">示例</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-btn">
+                                        <button type="button" class="btn btn-primary j-submit">提交审核</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-tip">
+                        <p><b>隐私申明</b></p>
+                        <p>用户填写的身份信息属于用户个人隐私，4399公司严格保护用户个人信息，不公开、 编辑或透露用户信息</p>
+                    </div>
+                    <div id="j-confirm-temp" style="display: none;">
+                        <div class="u-dialog">
+                            <div class="dialog-tit">提交成功</div>
+                            <div class="dialog-txt"></div>
+                            <div class="dialog-btns">
+                                <a href="javascript:;" class="btn btn-primary j-confirm">我知道了</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="dialog-txt">
-                    信息进入审核阶段，在此期间您可正常使用产品功能，若审核未通过则需重新进行身份认证，回到原来的页面可继续进行相关操作
+                <div class="oversea-status oversea-success" style="display: none;">
+                    <div class="status-icon"></div>
+                    <div class="status-tit">认证成功</div>
+                    <div class="status-txt">
+                        <p>您已认证，基于隐私保护，已隐藏认证信息</p>
+                        <p>返回原来的页面即可继续相关操作</p>
+                    </div>
                 </div>
-                <div class="dialog-btns">
-                    <a href="javascript:;" class="btn btn-primary j-confirm">我知道了</a>
+                <div class="oversea-status oversea-wait" style="display: none;">
+                    <div class="status-icon"></div>
+                    <div class="status-tit">正在审核中</div>
+                    <div class="status-txt">
+                        <p>您已认证，基于隐私保护，已隐藏认证信息</p>
+                        <p>返回原来的页面即可继续相关操作</p>
+                    </div>
                 </div>
             </div>
         </div>
-        
     </div>
     <div class="footer">
         <div style="width: 960px; margin: auto">
@@ -114,30 +129,57 @@
             var $ele = $(ele);
             $ele.css("color","#000");
             if($ele.val() === $ele.attr("data-placeholder")){
-                console.log("s");
                 $ele.val("");
             }
         }
         function imageFormatCheck(ele) {
             return /.(jpg|png|gif|bmp)$/.test(ele.value) ? true : false 
         }
-        function getIdcardState(params) {
-            $.getJSON('/ptlogin/getIdcardState.do', function(res) {
-                if (res.code == 300) {
-                    if(foreign_idcard_state == 1){
-
+        function getIdcardState() {
+            //$.getJSON('/ptlogin/getIdcardState.do', function(res) {
+                var res = {
+                    code : 300,
+                    result : {
+                        foreign_idcard_state : 2
                     }
-                    timer[type] && clearTimeout(timer[type]);
-                    //验证通过
-                    alert('邮件验证通过 弹实名');
+                }
+                if (res.code == 300) {
+                    if(res.result.foreign_idcard_state){
+                        if(res.result.foreign_idcard_state == 1 || res.result.foreign_idcard_state == 4){   //待审核
+                            $(".oversea-wait").show();
+                        }else if(res.result.foreign_idcard_state == 2){ //审核失败
+                            $(".oversea-writen").show();
+                            $(".global-invalid-feedback").html("您上次身份认证未通过，请填写真实的身份信息重新验证，否则可能无法进入游戏哦").show();init();
+                        }else if(res.result.foreign_idcard_state == 3){  //审核成功
+                            $(".oversea-success").show();
+                        }else{
+                            $(".oversea-writen").show();init();
+                        }
+                    }else{
+                        $(".oversea-writen").show();init();
+                    }
                 } else {
                     alert(res.message);
                 }
-            });
+            //});
         }
-    
+        function init() {
+
+            $(document).find('.u-tab li').bind('click',function(){
+                var index = $(this).index();
+                $(this).addClass("cur").siblings().removeClass("cur");
+                $(document).find('.u-tab .tab-cont').eq(index).show().siblings().hide();
+            })
+            
+            $.each([
+                $(".u-form[name='a']")[0],
+                $(".u-form[name='b']")[0]
+            ],initForm);
+        }
+        var isFirstSumbit = true;
         function initForm(j,form) {
             var $form = $(form);
+            var type = j+1;
             var $nameInput = $form.find("input[name=name]");
             var $idCardInput = $form.find("input[name=idcard]");
             var $fileField = $form.find('.file-field');
@@ -157,6 +199,7 @@
                 $fileLayerReupload.hide()
             })
             
+            
             $fileInput.change(function (e) {
 
                 if($fileInput.val()=="") return false;
@@ -166,23 +209,6 @@
                 //$fileImg.css("filter","");
                 
                 if(imageFormatCheck(this)){
-                    // var e = event||widow.event;
-                    // if (navigator.userAgent.indexOf('MSIE 8') >= 0 || navigator.userAgent.indexOf('MSIE 9') >= 0) {
-                    //     $(this).select();
-                    //     window.parent.document.body.focus();
-                    //     var realpath = document.selection.createRange().text;
-                    //     $fileImg.css("filter", "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',src=\"" + realpath + "\",sizingMethod=scale)");
-                    // }else {
-                    //     var file = e.target.files[0];
-                    //     var reader = new FileReader();
-                    //     var targetId = e.target.id;
-                    //     reader.readAsDataURL(file);
-                    //     reader.onload = function () {
-                    //         var picString = reader.result;
-                    //         $fileImg.attr({ "src": picString }).show();
-                    //     };
-                    // }
-                    
                     // $.ajaxFileUpload({
                     //     url:"ajaxUpload",
                     //     secureuri:false,
@@ -204,11 +230,9 @@
                     //         $error.html('文件上传失败！').show();
                     //     }
                     // });
-                
-                    
                 }else{
-                    $(this).siblings(".file-layer").hide();
-                    $(this).siblings(".file-layer-error").show();
+                    $fileInput.siblings(".file-layer").hide();
+                    $fileInput.siblings(".file-layer-error").show();
                 }
             });
 
@@ -230,21 +254,25 @@
                     $error.html("请上传真实的证件照片").show();
                     return false
                 }
-                console.log(name);
+                
+                console.log({
+                    realname    : name,
+                    idcard      : idcard,
+                    type        : type
+                });
                 // $.ajax({
-                //     url: '/anquan/safe/?_c=verify&_a=confirm&type=phone',
+                //     url: '/ptlogin/editForeignRealname.do ',
                 //     data: {
-                //         name : name,
-                //         idcard : idcard
+                //         realname    : name,
+                //         idcard      : idcard,
+                //         type        : type
                 //     },
                 //     dataType: 'json',
                 //     type: 'POST',
                 //     success: function (res) {
                         var res = {
                             status : 1,
-                            data : {
-                                src : "http://f.4399.com:8080/hw-realname/images/oversea_1.jpg"
-                            }
+                            
                         }
                         if (res.status) {
                             ue.dialog({
@@ -257,28 +285,27 @@
                                     var _pop = this,
                                         $pop = this.obj;
 
+                                    $pop.find('.dialog-txt').html(
+                                        isFirstSumbit ? 
+                                        "信息进入审核阶段，在此期间您可正常使用产品功能，若审核未通过则需重新进行身份认证，回到原来的页面可继续进行相关操作"
+                                        :
+                                        "信息进入审核阶段，审核通过即可使用完整功能"
+                                    )
+                                    
                                     $pop.find('.j-confirm').bind("click",function(){
                                         _pop.close();
                                     });
                                 }
                             });
+                            isFirstSumbit = false;
                         }
                 //     }
                 // });
             })
         }
-        $(function() {
-            $(document).find('.u-tab li').bind('click',function(){
-                var index = $(this).index();
-                $(this).addClass("cur").siblings().removeClass("cur");
-                $(document).find('.u-tab .tab-cont').eq(index).show().siblings().hide();
-            })
-            $.each([
-                $(".u-form[name='a']")[0],
-                $(".u-form[name='b']")[0]
-            ],initForm);
 
-            
+        $(function() {
+            getIdcardState();
         })
     
     </script>

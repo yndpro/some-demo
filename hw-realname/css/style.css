@@ -73,6 +73,7 @@ body {
     height: 100px;
     padding-top: 10px;
     text-align: center;
+    margin-top: -110px;
     border-top: 1px #ddd solid;
 }
 .main {
@@ -363,6 +364,39 @@ label.form-label{
     height: 204px;
 }
 
+html, body, .layout-stick {height: 100%;}
+.layout-stick{
+    height: auto;
+    min-height: 100%;
+}
+.layout-stick-main{
+    padding-bottom: 150px;
+}
+
+.oversea-status{
+    text-align: center;
+    padding-bottom: 110px;
+}
+.oversea-status .status-icon{
+    width: 80px;
+    height: 80px;
+    margin: 100px auto 0;
+}
+.oversea-status .status-tit{
+   font-weight: bold;
+   line-height: 60px;
+   font-size: 24px;
+   margin-bottom: 30px;
+}
+.oversea-status .status-txt{
+    line-height: 22px;
+}
+.oversea-success .status-icon{
+    background: url(../images/icon_success.png) no-repeat;
+}
+.oversea-wait .status-icon{
+    background: url(../images/icon_wait.png) no-repeat;
+}
 
 .section-tit{
     font-weight: bold;
