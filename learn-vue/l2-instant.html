@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var data = {
+            a : 1
+        }
+        var vm = new Vue({
+            el : '#example',
+            data : data,
+            
+            //生命周期钩子的 this 上下文指向调用它的 Vue 实例
+            created: function () {
+                console.log('a is: ' + this.a)
+            }
+        })
+
+        //Vue 实例被创建时，它将 data 对象中的所有的 property 加入到 Vue 的响应式系统中
+        console.log(vm.a === data.a);
+
+        data.a = 2;
+        console.log(vm.a);
+
+        vm.a = 3;
+        console.log(data.a);
+
+        //只有当实例被创建时就已经存在于 data 中的 property 才是响应式的，
+        //后追加的property改动将不会触发任何视图的更新
+        data.b = 5;
+        console.log(vm.b);
+
+
+        //除了数据 property，Vue 实例还暴露了一些有用的实例 property 与方法。
+        //它们都有前缀 $，以便与用户定义的 property 区分开来
+        console.log(vm.$data === data);
+        
+        console.log(vm.$el === document.getElementById("example"));
+
+        vm.$watch('a',function(newValue,oldValue){
+            console.log('a has change');
+        })
+        vm.a = 9;
+    </script>
+</body>
+</html>
