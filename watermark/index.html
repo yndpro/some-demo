@@ -40,7 +40,7 @@
           const ratio = 238 / 150;  
           const fontSize = parseInt((orientation === "vertical" ? img.width : (ratio * img.height)) / (content.length + trim));
 
-          ctx.drawImage(img, 0, 0);
+          ctx.drawImage(img, 0, 0,img.width,img.height,0,0,img.width,img.height);
           ctx.textAlign = textAlign;
           ctx.textBaseline = textBaseline;
           ctx.font = fontSize + "px " + font;
@@ -78,6 +78,7 @@
     function change(target) {
         var reader = new FileReader();
             reader.readAsDataURL(target.files[0]);
+        console.log(target.files[0]);
         reader.onload = function(event){
             // 调用
             __picWM({
