@@ -36,10 +36,9 @@
           const orientation = img.width > img.height ? "horizen" : "vertical";
           const textX = img.width / 2;
           const textY = img.height / 2;
-          const textNum = content.length;
           const trim = 0;
           const ratio = 238 / 150;  
-          const fontSize = parseInt((orientation === "vertical" ? img.width : (ratio * img.height)) / (textNum + trim));
+          const fontSize = parseInt((orientation === "vertical" ? img.width : (ratio * img.height)) / (content.length + trim));
 
           ctx.drawImage(img, 0, 0);
           ctx.textAlign = textAlign;
