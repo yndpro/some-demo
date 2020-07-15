@@ -113,8 +113,8 @@ body, button, input, select, textarea{ font:14px/1.125 "Microsoft Yahei",Arial,H
 }
 .form-group-horizen .form-label{
     position: absolute;
-    height: 44px;
-    line-height: 44px;
+    height: 46px;
+    line-height: 46px;
     color: #666;
     width: 70px;
     text-align: center;

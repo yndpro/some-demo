@@ -1,4 +1,4 @@
-var host = "";
+var host = "http://api.com";
 
 
 var strategies = {
@@ -411,11 +411,13 @@ function showPop(data) {
 	});
 }
 
-function verify() {
+function verify() {console.log("dsf");
 	var params = {
 		_c: "verify",
 		_a: "userInfo"
 	}
+	
+	//host + '/anquan/safe/?' + transferParamsObj2Query(params)
 	$.getJSON(host + '/anquan/safe/?' + transferParamsObj2Query(params), function(res) {
 		if (res.status) {
 			console.log(res.data);
