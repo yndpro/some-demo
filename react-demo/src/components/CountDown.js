@@ -20,34 +20,34 @@ class CountDown extends React.Component{
         h = this.addZero(h);
         m = this.addZero(m);
         s = this.addZero(s);
-        this.setState({time : h + ":" + m + ":" + s});
-        if(time <= 0){
-            window.location.reload()
-            return
-        }else{
-            this.timer = setTimeout(() => {
-                this.countDown(time);
-            }, 1000);
-        }
-        
+        this.setState({time : h + ":" + m + ":" + s},()=>{
+            if(time <= 0){
+                window.location.reload()
+                return
+            }else{
+                this.timer = setTimeout(() => {
+                    this.countDown(time);
+                }, 1000);
+            }
+        });
     }
     start(){
-        if(!this.startCount && this.props.time > 0){
+        //if(!this.startCount && this.props.time > 0){
             this.countDown(this.props.time);
-            this.startCount = true;
-        }
+        //     this.startCount = true;
+        // }
     }
     componentDidMount(){
-        this.startCount = false;
+        //this.startCount = false;
         this.start();
     }
     componentWillUnmount(){
         clearTimeout(this.timer);
-        this.startCount = false;
+        //this.startCount = false;
     }
-    componentWillReceiveProps(){
-        this.start();
-    }
+    // componentWillReceiveProps(){
+    //     this.start();
+    // }
     render(){
         return <span>{this.state.time}</span>
     }
