@@ -1,7 +1,5 @@
 (function() {
 
-    var mitImage = {}
-
     function __picWM({
       url = '',
       textAlign = 'center',
