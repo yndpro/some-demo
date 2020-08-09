@@ -1,8 +1,8 @@
 const model= require('./model');
-const name = "萌系美女的健身靓照";
-const url = "http://slide.sports.sina.com.cn/o_fitness/slide_2_730_246069.html#p=4";
+const name = "一组来自网红美女Ruoyu小姐姐的运动美拍";
+const url = "http://slide.sports.sina.com.cn/o/slide_2_730_251282.html#p=8";
 const host = "n.sinaimg.cn";
-const depositPath = "/Users/adrianyoung/Downloads/";
+const depositPath = "/Users/adrianyoung/Downloads/sina/";
 
 async function main() {
 
