@@ -1,6 +1,6 @@
 const model= require('./model');
-const name = "一组来自网红美女Ruoyu小姐姐的运动美拍";
-const url = "http://slide.sports.sina.com.cn/o/slide_2_730_251282.html#p=8";
+const name = "一组来自普拉提健身美女导师Tini小姐姐的运动美拍";
+const url = "http://slide.sports.sina.com.cn/o/slide_2_730_251527.html#p=15";
 const host = "n.sinaimg.cn";
 const depositPath = "/Users/adrianyoung/Downloads/sina/";
 
