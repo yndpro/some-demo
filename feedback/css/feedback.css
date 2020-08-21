@@ -1,0 +1,183 @@
+html,
+body,
+.layout-stick {
+    height: 100%;
+}
+
+.layout-stick {
+    height: auto;
+    min-height: 100%;
+}
+
+.layout-stick-main {
+    padding-bottom: 110px;
+}
+
+.wrap .main {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.main {
+    width: 960px;
+}
+
+.feedback {
+    color: #333;
+    font-size: 14px;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+}
+
+.feedback button,
+.feedback input,
+.feedback textarea {
+    font-size: 14px;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+}
+
+.feedback-form {
+    padding: 40px 80px 30px;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+}
+
+.feedback .form-label {
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.feedback .form-label span {
+    color: #fc211f;
+}
+
+.feedback .radio-warpper {
+    line-height: 30px;
+}
+
+.feedback textarea.form-control{
+    width: 776px;
+}
+
+.feedback .btn-primary{
+    width: 200px;
+}
+
+
+.feedback-file{
+    width: 140px;
+    height: 140px;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    position: relative;
+    margin-right: 20px;
+    float: left;
+    display: none;
+  }
+  .feedback-file .file-origin{
+    width: 138px;
+    height: 138px;
+    position: absolute;
+    top:10px;
+    left: 10px;
+    border: 1px dashed #cccccc;
+    border-radius: 6px;
+  }
+  .feedback-file .file-origin i,
+  .feedback-file .file-layer-reupload i{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin: -20px 0 0 -20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .feedback-file .file-origin i{
+      background-image: url(../images/icon_plus_grey.png);
+  }
+  .feedback-file .file-layer-reupload i{
+    background-image: url(../images/icon_plus_white.png);
+}
+  .feedback-file .file-origin p,
+  .feedback-file .file-layer-reupload p{
+    line-height: 28px;
+    position: absolute;
+    bottom:16px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .feedback-file .file-origin p{
+    color: #aaaaaa;
+  }
+  .feedback-file .file-layer-reupload p{
+    color: #ffffff;
+  }
+  
+  .feedback-file .file-layer{
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top:10px;
+    left: 10px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 8px;
+    display: none;
+    background: url(../images/ptlogin_mask2.png) repeat;
+  }
+  
+  .feedback-file .file-layer-error .error-txt{
+    color: #fc211f;
+    display: inline-block;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    margin-top: 40px;
+    background: url(../images/icon_invalid.png) no-repeat 0 6px;
+  }
+  .feedback-file img{
+    border-radius: 6px;
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top:10px;
+    left: 10px;
+  }
+  .feedback-file .file-loading{
+    text-align: center;
+    line-height: 140px;
+    width: 100%;
+    height: 140px;
+    position: absolute;
+    top:10;
+    left:10;
+    display: none;
+    cursor: not-allowed;
+    z-index: 1000;
+  }
+  
+  .feedback-file input{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top:0;
+    left: 0;
+    cursor: pointer;
+    filter:alpha(opacity=0);
+    z-index: 999;
+    *font-size:100px;
+    font-size:100px\0;
+  }
+
+  .feedback-file-tip{
+    clear: both;
+    line-height: 36px;
+    color: #aaaaaa;
+  }
