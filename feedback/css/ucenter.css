@@ -1,0 +1,115 @@
+/* ucenter ui库 欢迎持续集成*/
+
+
+
+/* u-form */
+input[type=text].form-control {
+    padding: 0 10px;
+    line-height: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+}
+
+textarea.form-control {
+    padding: 3px 10px;
+    line-height: 32px;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    outline: none;
+    resize: none;
+}
+
+label.form-label {
+    line-height: 34px;
+    font-size: 14px;
+}
+
+.form-group-horizen {
+    padding: 0 0 14px 72px;
+    position: relative;
+}
+
+.form-group-horizen input[type=text].form-control {
+    width: 324px;
+}
+
+.form-group-horizen label.form-label {
+    width: 72px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.form-group-4em.form-group-horizen {
+    padding-left: 64px;
+}
+
+.form-group-4em.form-group-horizen .form-label {
+    width: 64px;
+}
+
+.form-group-4em.form-group-horizen input[type=text].form-control {
+    width: 314px;
+}
+
+.form-group-vertical {
+    margin-bottom: 14px;
+}
+
+.form-group-vertical label.form-label {
+    display: block;
+}
+
+.form-group-vertical input[type=text].form-control {
+    width: 378px;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{ /* WebKit browsers 适配谷歌 */
+color: #aaaaaa;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 适配火狐 */
+color: #aaaaaa;
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder { /* Mozilla Firefox 19+ 适配火狐 */
+color: #aaaaaa;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder { /* Internet Explorer 10+  适配ie*/
+color: #aaaaaa!important;
+}
+
+
+.radio-warpper {
+    float: left;
+    margin-right: 40px;
+}
+
+.radio-warpper label {
+    padding-left: 20px;
+    background: url(../images/icon_radio_circle.png) no-repeat left center;
+}
+.radio-warpper label.radio-checked{
+    background-image: url(../images/icon_radio_circle_selected.png);
+}
+
+/* u-btn */
+.btn-primary {
+    width: 120px;
+    line-height: 40px;
+    height: 40px;
+    text-align: center;
+    background: #70c700;
+    color: #fff;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    text-decoration: none;
+}
