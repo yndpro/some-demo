@@ -30,7 +30,7 @@
       "esnext",
       "es2015"
     ],
-    "sourceMap": false,
+    "sourceMap": true,
     "pretty": true
   }
 }
