@@ -37,6 +37,7 @@ class WaterMark {
       this.error = params.error;
       
       this._getImgFromDataSource(this.dataSource, this.dataSourceType, img => {
+        console.log("1",img);
           const base64 = this._drawToCanvas(img);
           this.success(base64);
       })
@@ -77,7 +78,8 @@ class WaterMark {
   }
 
   private _drawToCanvas(img) {
-
+    console.log("3");
+    
       img.crossOrigin = 'anonymous';
 
       const canvas = document.createElement('canvas');
@@ -99,7 +101,7 @@ class WaterMark {
       ctx.strokeText(this.content, this.textX, this.textY);
       ctx.fillStyle = this.fillStyle;
       ctx.fillText(this.content, this.textX, this.textY);
-
+      console.log("5",canvas.toDataURL());
       return canvas.toDataURL();
   }
 }
