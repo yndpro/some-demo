@@ -53,12 +53,34 @@ body,
     color: #fc211f;
 }
 
-.feedback .radio-warpper {
+.feedback .radio-wrapper {
     line-height: 30px;
 }
 
 .feedback textarea.form-control{
     width: 776px;
+    border:none;
+}
+
+.feedback .form-group-id{
+    display: none;
+}
+
+.feedback .textarea-count{
+    text-align: right;
+    line-height: 40px;
+    padding: 0 10px;
+    color: #aaaaaa;
+}
+
+.feedback .textarea-wrapper{
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+}
+
+.feedback .form-group-btn{
+    padding: 40px 0;
 }
 
 .feedback .btn-primary{
@@ -181,3 +203,5 @@ body,
     line-height: 36px;
     color: #aaaaaa;
   }
+
+  

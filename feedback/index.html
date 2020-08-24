@@ -24,29 +24,41 @@
             </div>
             <div class="main feedback fixed clearfix">
                 <div class="feedback-form">
-                    <form class="u-form" class="" name="passport" action="">
+                    <form class="u-form" class="" name="passport">
                         <div class="form-group form-group-vertical form-group-logintype">
                             <label class="form-label" for="">登录方式</label>
                             <div class="radio-group clearfix" id="radiolist">
-                                <div class="radio-warpper">
-                                    <input type="radio" class="radio-input" name="type" id="radio1" value="">
+                                <div class="radio-wrapper">
+                                    <input type="radio" class="radio-input" name="type" id="radio1" value="1">
                                     <label for="radio1">4399账号</label>
                                 </div>
-                                <div class="radio-warpper">
-                                    <input type="radio" class="radio-input" name="type" id="radio2" value="">
+                                <div class="radio-wrapper">
+                                    <input type="radio" class="radio-input" name="type" id="radio2" value="2">
                                     <label for="radio2">手机号</label>
+                                </div>
+                                <div class="radio-wrapper">
+                                    <input type="radio" class="radio-input" name="type" id="radio3" value="3">
+                                    <label for="radio3">微信</label>
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group form-group-vertical form-group-id">
+                            <label class="form-label" for="">反馈帐号</label>
+                            <input class="form-control" type="text" value="" name="id"
+                                placeholder="请输入您要反馈的4399帐号">
+                        </div>
                         <div class="form-group form-group-vertical">
                             <label class="form-label" for="">问题描述<span>*</span></label>
-                            <textarea class="form-control" name="" id="" cols="30" rows="5"
+                            <div class="textarea-wrapper">
+                                <textarea class="form-control" name="descr" id="" cols="30" rows="5"
                                 placeholder="请详细描述出现的异常，方便我们快速解决问题"></textarea>
+                                <div class="textarea-count"><span>0</span>/500</div>
+                            </div>
                         </div>
                         <div class="form-group form-group-vertical">
                             <label class="form-label" for="">上传图片</label>
                             <div class="feedback-file">
-                                <input class="" type="file" id="file1" name="file" size="25" title=""/>
+                                <input class="" type="file" name="file1" title=""/>
                                 <div class="file-origin"><i></i><p>问题截图</p></div> 
                                 <div class="file-loading">加载中...</div>
                                 <img class="file-img" src="" alt="">
@@ -54,7 +66,7 @@
                                 <div class="file-layer file-layer-error"><p class="error-txt"></p><p>重新上传</p></div>                    
                             </div>
                             <div class="feedback-file">
-                                <input class="" type="file" id="file2" name="file" size="25" title=""/>
+                                <input class="" type="file" name="file2" title=""/>
                                 <div class="file-origin"><i></i><p>问题截图</p></div> 
                                 <div class="file-loading">加载中...</div>
                                 <img class="file-img" src="" alt="">
@@ -62,7 +74,7 @@
                                 <div class="file-layer file-layer-error"><p class="error-txt"></p><p>重新上传</p></div>                    
                             </div>
                             <div class="feedback-file">
-                                <input class="" type="file" id="file2" name="file" size="25" title=""/>
+                                <input class="" type="file" name="file3" title=""/>
                                 <div class="file-origin"><i></i><p>问题截图</p></div> 
                                 <div class="file-loading">加载中...</div>
                                 <img class="file-img" src="" alt="">
@@ -73,10 +85,12 @@
                         </div>
                         <div class="form-group form-group-vertical">
                             <label class="form-label" for="">联系方式</label>
-                            <input class="form-control" type="text" value="" name="idcard"
+                            <input class="form-control" type="text" value="" name="contact"
                                 placeholder="请留下您的QQ或手机号，方便为您答疑解惑">
                         </div>
-                        <button class="btn-primary j-submit">提交反馈</button>
+                        <div class="form-group form-group-vertical form-group-btn">
+                            <button type="button" class="btn btn-primary disable j-submit">提交反馈</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -112,6 +126,7 @@
                 if(!$(this).prev().is(':checked')){
                     $(this).addClass("radio-checked");
                     $(this).prev()[0].checked = true;
+                    options.callback && options.callback($(this).prev()[0]);
                 }
                 event.stopPropagation();
             })
@@ -190,71 +205,132 @@
         }
 
         
+        /**
+         * 简易toast
+         * @param {*} text
+         */
+        function toast(text) {
+            var $toast = $(".u-toast");
+            if($toast.length > 0){
+                return false;
+            }
+            $("body").append("<div class='u-toast'><div class=\"toast-tit\">" + text + "</div></div>");
+            setTimeout(function() {
+                $toast = $(".u-toast");
+                if($toast.length > 0) $toast.remove();
+            }, 2000);
+        }
+
+        /**
+         * 扩展数组indexOf方法
+         * @param {*} 
+         */
+        Array.prototype._indexOf = function(n) {
+            if ("indexOf" in this) {
+                return this["indexOf"](n);
+            }
+            for (var i = 0; i < this.length; i++) {
+                if (n === this[i]) {
+                return i;
+                }
+            }
+            return -1;
+        };
+
+        
         var Page = {
             fileUploads : [],
             init : function(params) {
                 var page = this;
 
-                this.$typeInput = $("input[name=type]");
+                page.form = $(".u-form")[0];
+                page.bind();
 
-                $('#radiolist').hradio();
+                //绑定模拟placeholder
                 $("input,textarea").placeholder({"color":"#aaaaaa"});
+
+                //绑定模拟radiobox
+                $('#radiolist').hradio({
+                    callback : function(ele) {
+                        var showIdFieldType = [1,2];
+                        var value = parseInt(ele.value);
+                        if(showIdFieldType._indexOf(value) >= 0){
+                            $(".form-group-id").show();
+                            $(".form-group-id input").attr("placeholder","请输入您要反馈的" + (value == 1 ? "4399帐号" : "手机号"));
+                        }else{
+                            $(".form-group-id").hide()
+                        }
+                    }
+                });
+
+                //初始化图片域
                 $(".feedback-file").each(function(index,el) {
                     page.initFileUpload(el,index);
                     page.fileUploads.push(el);
-                })
+                });
                 $(page.fileUploads.shift()).show();
-                $(".j-submit").bind("click",Utils.throttle(function() {
-                    var name    = $.trim($nameInput.val());
-                    var descr  = $.trim($idCardInput.val());
-                    var fileSrc  = $fileImg.attr("src");
-                    var fileId  = $fileImg.attr("f-id");
+                
+            },
+            bind : function(params) {
+                var page = this;
+                
+                //输入框事件
+                $("textarea.form-control").on("input propertychange", function() {
+                    var $this = $(this),
+                        val = $this.val(),
+                        count = "";
 
-                    // $.ajax({
-                    //     url: "",
-                    //     data: formData,
-                    //     type: "POST",
-                    //     dataType : 'json',
-                    //     async:false,
-                    //     processData: false,   //一定要写
-                    //     contentType: false,   //一定要写
-                    //     xhrFields: {
-                    //         withCredentials: true
-                    //     },
-                    //     crossDomain: true,
-                    //     enctype: 'multipart/form-data',
-                    //     success: function (res) {
-                        var res = {
-                                c : 0,
-                                d : {
-                                    f_id : "11"
-                                },
-                                e : "error"
-                            }
-                            $fileLoading.hide();
-                            if(res.c == 0 ){
-                                $fileImg.attr({ 
-                                    "src": URL.createObjectURL($fileInput[0].files[0]),
-                                    "f-id" : res.d.f_id
-                                }).show();
-                                if(page.fileUploads.length > 0){
-                                    $(page.fileUploads.shift()).show();
-                                }
+                    $(".j-submit").removeClass("disable");
+                    if((val.length <= 0)){
+                        $(".j-submit").addClass("disable");
+                    }
+                    if (val.length > 500) {
+                        $this.val(val.substring(0, 5));
+                    }
+                    count = val.length;
+                    $(".textarea-count span").text(count);
+                });
+
+                //提交事件
+                $(".j-submit").bind("click",throttle(function() {
+                    if($(this).hasClass("disable")){
+                        return false;
+                    }
+                    var _files = [];
+                    $(".feedback-file .file-img").each(function(i,ele) {
+                        var _fileid = $(ele).attr("fileid")
+                        if(_fileid){
+                            _files.push(_fileid);
+                        }
+                    });
+                    var params = {
+                        type    : page.form.type.value,
+                        id      : $.trim(page.form.id.value),
+                        descr   : $.trim(page.form.descr.value),
+                        contact : $.trim(page.form.contact.value),
+                        files   : _files
+                    };
+                    console.log(params);
+                    $.ajax({
+                        url: "",
+                        data: params,
+                        type: "POST",
+                        dataType : 'json',
+                        success: function (res) {
+                            if(res.code == 100){
+                                toast(res.message);
                             }else{
-                                $error.html(res.e).show();
-                                $filePlus.show();
-                                scrollToTop();
+                                toast(res.message);
                             }
-                    //     },
-                    //     error:function(error){
-                    //         $fileLoading.hide();
-                    //         $error.html('文件上传失败！').show();
-                    //         $filePlus.show();
-                    //     }
-                    // });
+                        },
+                        error:function(error){
+                            toast("提交失败");
+                        }
+                    });
                 },1000));
             },
             
+            //初始化图片域
             initFileUpload : function(fileWrap,index) {
                 var page = this;
                 var $fileWrap = $(fileWrap);
@@ -291,54 +367,51 @@
                         $fileLayerError.show().find(".error-txt").html("文件大小超出限制");
                         return false
                     }
+                    console.log(this.files[0]);
                     // $.ajax({
                     //     url: "",
-                    //     data: formData,
+                    //     data: this.files[0],
                     //     type: "POST",
                     //     dataType : 'json',
-                    //     async:false,
-                    //     processData: false,   //一定要写
-                    //     contentType: false,   //一定要写
-                    //     xhrFields: {
-                    //         withCredentials: true
-                    //     },
-                    //     crossDomain: true,
-                    //     enctype: 'multipart/form-data',
                     //     success: function (res) {
                             var res = {
-                                c : 0,
-                                d : {
-                                    f_id : "11"
-                                },
-                                e : "error"
+                                code : 100,
+                                data : {fileId:324234},
+                                message : "error"
                             }
                             $fileLoading.hide();
-                            if(res.c == 0 ){
+                            if(res.code == 100 ){
                                 $fileImg.attr({ 
                                     "src": URL.createObjectURL($fileInput[0].files[0]),
-                                    "f-id" : res.d.f_id
+                                    "fileId" : res.data.fileId
                                 }).show();
-                                if(page.fileUploads.length > 0){
+
+                                //显示下一个图片域
+                                var hasUploadFieldEmpty = false;
+                                $(".feedback-file:visible input").each(function(i,ele) {
+                                    if($(ele).val() == ""){
+                                        hasUploadFieldEmpty = true;
+                                        return false;
+                                    }
+                                })
+                                if(!hasUploadFieldEmpty && (page.fileUploads.length > 0)){
                                     $(page.fileUploads.shift()).show();
                                 }
                             }else{
-                                $error.html(res.e).show();
-                                $filePlus.show();
-                                scrollToTop();
+                                toast(res.message);
                             }
                     //     },
                     //     error:function(error){
-                    //         $fileLoading.hide();
-                    //         $error.html('文件上传失败！').show();
-                    //         $filePlus.show();
+                    //         toast('文件上传失败！');
                     //     }
                     // });
                 },1000));
             },
+            
+            //校验图片格式
             imageFormatCheck : function(ele){
                 return /.(jpg|jpeg|png)$/.test(ele.value) ? true : false 
-            }  
-            
+            }
         }
 
         $(function(params) {
