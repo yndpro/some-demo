@@ -126,7 +126,7 @@
                 if(!$(this).prev().is(':checked')){
                     $(this).addClass("radio-checked");
                     $(this).prev()[0].checked = true;
-                    options.callback && options.callback($(this).prev()[0]);
+                    options.callback && options.callback($(this).prev());
                 }
                 event.stopPropagation();
             })
@@ -251,14 +251,15 @@
 
                 //绑定模拟radiobox
                 $('#radiolist').hradio({
-                    callback : function(ele) {
+                    callback : function($ele) {
                         var showIdFieldType = [1,2];
-                        var value = parseInt(ele.value);
+                        var value = parseInt($ele.val());
+                        // console.log(ele);
                         if(showIdFieldType._indexOf(value) >= 0){
                             $(".form-group-id").show();
                             $(".form-group-id input").attr("placeholder","请输入您要反馈的" + (value == 1 ? "4399帐号" : "手机号"));
                         }else{
-                            $(".form-group-id").hide()
+                            $(".form-group-id").hide();
                         }
                     }
                 });
@@ -281,7 +282,7 @@
                         count = "";
 
                     $(".j-submit").removeClass("disable");
-                    if((val.length <= 0)){
+                    if((val.length <= 0) || (val == "请详细描述出现的异常，方便我们快速解决问题")){
                         $(".j-submit").addClass("disable");
                     }
                     if (val.length > 500) {
@@ -361,28 +362,28 @@
                         $fileLayerError.show().find(".error-txt").html("文件格式错误");
                         return false
                     }
-                    if(this.files[0].size / 1024 / 1024 > 4){
+                    if($(this)[0].size / 1024 / 1024 > 4){
                         $fileLayerReupload.hide();
                         $fileOrigin.hide();
                         $fileLayerError.show().find(".error-txt").html("文件大小超出限制");
                         return false
                     }
-                    console.log(this.files[0]);
+                    console.log($(this)[0]);
                     // $.ajax({
                     //     url: "",
-                    //     data: this.files[0],
+                    //     data: $(this)[0],
                     //     type: "POST",
                     //     dataType : 'json',
                     //     success: function (res) {
                             var res = {
                                 code : 100,
-                                data : {fileId:324234},
+                                data : {fileId:324234,url:"http://s1.img4399.com/f/forums~home/17856_home?1597975321"},
                                 message : "error"
                             }
                             $fileLoading.hide();
                             if(res.code == 100 ){
                                 $fileImg.attr({ 
-                                    "src": URL.createObjectURL($fileInput[0].files[0]),
+                                    "src": res.data.url,
                                     "fileId" : res.data.fileId
                                 }).show();
 
