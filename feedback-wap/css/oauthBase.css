@@ -1,0 +1,1557 @@
+
+        body, button, input, select, textarea{ font:14px/1.125 "Microsoft Yahei",Arial,Helvetica,sans-serif;}
+    body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, th, td, p, blockquote, pre, form, fieldset, legend, input, button, textarea, hr { margin: 0; padding: 0;}
+    img{ border: 0 none;}
+    ul, ol{ list-style-type: none;}
+    input, button, select, textarea{ outline: medium none;}
+    body{ background:#eee;}
+    a{ text-decoration:none;}
+    .left{ float:left;}
+    .right{ float:right;}
+    .clearfix:after{ content:""; height:0; visibility:hidden; display:block; clear:both;}
+    .clearfix{ zoom:1;}
+
+    input:-webkit-autofill {   
+        -webkit-box-shadow: 0 0 0px 100px #fff inset !important;   
+        box-shadow: 0 0 0px 100px #fff inset !important;   
+    }  
+
+    .container-web {
+        background: #fff;
+        padding-bottom: 40px;
+    }
+    .global_ico {
+        background:url(//ptlogin.3304399.net/resource/images/oauth/sprite.png?v=10) no-repeat;
+        background-size:30px 365px;
+    }
+    .topbar {
+        background:#2b2b2b;
+        width:100%;
+        height:48px;
+        line-height:46px;
+    }
+    .topbar .head {
+        position:relative;
+    }
+    .topbar .head h2 {
+        padding:0 20px;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        overflow:hidden;
+        font-size:20px;
+        color:#fff;
+        font-weight:500;
+        text-align:center;
+        text-shadow:0 -1px 1px rgba(0, 0, 0, 0.35);
+    }
+    .topbar .head .back_btn {
+        width:30px;
+        height:50px;
+        position:absolute;
+        top:0;
+        left:0;
+    }
+    .topbar .head .closebtn {
+        background:#3b3b3b;
+        width:60px;
+        height:32px;
+        line-height:32px;
+        text-align:center;
+        color:#fff;
+        border-radius:3px;
+        box-shadow:1px 1px 0 rgba(255, 255, 255, 0.03)inset, 1px 1px 0 rgba(0, 0, 0, 0.2);
+        position:absolute;
+        top:7px;
+        right:15px;
+    }
+    .topbar .head .btn_jump,
+    .topbar .head .btn_exit{
+        height: 50px;
+        position: absolute;
+        top: 0;
+        right: 15px;
+        color:#fff;
+    }
+    .section {
+        width:100%;
+        /*padding-bottom:50px;*/
+        overflow:hidden;
+    }
+    .container-web .section {
+        width:400px;
+        margin: 0 auto;
+    }
+    .section .login, .section .reg {
+        margin:0 10px;
+        padding-top:10px;
+    }
+    .input_inner {
+        height:54px;
+        padding:0 34px;
+    }
+    .ipt_txt {
+        background:none;
+        width:100%;
+        padding:18px 0;
+        height:18px;
+        line-height:18px;
+        margin:0 auto;
+        display:block;
+        border:0 none;
+    }
+    .input_wrap_dis {
+        background:#e6e6e6;
+        height:54px;
+        border:#bfbfbf 1px solid;
+        border-radius:5px;
+        box-shadow:0 1px 1px rgba(0, 0, 0, 0.12)inset, 0 1px 0 #fff;
+        position:relative;
+    }
+    .input_wrap_id, .input_wrap_pwd {
+        background:#fff;
+        height:54px;
+        border-radius:3px 3px 0 0;
+        box-shadow:0 1px 0 rgba(0, 0, 0, 0.1);
+        position:relative;
+    }
+
+    .container-web .input_wrap_id, .container-web .input_wrap_pwd,  .container-web .input_wrap_captcha{
+        background:#fff;
+        height:54px;
+        border-radius: 5px;
+        box-shadow:none;
+        position:relative;
+        border: #d6d6d6 solid 1px;
+        margin-bottom: 10px;
+    }
+    .input_wrap_pwd {
+        border-top:#fbfbfb 1px solid;
+        border-radius:0 0 3px 3px;
+    }
+    .input_wrap {
+        background:#fff;
+        height:54px;
+        border-radius:3px;
+        box-shadow:0 1px 1px rgba(0, 0, 0, 0.1);
+        position:relative;
+    }
+    .user_ico, .pwd_ico, .code_ico, .mob_ico, .sms_ico {
+        width:18px;
+        height:18px;
+        display:block;
+        position:absolute;
+        left:10px;
+        top:18px;
+        z-index:10;
+    }
+    .user_ico {
+        background-position:-6px -114px;
+    }
+    .pwd_ico {
+        background-position:-6px -134px;
+    }
+    .mob_ico {
+        background-position:-6px -250px;
+    }
+    .sms_ico {
+        background-position:-6px -270px;
+    }
+    .ipt_lb {
+        font-size:15px;
+        color:#999;
+        position:absolute;
+        top:19px;
+        left:34px;
+        z-index:11;
+    }
+    .clear_ico, .warn_ico, .suc_ico {
+        background-position:-6px -154px;
+        width:18px;
+        height:18px;
+        display:block;
+        position:absolute;
+        right:10px;
+        top:18px;
+        z-index:10;
+    }
+    .suc_ico_l {
+        background:none;
+        width:33px;
+        height:33px;
+        display:inline-block;
+        vertical-align:-9px;
+    }
+    .warn_ico {
+        background:none;
+        width:33px;
+        width:18px;
+        height:18px;
+        top:12px;
+    }
+    .suc_ico {
+        background:none;
+        width:33px;
+        width:18px;
+        height:18px;
+        top:12px;
+    }
+    .warn_pop {
+        background:#333;
+        height:30px;
+        line-height:28px;
+        font-size:14px;
+        color:#fff;
+        opacity:0.7;
+        border-radius:4px;
+        padding:0 14px;
+        display:block;
+        position:absolute;
+        right:7px;
+        top:38px;
+        z-index:999;
+    }
+    .warn_pop .arrow {
+        width:14px;
+        height:14px;
+        line-height:1;
+        color:#333;
+        font-family:"simsun";
+        position:absolute;
+        top:-8px;
+        right:27px;
+    }
+    .gray_btn, .blue_btn, .green_btn {
+        background:#fcfcfc;
+        border:#ccc 1px solid;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-user-select: none;
+        width:100%;
+        height:54px;
+        line-height:54px;
+        display:block;
+        margin-top:15px;
+        font-size:18px;
+        color:#555;
+        border-radius:3px;
+        text-align:center;
+    }
+    .container-web .gray_btn, .container-web .blue_btn, .container-web .green_btn {
+        font-size: 14px;
+    }
+    .blue_btn {
+        background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #52acf9), color-stop(100%, #3396ea));
+        background:-webkit-linear-gradient(top, #52acf9, #3396ea);
+        background:-moz-linear-gradient(top, #52acf9, #3396ea);
+        background:-o-linear-gradient(top, #52acf9, #3396ea);
+        color:#fff;
+        border:#1b70b9 1px solid;
+        box-shadow:0 1px 0 rgba(255, 255, 255, 0.3)inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+        text-shadow:0 -1px 1px rgba(0, 0, 0, 0.5);
+    }
+    .gray_btn_act {
+        background:-webkit-linear-gradient(top, #e6e6e6, #f7f7f7);
+        background:-moz-linear-gradient(top, #e6e6e6, #f7f7f7);
+        background:-o-linear-gradient(top, #e6e6e6, #f7f7f7);
+        box-shadow:0 1px 0 rgba(0, 0, 0, 0.1)inset, 0 1px 1px rgba(255, 255, 255, 1);
+    }
+    .blue_btn_act {
+        background:-webkit-linear-gradient(top, #207cca, #52acf9);
+        background:-moz-linear-gradient(top, #207cca, #52acf9);
+        background:-o-linear-gradient(top, #207cca, #52acf9);
+        box-shadow:0 2px 5px rgba(0, 0, 0, 0.1)inset, 0 1px 0px rgba(255, 255, 255, 1);
+    }
+    .green_btn {
+        background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #35ca15), color-stop(100%, #05ab09));
+        background:-webkit-linear-gradient(top, #35ca15, #05ab09);
+        background:-moz-linear-gradient(top, #35ca15, #05ab09);
+        background:-o-linear-gradient(top, #35ca15, #05ab09);
+        color:#fff;
+        border:#33ab1b 1px solid;
+        box-shadow:0 0 2px rgba(102, 215, 60, 1)inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+        text-shadow:0 -1px 1px rgba(0, 0, 0, 0.5);
+    }
+    .cont {
+        margin-top:40px;
+    }
+    .log {
+        font-size:12px;
+        color:#999;
+    }
+    .log .title {
+        font-size:15px;
+        color:#333;
+        margin-right:5px;
+    }
+    .log .title_green {
+        font-size:15px;
+        color:#336633;
+        margin-right:5px;
+    }
+    .log .green {
+        color:#70c700;
+    }
+    .log_step {
+        line-height:24px;
+    }
+    .log_step .step_num1, .log_step .step_num2 {
+        width:24px;
+        height:24px;
+        background-size:24px 300px;
+        float:left;
+        margin-right:6px;
+    }
+    .log_step .step_num2 {
+        background-position:0 -181px;
+    }
+    .ipt_tips {
+        background:url(//ptlogin.3304399.net/resource/images/oauth/sprite.png?v=10) no-repeat -6px -174px;
+        background-size:30px 365px;
+        line-height:18px;
+        padding:0 0 5px 22px;
+        font-size:15px;
+        color:#999;
+    }
+    .ipt_tips_suc {
+        color:#51a41e;
+    }
+    .ipt_tips_warn {
+    }
+    .ipt_tips_err {
+        color:#ff5b45;
+    }
+    .normal_tips {
+        color:#555;
+        padding-bottom:10px;
+    }
+    .warning_tips {
+        background-position:-6px -174px;
+        height:18px;
+        line-height:18px;
+        color:#ff5b45;
+        font-size: 15px;
+        padding:0 0 10px 22px;
+    }
+    .normal_tipsb {
+        color:#777;
+        padding:10px 0;
+    }
+    .identify_code {
+        background:#fff;
+        width:50%;
+        height:54px;
+        box-shadow:0 1px 1px rgba(0, 0, 0, 0.1);
+        float:right;
+        border-radius:3px;
+    }
+    .identify_code .refresh {
+        float:right;
+        line-height:54px;
+        color:#55b3fc;
+        padding-right:8px;
+    }
+    .img_captcha {
+        display: block;
+        height: 42px;
+        width: 97px;
+        margin:6px 0 0 6px;
+        border-radius:2px;
+    }
+    .reg_sucbox {
+        width:100%;
+        height:84px;
+        line-height:84px;
+        border-bottom:#ddd 1px solid;
+        font-size:20px;
+        color:#51a41e;
+        text-align:center;
+        box-shadow:0 1px 0 #fff;
+    }
+    .reg_sucinfo {
+        background:#fff;
+        border:#bbb 1px solid;
+        border-radius:5px;
+        box-shadow:0 1px 1px rgba(0, 0, 0, 0.1);
+        padding:6px 10px;
+    }
+    .reg_sucinfo p {
+        line-height:25px;
+        color:#f08300;
+        font-size:15px;
+    }
+    .s_btn {
+        width:45%;
+    }
+    .w40 {
+        width:40%;
+    }
+    .w45 {
+        width:45%;
+    }
+    .w45 .ipt_txt {
+        width:46%;
+    }
+    .w55 {
+        width:55%;
+    }
+    .mt0 {
+        margin-top:0;
+    }
+    .mt10 {
+        margin-top:10px;
+    }
+    .mt15 {
+        margin-top:15px;
+    }
+    .mt20 {
+        margin-top:20px;
+    }
+    .mt30 {
+        margin-top:30px;
+    }
+    .mt100 {
+        margin-top:100px;
+    }
+    .mt80 {
+        margin-top:80px;
+    }
+    #username_tip_ico, #password_tip_ico {
+        right: 34px;
+    }
+    #qqLogin {
+        display: none;
+    }
+    /* add by gwc (index modify) */
+     .last_login {
+        height:40px;
+        line-height:40px;
+        padding:0 14px;
+    }
+    .last_login .text {
+        color:#333;
+    }
+    .last_login .text a {
+        color:#55b3fc;
+    }
+    .last_login .text i {
+        width:30px;
+        height:24px;
+        float:left;
+        margin:7px 2px 0 4px;
+    }
+    .last_login .text .t {
+        float:left;
+    }
+    .last_login .text .lk {
+        float:left;
+    }
+    .last_login .text .qq {
+        background-position:-3px -85px;
+        width:24px;
+    }
+    .last_login .text .wb {
+        background-position:0 -54px;
+    }
+
+    .ico_wb, .ico_qq, .ico_wx {
+        background-position:0 -50px;
+        width:30px;
+        height:30px;
+        display:inline-block;
+        vertical-align:top;
+        margin:12px 5px 0 0;
+    }
+    .ico_qq {
+        background-position:0 -82px;
+    }
+    .ico_wx {
+        background-position:0 -302px;
+    }
+    .ico_4399 {
+        width: 60px;
+        height: 30px;
+        display: inline-block;
+        vertical-align: top;
+        margin: 12px 0px 0 0;
+        background-position: 0 -687px;
+        -webkit-background-size: 60px 730px;
+        background-size: 60px 730px;
+    }
+    /***** Tablet (Smaller than 959px) landscape 1024 *****/
+     
+    /*
+        @media all and (min-width:450px) and (orientation:landscape){
+            .idx_flexbox{ display:-webkit-box;}
+            .idx_flexbox .flexitem{ width:50%; -webkit-box-flex:1; }
+            .idx_flexbox form{ padding-right:20px;}
+            .idx_flexbox .other_login{ padding-left:20px; padding-top:30px; border-left:#ddd 1px solid;}
+        }
+        */
+     .captcha {
+        margin-top:10px;
+        padding-right:110px;
+    }
+    .captcha .identify_code {
+        width:120px;
+        overflow:hidden;
+        float:right;
+        margin-right:-120px;
+    }
+    .captcha .input_wrap {
+        padding:0 15px;
+    }
+    .captcha_phone {
+        margin-top:10px;
+        padding-right:110px;
+    }
+    .captcha_phone .identify_btn {
+        width:100px;
+        overflow:hidden;
+        float:right;
+        margin-right:-110px;
+    }
+    .captcha_phone .getcode {
+        width:100%;
+        height:54px;
+        border:none;
+    }
+    .captcha_phone .gray_btn {
+        margin-top:0;
+        font-size:14px;
+    }
+    /* add by gwc 2014.3.25(新增帐号记录下拉框) */
+     .dropdown_ico {
+        background-position:4px -192px;
+        width:40px;
+        height:54px;
+        display:block;
+        position:absolute;
+        right:0;
+        top:0;
+    }
+    #login_page .input_wrap_id .clear_ico_fix {
+        right:46px;
+    }
+    .dropdown_list {
+        background:#fff;
+        width:100%;
+        border-radius:0 0 3px 3px;
+        box-shadow:0 1px 1px rgba(0, 0, 0, 0.2);
+        position:absolute;
+        left:0;
+        top:54px;
+        z-index:111;
+        display:none;
+    }
+    .dropdown_list li {
+        height:40px;
+        line-height:40px;
+        padding:0 10px;
+        color:#999;
+        border-top:#ebebeb 1px solid;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        overflow:hidden;
+    }
+    .input_wrap_id .input_inner {
+        padding-right:70px;
+    }
+    .security .hd {
+        background:#fff;
+        position:relative;
+        line-height:44px;
+        height:44px;
+        border-bottom:#ccc 1px solid;
+    }
+    .security .hd .tit {
+        font-size:16px;
+        padding-left:10px;
+        color:#333;
+    }
+    .security .hd .select {
+        font-size:14px;
+        padding-right:30px;
+        float:right;
+        color:#0794cf;
+    }
+    .security .hd .dropdown_ico {
+        background-color:transparent;
+        border-left:0 none;
+        top:1px;
+        right:-4px;
+    }
+    .security .hd .dropdown_list {
+        top:45px;
+    }
+    .security .bd {
+        padding:0 10px 15px;
+    }
+    .securityform {
+        padding-top:5px;
+    }
+    .securityform .input_wrap .input_inner {
+        padding:0 10px 0 58px;
+    }
+    .securityform .input_wrap .lb {
+        width:58px;
+        font-size:16px;
+        color:#333;
+        float:left;
+        margin-left:-58px;
+        line-height:54px;
+        text-align:right;
+    }
+    .securityform .qus {
+        padding:0 8px;
+        margin-top:6px;
+        line-height:34px;
+        color:#999;
+        font-size:14px;
+    }
+    .securityform .blue_btn {
+        margin-top:30px;
+    }
+    .login_btns {
+        padding-top:20px;
+        clear: both;
+    }
+    .login_links{
+        padding-top:5px;
+    }
+    .container-web .login_btns {
+        padding-top:0;
+    }
+
+    .submitbtn {
+        -webkit-appearance:none;
+        background:#70c700;
+        width:100%;
+        height:40px;
+        line-height:40px;
+        text-align:center;
+        border:0 none;
+        color:#fff;
+        border-radius:3px;
+    }
+    .login_help {
+        height:20px;
+        line-height:20px;
+        padding:10px 0 20px;
+        text-align:right;
+        overflow: hidden;
+    }
+    .login_help .phoneYzm,.login_help .normalLogin{
+        float:left;
+        color:#70c700;
+    }
+
+    .login_help .ln {
+        color:#999;
+        margin:0 5px;
+    }
+    .login_help a {
+        color:#999;
+    }
+    .preg_box .login_help .regfast {
+        color:#70c700;
+    }
+    .other_login {
+        padding: 0 10px;
+        height:122px;
+        margin-top:10px;
+
+    }
+    .other_login .titlebox {
+        height:40px;
+    }
+    .other_login .titlebox .title {
+        background:#eee;
+        padding:0 10px;
+        font-size: 12px;
+        color:#666;
+        position:relative;
+    }
+    .container-web .other_login .titlebox .title {
+        background:#fff;
+    }
+    .other_login .m-login {
+        padding-top: 20px;
+        text-align: center;
+    }
+    .other_login .m-login a {
+        color: #70c700;
+        text-decoration: underline;
+    }
+    .other_login .titlebox .arr_close, .other_login .titlebox .arr_open {
+        width:0;
+        height:0;
+        border-width:5px;
+        border-style:solid;
+        border-color:#999 transparent transparent transparent;
+        display:block;
+        position:absolute;
+        left:50%;
+        bottom:-14px;
+        margin-left:-5px;
+    }
+
+    .other_login .titlebox .arr_open {
+        border-color:transparent transparent #999 transparent;
+        bottom:-8px;
+    }
+    .other_login .fastlogin {
+        height:20px;
+        line-height:40px;
+        border-bottom:#d1d1d1 1px solid;
+        text-align:center;
+    }
+    .other_login_list {
+    }
+    .other_login_list form {
+        padding-top:10px;
+    }
+    .other_login_list .gray_btn {
+        width:auto;
+        font-weight:500;
+        margin:0 5px;
+    }
+    .other_login_list .gray_btn:nth-child(1) {
+        margin-left:0;
+    }
+    .other_login_list .gray_btn:nth-child(2) {
+        margin-right:0;
+    }
+    .other_login_list li {
+        width:50%;
+        float:left;
+        margin-bottom: 10px
+    }
+    .container-web .other_login_list li {
+        width: 33%;
+    }
+    .login_protocol {
+        display: block;
+        text-align: center;
+        line-height: 40px;
+        margin-top: 10px;
+        vertical-align: middle;
+    }
+    .login_protocol input {
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+    .login_protocol a {
+        color: #6fc700;
+    }
+    .protocol-youpai{
+        display: none;
+    }
+    
+    /*微信弹窗 by 17.2.15*/
+    .mod_wxPhone_box{
+        display: none;
+    }
+    .mod_wxPhone_masker{
+        width:100%;
+        height:100%;
+        position: fixed;
+        background:rgba(0,0,0,0.8);
+        left:0;
+        top:0;
+        z-index: 100
+    }
+    .mod_wxphone_dialog{
+        width:360px;
+        /*height:177px;*/
+        background:#fff;
+        position: fixed;
+        left:50%;
+        top:50%;
+        margin:-90px 0 0 -180px;
+        z-index: 110;
+    }
+    .m_wxphone_tip{
+        padding:25px 20px;
+        font-size:16px;
+        line-height: 24px;
+        color:#333;
+    }
+    .m_wxphone_tip dt{
+        font-size:18px;
+        margin-bottom:5px;
+    }
+    .m_wxphone_tip dd{
+        font-size:16px;
+    }
+    .m_wxphone_tip .m_uninstall{
+        color:#666;
+    }
+    .m_wxphone_tip .m_install{
+        color:#999;
+        font-size:14px;
+    }
+    .m_wxphone_btn{
+        border-top:2px solid #ddd;
+        overflow: hidden;
+        background:#fff;
+    }
+    .m_wxphone_btn a{
+        float:left;
+        width:50%;
+        text-align:center;
+        line-height:48px;
+        border-right:2px solid #ddd;
+        margin-right:-2px;
+        color:#70c700;
+    }
+    .m_wxphone_btn .close{
+        background:#f6f6f6;
+        color:#333;
+    }   
+
+    .ptlogin_ticon{
+        background:url(//ptlogin.3304399.net/resource/images/oauth/ptlgoin_thirdLogin.jpg?v=10) no-repeat;
+        background-size:75px 225px;
+    }
+
+    .ptico_wb, .ptico_qq, .ptico_4399 {
+        display: block;
+        width:75px;
+        height:75px;
+        margin:0 auto;
+    }
+    .ptico_qq {
+        background-position:0 0;
+    }
+    .ptico_wb {
+        background-position: 0 -150px;
+        
+    }
+    .ptico_4399 {
+        background-position:0 -75px;
+    }
+    .ptlogin_other{
+        margin:0 auto;
+        width:300px;
+    }
+
+   .other_login_list .ptlogin_other li{
+    width:100px;
+   }
+
+      /* add by xiaofang 17-06-19 */
+
+   .input_wrap_id .input_inner,.input_wrap_pwd .input_inner{
+    padding-left: 70px;
+   }
+   .fglb_txt{
+    height: 54px;
+    line-height: 54px;
+    color: #666;
+    position: absolute;
+    width: 70px;
+    text-align: center;
+   }
+   .fglobal_ico,.ptlogin_ticon{
+    background:  url(//ptlogin.3304399.net/resource/images/oauth/ptlogin_sprite.png) 0 0 no-repeat;
+    background-size: 65px 311px;
+    display: none;
+   }
+   .right {float:right;} 
+
+   .view_ico{
+    position: absolute;
+    background-position: 0 -276px;
+    width: 15px;
+    height: 54px;
+    overflow: hidden;
+    right: 40px;
+    top: 0;
+   }
+   .nview_ico{
+    background-position: -20px -276px;
+   }
+   .ptico_wx,.ptico_wb, .ptico_qq, .ptico_4399{
+    width: 65px;
+    height: 65px;
+    display: block;
+    margin: 0 auto;
+   }
+   .ptico_wx{
+    background-position: 0 0;
+   }
+   .ptico_4399{
+    background-position: 0 -70px;
+   }
+   .ptico_qq{
+    background-position: 0 -140px;
+    
+   }
+   .ptico_wb{
+    background-position: 0 -210px;
+   }
+
+  
+   .other_login_list li{
+    box-sizing: border-box;
+    text-align: center;
+   }
+  
+   .fother_login_list li:nth-child(odd){
+    padding-right: 32px;
+     text-align: right;
+   }
+   .fother_login_list li:nth-child(even){
+    padding-left: 32px;
+    text-align: left;
+   }
+   .finput_wrap{
+        background-color: #fff;
+        position: relative;
+        border: solid 1px #e0e0e0;
+        box-shadow: none;
+        margin-top: -1px;
+        border-radius: 0;
+    }
+    .finput_wrap:first-child{
+        margin-top: 0;
+        border-radius: 5px 5px 0 0!important
+    }
+    .finput_wrap:last-child{
+        border-radius: 0 0 5px 5px;
+    }
+    .identify_code{
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .input_wrap{
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .captcha .input_wrap{
+        padding-left: 70px;
+        background-color: transparent;
+    }
+
+    .identify_code{
+        background-color: transparent;
+    }
+   
+    .pinput_wrap_captcha{
+        padding-right: 0;
+    }
+    .pinput_wrap_captcha .input_inner{
+        padding-left: 70px;
+    }
+   .fidentify_btn {
+        position: absolute;
+        right:  40px;
+        top: 12px;
+        width: 80px;
+        height: 32px;
+        z-index: 11;
+    }
+    .q_countdown {
+        background: none #80c90d;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        line-height: 32px;
+        border-radius: 3px;
+        color: #fff;
+        display: block;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .q_dclick,.q_dclick:hover{
+        background-color: #c8c8c8;
+    }
+    .q_cd,.q_cd:hover{
+        background-color: #c8c8c8;
+    }
+    .ftab_nav{
+        height: 42px;
+        border-bottom: solid 1px #e0e0e0;
+        background-color: #fff;
+    }
+    .ftab_nav  li{
+        width: 50%;
+        float: left;
+        height: 100%;
+        text-align: center;
+    }
+    .ftab_nav  li a{
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        overflow: hidden;
+        color: #c8c8c8;
+    }
+   
+   
+    .ftab_nav  .cur a{
+        color: #666;
+        border-bottom: solid 2px #70c700;   
+    }
+
+    .ftip{
+        font-size: 12px;
+        color: #999;
+        line-height: 24px;
+        word-break: break-all;
+        padding-left:10px;
+        height: 24px;
+        width: 250px;
+    }
+
+    .flink{
+        color: #18a5ff;
+        line-height: 30px;
+    }
+    .flink_split{
+        color: #bbbbbb;
+        float: right;
+        margin: 0 8px;
+        line-height: 30px;
+    }
+
+    .clear_ico{
+        background: url(//ptlogin.3304399.net/resource/images/oauth/ptlogin_sprite.png) 0 0 no-repeat;
+        background-size: 65px 311px;
+        background-position: -45px -275px;
+        width: 16px;
+        height: 54px;
+        top: 0px;
+        display: none;
+    }
+ 
+    input::-webkit-input-placeholder {   
+        color:    #c8c8c8;  
+    }  
+    a,span,input,div,body{-webkit-tap-highlight-color: transparent}
+    input:-webkit-autofill {
+        background:  url(//ptlogin.3304399.net/resource/images/oauth/1.png) 0 0 repeat;
+        }
+
+    .other_login{
+        height: auto;
+    }
+    .normal_tips{
+        padding-left: 10px;
+        display: none;
+    }
+
+    .tips_box ,.tab_cont{display: none}
+
+
+    /* add by xiaofang 17-07-12 */
+    .fdialog_box{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom:0;
+        z-index: 111;
+    }
+    .fdialog_mask{
+        background-color: rgba(0,0,0,0.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom:0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .fdialog{
+        width: 80%;
+        background-color: #fff;
+        border-radius: 5px;
+        position: fixed;
+        top: 30%;
+        left: 10%;
+        z-index: 1111;
+    }
+    @media screen and (max-height: 249px) {
+        .fdialog {
+            top:10%;
+        }
+    }
+    .fdialog .dialog_hd{
+        height: 40px;
+        text-align: center;
+        position: relative;
+        *zoom: 1;
+    }
+    .fdialog .dialog_hd .tit{
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 40px;
+        color: #666;
+    }
+    .fdialog .dialog_hd  .btn_close{
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width:  20px;
+        height: 20px;
+        background:  url(//ptlogin.3304399.net/resource/images/oauth/gspriteV1707012.png) 0 0 no-repeat;
+        background-size:20px 20px ;
+    }
+    .fdialog .dialog_bd{
+        padding: 0px 30px;
+    }
+    .fdialog  .ftip{
+        height: 20px;
+        color: #f00;
+        line-height: 20px;
+        display: table-cell;    
+        vertical-align: middle;    
+        text-align: center; 
+    }
+    .fdialog .box_fipt{
+       border: solid 1px #70c700;
+       border-radius: 5px;
+       padding: 5px;
+       height: 40px;
+       width: 100%;
+       overflow: hidden;
+       box-sizing: border-box;
+    }
+    .fdialog .box_fipt .iptxt{
+        background-color: transparent;
+        border: 0 none;
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        display: block;
+    }
+     .fdialog .box_fimg{
+        margin-top: 10px;
+     }
+     .fdialog .box_fimg img{
+        width: 97px;
+        height: 42px;
+        vertical-align: bottom;
+        margin-right: 10px;
+     }
+     .fdialog .box_fimg .input_tip{
+        color: #50a5ed;
+        font-size: 12px;
+     }
+     .fdialog .box_opt{
+        margin-top: 10px;
+        border-top: solid 1px #d1d1d1;
+         box-sizing: border-box;
+         height: 45px;
+     }
+     .fdialog .box_opt a{
+        float: left;
+        width: 50%;
+        height: 100%;
+        line-height: 45px;
+        text-align: center;
+        color: #666;
+        font-size: 14px;
+        box-sizing: border-box;
+        letter-spacing: 4px
+     }
+     .fdialog .box_opt a:hover{
+        text-decoration: none
+     }
+     .fdialog .box_opt .btn_sure{
+        border-left: solid 1px #d1d1d1;
+        color: #70c700;
+     }
+
+     /* 新增错误提示 */
+     .ipt_error_warntip{
+        color:#333;
+        font-size:14px;
+       text-align:center;
+     }
+    .ipt_error_warntip p{
+        margin-bottom:10px;
+        line-height: 32px;
+        text-align:left;
+    }
+     .ipt_error_warntip a{
+        color:#fff;
+        display:block;
+        width:80px;
+        margin:0 auto;
+        background: #70c700;
+        padding:0 10px;
+        line-height:24px;
+     }
+
+     .other_login .fastlogin a{
+        color:#70c700;
+     }
+    /* 登录页 新增qq登录提示*/
+     .qqLogin-tip{
+        color:#666;
+        font-size:12px;
+        text-align:center;
+        display: none;
+     }
+
+    .qqLogin-tip a{
+        color:#70c700;
+    }
+    .m_wxphone_btn .qq-yxh-disable{
+        background:#f6f6f6;
+        color:#999;
+    }
+
+    /*快速注册*/
+    .other_login_list .ptlogin_other_qq li{
+        width:100%;
+    }
+    .usc_real_body .fglb_txt{
+        text-align:left;
+        left:10px;
+        text-align: justify;
+        text-align-last: justify;
+        -webkit-white-space: nowrap;
+        white-space: nowrap;
+        width:60px;
+    }
+    .usc_real_body .input_wrap_id .input_inner, .usc_real_body .input_wrap_pwd .input_inner{
+        padding-left:77px;
+    }
+
+    /*实名*/
+   .usc_fcm{
+       margin: 40px 10px 0;
+       background:#f2f2f2;
+       padding:20px;
+       line-height: 22px;
+       color:#999;
+   }
+   .usc_fcm span{
+       color:#ffa92d;
+   }
+   .usc_privacy{
+       position: absolute;
+       left:10px;
+       bottom:10px;
+       line-height: 20px;
+       color:#bbb;
+   }
+   .usc_privacy dt{
+       font-weight: 700;
+   }
+
+   .usc_real_box{
+       display:none;
+   }
+    .usc_real_dialog{
+        width:270px;
+        background: #fff;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin: -90px 0 0 -135px;
+        z-index: 110;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+    }
+    .usc_real_dialog .usc_real_content{
+        padding:25px 30px;
+        line-height: 24px;
+        color:#666;
+        font-size:12px;
+    }
+   .usc_real_dialog .usc_real_content h4{
+        font-size:14px;
+    }
+   .usc_real_dialog .usc_list,.usc_real_dialog .usc_real_content span{
+       color:#ffa92d;
+   }
+   .usc_real_btn{
+       border-top: 1px solid #ddd;
+       overflow: hidden;
+       background: #fff;
+       -webkit-border-bottom-right-radius: 5px;
+       -webkit-border-bottom-left-radius: 5px;
+       border-bottom-right-radius: 5px;
+       border-bottom-left-radius: 5px;
+   }
+   .usc_real_btn a{
+       float: left;
+       width: 50%;
+       text-align: center;
+       line-height: 48px;
+       border-right: 1px solid #ddd;
+       margin-right: -2px;
+       color: #666;
+   }
+   .usc_real_btn .usc_btn_op{
+       color:#70c700;
+   }
+   .usc_complete .usc_btn_op{
+       float:none;
+       width:100%;
+       margin-right:0;
+       border-right: none;
+       display:block;
+   }
+   .usc_real_mask{
+       width:100%;
+       height:100%;
+       position:fixed;
+       left:0;
+       top:0;
+       background:rgba(0,0,0,0.8);
+       z-index: 100;
+   }
+   .usc_certified{
+    text-align: center;
+    line-height: 32px;
+    padding-top: 40px;
+    color:#666;
+   }
+
+   .btn_back_url{
+    color:#fff;
+    display:block;
+    width:80px;
+    margin:20px auto 0;
+    background: #70c700;
+    padding:3px 10px;
+    line-height:24px;
+    border-radius: 3px;;
+   }
+
+   .usc_isRegLogin{
+       background:rgba(0,0,0,0.72);
+       height:32px;
+       line-height: 32px;
+       text-align: center;
+       color:#fff;
+       padding:0 15px;
+       position: fixed;
+       width:80px;
+       bottom:20px;
+       left:50%;
+       margin-left:-55px;
+       display: none;
+   }
+
+   .btn_back{
+       background:url(//ptlogin.3304399.net/resource/images/oauth/btn_back.png) no-repeat;
+       width: 9px;
+        height: 15px;
+        position: absolute;
+        top: 15px;
+        left: 12px;
+        background-size: 9px 15px;
+   }
+
+   .phone_login_protocol{
+       text-align:center;
+       line-height: 24px;
+       color:#666;
+       margin-top:20px;
+   }
+   .phone_login_protocol a{
+       color:#6fc700;
+   }
+
+
+
+    /* 用户中心弹窗公共样式 */
+   .oauth_dialog{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 111;
+        display: none;
+   }
+   .oauth_dialog .dialog_mask{
+        background-color: rgba(0,0,0,0.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom:0;
+        width: 100%;
+        height: 100%;
+    }
+    .oauth_dialog .dialog_wrap{
+        background-color: #fff;
+        border-radius: 5px;
+        position: fixed;
+        top: 50%;
+        z-index: 1111;
+        padding:18px 0 22px;
+    }
+    .oauth_dialog .dialog_hd{
+        line-height: 22px;
+        padding: 0 16px;
+        text-align: center;
+        position: relative;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .oauth_dialog .dialog_bd{
+        padding: 0 16px;
+    }
+    .oauth_dialog .dialog_close{
+        position: absolute;
+        top: -40px;
+        right: 0;
+        width:  19px;
+        height: 40px;
+        background:  url(//ptlogin.3304399.net/resource/images/oauth/ico_close.png) no-repeat;
+        background-size:contain;
+    }
+    .oauth_dialog .btn{
+        -webkit-appearance: none;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border: 0 none;
+        color: #fff;
+        border-radius: 3px;
+        display: inline-block;
+    }
+    .oauth_dialog .btn_sure{
+        background: #70c700;
+    }
+    
+    
+
+   /* 手机号绑定多账号弹窗 */
+   .oauth_dialog_phoneLoginUsers .dialog_wrap{
+        left: 8%;
+        width: 84%;
+   }
+   .oauth_dialog_phoneLoginUsers .dialog_hd{
+        text-align: left;
+   }
+   .phoneLoginUsers_list{
+       margin-bottom: 16px;
+       overflow: scroll;
+   }
+   .phoneLoginUsers_list li{
+        line-height: 30px;
+        height: 30px;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 9px 0;
+        position: relative;
+    }
+    .phoneLoginUsers_list li:last-child{
+        border-bottom: none;
+    }
+    .phoneLoginUsers_list li.selected .item-txt{
+        color: #80c90d;
+    }
+    .phoneLoginUsers_list li .item-img{
+        float: left;
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        margin-right: 12px;
+    }
+    .phoneLoginUsers_list li .item-txt{
+        float: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 110px;
+        color: #666666;
+    }
+    .phoneLoginUsers_list li .item-select{
+        float: right;
+        width: 18px;
+        height: 18px;
+        margin-top: 6px;
+        background:  url(//ptlogin.3304399.net/resource/images/oauth/select.png) -1px 0 no-repeat;
+        background-size:39px 18px;
+    }
+    .phoneLoginUsers_list li.selected .item-select{
+        background-position:-20px 0;
+    }
+    .phoneLoginUsers_list li .item-last{
+        float: left;
+        width: 48px;
+        white-space: nowrap;
+        line-height: 18px;
+        border-radius: 9px;
+        padding: 0 4px;
+        font-size: 12px;
+        color: #fff;
+        background: #80c90d;
+        margin-left: 8px;
+        margin-top: 6px;
+    }
+
+
+    /* 不知道身份证号码弹窗 */
+ .oauth_dialog_howSetIdCard .dialog_wrap {
+    left: 8%;
+    width: 84%;
+    height: 70%;
+    top:5%;
+  }
+  .oauth_dialog_howSetIdCard .dialog_bd{
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box; 
+    padding-top: 40px;
+    width: 100%;
+  }
+  .oauth_dialog_howSetIdCard .dialog_hd{
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    position: absolute;
+    top:16px;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+    padding: 0;
+    background: #fff;
+  }
+  .oauth_dialog_howSetIdCard p{
+    font-size: 14px;
+    line-height: 28px;
+    margin-bottom: 10px;
+  }
+  .oauth_dialog_howSetIdCard img{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .oauth_dialog_howSetIdCard span{
+    color: #ffa92d;
+  }
+  .oauth_dialog_howSetIdCard .dialog_close{
+    height: 22px;
+    width: 22px;
+    right: 50%;
+    top:100%;
+    margin-top: 10px;
+    margin-left: -11px;
+    background-image: url(//ptlogin.3304399.net/resource/images/oauth/ico_close2.png);
+  }
+    
+
+
+
+  
+
+
+

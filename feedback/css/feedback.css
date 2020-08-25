@@ -60,6 +60,7 @@ body,
 .feedback textarea.form-control{
     width: 776px;
     border:none;
+    overflow:hidden;
 }
 
 .feedback .form-group-id{

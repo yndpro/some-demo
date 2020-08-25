@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/oauthBase.css">
+    <link rel="stylesheet" href="./css/oauthUcenter.css">
+    <link rel="stylesheet" href="./css/oauthFeedback.css">
+    <!-- sentry监控 -->
+    <script src="./js/sentry.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    window.onload = function(){
+        Sentry.init({ dsn: 'https://d925cd9da09446ffbc1befec08362d15@ky.3304399.net/20' });
+    }
+    </script>
+</head>
+<body>
+    <div class="u-head">
+        <h2>问题反馈</h2>
+    </div>
+    <div class="u-container oversea">
+        <div class="u-section">
+            <form class="u-form">
+                <div class="form-group form-group-vertical form-group-id">
+                    <label class="form-label"><span>请选择您要反馈的登录方式（选填）</span></label>
+                    <div class="u-radio-group">
+                        <input class="" type="text" name="id" placeholder="请输入您要反馈的4399帐号">
+                    </div>
+                </div>
+                <div class="form-group form-group-vertical form-group-id">
+                    <label class="form-label"><span>反馈帐号（选填）</span></label>
+                    <div class="form-control">
+                        <input class="" type="text" name="id" placeholder="请输入您要反馈的4399帐号">
+                    </div>
+                </div>
+                <div class="form-group form-group-vertical form-group-id">
+                    <label class="form-label"><span>反馈帐号（选填）</span></label>
+                    <div class="form-control">
+                        <input class="" type="text" name="id" placeholder="请输入您要反馈的手机号">
+                    </div>
+                </div>
+                <div class="form-group form-group-vertical">
+                    <label class="form-label"><span>联系方式（选填）</span></label>
+                    <div class="form-control">
+                        <input class="" type="text" name="contact" placeholder="请留下您的QQ或手机号，方便我们更快地解决问题">
+                    </div>
+                </div>
+            
+                
+                <div class="oversea-file">
+                    <div class="file-field">
+                        <input class="" type="file" id="file" name="file" size="25">
+                        <div class="file-plus"></div> 
+                        <div class="file-loading">加载中...</div>
+                        <div class="file-img"><i></i><img src="" alt=""></div>
+                        <div class="file-layer file-layer-error"><p class="error-txt"><i></i>文件格式错误</p><p>重新上传</p></div> 
+                        <img class="file-bg" src="images/oauth/file_filed.png" alt="">                      
+                    </div>
+                    <p class="file-txt">请上传护照正面照片</p>
+                </div>
+                
+                <div class="form-group-btn">
+                    <button type="button" class="btn btn-primary j-submit">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="./js/zepto.min.js"></script>
+    <script src="./js/imageResizer.js"></script>
+</body>
+
+</html>

@@ -47,6 +47,11 @@
                             <input class="form-control" type="text" value="" name="id"
                                 placeholder="请输入您要反馈的4399帐号">
                         </div>
+                        <div class="form-group form-group-vertical form-group-id">
+                            <label class="form-label" for="">反馈帐号</label>
+                            <input class="form-control" type="text" value="" name="id"
+                                placeholder="请输入您要反馈的手机号">
+                        </div>
                         <div class="form-group form-group-vertical">
                             <label class="form-label" for="">问题描述<span>*</span></label>
                             <div class="textarea-wrapper">
@@ -126,6 +131,7 @@
                 if(!$(this).prev().is(':checked')){
                     $(this).addClass("radio-checked");
                     $(this).prev()[0].checked = true;
+                    console.log($(this).prev()[0].value);
                     options.callback && options.callback($(this).prev());
                 }
                 event.stopPropagation();
@@ -247,19 +253,16 @@
                 page.bind();
 
                 //绑定模拟placeholder
-                $("input,textarea").placeholder({"color":"#aaaaaa"});
+                $("input[type=text],textarea").placeholder({"color":"#aaaaaa"});
 
                 //绑定模拟radiobox
                 $('#radiolist').hradio({
                     callback : function($ele) {
                         var showIdFieldType = [1,2];
                         var value = parseInt($ele.val());
-                        // console.log(ele);
+                        $(".form-group-id").hide();
                         if(showIdFieldType._indexOf(value) >= 0){
-                            $(".form-group-id").show();
-                            $(".form-group-id input").attr("placeholder","请输入您要反馈的" + (value == 1 ? "4399帐号" : "手机号"));
-                        }else{
-                            $(".form-group-id").hide();
+                            $(".form-group-id").eq(value - 1).show();
                         }
                     }
                 });
@@ -305,10 +308,10 @@
                         }
                     });
                     var params = {
-                        type    : page.form.type.value,
-                        id      : $.trim(page.form.id.value),
-                        descr   : $.trim(page.form.descr.value),
-                        contact : $.trim(page.form.contact.value),
+                        type    : $(".form-group-logintype input:checked").val(),
+                        id      : $.trim($(".form-group-id:visible input").val()),
+                        descr   : $.trim($(page.form.descr).val()),
+                        contact : $.trim($(page.form.contact).val()),
                         files   : _files
                     };
                     console.log(params);
