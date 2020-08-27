@@ -96,6 +96,14 @@
     display: block;
     border: 0 none;
 }
+textarea.form-control {
+    padding: 3px 10px;
+    line-height: 32px;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    outline: none;
+    resize: none;
+}
 .form-group-horizen .form-control{
     padding: 0 30px 0 95px;
 }
@@ -208,24 +216,18 @@
 .u-toast{
     position: fixed;
     padding: 20px 10px;
-    width: 220px;
+    width: 180px;
     left: 50%;
-    margin-left: -120px;
+    margin-left: -90px;
     top:40%;
     background: rgba(0, 0, 0, 0.65);
     border-radius: 8px;
 }
 .toast-tit{
     text-align: center;
-    line-height: 40px;
-    color: #fff;
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-.toast-txt{
     line-height: 20px;
-    text-align: center;
-    color: #c0c0c0;
+    color: #fff;
+    font-size: 14px;
 }
 
 

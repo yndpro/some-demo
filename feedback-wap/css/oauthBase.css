@@ -1026,7 +1026,8 @@
         display: none;
     }
  
-    input::-webkit-input-placeholder {   
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder {   
         color:    #c8c8c8;  
     }  
     a,span,input,div,body{-webkit-tap-highlight-color: transparent}

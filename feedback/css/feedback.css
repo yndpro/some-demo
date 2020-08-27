@@ -175,7 +175,7 @@ body,
   .feedback-file .file-loading{
     text-align: center;
     line-height: 140px;
-    width: 100%;
+    width: 140px;
     height: 140px;
     position: absolute;
     top:10;
@@ -198,6 +198,20 @@ body,
     *font-size:100px;
     font-size:100px\0;
   }
+
+  .feedback-file.loading .file-loading{
+    display: block;
+  }
+  .feedback-file.loading .file-layer-error{
+    display: none;
+  }
+  .feedback-file.loading .file-origin{
+    display: none;
+  }
+  .feedback-file.loading input{
+    display: none;
+  }
+  
 
   .feedback-file-tip{
     clear: both;

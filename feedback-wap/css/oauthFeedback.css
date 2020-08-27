@@ -1,40 +1,85 @@
 /* feedback */
 
-.oversea-section .form-tip{
-    display:none;
+.feedback .form-group-id{
+    display: none;
 }
-.oversea-file,
-.oversea-example{
+.feedback .textarea-wrapper {
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    overflow: hidden;
+}
+.feedback textarea.form-control {
+    width: 100%;
+    border: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+.feedback .textarea-count {
+    text-align: right;
+    line-height: 40px;
+    padding: 0 10px;
+    color: #aaaaaa;
+}
+.feedback .radio-wrapper {
     float: left;
-    margin-bottom: 30px;
-    width: 50%;
-    max-width: 300px;
+    margin-right: 6px;
+}
+
+.feedback .radio-wrapper label {
+    width: 92px;
+    line-height: 28px;
+    border-radius: 14px;
+    background:#ffffff;
+    display: inline-block;
+    text-align: center;
+    border:1px solid #fff;
+}
+
+.feedback .radio-wrapper label.radio-checked{
+    border-color: #70c700;
+    color: #70c700;
+}
+
+
+.feedback-file{
+    float: left;
+    margin-bottom: 10px;
+    width: 33.333%;
+    max-width: 146px;
     overflow: hidden;
     box-sizing:border-box;
+    padding-right: 10px;
+    padding-left: 10px;
+    display: none;
 }
-.oversea-file{
-    padding-right: 5px;
+.file-field > *{
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
-.oversea-file img{
+
+
+.feedback-file img{
     border: none;
 }
-.oversea-example{
-    padding-left: 5px;
-}
-.oversea-file .file-txt,
-.oversea-example .example-txt{
-    text-align: center;
-    line-height: 26px;
-    color: #555;
-}
-.oversea-file .file-field{
+.feedback-file .file-field{
     width: 100%;
+    padding-top: 100%;
     position: relative;
 }
-.oversea-file .file-bg{
+
+.feedback-file .file-origin{
     width: 100%;
-}
-.oversea-file .file-layer{
+    height: 100%;
+    border:1px dashed #999999;
+    box-sizing: border-box;
+}   
+.feedback-file .file-layer{
     width: 100%;
     height: 98%;
     position: absolute;
@@ -52,33 +97,10 @@
     justify-content:center;
     background: url(../images/ptlogin_mask2.png) repeat;
 }
-.oversea-file .file-layer-reupload i{
-    margin-top: 50px;
-    width: 84px;
-    height: 84px;
-    background: url(../images/icon_upload_plus.png) repeat;
-    display: inline-block;
-}
-.oversea-file .file-layer-error .error-txt{
-    color: #ff5b45;
-    padding-left: 20px;
-    display: inline-block;
-    margin-bottom: 12px;
-    position: relative;
-}
-.oversea-file .file-layer-error .error-txt i{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 15px;
-    height: 15px;
-    background: url(../images/oauth/icon_invalid.png) no-repeat 0 0;
-    background-size: contain;
-}
-.oversea-file .file-img{
+
+.feedback-file .file-img{
     width: 100%;
     height: 100%;
-    padding: 3.4% 3.4%;
     position: absolute;
     top:0;
     left: 0;
@@ -86,20 +108,30 @@
     box-sizing: border-box;
 }
 
-.oversea-file .file-plus{
-    width: 29%;
-    height: 43%;
-    top:28%;
-    left:35%;
-    position: absolute;
-    background: url(../images/oauth/file_add.png) no-repeat 0 0;
-    background-size: contain;
+.feedback-file .file-plus{
+    width: 100%;
+    top:60%;
+    left:0;
+    height: 19%;
+    line-height: 170%;
+    position: absolute; 
+    color: #999999;
+    text-align: center;
 }
-.oversea-file .file-img img{
+.feedback-file .file-plus i{
+    position: absolute;
+    background: url(../images/icon_plus_grey.png) no-repeat 0 0;
+    background-size: contain;
+    width: 35%;
+    height: 180%;
+    bottom:100%;
+    left:32%;
+}
+.feedback-file .file-img img{
     width: 100%;
     height: 100%;
 }
-.oversea-file .file-img i{
+.feedback-file .file-img i{
     position: absolute;
     width: 13%;
     height: 21%;
@@ -108,17 +140,7 @@
     background: url(../images/oauth/ico_shot.png) no-repeat 0 0;
     background-size: contain;
 }   
-/* .oversea-file .file-loading{
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    top:50%;
-    left: 0;
-    margin-top: -7px;
-    display: none;
-} */
-
-.oversea-file .file-loading{
+.feedback-file .file-loading{
     z-index: 99;
     width: 100%;
     height: 100%;
@@ -133,14 +155,18 @@
     justify-content:center;
     opacity: 0;
 }
-.oversea-file .file-field.loading input{
+
+.feedback-file .file-field.loading input{
     display: none;
-}   
-.oversea-file .file-field.loading .file-loading{
+}  
+.feedback-file .file-field.loading .file-origin{
+    display: none;
+} 
+.feedback-file .file-field.loading .file-loading{
     opacity: 1;
 }
 
-.oversea-file .file-field input{
+.feedback-file .file-field input{
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -153,87 +179,3 @@
     *font-size:100px;
     font-size:100px\0;
 }
-.oversea-example img{
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-
-.oversea-section{
-    margin-bottom: 10px;
-}
-.section-tit{
-    font-weight: bold;
-    line-height: 32px;
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-.section-txt{
-    line-height: 24px;
-    margin-bottom: 15px;
-    color: #555;
-}
-
-.oversea-loading{
-    text-align: center;
-    padding: 40px 0;
-    display: none;
-    position: absolute;
-    width: 100%;
-    z-index: -1;
-    top:0;
-    left: 0;
-}
-.oversea-status{
-    text-align: center;
-    padding-bottom: 110px;
-}
-.oversea-status .status-icon{
-    width: 80px;
-    height: 80px;
-    margin: 100px auto 0;
-}
-.oversea-status .status-tit{
-   font-weight: bold;
-   line-height: 60px;
-   font-size: 24px;
-   margin-bottom: 30px;
-}
-.oversea-status .status-txt{
-    line-height: 22px;
-    color: #666666;
-}
-.oversea-success .status-icon{
-    background: url(../images/icon_success.png) no-repeat;
-}
-.oversea-wait .status-icon{
-    background: url(../images/icon_wait.png) no-repeat;
-}
-.oversea-warn .status-icon{
-    background: url(../images/icon_warn.png) no-repeat;
-}
-.oversea-writen{
-    display: none;
-}
-
-.oversea-confirm .dialog-btns a{
-    color: #70c700;
-}
-.oversea-confirm-tit{
-    font-weight: bold;
-    font-size: 16px;
-    color: #333333;
-    margin-bottom: 5px;
-}
-.oversea-confirm-txt{
-    line-height: 22px;
-}
-.oversea-confirm-txt span{
-    color: #ffa92d;
-}
-.alert-warning{
-    display: none;
-}
-
-

@@ -10,24 +10,35 @@
     <link rel="stylesheet" href="./css/oauthUcenter.css">
     <link rel="stylesheet" href="./css/oauthFeedback.css">
     <!-- sentry监控 -->
-    <script src="./js/sentry.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="./js/sentry.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
     window.onload = function(){
         Sentry.init({ dsn: 'https://d925cd9da09446ffbc1befec08362d15@ky.3304399.net/20' });
     }
-    </script>
+    </script> -->
 </head>
 <body>
     <div class="u-head">
         <h2>问题反馈</h2>
     </div>
-    <div class="u-container oversea">
+    <div class="u-container feedback">
         <div class="u-section">
             <form class="u-form">
-                <div class="form-group form-group-vertical form-group-id">
+                <div class="form-group form-group-vertical form-group-logintype">
                     <label class="form-label"><span>请选择您要反馈的登录方式（选填）</span></label>
-                    <div class="u-radio-group">
-                        <input class="" type="text" name="id" placeholder="请输入您要反馈的4399帐号">
+                    <div class="u-radio-group clearfix" id="radiolist">
+                        <div class="radio-wrapper">
+                            <input type="radio" class="radio-input" name="type" id="radio1" value="1">
+                            <label for="radio1">4399账号</label>
+                        </div>
+                        <div class="radio-wrapper">
+                            <input type="radio" class="radio-input" name="type" id="radio2" value="2">
+                            <label for="radio2">手机号</label>
+                        </div>
+                        <div class="radio-wrapper">
+                            <input type="radio" class="radio-input" name="type" id="radio3" value="3">
+                            <label for="radio3">微信</label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group form-group-vertical form-group-id">
@@ -43,6 +54,39 @@
                     </div>
                 </div>
                 <div class="form-group form-group-vertical">
+                    <label class="form-label" for=""><span>问题描述（必填）</span></label>
+                    <div class="textarea-wrapper">
+                        <textarea class="form-control" name="descr" id="" cols="30" rows="5"
+                        placeholder="请详细描述出现的异常，方便我们快速解决问题"></textarea>
+                        <div class="textarea-count"><span>0</span>/500</div>
+                        <div class="feedback-file">
+                            <div class="file-field">
+                                <div class="file-origin"><div class="file-plus"><i></i>问题截图</div></div>
+                                <input class="" type="file" name="file">
+                                <div class="file-loading">加载中...</div>
+                                <div class="file-img"><i></i><img src="" alt=""></div>
+                            </div>
+                        </div>
+                        <div class="feedback-file">
+                            <div class="file-field">
+                                <div class="file-origin"><div class="file-plus"><i></i>问题截图</div></div>
+                                <input class="" type="file" name="file">
+                                <div class="file-loading">加载中...</div>
+                                <div class="file-img"><i></i><img src="" alt=""></div>
+                            </div>
+                        </div>
+                        <div class="feedback-file">
+                            <div class="file-field">
+                                <div class="file-origin"><div class="file-plus"><i></i>问题截图</div></div>
+                                <input class="" type="file" name="file">
+                                <div class="file-loading">加载中...</div>
+                                <div class="file-img"><i></i><img src="" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="form-group form-group-vertical">
                     <label class="form-label"><span>联系方式（选填）</span></label>
                     <div class="form-control">
                         <input class="" type="text" name="contact" placeholder="请留下您的QQ或手机号，方便我们更快地解决问题">
@@ -50,17 +94,7 @@
                 </div>
             
                 
-                <div class="oversea-file">
-                    <div class="file-field">
-                        <input class="" type="file" id="file" name="file" size="25">
-                        <div class="file-plus"></div> 
-                        <div class="file-loading">加载中...</div>
-                        <div class="file-img"><i></i><img src="" alt=""></div>
-                        <div class="file-layer file-layer-error"><p class="error-txt"><i></i>文件格式错误</p><p>重新上传</p></div> 
-                        <img class="file-bg" src="images/oauth/file_filed.png" alt="">                      
-                    </div>
-                    <p class="file-txt">请上传护照正面照片</p>
-                </div>
+                
                 
                 <div class="form-group-btn">
                     <button type="button" class="btn btn-primary j-submit">提交</button>
@@ -69,7 +103,297 @@
         </div>
     </div>
     <script src="./js/zepto.min.js"></script>
-    <script src="./js/imageResizer.js"></script>
-</body>
+    <script src="./js/ajaxfileupload.js"></script>
+    <script>
+    (function() {
+        var _is = $.fn.is, _filter = $.fn.filter;
 
+        //模拟radiobox
+        $.fn.hradio = function(options){
+            var self = this;
+            return $('label',this).each(function(){
+                if($(this).prev().is("checked"))
+                    $(this).addClass('radio-checked');
+            })
+            .click(function(event){
+                $(this).parent().siblings().find('label').removeClass("radio-checked");
+                if(!$(this).prev().is(':checked')){
+                    $(this).addClass("radio-checked");
+                    $(this).prev()[0].checked = true;
+                    options.callback && options.callback($(this).prev());
+                }
+                event.stopPropagation();
+            })
+            .prev().hide();
+        }
+
+        //模拟:visible
+        $.fn.filter = function(sel){
+            if(sel === ":visible"){
+            return $([].filter.call(this, visible));
+            }
+            if(sel === ":hidden"){
+            return $([].filter.call(this, function(elem){
+                return !visible(elem);
+            }));
+            }
+            return _filter.call(this, sel);
+        }
+
+        function visible(elem){
+            elem = $(elem);
+            return !!(elem.width() || elem.height()) && elem.css("display") !== "none";
+        }
+
+        /**
+         * 函数节流
+         * @param {*} doSomething 
+         * @param {*} wait 
+         */
+        function throttle(doSomething, wait){
+            var timeout,
+                _this,
+                _arguments,
+                previous = 0;
+
+            var later = function() {
+                previous = +new Date();
+                timeout = null;
+                doSomething.apply(_this, _arguments);
+            };
+            var throttled = function() {
+                var now = +new Date();
+                //下次触发 doSomething 剩余的时间
+                var remaining = wait - (now - previous),
+                    _this = this;
+                _arguments = arguments;
+                // 如果没有剩余的时间了
+                if (remaining <= 0) {
+                    if (timeout) {
+                        clearTimeout(timeout);
+                        timeout = null;
+                    }
+                    previous = now;
+                    doSomething.apply(_this, _arguments);
+                } else if (!timeout) {
+                    timeout = setTimeout(later, remaining);
+                }
+            };
+            return throttled;
+        }
+
+        
+        /**
+         * 简易toast
+         * @param {*} text
+         */
+        function toast(text) {
+            var $toast = $(".u-toast");
+            if($toast.length > 0){
+                return false;
+            }
+            $("body").append("<div class='u-toast'><div class=\"toast-tit\">" + text + "</div></div>");
+            setTimeout(function() {
+                $toast = $(".u-toast");
+                if($toast.length > 0) $toast.remove();
+            }, 200000);
+        }
+
+        /**
+         * 扩展数组indexOf方法
+         * @param {*} 
+         */
+        Array.prototype._indexOf = function(n) {
+            if ("indexOf" in this) {
+                return this["indexOf"](n);
+            }
+            for (var i = 0; i < this.length; i++) {
+                if (n === this[i]) {
+                return i;
+                }
+            }
+            return -1;
+        };
+
+        
+        var Page = {
+            fileUploads : [],
+            init : function(params) {
+                var page = this;
+
+                page.form = $(".u-form")[0];
+                page.bind();
+
+                //绑定模拟radiobox
+                $('#radiolist').hradio({
+                    callback : function($ele) {
+                        var showIdFieldType = [1,2];
+                        var value = parseInt($ele.val());
+                        $(".form-group-id").hide();
+                        if(showIdFieldType.indexOf(value) >= 0){
+                            $(".form-group-id").eq(value - 1).show();
+                        }
+                    }
+                });
+
+                //初始化图片域
+                $(".feedback-file").each(function(index,el) {
+                    page.initFileUpload(el,index);
+                    page.fileUploads.push(el);
+                });
+                $(page.fileUploads.shift()).show();
+                
+            },
+            bind : function(params) {
+                var page = this;
+                
+                //输入框事件
+                $("textarea.form-control").on("input propertychange", function() {
+                    var $this = $(this),
+                        val = $this.val(),
+                        count = "";
+
+                    $(".j-submit").removeClass("disable");
+                    if((val.length <= 0) || (val == "请详细描述出现的异常，方便我们快速解决问题")){
+                        $(".j-submit").addClass("disable");
+                    }
+                    if (val.length > 500) {
+                        $this.val(val.substring(0, 5));
+                    }
+                    count = val.length;
+                    $(".textarea-count span").text(count);
+                });
+
+                //提交事件
+                $(".j-submit").bind("click",throttle(function() {
+                    if($(this).hasClass("disable")){
+                        return false;
+                    }
+                    var _files = [];
+                    $(".feedback-file .file-img img").each(function(i,ele) {
+                        var _fileid = $(ele).attr("fileid")
+                        if(_fileid){
+                            _files.push(_fileid);
+                        }
+                    });
+                    var params = {
+                        type    : $(".form-group-logintype input:checked").val(),
+                        id      : $.trim($(".form-group-id").filter(":visible").find("input").val()),
+                        descr   : $.trim($(page.form.descr).val()),
+                        contact : $.trim($(page.form.contact).val()),
+                        files   : _files
+                    };
+                    console.log(params);
+                    $.ajax({
+                        url: "",
+                        data: params,
+                        type: "POST",
+                        dataType : 'json',
+                        success: function (res) {
+                            if(res.code == 100){
+                                toast(res.message);
+                            }else{
+                                toast(res.message);
+                            }
+                        },
+                        error:function(error){
+                            toast("提交失败");
+                        }
+                    });
+                },1000));
+            },
+            
+            //初始化图片域
+            initFileUpload : function(fileWrap,index) {
+                var page = this;
+                var $fileWrap = $(fileWrap);
+                var $fileInput = $fileWrap.find("input");
+                var $fileImg = $fileWrap.find(".file-img");
+                var $fileField = $fileWrap.find(".file-field");
+
+                $fileInput.change(throttle(function (e) {
+                    
+                    if($fileField.hasClass("loading")){
+                        return false
+                    } 
+                    if($fileInput.val()==""){
+                        return false
+                    } 
+
+                    $fileImg.find("img").attr({"src": "","fileId" : ""});
+                    if(!page.imageFormatCheck(this)){
+                        console.log("文件格式错误");
+                        toast("文件格式错误");
+                        return false
+                    }
+                    if(this.files[0].size / 1024 / 1024 > 4){
+                        toast("文件大小超出限制");
+                        return false
+                    }
+                    
+                    $fileField.addClass("loading");
+                    $fileImg.find("img")[0].onload = function(params) {
+                        $fileField.removeClass("loading");
+                        //显示下一个图片域
+                        var hasUploadFieldEmpty = false;
+                        $(".feedback-file").filter(":visible").find("input").each(function(i,ele) {
+                            if($(ele).val() == ""){
+                                hasUploadFieldEmpty = true;
+                                return false;
+                            }
+                        })
+                        if(!hasUploadFieldEmpty && (page.fileUploads.length > 0)){
+                            $(page.fileUploads.shift()).show();
+                        }
+                    }
+
+                    var file_id = $(this).attr("id");
+                    /**
+                     * @brief       图片上传
+                     * @modify by   horo
+                     * @date        2014-12-20
+                     **/
+                    //  $.ajaxFileUpload({
+                    //     url:"",
+                    //     secureuri:false,
+                    //     fileElementId:[file_id],
+                    //     data: {},
+                    //     dataType: 'json',
+                    //     success: function (res){
+                            var res = {
+                                code : 100,
+                                data : {fileId:324234,url:"http://s1.img4399.com/f/forums~home/17856_home?1597975321"},
+                                message : "error"
+                            }
+                            if(res.code == 100 ){
+                                $fileImg.show().find("img").attr({ 
+                                    "src": res.data.url,
+                                    "fileId" : res.data.fileId
+                                });
+                            }else{
+                                $fileField.removeClass("loading");
+                                toast(res.message);
+                            }
+                    //     },
+                    //     error:function(){
+                    //         $fileField.removeClass("loading");
+                    //         toast('文件上传失败！');
+                    //     }
+                    // });
+                   
+                },1000));
+            },
+            
+            //校验图片格式
+            imageFormatCheck : function(ele){
+                return /.(jpg|jpeg|png)$/.test(ele.value) ? true : false 
+            }
+        }
+
+        $(function(params) {
+            Page.init();
+        })
+    })();
+    </script>
+</body>
 </html>
