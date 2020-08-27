@@ -78,7 +78,6 @@ class WaterMark {
   }
 
   private _drawToCanvas(img) {
-    console.log("3");
     
       img.crossOrigin = 'anonymous';
 
