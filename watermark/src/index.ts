@@ -100,7 +100,7 @@ class WaterMark {
       ctx.strokeText(this.content, this.textX, this.textY);
       ctx.fillStyle = this.fillStyle;
       ctx.fillText(this.content, this.textX, this.textY);
-      console.log("5",canvas.toDataURL());
+      
       return canvas.toDataURL();
   }
 }
