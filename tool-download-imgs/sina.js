@@ -1,6 +1,6 @@
 const model= require('./model');
-const name = "一组来自普拉提健身美女老师subin小姐姐的运动高美拍";
-const url = "http://slide.sports.sina.com.cn/o/slide_2_730_251599.html#p=3";
+const name = "在你心目中，CBA最好看的啦啦队小姐姐是谁";
+const url = "http://slide.sports.sina.com.cn/cba/slide_2_786_252490.html?cre=photopagepc&mod=picg&loc=8&r=0&rfunc=83&tj=none#p=4";
 const host = "n.sinaimg.cn";
 const depositPath = "/Users/adrianyoung/Downloads/sina/";
 
