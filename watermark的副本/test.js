@@ -1,4 +1,5 @@
-import {createWaterMark} from './main.js';
+//import {createWaterMark} from './main.js';
+//const createWaterMark = require('./main');
 
 const verImgUrl =
   "https://images.unsplash.com/photo-1594638887412-be2eba65bda7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80";
@@ -30,7 +31,7 @@ function change(target) {
     //添加水印
     createWaterMark({
         url: event.target.result,
-        content: "仅供4399家长监护平台身份证使用"
+        content: "仅供4399UED使用"
       })
       .then(base64Url => {
         //回显图片
