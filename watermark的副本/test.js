@@ -28,6 +28,7 @@ function change(target) {
   var reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = function(event) {
+    console.log(event.target.result);
     //添加水印
     createWaterMark({
         url: event.target.result,
@@ -37,16 +38,16 @@ function change(target) {
         //回显图片
         document.querySelector("img").src = base64Url;
 
-        var fileWithWaterMark = dataURLtoFile(base64Url, file.name);
+        //var fileWithWaterMark = dataURLtoFile(base64Url, file.name);
 
         //压缩图片
-        return window.imageConversion.compressAccurately(fileWithWaterMark, {
-          size: 4000, //The compressed image size is 100kb
-          accuracy: 0.9 //the accuracy of image compression size,range 0.8-0.99,default 0.95;
-          //this means if the picture size is set to 1000Kb and the
-          //accuracy is 0.9, the image with the compression result
-          //of 900Kb-1100Kb is considered acceptable;
-        });
+        // return window.imageConversion.compressAccurately(fileWithWaterMark, {
+        //   size: 4000, //The compressed image size is 100kb
+        //   accuracy: 0.9 //the accuracy of image compression size,range 0.8-0.99,default 0.95;
+        //   //this means if the picture size is set to 1000Kb and the
+        //   //accuracy is 0.9, the image with the compression result
+        //   //of 900Kb-1100Kb is considered acceptable;
+        // });
       })
       .then(blob => {
         //blob 转 file

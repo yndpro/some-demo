@@ -1,20 +1,14 @@
-import React from 'react';
-import CountDown from './components/CountDown';
+import React, { Component } from 'react';
+import Todos from './container/Todos';
+import Filter from './container/Filter';
+import AddTodo from './container/AddTodo';
 
-class App extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            last_time : 10 * 60
-        };
-    }
-    render(){
-        return (
-            <div className="view">
-                <CountDown time={this.state.last_time}></CountDown>
-            </div> 
-        )
-    }
-};
+const App = () => (
+    <div className="view">
+        <AddTodo/>
+        <Todos/>
+        <Filter/>
+    </div> 
+)
 
 export default App;
