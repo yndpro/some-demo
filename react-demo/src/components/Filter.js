@@ -2,9 +2,9 @@ import React from 'react';
 
 const Filter = ({setFilter}) => (
     <div>
-        <button onClick={() => setFilter("all")}>all</button>
-        <button onClick={() => setFilter("completed")}>completed</button>
-        <button onClick={() => setFilter("uncompleted")}>uncompleted</button>
+        <button onClick={() => setFilter("ALL")}>all</button>
+        <button onClick={() => setFilter("COMLETED")}>completed</button>
+        <button onClick={() => setFilter("UNCOMLETED")}>uncompleted</button>
     </div>
 )
 
