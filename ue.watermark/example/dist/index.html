@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tab切换组件ue.scrollbar</title>
+<link href="./static/css/index.5bb61e7c238e2bf7b67c5ec97a5269fc.css" rel="stylesheet"></head>
+<body>
+    <div class="wrap">
+    	<h2 class="api_h2">下拉框组件 ue.select</h2>
+        <h3 class="api_h3">参数列表</h3>
+        <table class="api_table">
+            <caption>参数列表</caption>
+            <thead>
+                <tr>
+                    <th width="200">参数名称</th>
+                    <th width="740">备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>target</th>
+                    <td>下拉框对象</td>
+                </tr>
+                <tr>
+                    <th>trigger</th>
+                    <td>下拉框触发事件的类型 click 或者 mouseover</td>
+                </tr>
+                <tr>
+                    <th>currentClass</th>
+                    <td>下拉框列表项 选中的class</td>
+                </tr>
+                <tr>
+                    <th>activeClass</th>
+                    <td>下拉框处于打开的时的class</td>
+                </tr>
+                <tr>
+                    <th>selected</th>
+                    <td>显示当前选中的选项的对象</td>
+                </tr>
+                <tr>
+                    <th>title</th>
+                    <td>用于控制下拉框显示的对象</td>
+                </tr>
+                <tr>
+                    <th>list</th>
+                    <td>下拉框列表对象</td>
+                </tr>
+                <tr>
+                    <th>items</th>
+                    <td>下拉框所有列表项</td>
+                </tr>
+                <tr>
+                    <th>dividerClass</th>
+                    <td>下拉框列表项中用于作为间隔的class，用于排除不能点击的选项</td>
+                </tr>
+                <tr>
+                    <th>onSelected</th>
+                    <td>下拉框选中后触发的回调函数 回调函数如果 返回true 则会触发下拉框原来默认的事件 </td>
+                </tr>
+                <tr>
+                    <th>onChanged</th>
+                    <td>下拉框当前选项改变时触发的回调 </td>
+                </tr>
+                <tr>
+                    <th>init</th>
+                    <td>下拉框初始化回调</td>
+                </tr>
+                <tr>
+                    <th>onFirstShow</th>
+                    <td>下拉框第一次显示时调用的函数</td>
+                </tr>
+                <tr>
+                    <th>onShow</th>
+                    <td>下拉框每次显示时回调函数，第一次显示在onFirstShow回调后面执行</td>
+                </tr>
+
+                <tr>
+                    <th>maxHeight</th>
+                    <td>下拉框的内容的最大高度</td>
+                </tr>
+                <tr>
+                    <th>content</th>
+                    <td>下拉框的内容容器的对象</td>
+                </tr>
+                <tr>
+                    <th>scrollbar</th>
+                    <td>
+                        <dl>
+                            <dt>配置滚动条</dt>
+                            <dd>scroll_per : 24,//每次滚动滑轮，滚动条移动10像素</dd>
+                            <dd>scrollbarbg : $(".ue-select .v_scrollbar_bg"),//滚动条背景</dd>
+                            <dd>scrollbar : $(".ue-select .v_scrollbar"),//滚动条容器</dd>
+                            <dd>btn : $(".ue-select .v_scrollbar_btn")//滚动条按钮</dd>
+                        </dl></td>
+                </tr>
+
+                <tr>
+                    <th>reset</th>
+                    <td>重置下拉框为默认状态</td>
+                </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+        <h3 class="api_h3">DEMO</h3>
+        <dl class="api_link">
+        	<dt>click 触发的下拉框 demo1</dt>
+        	<dd><a href="demo1.html" target="_blank">查看</a> | <a href="demo1.rar">下载</a></dd>
+            <dt>mouseover 触发的下拉框 demo2</dt>
+        	<dd><a href="demo2.html" target="_blank">查看</a> | <a href="demo2.rar">下载</a></dd>
+            <dt>包含滚动条的下拉框 demo3</dt>
+        	<dd><a href="demo3.html" target="_blank">查看</a> | <a href="demo3.rar">下载</a></dd>
+            <dt>级联下拉框 demo3</dt>
+            <dd><a href="demo4.html" target="_blank">查看</a> | <a href="demo3.rar">下载</a></dd>
+        </dl>
+    </div>
+<script type="text/javascript" src="./static/js/manifest.d5b4dc65678a31ddfbd4.js"></script><script type="text/javascript" src="./static/js/vendor.be8824f52c29495be6f0.js"></script><script type="text/javascript" src="./static/js/index.54ebd2e9b012f1270243.js"></script></body>
+
+</html>

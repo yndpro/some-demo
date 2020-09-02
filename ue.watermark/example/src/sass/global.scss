@@ -1,0 +1,1001 @@
+@charset "utf-8";
+
+/* CSS Document 
+Use for:	www.f2er.net
+Version:	1.0
+Date:		2011/08/30
+Author:		情封
+Update:     2011/11/03  面包屑
+*/
+/* CSS reset */
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td
+	{
+	padding: 0;
+	margin: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+del,ins {
+	text-decoration: none
+}
+
+fieldset,img {
+	border: 0;
+}
+
+button,input,select,textarea {
+	font: 12px tahoma, arial, \5b8b\4f53;
+}
+
+input,select,img {
+	vertical-align: middle
+}
+
+input,select {
+	outline: none
+}
+
+ul,ol {
+	list-style: none
+}
+
+label {
+	cursor: pointer
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%;
+}
+
+address,cite,dfn,em,var {
+	font-style: normal;
+}
+
+/* global */
+body {
+	background: #fff;
+	font: 12px/1.5 Arial, SimSun;
+}
+
+td {
+	font-size: 12px;
+	line-height: 160%;
+}
+
+.G_mouse_left{cursor:url(/base/left.cur),default;}
+.G_mouse_right{cursor:url(/base/right.cur),default;}
+.G_new{/* background:url(new2.gif) no-repeat; */width:15px;height:13px;}
+.G_goTop{position:fixed;left:50%;margin-left:480px;bottom:0;margin-bottom:150px;display:none;/* background:url(backtop.png) no-repeat; */height:80px;width:21px;cursor:pointer;z-index:999;}
+.G_goTop{_position:absolute;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));}
+*html{background-image:url(about:blank);background-attachment:fixed;}
+
+.g_loading_dialog{/*background:url(loading_dialog.gif) no-repeat 50px 30px;*/line-height:140px;text-indent:150px;font-size:16px;}
+
+.left {
+	float: left
+}
+
+.right {
+	float: right
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.txthide {
+	text-indent: -999em;
+	overflow: hidden;
+	line-height: 0;
+	font-size: 0
+}
+
+.clearfix:after {
+	content: "";
+	height: 0;
+	visibility: hidden;
+	display: block;
+	clear: both;
+}
+
+.clearfix {
+	zoom: 1;
+}
+
+.clear {
+	clear: both
+}
+
+.sp_ico {
+	// background: url(icons.gif) no-repeat 0 0;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+	margin-right: 5px;
+	padding: 1px 0
+}
+
+.mt10 {
+	margin-top: 10px;
+}
+
+.mt20 {
+	margin-top: 20px;
+}
+
+/*mod_topbar*/
+.mod_topbar,.mod_topbox {
+	// background: url(mod_public.png) repeat-x 0 -66px;
+	height: 51px;
+}
+
+.mod_topbox {
+	height: 42px;
+	padding-top: 9px;
+	width: 980px;
+	margin: 0 auto;
+	text-align: left
+}
+
+/*mod_logo*/
+.mod_logo img {
+	width: 180px;
+	height: 35px;
+}
+
+/*mod_nav*/
+.mod_nav {
+	margin-left: 30px;
+	display: inline
+}
+
+.mod_nav li {
+	float: left;
+	display: inline;
+	margin-right: 5px;
+}
+
+.mod_nav a {
+	float: left;
+	height: 33px;
+	line-height: 33px;
+	padding-left: 10px;
+	color: #fff;
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.mod_nav span {
+	display: block;
+	padding-right: 10px;
+}
+
+.mod_nav a:hover,.mod_nav a:hover span,.mod_nav .current a,.mod_nav .current a span
+	{
+	// background-image: url(mod_public.png);
+	background-repeat: no-repeat
+}
+
+.mod_nav a:hover {
+	background-position: 0 0;
+	color: #1c8ed3;
+	text-decoration: none;
+}
+
+.mod_nav a:hover span {
+	background-position: right 0;
+}
+
+.mod_nav .current a,.mod_nav .current a:hover {
+	background-position: 0 -33px;
+}
+
+.mod_nav .current a:hover {
+	color: #fff;
+}
+
+.mod_nav .current a span,.mod_nav .current a:hover span {
+	background-position: right -33px;
+}
+
+/*未登录*/
+.mod_panel {
+	float: right;
+	padding: 7px 20px 0 0;
+}
+
+.mod_panel a {
+	margin-left: 10px;
+	zoom: 1;
+	color: #fff;
+}
+
+.mod_panel a:hover {
+	color: #fff000
+}
+
+/*登录*/
+.mod_ulinks {
+	position: relative;
+	zoom: 1
+}
+
+.mod_uinfo {
+	float: right;
+	padding-left: 43px;
+	line-height: 18px;
+	width: 180px;
+}
+
+.mod_ulinks a {
+	float: left;
+	margin-right: 10px;
+	display: inline;
+	color: #fff;
+}
+
+.mod_ulinks a:hover {
+	color: #fff000
+}
+
+.mod_name {
+	color: #fff000;
+	font-weight: 700
+}
+
+.mod_avatar {
+	float: left;
+	margin: 2px 0 0 -43px;
+	display: inline;
+	// background: url(mod_public.png) no-repeat 0 -117px;
+	width: 24px;
+	height: 25px;
+	padding: 4px;
+}
+
+.mod_mnew {
+	// background: url(new2.gif) no-repeat;
+	width: 15px;
+	height: 13px;
+	display: block;
+	position: absolute;
+	left: 122px;
+	top: -8px
+}
+
+/*full_bg*/
+.page_bg {
+	// background: #fff url(full_bg.png) repeat-x;
+	padding-top: 1px;
+	zoom: 1
+}
+
+.page_wrapper {
+	margin: 0 auto;
+	text-align: left;
+	width: 980px;
+}
+
+.mod_container,.mod_frame {
+	border-style: solid;
+	border-color: #cfe5f5;
+	border-width: 0 1px 1px;
+	// background: url(bg.png) repeat-y -142px 0;
+	padding-bottom: 10px;
+}
+
+/*无左侧背景 add by f2er 11-10-21*/
+.mod_frame {
+	background: none
+}
+
+/*aside*/
+.aside {
+	width: 132px;
+	padding: 0 5px;
+	// background: url(bg.png) no-repeat 0 top;
+	padding-top: 12px;
+}
+
+.aside a {
+	color: #2988cc;
+	font-size: 14px;
+}
+
+.aside a:hover {
+	color: #1878bc;
+}
+
+/*section*/
+.section {
+	width: 836px;
+}
+
+/*mod_pcenter*/
+.mod_pcenter {
+	padding: 0 5px;
+	zoom: 1
+}
+
+.mod_pcenter li {
+	overflow: hidden;
+	position: relative;
+	padding: 2px 0;
+	zoom: 1;
+	margin-bottom: 4px;
+}
+
+.mod_pcenter .mod_game {
+	// background: url(mod_line.png) no-repeat center top;
+	padding: 5px 0 2px 0;
+}
+
+.mod_pcenter .a_cz,.mod_pcenter .a_ht {
+	position: absolute;
+	right: 0;
+	top: 4px;
+	color: #ff0000;
+	font-size: 12px;
+}
+
+.mod_pcenter .a_ht {
+	color: #888
+}
+
+.sp_pc {
+	background-position: 0 0;
+}  /*个人中心*/
+.sp_group {
+	background-position: 0 -22px;
+}  /*群组*/
+.sp_album {
+	background-position: 0 -158px;
+}  /*相册*/
+.sp_xyx {
+	background-position: 0 -43px
+}  /*4399小游戏*/
+.sp_jf {
+	background-position: 0 -85px;
+}
+
+.sp_hz {
+	background-position: 0 -109px;
+}
+
+.sp_fk {
+	background-position: 0 -135px;
+}
+
+.sp_dir {
+	// background: url(icons.gif) no-repeat right -62px;
+	padding-right: 24px;
+}
+
+/*旋转图标*/
+.mod_pcenter li a:hover .sp_ico,.mod_glist li a:hover img {
+	-moz-transition: all 0.2s ease-in-out 0s;
+}
+
+/*mod_sgame*/
+.mod_sgame {
+	width: 131px;
+	margin-top: 5px;
+}
+
+.mod_sgame .hd {
+	position: relative;
+	height: 30px;
+	line-height: 30px;
+}
+
+.mod_sgame .close,.mod_sgame .open {
+	display: block;
+	cursor: pointer;
+	// background: url(mod_sgame.png) no-repeat 0 0;
+	font-size: 14px;
+	line-height: 30px;
+	padding: 0 40px 0 20px;
+	color: #1c8ed3;
+}
+
+.mod_sgame .open {
+	background-position: -131px 0
+}  /*打开*/
+.mod_sgame .a_add {
+	position: absolute;
+	right: 10px;
+	top: 0;
+	color: #555;
+	font-size: 12px;
+}
+
+.mod_sgame .a_add:hover {
+	color: #1c8ed3
+}
+
+.mod_sgame .bd {
+	border-style: solid;
+	border-width: 0 1px;
+	border-color: #cfe0ed;
+	background: #fff;
+	zoom: 1;
+	padding: 5px 2px;
+}
+
+.mod_sgame .fd {
+	// background: url(mod_sgame.png) no-repeat 0 -30px;
+	overflow: hidden;
+	height: 4px;
+}
+
+.mod_sgame .mod_more {
+	margin-left: 22px;
+	font-size: 12px;
+}
+
+/*mod_glist*/
+.mod_glist li {
+	height: 15px;
+	overflow: hidden;
+	margin: 5px 0;
+	padding: 5px 0 5px 20px;
+	white-space: nowrap;
+	zoom: 1;
+}
+
+.mod_glist li a {
+	color: #333
+}
+
+.mod_glist i {
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+	font-style: normal;
+	cursor: pointer;
+	vertical-align: top;
+	line-height: 16px;
+	font-size: 13px;
+	width: 80px;
+	overflow: hidden
+}
+
+.mod_glist li a:hover {
+	text-decoration: none
+}
+
+.mod_glist li img {
+	margin-right: 3px;
+	vertical-align: top;
+	width: 16px;
+	height: 16px;
+}
+
+.mod_glist li span {
+	// background: url(mod_public.png) no-repeat -32px -117px;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin: 2px 0 0 -18px;
+	display: inline;
+	cursor: pointer;
+	visibility: hidden;
+}
+
+/********/
+.mod_glist li:hover span {
+	visibility: visible;
+}
+
+/********/
+/*mod_link*/
+.mod_link ul {
+	margin-bottom: -10px;
+}
+
+.mod_link .hd,.mod_link .bd,.mod_link .fd {
+	// background-image: url(mod_link.png);
+	background-repeat: no-repeat;
+	width: 131px;
+}
+
+.mod_link .hd {
+	background-position: 0 0;
+	height: 6px;
+	overflow: hidden
+}
+
+.mod_link .bd {
+	background-position: -131px 0;
+	background-repeat: repeat-y;
+	padding: 10px 15px;
+	width: 101px;
+}
+
+.mod_link .fd {
+	background-position: -262px 0;
+	height: 6px;
+	overflow: hidden
+}
+
+.mod_link li {
+	margin-bottom: 10px;
+}
+
+.mod_link a {
+	color: #000;
+	font-size: 12px;
+}
+
+/*mod_sad*/
+.mod_sad {
+	width: 120px;
+	margin: 10px auto 0;
+}
+
+/*footer*/
+.footer {
+	padding: 10px 0;
+	zoom: 1
+}
+
+.mod_server {
+	color: #555;
+	line-height: 2
+}
+
+.mod_phone {
+	color: #888
+}
+
+.mod_phone span {
+	margin-right: 10px;
+}
+
+/*mod_desc*/
+.mod_desc {
+	text-align: right;
+	line-height: 22px;
+	color: #888
+}
+
+.mod_desc a {
+	color: #1c8ed3;
+	margin: 0 5px;
+}
+
+.mod_desc a.a_zp {
+	color: #ff0000
+}
+
+.mod_desc a:hover {
+	color: #ff6600
+}
+
+.mod_desc span {
+	margin-left: 10px;
+}
+
+/*mod_page*/
+.mod_page {
+	line-height: 31px;
+	height: 31px;
+	margin-top: 20px;
+}
+
+.mod_tnum {
+	float: right;
+	color: #999;
+}
+
+.mod_pnum {
+	float: right;
+	margin: 0 10px;
+	display: inline
+}
+
+.mod_pnum li {
+	float: left
+}
+
+.mod_pnum a,.mod_pnum span {
+	float: left;
+	// background-image: url(m_banner.png);
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 31px;
+	display: block;
+	color: #000
+}
+
+.mod_pnum a:hover {
+	color: #1C8ED3
+}
+
+.mod_pnum .cur a {
+	background-position: 0 -598px;
+	background-repeat: repeat-x;
+	color: #1c8ed3;
+	padding: 0 15px;
+}
+
+.mod_pnum a {
+	background-position: 0 -567px;
+	background-repeat: repeat-x;
+	padding: 0 15px;
+	border-right: 1px solid #c8d9ea
+}
+
+.mod_pnum .mod_first,.mod_pnum .dis_first,.mod_pnum .dis_last {
+	background-position: 0 -131px;
+	width: 51px;
+	padding: 0;
+	border-right: none;
+}
+
+.mod_pnum .mod_last {
+	background-position: -87px -131px;
+	width: 50px;
+	padding: 0;
+	border-right: none;
+}
+
+.mod_pnum .dis_first {
+	background-position: 0 -193px;
+	color: #ccc;
+}
+
+.mod_pnum .dis_last {
+	background-position: -51px -193px;
+	width: 50px;
+	color: #ccc;
+}
+
+.mod_go {
+	// background: url(m_banner.png) no-repeat -39px -162px;
+	width: 65px;
+	height: 27px;
+	padding: 2px;
+	overflow: hidden;
+}
+
+.mod_go .mod_ptxt {
+	width: 25px;
+	height: 22px;
+	line-height: 22px;
+	padding: 2px 3px;
+	background: none;
+	border: none;
+	vertical-align: top;
+	text-align: center
+}
+
+.mod_go .btn_go {
+	background-position: -33px 0;
+	width: 30px;
+	height: 26px;
+	border: none;
+	background: none;
+	vertical-align: top;
+	cursor: pointer
+}
+
+/*======================消息提示 add by f2er 11-09-30===========================*/
+.mod_message {
+	text-align: left;
+	line-height: 1.8;
+	top: 51px;
+	background: #FFFFDD;
+	border: 1px solid #DDDDDD;
+	left: 50%;
+	margin-left: 332px;
+	padding: 8px 5px;
+	width: 146px;
+	z-index: 95;
+}
+
+.mod_message ul {
+	margin-bottom: -5px;
+	overflow: hidden;
+	line-height: 1.8;
+}
+
+.mod_message li {
+	margin-bottom: 5px;
+	font-family: "SimSun";
+	line-height: 1.5
+}
+
+.mod_message li a {
+	line-height: 1.5
+}
+
+.mod_message li a:hover {
+	text-decoration: none;
+	color: #ff8901;
+	text-decoration: none;
+}
+
+.mod_message .mod_mclose {
+	// background: url(../images/pub_head.png) no-repeat 0 -258px;
+	display: block;
+	height: 10px;
+	overflow: hidden;
+	position: absolute;
+	right: 5px;
+	text-indent: -999em;
+	top: 5px;
+	width: 9px;
+}
+
+.mod_message img {
+	height: 16px;
+	margin-right: 5px;
+	width: 16px
+}
+
+/*==========================add by f2er 11-09-27===========================*/
+/*mod_pclist*/
+.mod_pclist {
+	margin: 10px 0 -5px 15px;
+}
+
+.mod_pclist li {
+	margin-bottom: 5px;
+	position: relative;
+	overflow: hidden
+}
+
+.mod_pclist .mod_prt {
+	font-size: 12px;
+	color: #98999b;
+	position: absolute;
+	right: 0;
+	top: 3px;
+}
+
+.mod_pclist .sp_xt {
+	font-size: 12px;
+	padding: 1px 0 1px 20px;
+	// background-image: url(oicons.gif);
+	background-repeat: no-repeat
+}
+
+.sp_pc {
+	background-position: 0 0
+}  /*个人中心*/
+.sp_4399 {
+	background-position: 0 -78px
+}  /*4399小游戏*/
+.sp_jl {
+	background-position: 0 -599px
+}  /*记录*/
+.sp_xc {
+	background-position: 0 -640px
+}  /*相册*/
+.sp_rz {
+	background-position: 0 -681px
+}  /*日志*/
+.sp_fx {
+	background-position: 0 -718px
+}  /*分享*/
+.sp_cz {
+	background-position: 0 -360px
+}  /*充值中心*/
+.sp_tp {
+	background-position: 0 -400px
+}  /*投票*/
+.sp_rw {
+	background-position: 0 -755px
+}  /*任务*/
+.sp_xz {
+	background-position: 0 -793px
+}  /*勋章*/
+.sp_sc {
+	background-position: 0 -320px
+}  /*收藏盒*/
+.sp_lw {
+	background-position: 0 -831px;
+}  /*礼物*/
+.mod_pclist .sp_nw {
+    // background-image:url(network.png);
+}  /*随便看看*/
+/*========================add by f2er 11-10-17  showMessage=======================================*/
+.g_tipbox {
+	border: 1px solid #d7eafa;
+	width: 680px;
+	margin: 50px auto;
+}
+
+.g_tipbox .hd {
+	// background: url(g_tipbox_hd.png) repeat-x;
+	height: 40px;
+	border-bottom: 1px solid #e3edf5
+}
+
+.g_tipbox .hd h2 {
+	line-height: 40px;
+	padding-left: 10px;
+	font-size: 14px;
+	color: #1c8ed3
+}
+
+.g_tipbox .bd {
+	padding: 60px 0;
+	zoom: 1
+}
+
+.g_tipbox  p {
+	color: #999
+}
+
+.g_tipbox  a {
+	color: #1c8ed3
+}
+
+.g_tipok,.g_tiperror,.g_tipwarn,.g_tipdefault {
+	background-repeat: no-repeat;
+	background-position: 150px 0;
+	padding: 0 50px 10px 225px;
+}
+
+/*g_tipok*/
+.g_tipok {
+	// background-image: url(g_tipok.gif);
+}
+
+.g_tipok h3,.g_tipwarn h3,.g_tiperror h3,.g_tipdefault h3 {
+	font-size: 14px;
+	color: #1c8ed3;
+	margin-bottom: 15px;
+}
+
+/*g_tiperror*/
+.g_tiperror {
+	// background-image: url(g_tiperror.gif);
+}
+
+.g_tiperror h3 {
+	color: #ff0000;
+}
+
+.g_tiperror .g_tip,.g_tipwarn .g_tip {
+	color: #000;
+	line-height: 28px
+}
+
+/*g_tipwarn*/
+.g_tipwarn {
+	// background-image: url(g_tipwarn.gif);
+}
+
+.g_tipwarn h3 {
+	color: #ff9900;
+}
+
+/*默认提示表情*/
+.g_tipdefault {
+	// background-image: url(g_tipdefault.gif);
+}
+
+/*========================add by f2er 11-11-03  mod_pos=======================================*/
+/*面包屑*/
+.mod_pos {
+	color: #999;
+	height: 18px;
+	line-height: 15px;
+	overflow: hidden;
+}
+
+.mod_pos a {
+	color: #1C8ED3;
+	zoom: 1;
+	float: left;
+	display: inline;
+}
+
+.mod_pos span {
+	/*display:inline-block; zoom:1; *display:inline; _vertical-align:middle;*/
+	float: left;
+	display: inline;
+	zoom: 1;
+}
+
+.mod_pos .mod_gt {
+	// background: url(mod_public.png) no-repeat -32px -133px;
+	width: 5px;
+	height: 10px;
+	overflow: hidden;
+	margin: 3px 10px;
+}
+
+/*==================新旧版补丁 add by f2er 11-09-30 =============================*/
+html,body {
+	text-align: left
+}  /*跳转页*/
+body {
+	background: #fff;
+	font: 12px/1.5 Arial, SimSun !important;
+}  /*update by f2er 11-09-30*/
+/*body{font-family:"SimSun"}*/
+.mod_nav span {
+	line-height: 33px;
+	font-size: 14px;
+}
+
+.mod_uinfo,.mod_uinfo a,.mod_uinfo,.mod_ulinks {
+	line-height: 18px;
+	font-family: "SimSun"
+}
+
+.mod_ulinks a {
+	font-family: "SimSun"
+}
+
+.mod_uinfo .mod_name {
+	font-family: "Arial";
+	line-height: 18px;
+}
+
+.mod_sgame .a_add {
+	line-height: 30px;
+}
+
+.cat .current a,.cat .current span {
+	display: block;
+	background: none;
+}
+
+.aside a,.aside span,.aside li {
+	font-family: Arial, SimSun;
+	line-height: 1.5
+}
+
+.footer,.footer a {
+	line-height: 1.5;
+}
+
+.my_clt em {
+	display: none;
+}
+
+.aside .sp_dir {
+	font-size: 14px;
+}
+
+.footer * {
+	font-family: Arial, SimSun !important
+}
+
+.mod_message strong {
+	line-height: 1.5
+}
+
+.page_wrapper {
+	width: 980px !important
+}
+
+.mod_nav span {
+	font-family: "SimSun"
+}
+
+.mod_glist i {
+	font-family: Arial, SimSun
+}
+
+table,td,tr,th,div {
+	font-size: 12px;
+	word-break: normal !important;
+	word-wrap: normal !important;
+}

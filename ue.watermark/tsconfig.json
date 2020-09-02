@@ -1,0 +1,36 @@
+{
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "./src/**/*",
+  ],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+    },
+    "allowSyntheticDefaultImports": true, //对于没有export的库进行兼容
+    "strict": false, //严格模式
+    "experimentalDecorators": true, //开启修饰者模式
+    "target": "es5", //选择输出es版本
+    "module": "esnext", //采用的系统模块
+    "moduleResolution": "node", //如何处理模块
+    "isolatedModules": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "declarationDir": "release",
+    "lib": [ //识别基本的系统类库
+      "dom",
+      "es5",
+      "es6",
+      "es7",
+      "esnext",
+      "es2015"
+    ],
+    "sourceMap": false,
+    "pretty": true
+  }
+}
