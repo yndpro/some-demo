@@ -12,7 +12,7 @@
   "dependencies": {
     "eruda": "^1.4.3",
     "es6-promise": "^4.2.4",
-    "jquery": "^1.7.2",
+    "jquery": "^3.5.0",
     "ts-loader": "^3.1.1",
     "typescript": "^2.9.2",
     "vue": "^2.5.2"
