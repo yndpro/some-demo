@@ -25,14 +25,15 @@ export const fetchTodosFailure = errMsg => ({
 export const fetchTodos = () => {
     return (dispatch) => {
         dispatch(fetchTodosStart());
-        return fetch("../mock/todos.json",{method: "get"}).then(res => {
-            res.json().then(data => {
-                dispatch(fetchTodosSuccess(data));
-            });
-        }).then(reason => {
-            dispatch(fetchTodosFailure(reason));
-            alert(JSON.stringify(reason))
-        })
+        return fetch("/api/todo")
+            .then(res => res.json())
+            .then(data => {
+                dispatch(fetchTodosSuccess(data.data));
+            })
+            .catch(reason => {
+                dispatch(fetchTodosFailure(reason));
+                console.log(reason);
+            })
     }
 }
 

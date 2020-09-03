@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const apiMocker = require('mocker-api')
 
 
 module.exports = {
@@ -18,7 +19,7 @@ module.exports = {
     },
 
     //which maps your compiled code back to your original source code
-    devtool: 'inline-source-map',
+    devtool: 'cheap-module-eval-source-map',
     
     mode: "production",
 
@@ -28,7 +29,11 @@ module.exports = {
         compress: true,
         port: 9000,
         //HMR  It allows all kinds of modules to be updated at runtime without the need for a full refresh.
-        hot: true     //open Hot Module Replacement
+        hot: true,     //open Hot Module Replacement
+
+        before (app) {
+            apiMocker(app, path.resolve('./mock/mocker.js'))
+        }
     },
     
     module: {

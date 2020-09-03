@@ -14,35 +14,35 @@ const initialStatus = {
     errText : ""
 }
 
-const todos = (todos = initialStatus,action) => {
+const todos = (state = initialStatus,action) => {
     switch (action.type) {
         case FETCH_TODOS_START:
             return {
-                isFetching : true,
-                ...todos
+                ...state,
+                isFetching : true
             }
         case FETCH_TODOS_SUCCESS:
             return {
+                ...state,
                 isFetching : false,
-                data : todosData(todos.data,action),
-                ...todos
-            }
+                data : todosData(action.data,action)
+            };
         case FETCH_TODOS_FAILURE:
             return {
+                ...state,
                 isFetching : false,
-                errText : action.errMsg,
-                ...todos
+                errText : action.errMsg
             }
         default:
-            return todos;
+            return state;
     }
 }
 
-const todosData = (data,action) => {
+const todosData = (state = [],action) => {
     switch (action.type) {
         case ADD_TODO:
             return [
-                ...data,
+                ...state,
                 {
                     id : id++,
                     text : action.text,
@@ -50,12 +50,12 @@ const todosData = (data,action) => {
                 }
             ]
         case TOGGLE_TODO:
-            return data.map(todo => todo.id === action.id ? {
+            return state.map(todo => todo.id === action.id ? {
                 ...todo,
                 complete : !todo.complete
             } : todo)
         default:
-            return data;
+            return state;
     }
 }
 
