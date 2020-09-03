@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Todos from "../components/Todos";
-import { toggleTodo } from "../actions/index";
+import { toggleTodo , fetchTodos } from "../actions/index";
 
 const getVisibleTodos = (todos,filter) => {
     switch (filter) {
@@ -19,12 +19,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+    fetchTodos : () => dispatch(fetchTodos()),
     onTodoClick : id => dispatch(toggleTodo(id))
 })
 
-const visibleTodos = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Todos)
-
-export default visibleTodos;
+)(Todos);

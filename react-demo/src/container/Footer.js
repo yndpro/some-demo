@@ -3,13 +3,15 @@ import { connect } from "react-redux";
 import Filter from "../components/Filter";
 import { setFilter } from "../actions/index";
 
+const mapStateToProps = state => ({
+    filter : state.filter
+})
+
 const mapDispatchToProps = dispatch => ({
     setFilter : filter => dispatch(setFilter(filter))
 })
 
-const Filter = connect(
-    null,
+export default connect(
+    mapStateToProps,
     mapDispatchToProps
-)(Filter)
-
-export default Filter;
+)(Filter);

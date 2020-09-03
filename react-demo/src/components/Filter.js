@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Filter = ({setFilter}) => (
+const Filters = ({setFilter,filter}) => (
     <div>
-        <button onClick={() => setFilter("ALL")}>all</button>
-        <button onClick={() => setFilter("COMLETED")}>completed</button>
-        <button onClick={() => setFilter("UNCOMLETED")}>uncompleted</button>
+        {filter === "ALL" ? <span>ALL</span> : <button onClick={() => setFilter("ALL")}>ALL</button>}
+        {filter === "COMLETED" ? <span>COMLETED</span> : <button onClick={() => setFilter("COMLETED")}>COMLETED</button>}
+        {filter === "UNCOMLETED" ? <span>UNCOMLETED</span> : <button onClick={() => setFilter("UNCOMLETED")}>UNCOMLETED</button>}
     </div>
 )
 
-export default Filter;
+export default Filters;

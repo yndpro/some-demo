@@ -1,17 +1,25 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 
 module.exports = {
     entry : {
-        // index: './src/index.js',
-        index: './src/store.js'
+        index: './src/index.js',
+        //index: './src/store.js'
     },
+
+    output : {
+        path : path.resolve(__dirname,"dist"),
+        filename : "[name].bundle.js",
+        //The publicPath will be used within our server script as well in order to make sure files are served correctly on http://localhost:3000. 
+        publicPath: '/'   
+    },
+
     //which maps your compiled code back to your original source code
     devtool: 'inline-source-map',
-
+    
     mode: "production",
 
     //webpack-dev-server provides you with a simple web server and the ability to use live reloading
@@ -22,24 +30,19 @@ module.exports = {
         //HMR  It allows all kinds of modules to be updated at runtime without the need for a full refresh.
         hot: true     //open Hot Module Replacement
     },
-    output : {
-        path : path.resolve(__dirname,"dist"),
-        filename : "[name].bundle.js",
-        //The publicPath will be used within our server script as well in order to make sure files are served correctly on http://localhost:3000. 
-        publicPath: '/'   
-    },
+    
     module: {
         rules: [
-            // {
-            //     test: /\.(scss|css)$/,
-            //     use: [{
-            //         loader: "style-loader"  // creates style nodes from JS strings
-            //     }, {
-            //         loader: "css-loader"    // translates CSS into CommonJS
-            //     }, {
-            //         loader: "sass-loader"   // compiles Sass to CSS
-            //     }]
-            // },
+            {
+                test: /\.(scss|css)$/,
+                use: [{
+                    loader: "style-loader"  // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader"    // translates CSS into CommonJS
+                }, {
+                    loader: "sass-loader"   // compiles Sass to CSS
+                }]
+            },
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: ['file-loader']
@@ -61,7 +64,7 @@ module.exports = {
             inject:'body',
             filename: './index.html'
         }),
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
 };
