@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import Todos from "../components/Todos";
 import { toggleTodo , fetchTodos } from "../actions/index";
 
-const getVisibleTodos = (todos,filter) => {
-    
-    switch (filter) {
+const getVisibleTodos = (state) => {
+    let todos = state.todos.data;
+    switch (state.filter) {
         case 'COMLETED': 
             return todos.filter(todo => todo.complete === true)
         case 'UNCOMLETED': 
@@ -16,7 +16,7 @@ const getVisibleTodos = (todos,filter) => {
 }
 
 const mapStateToProps = state => ({
-    todos : getVisibleTodos(state.todos.data,state.filter)
+    todos : getVisibleTodos(state)
 })
 
 const mapDispatchToProps = dispatch => ({

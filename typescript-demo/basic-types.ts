@@ -14,6 +14,9 @@ enum Color {
 }
 let c: Color = Color.Red;
 let colorName: string = Color[2];
+console.log(c);
+console.log(c);
+
 
 //any
 let notSure: any = "aa";
