@@ -3,6 +3,7 @@ import {
     ADD_TODO,
     TOGGLE_TODO,
     SET_FILTER,
+    SET_TEXT,
     FETCH_TODOS_START,
     FETCH_TODOS_SUCCESS,
     FETCH_TODOS_FAILURE,
@@ -50,6 +51,11 @@ export const toggleTodo = id => ({
 export const setFilter = filter => ({
     type : SET_FILTER,
     filter : filter
+})
+
+export const setText = text => ({
+    type : SET_TEXT,
+    text : text
 })
 
 
