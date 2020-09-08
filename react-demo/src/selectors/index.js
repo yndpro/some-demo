@@ -4,7 +4,6 @@ export const getFilter = (state) => state.get("filter");
 export const getText = (state) => state.get("test");
 
 export const getVisibleTodos = (state) => {
-    console.log(state);
     let $$todos = state.getIn(['todos','data']);
     switch (state.get('filter')) {
         case 'COMLETED': 

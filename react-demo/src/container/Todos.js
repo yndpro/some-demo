@@ -3,10 +3,14 @@ import { connect } from "react-redux";
 import Todos from "../components/Todos";
 import { toggleTodo , fetchTodos } from "../actions/index";
 import { getVisibleTodos } from "../selectors/index";
+import { transPropsHOC } from "../HOC/transPropsHOC";
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => {
+    //console.log(Object.entries(state.get("todos")));
+    
+    return {
     todos : getVisibleTodos(state).toJS()
-})
+}}
 
 const mapDispatchToProps = dispatch => ({
     fetchTodos : () => dispatch(fetchTodos()),
@@ -16,4 +20,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Todos);
+)(transPropsHOC(Todos));

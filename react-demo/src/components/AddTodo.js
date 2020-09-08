@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
 
 let AddTodo = ({setText,addTodo,text}) => {
     let input;
@@ -16,7 +15,5 @@ let AddTodo = ({setText,addTodo,text}) => {
         </div>
     )
 }
-
-AddTodo = connect()(AddTodo)
 
 export default AddTodo;
