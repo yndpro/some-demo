@@ -6,7 +6,6 @@ class Todos extends Component {
         this.props.fetchTodos();
     }
     render() {
-        console.log("render");
         let {todos,onTodoClick:onClick} = this.props;
         return (
             <ul>

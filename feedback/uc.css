@@ -1,0 +1,491 @@
+@charset "utf-8";
+/* /feedback/css/init.css */
+
+/* CSS reset */
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{ padding: 0; margin: 0; }
+table { border-collapse: collapse; border-spacing: 0; }
+del, ins { text-decoration: none }
+fieldset, img { border: 0; }
+body,button,input,select,textarea{font:12px tahoma,arial,\5b8b\4f53;}
+input,select,img{ vertical-align:middle}
+input,select{ outline:none}
+ul,ol{ list-style:none }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+address,cite,dfn,em,var{font-style:normal;}
+
+/* global */
+body{ font:12px "SimSun"; -webkit-text-size-adjust:none; }
+.wrapper{ margin:0 auto;text-align:left;width:1000px; }
+td{ font-size:12px; line-height:160%;}
+.left{ float:left }
+.right{ float:right }
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+.txthide{ text-indent:-999em;overflow:hidden; line-height:0; font-size:0}
+.clearfix:after{ content:""; height:0; visibility:hidden; display:block; clear:both;}
+.clearfix{ zoom:1;}
+.clear{ clear:both }
+
+/* /feedback/css/layout.css */
+/* ucenter 头部和底部公用样式 */
+body {
+    font: 12px/24px "Microsoft YaHei";
+}
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+}
+
+/*顶部*/
+.top {
+    width: 100%;
+    height: 73px;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+.top img {
+    margin: 16px 0 0 19px;
+    float: left;
+}
+
+.top span {
+    padding-left: 16px;
+    font: 20px/73px "Microsoft YaHei";
+    color: #4c4c4c;
+    float: left;
+}
+.footer {
+    height: 100px;
+    padding-top: 10px;
+    text-align: center;
+    margin-top: -110px;
+    border-top: 1px #ddd solid;
+}
+.main {
+    overflow: hidden;
+    width: 960px;
+    margin: 30px auto;
+}
+.fixed {
+    zoom: 1;
+}
+/* /feedback/css/ucenter.css */
+/* ucenter ui库 欢迎持续集成*/
+
+input,
+button{
+    outline:none;
+}
+
+/* u-form */
+input[type=text].form-control {
+    padding: 0 10px;
+    line-height: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+}
+
+textarea.form-control {
+    padding: 0 10px;
+    line-height: 24px;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    outline: none;
+    resize: none;
+}
+
+label.form-label {
+    line-height: 34px;
+    font-size: 14px;
+}
+
+.form-group-horizen {
+    padding: 0 0 14px 72px;
+    position: relative;
+}
+
+.form-group-horizen input[type=text].form-control {
+    width: 324px;
+}
+
+.form-group-horizen label.form-label {
+    width: 72px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.form-group-4em.form-group-horizen {
+    padding-left: 64px;
+}
+
+.form-group-4em.form-group-horizen .form-label {
+    width: 64px;
+}
+
+.form-group-4em.form-group-horizen input[type=text].form-control {
+    width: 314px;
+}
+
+.form-group-vertical {
+    margin-bottom: 14px;
+}
+
+.form-group-vertical label.form-label {
+    display: block;
+}
+
+.form-group-vertical input[type=text].form-control {
+    width: 378px;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{ /* WebKit browsers 适配谷歌 */
+color: #aaaaaa;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 适配火狐 */
+color: #aaaaaa;
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder { /* Mozilla Firefox 19+ 适配火狐 */
+color: #aaaaaa;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder { /* Internet Explorer 10+  适配ie*/
+color: #aaaaaa!important;
+}
+
+
+.radio-wrapper {
+    float: left;
+    margin-right: 40px;
+}
+
+.radio-wrapper label {
+    padding-left: 20px;
+    background: url(../feedback/images/icon_radio_circle.png?_IMG_VERSION_CUR_) no-repeat left center;
+}
+.radio-wrapper label.radio-checked{
+    background-image: url(../feedback/images/icon_radio_circle_selected.png?_IMG_VERSION_CUR_);
+}
+
+/* u-btn */
+.btn.disable{
+    background: #ccc;
+    cursor: not-allowed;
+}
+.btn-primary {
+    width: 120px;
+    line-height: 40px;
+    height: 40px;
+    text-align: center;
+    background: #70c700;
+    color: #fff;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    text-decoration: none;
+}
+
+
+/*u-toast*/
+.u-toast {
+    position: fixed;
+    padding: 10px 10px;
+    width: 220px;
+    left: 50%;
+    margin-left: -120px;
+    top: 40%;
+    background: rgba(0, 0, 0, 0.65);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7f000000, endcolorstr=#7f000000);
+    border-radius: 8px;
+}
+.u-toast:not([dummy]) {
+    /* IE9 only */
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='false');
+}
+
+.toast-tit {
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.toast-txt {
+    line-height: 20px;
+    text-align: center;
+    color: #c0c0c0;
+}
+/* /feedback/css/feedback.css */
+html,
+body,
+.layout-stick {
+    height: 100%;
+}
+
+.layout-stick {
+    height: auto;
+    min-height: 100%;
+}
+
+.layout-stick-main {
+    padding-bottom: 110px;
+}
+
+.wrap .main {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.main {
+    width: 960px;
+}
+
+.feedback {
+    color: #333;
+    font-size: 14px;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+}
+
+.feedback button,
+.feedback input,
+.feedback textarea {
+    font-size: 14px;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+}
+
+.feedback-form {
+    padding: 40px 80px 30px;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+}
+
+.feedback .form-label {
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.feedback .form-label span {
+    color: #fc211f;
+}
+
+.feedback .radio-wrapper {
+    line-height: 30px;
+}
+
+.feedback textarea.form-control{
+    width: 776px;
+    border:none;
+}
+
+.feedback .form-group-id{
+    display: none;
+}
+
+.feedback .textarea-count{
+    text-align: right;
+    line-height: 40px;
+    padding: 0 10px;
+    color: #aaaaaa;
+}
+
+.feedback .textarea-wrapper{
+    position: relative;
+    border-radius: 4px;
+    padding-top: 6px;
+    border: 1px solid #e5e5e5;
+}
+
+.feedback .form-group-btn{
+    padding: 40px 0;
+}
+
+.feedback .btn-primary{
+    width: 200px;
+}
+
+
+.feedback-file{
+    width: 140px;
+    height: 140px;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    position: relative;
+    margin-right: 20px;
+    float: left;
+    display: none;
+    overflow: hidden;
+  }
+  .feedback-file .file-origin{
+    width: 138px;
+    height: 138px;
+    position: absolute;
+    top:10px;
+    left: 10px;
+    border: 1px dashed #cccccc;
+    border-radius: 6px;
+  }
+  .feedback-file .file-origin i,
+  .feedback-file .file-layer-reupload i{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin: -20px 0 0 -20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .feedback-file .file-origin i{
+      background-image: url(../feedback/images/icon_plus_grey.png?_IMG_VERSION_CUR_);
+  }
+  .feedback-file .file-layer-reupload i{
+    background-image: url(../feedback/images/icon_plus_white.png?_IMG_VERSION_CUR_);
+}
+  .feedback-file .file-origin p,
+  .feedback-file .file-layer-reupload p{
+    line-height: 28px;
+    position: absolute;
+    bottom:16px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .feedback-file .file-origin p{
+    color: #aaaaaa;
+  }
+  .feedback-file .file-layer-reupload p{
+    color: #ffffff;
+  }
+  
+  .feedback-file .file-layer{
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top:10px;
+    left: 10px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 8px;
+    display: none;
+    background: url(../feedback/images/ptlogin_mask2.png?_IMG_VERSION_CUR_) repeat;
+  }
+  
+  .feedback-file .file-layer-error .error-txt{
+    color: #fc211f;
+    display: inline-block;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    margin-top: 40px;
+    background: url(../feedback/images/icon_invalid.png?_IMG_VERSION_CUR_) no-repeat 0 6px;
+  }
+  .feedback-file img{
+    border-radius: 6px;
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top:10px;
+    left: 10px;
+  }
+  .feedback-file .file-loading{
+    text-align: center;
+    line-height: 140px;
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top:10;
+    left:10;
+    display: none;
+    cursor: not-allowed;
+    z-index: 1000;
+  }
+  
+  .feedback-file input{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top:0;
+    left: 0;
+    cursor: pointer;
+    filter:alpha(opacity=0);
+    z-index: 999;
+    *font-size:100px;
+    font-size:100px\0;
+  }
+
+  .feedback-file.loading .file-loading{
+    display: block;
+  }
+  .feedback-file.loading .file-layer-error{
+    display: none;
+  }
+  .feedback-file.loading .file-origin{
+    display: none;
+  }
+  .feedback-file.loading input{
+    display: none;
+  }
+  .feedback-file.loading .file-img{
+    display: none;
+  }
+
+
+  .feedback-file.error .file-loading{
+    display: none;
+  }
+  .feedback-file.error .file-layer-error{
+    display: block;
+  }
+  .feedback-file.error .file-origin{
+    display: none;
+  }
+  .feedback-file.error input{
+    display: block;
+  }
+  .feedback-file.error .file-img{
+    display: none;
+  }
+
+  .feedback-file.success .file-loading{
+    display: none;
+  }
+  .feedback-file.success .file-layer-error{
+    display: none;
+  }
+  .feedback-file.success .file-origin{
+    display: none;
+  }
+  .feedback-file.success input{
+    display: block;
+  }
+  .feedback-file.success .file-img{
+    display: block;
+  }
+  
+
+  .feedback-file-tip{
+    clear: both;
+    line-height: 36px;
+    color: #aaaaaa;
+  }
+
+ 
+  

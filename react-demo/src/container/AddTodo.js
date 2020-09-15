@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { addTodo } from "../actions/index";
+import AddTodo from '../components/AddTodo';
+import { setText , addTodo } from "../actions/index";
+import { getText } from '../selectors/index';
 
-let AddTodo = ({dispatch}) => {
-    let input;
-    return (
-        <div>
-            <input type="text" ref={node => input = node}/>
-            <button onClick={e => {
-                if(!input.value.trim()){
-                    return
-                }
-                dispatch(addTodo(input.value));
-                input.value = '';
-            }}>add</button>
-        </div>
-    )
-}
+const mapStateToProps = state => ({
+    text : getText(state)
+})
 
-export default connect()(AddTodo);
+const mapDispatchToProps = dispatch => ({
+    setText : text => dispatch(setText(text)),
+    addTodo : text => dispatch(addTodo(text)),
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AddTodo);

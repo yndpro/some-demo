@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Filter from "../components/Filter";
+import { getFilter } from '../selectors/index';
 import { setFilter } from "../actions/index";
 
 const mapStateToProps = state => ({
-    filter : state.filter
+    filter : getFilter(state)
 })
 
 const mapDispatchToProps = dispatch => ({

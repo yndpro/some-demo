@@ -1,3 +1,4 @@
+import {fromJS} from 'immutable';
 import { 
     ADD_TODO,
     TOGGLE_TODO,
@@ -14,51 +15,38 @@ const initialStatus = {
     errText : ""
 }
 
-const todosData = (state = [],action) => {
+
+const todosData = (state = fromJS([]),action) => {
     switch (action.type) {
         case ADD_TODO:
-            return [
-                ...state,
-                {
-                    id : id++,
-                    text : action.text,
-                    complete : false
-                }
-            ]
+            return state.push(fromJS({
+                id : id++,
+                text : action.text,
+                complete : false
+            }));
         case TOGGLE_TODO:
-            return state.map(todo => todo.id === action.id ? {
-                ...todo,
-                complete : !todo.complete
-            } : todo)
+            return state.map(todo => todo.get("id") === action.id ? todo.set("complete",!todo.get("complete")) : todo)
         default:
             return state;
     }
 }
 
-const todos = (state = initialStatus,action) => {
+const todos = (state = fromJS(initialStatus),action) => {
     switch (action.type) {
         case FETCH_TODOS_START:
-            return {
-                ...state,
-                isFetching : true
-            }
+            return state.set("isFetching",true);
         case FETCH_TODOS_SUCCESS:
-            return {
-                ...state,
+            return state.merge({
                 isFetching : false,
-                data : action.data
-            };
+                data : fromJS(action.data)
+            })
         case FETCH_TODOS_FAILURE:
-            return {
-                ...state,
+            return state.merge({
                 isFetching : false,
                 errText : action.errMsg
-            }
+            })
         default:
-            return {
-                ...state,
-                data : todosData(state.data,action)
-            };
+            return state.set("data",todosData(state.get("data"),action))
     }
 }
 
