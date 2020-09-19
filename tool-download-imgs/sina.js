@@ -1,6 +1,6 @@
 const model = require("./model");
-const name = "一组来自健身美女敏敏的运动美拍";
-const url = "http://slide.sports.sina.com.cn/o/slide_2_730_253019.html#p=4";
+const name = "一组来自模特美女mizili的运动美拍，她除了日常在健身房健身运动以外";
+const url = "http://slide.sports.sina.com.cn/o/slide_2_730_254057.html#p=2";
 const host = "n.sinaimg.cn";
 const depositPath = "/Users/adrianyoung/Downloads/sina/";
 
