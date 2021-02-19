@@ -1,7 +1,13 @@
 const model= require('./model');
 
-const basicPath = "https://www.mzitu.com/123444";
-const host = "i5.meizitu.net";
+
+
+
+
+
+
+const basicPath = "https://www.mzitu.com/236412";
+const host = "imgpc.iimzt.com";
 const depositPath = "/Users/adrianyoung/Downloads/";
 
 const main = async _url => {
@@ -39,5 +45,8 @@ const role = {
     'Luffy菲菲':'https://www.mzitu.com/tag/luffy-feifei/',
     '王婉悠':'https://www.mzitu.com/tag/wangwanyou/',
     '顾欣怡':'https://www.mzitu.com/tag/guxinyi/',
-    '卓娅祺':'https://www.mzitu.com/tag/zhuoyaqi/'
+    '卓娅祺':'https://www.mzitu.com/tag/zhuoyaqi/',
+    '安然':'https://www.mzitu.com/tag/anran-maleah/',
+    '夏诗诗(夏诗雯)':'https://www.mzitu.com/tag/xiashishi/',
+    '杨紫嫣':'https://www.mzitu.com/tag/yangziyan/',
 };
