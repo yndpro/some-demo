@@ -1,0 +1,41 @@
+{
+  "presets": [
+    [
+      // @babel/preset-env is a smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms (and optionally, browser polyfills) are needed by your target environment(s). 
+      "@babel/preset-env",
+      {
+        // Describes the environments you support/target for your project.
+        "targets": {
+
+          //A query to select browsers (ex: last 2 versions, > 5%, safari tp) using browserslist.
+          //"browsers": ["last 2 versions", "safari >= 7"],
+          //You may also target browsers supporting ES Modules 
+          "esmodules": true,
+
+          "ie": "8"
+        },
+
+        // Enable "loose" transformations for any plugins in this preset that allow them.
+        "loose": true,
+        
+        // Outputs to console.log the polyfills and transform plugins enabled by preset-env and, if applicable, which one of your targets that needed it.
+        "debug": false,
+
+        // This option configures how @babel/preset-env handles polyfills. 
+        // useBuiltIns: 'usage'
+        // Adds specific imports for polyfills when they are used in each file. We take advantage of the fact that a bundler will load the same polyfill only once.
+        "useBuiltIns": "usage",
+
+        //By default, only polyfills for stable ECMAScript features are injected
+        "corejs": 2
+      }
+    ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    // A plugin that enables the re-use of Babel's injected helper code to save on codesize.
+    ["@babel/plugin-transform-runtime"], 
+    // class with four class properties which will be transformed
+    "@babel/plugin-proposal-class-properties"
+  ]
+}

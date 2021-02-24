@@ -1,0 +1,19 @@
+ {{#extend "scss"}}
+    {{#content "sprites"}}
+        {{#each sprites}}
+            @mixin icon-{{name}} {
+                background-position: {{#if offset_x}} ({{offset_x}}px / 2) {{else}}0{{/if}} {{#if offset_y}} ({{offset_y}}px / 2) {{else}}0{{/if}};
+                width: ({{width}}px / 2) + 4;
+                height: ({{height}}px / 2) + 4;
+            }
+        {{/each}}
+    {{/content}}
+
+    {{#content "spritesheet"}}
+        @mixin sprite-icon {
+            background-image: url({{{spritesheet.escaped_image}}});
+            background-repeat: no-repeat;
+            background-size: ({{spritesheet.width}}px / 2) ({{spritesheet.height}}px / 2);
+        }
+    {{/content}}
+{{/extend}}

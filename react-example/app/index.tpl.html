@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        (function(doc, win) {
+            const docEl = doc.documentElement;
+            const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            const recalc = function() {
+                const clientWidth = docEl.clientWidth > 750 ? 750 : docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = clientWidth / 10 + 'px';
+            };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+    
+    <div id="root"></div>
+    
+    <script>
+    /**eruda */
+    ;(function () {
+        if (!/mdebug=true/.test(window.location.href)) return;
+        var script = document.createElement('script')
+        script.src = "https://cdn.bootcss.com/eruda/1.2.6/eruda.min.js"
+        script.async = true
+        document.getElementsByTagName('head')[0].appendChild(script)
+        script.onload = function () {
+            eruda.init()
+        }
+    })()
+    </script>
+</body>
+</html>
